@@ -231,7 +231,6 @@ export default function Home() {
               tags={project.tags}
               href={project.href}
               coverImage={project.coverImage}
-              gradientClasses={project.gradientClasses}
               createdAt={project.createdAt}
             />
           ))}
