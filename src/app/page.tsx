@@ -49,13 +49,13 @@ export default function Home() {
               sparking a lifelong passion for creating interactive experiences.
             </p>
             <p className="text-lg text-muted-foreground">
-              Today, I'm a Junior at Stanford University and the founder of the 
+              Today, I&apos;m a Junior at Stanford University and the founder of the 
               <span className="font-semibold text-foreground"> Stanford Video Game Development Club</span>. 
-              I develop games in Unity and share my expertise as an instructor for Stanford's 
+              I develop games in Unity and share my expertise as an instructor for Stanford&apos;s 
               official student-initiated courses.
             </p>
             <p className="text-lg text-muted-foreground">
-              Dedicated to both learning and teaching, I'm excited to inspire the next 
+              Dedicated to both learning and teaching, I&apos;m excited to inspire the next 
               generation of game creators through education and hands-on development.
             </p>
           </div>
@@ -174,7 +174,7 @@ export default function Home() {
             <h3 className="text-xl font-semibold mb-3">VR Development</h3>
             <p className="text-muted-foreground mb-4">
               Virtual reality projects and experiences, teaching others the fundamentals 
-              of VR development through Stanford's CS11SI course.
+              of VR development through Stanford&apos;s CS11SI course.
             </p>
             <span className="text-sm text-muted-foreground">VR • Immersive Experiences</span>
           </div>
@@ -186,7 +186,7 @@ export default function Home() {
         <div className="text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">Get In Touch</h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            I'm always interested in new opportunities, collaborations, and connecting 
+            I&apos;m always interested in new opportunities, collaborations, and connecting 
             with fellow game developers and creators.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
