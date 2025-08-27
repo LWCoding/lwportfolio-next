@@ -1,7 +1,7 @@
 export default function Navigation() {
   const navItems = [
-    { href: "#about", label: "About" },
     { href: "#featured-projects", label: "Projects" },
+    { href: "#timeline", label: "Skills" },
     { href: "#contact", label: "Contact" },
   ];
 
