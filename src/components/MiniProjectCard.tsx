@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import { GameCategory } from '@/hooks/useFeaturedGames';
 
 interface MiniProjectCardProps {
   title: string;

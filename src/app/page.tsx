@@ -188,9 +188,9 @@ export default function Home() {
             {otherGames.length > 0 && (
               <div className="mt-12">
                 <h2 className="text-2xl md:text-3xl font-bold text-center mb-2">More Game Projects</h2>
-                <p className="text-center text-muted-foreground mb-6">
-                  Here's a few other smaller things I've worked on! Experimental, silly, satire.
-                </p>
+                                  <p className="text-center text-muted-foreground mb-6">
+                   Here&apos;s a few other smaller things I&apos;ve worked on! Experimental, silly, satire.
+                  </p>
                 <HorizontalGallery games={otherGames} />
               </div>
             )}

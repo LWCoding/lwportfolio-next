@@ -14,8 +14,6 @@ export default function HorizontalGallery({ games }: HorizontalGalleryProps) {
   const [isBursting, setIsBursting] = useState(false);
   const [hoveredDirection, setHoveredDirection] = useState<number | null>(null);
 
-  if (games.length === 0) return null;
-
   // Simple gradient classes for variety
   const gradientClasses = [
     "from-red-500/20 to-orange-500/20",
