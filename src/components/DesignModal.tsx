@@ -52,18 +52,27 @@ export default function DesignModal({ isOpen, onClose }: DesignModalProps) {
           </p>
           
           <p className="text-foreground text-sm text-center">
-            It&apos;s in the engineering department! It&apos;s basically <span className="font-semibold text-primary">engineering + psychology + art</span> all mixed together.
+            Stanford&apos;s design program focuses on researching and actively solving real-world problems. We focus on needfinding, iteration, production, and feedback. It combines engineering, psychology, and visual design.
           </p>
           
           <p className="text-muted-foreground text-sm text-center">
-            I like making real things that affect real people! :)
+            Learn more on the{" "}
+            <a 
+              href="https://dschool.stanford.edu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-primary/80 underline underline-offset-2 transition-colors"
+            >
+              Stanford d.school
+            </a>
+            {" "}website!
           </p>
         </div>
 
         {/* Footer */}
         <div className="p-4 border-t border-border">
           <Button onClick={onClose} variant="primary" className="w-full text-sm">
-            Ah, makes sense!
+            Cool!
           </Button>
         </div>
       </div>
