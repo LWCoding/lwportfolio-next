@@ -2,7 +2,9 @@
 
 import Button from './Button';
 import Image from 'next/image';
+import CategoryBadge from './CategoryBadge';
 import { useState } from 'react';
+import { GameCategory } from '@/hooks/useFeaturedGames';
 
 interface ProjectCardProps {
   title: string;
@@ -13,6 +15,8 @@ interface ProjectCardProps {
   displayText?: string;
   coverImage?: string;
   viewCount?: number;
+  createdAt?: string;
+  category?: GameCategory;
 }
 
 export default function ProjectCard({
@@ -23,7 +27,9 @@ export default function ProjectCard({
   gradientClasses = "from-primary/20 to-accent/20",
   displayText = "Game Project",
   coverImage,
-  viewCount
+  viewCount,
+  createdAt,
+  category
 }: ProjectCardProps) {
   const [imageError, setImageError] = useState(false);
 
@@ -34,6 +40,14 @@ export default function ProjectCard({
       return `${(num / 1000).toFixed(1)}K`;
     }
     return num.toString();
+  };
+
+  const formatCreatedDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { 
+      month: 'short', 
+      year: 'numeric' 
+    });
   };
 
   return (
@@ -53,6 +67,7 @@ export default function ProjectCard({
         ) : (
           <span className="text-primary font-semibold">{displayText}</span>
         )}
+        {category && <CategoryBadge category={category} />}
         {viewCount && (
           <div className="absolute top-2 right-2 bg-background/80 backdrop-blur-sm px-2 py-1 rounded text-xs">
             <span className="text-primary font-medium">{formatNumber(viewCount)}</span>
@@ -61,9 +76,14 @@ export default function ProjectCard({
         )}
       </div>
       <div className="p-4 text-center">
-        <h3 className="text-xl font-semibold mb-2">
+        <h3 className="text-xl font-semibold mb-1">
           {title}
         </h3>
+        {createdAt && (
+          <p className="text-sm text-muted-foreground mb-2">
+            Published {formatCreatedDate(createdAt)}
+          </p>
+        )}
         <p className="text-muted-foreground mb-3">
           {description}
         </p>

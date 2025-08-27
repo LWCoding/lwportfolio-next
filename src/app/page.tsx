@@ -5,13 +5,15 @@ import Navigation from "@/components/Navigation";
 import Section from "@/components/Section";
 import DesignModal from "@/components/DesignModal";
 import ProjectCard from "@/components/ProjectCard";
-import { useFeaturedGames } from "@/hooks/useFeaturedGames";
+import CategoryLegend from "@/components/CategoryLegend";
+import HorizontalGallery from "@/components/HorizontalGallery";
+import { useGames } from "@/hooks/useFeaturedGames";
 import { useState } from "react";
 import Image from "next/image";
 
 export default function Home() {
   const [isDesignModalOpen, setIsDesignModalOpen] = useState(false);
-  const { games, loading, error } = useFeaturedGames();
+  const { featuredGames, otherGames, loading, error } = useGames();
 
   // Simple gradient classes for variety
   const gradientClasses = [
@@ -105,12 +107,9 @@ export default function Home() {
 
 
       {/* Featured Projects Gallery */}
-      <Section id="featured-projects" background="secondary">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Featured Games</h2>
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Here are my favorite games that I&apos;ve created! Each one represents a unique challenge and creative journey.
-        </p>
-        
+              <Section id="featured-projects" background="secondary">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">Featured Games</h2>
+
         {/* Loading State */}
         {loading ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -147,7 +146,7 @@ export default function Home() {
               View on Itch.io →
             </Button>
           </div>
-        ) : games.length === 0 ? (
+        ) : featuredGames.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-muted-foreground mb-4">
               No games found in your Itch.io account.
@@ -162,22 +161,40 @@ export default function Home() {
             </Button>
           </div>
         ) : (
-          /* Dynamic Games Grid */
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {games.map((game, index) => (
+          <>
+            {/* Category Legend */}
+            <CategoryLegend />
+            
+            {/* Dynamic Games Grid */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredGames.map((game, index) => (
               <ProjectCard
                 key={game.id}
                 title={game.title}
-                description={game.short_text || "An engaging game with unique mechanics and creative gameplay."}
-                tags={game.tags || ["Unity", "Indie Game"]}
+                description={game.short_text || "An exciting game experience awaits!"}
+                tags={game.tags || []}
                 href={game.url}
                 gradientClasses={gradientClasses[index % gradientClasses.length]}
                 displayText="Game"
                 coverImage={game.cover_url || game.still_cover_url}
                 viewCount={game.views_count}
+                createdAt={game.created_at}
+                category={game.category}
               />
             ))}
-          </div>
+            </div>
+            
+            {/* More Projects Gallery - Integrated */}
+            {otherGames.length > 0 && (
+              <div className="mt-12">
+                <h2 className="text-2xl md:text-3xl font-bold text-center mb-2">More Game Projects</h2>
+                <p className="text-center text-muted-foreground mb-6">
+                  Here's a few other smaller things I've worked on! Experimental, silly, satire.
+                </p>
+                <HorizontalGallery games={otherGames} />
+              </div>
+            )}
+          </>
         )}
       </Section>
 
