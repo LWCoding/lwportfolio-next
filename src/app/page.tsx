@@ -201,6 +201,16 @@ export default function Home() {
                    Here&apos;s a few other smaller things I&apos;ve worked on! Experimental, silly, satire.
                   </p>
                 <HorizontalGallery games={otherGames} />
+                <div className="text-center mt-4">
+                  <a 
+                    href="https://lwcoding.itch.io/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors underline underline-offset-2"
+                  >
+                    View all games on Itch.io →
+                  </a>
+                </div>
               </div>
             )}
           </>

@@ -53,9 +53,7 @@ const FEATURED_GAMES_CONFIG = [
 
 // Other games to show in the horizontal gallery (just IDs, we'll use itch.io data)
 const OTHER_GAMES_IDS: number[] = [
-  // Add game IDs here for games you want to show in the scrolling gallery
-  // These will use the original itch.io titles, descriptions, and images
-  // If empty, will show all non-featured games (up to 8)
+  2027811, 1659614, 2835382, 1089240, 2607625, 2193616
 ];
 
 export interface GameData {
