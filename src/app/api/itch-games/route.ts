@@ -1,5 +1,11 @@
 import { NextResponse } from 'next/server';
 
+interface ItchGame {
+  published?: boolean;
+  published_at?: string | null;
+  classification?: string;
+}
+
 export async function GET() {
   const apiKey = process.env.ITCH_API_KEY;
 
@@ -36,7 +42,7 @@ export async function GET() {
     // Filter out non-public games (since we're using curated selection)
     if (data.games && Array.isArray(data.games)) {
       // Filter out games that aren't published/public
-      const publicGames = data.games.filter((game: any) => {
+      const publicGames = data.games.filter((game: ItchGame) => {
         return game.published === true || 
                game.published_at !== null || 
                (game.classification !== 'draft' && game.classification !== 'restricted');
