@@ -186,7 +186,6 @@ export default function Home() {
                 coverImage={game.cover_url || game.still_cover_url}
                 viewCount={game.views_count}
                 createdAt={game.created_at}
-                category={game.category}
               />
             ))}
             </div>
@@ -222,7 +221,6 @@ export default function Home() {
               description={project.description}
               tags={project.tags}
               href={project.href}
-              category={project.category}
               coverImage={project.coverImage}
               gradientClasses={project.gradientClasses}
               createdAt={project.createdAt}

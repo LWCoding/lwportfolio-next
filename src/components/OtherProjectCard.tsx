@@ -3,14 +3,13 @@
 import Button from './Button';
 import Image from 'next/image';
 import { useState } from 'react';
-import { OtherProjectCategory } from '@/data/otherProjects';
+
 
 interface OtherProjectCardProps {
   title: string;
   description: string;
   tags: string[];
   href: string;
-  category: OtherProjectCategory;
   coverImage?: string;
   gradientClasses?: string;
   displayText?: string;
@@ -22,7 +21,6 @@ export default function OtherProjectCard({
   description,
   tags,
   href,
-  category,
   coverImage,
   gradientClasses = "from-primary/20 to-accent/20",
   displayText = "Project",

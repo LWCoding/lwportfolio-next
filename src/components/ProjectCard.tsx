@@ -2,9 +2,7 @@
 
 import Button from './Button';
 import Image from 'next/image';
-import CategoryBadge from './CategoryBadge';
 import { useState } from 'react';
-import { GameCategory } from '@/hooks/useFeaturedGames';
 
 interface ProjectCardProps {
   title: string;
@@ -16,7 +14,6 @@ interface ProjectCardProps {
   coverImage?: string;
   viewCount?: number;
   createdAt?: string;
-  category?: GameCategory;
 }
 
 export default function ProjectCard({
@@ -28,8 +25,7 @@ export default function ProjectCard({
   displayText = "Game Project",
   coverImage,
   viewCount,
-  createdAt,
-  category
+  createdAt
 }: ProjectCardProps) {
   const [imageError, setImageError] = useState(false);
 
