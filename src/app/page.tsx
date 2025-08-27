@@ -40,9 +40,9 @@ export default function Home() {
                 height={80}
                 className="w-16 h-16 md:w-20 md:h-20 object-contain"
               />
-              <h1 className="text-5xl md:text-7xl font-bold text-foreground">
-                Lucas Wang
-              </h1>
+            <h1 className="text-5xl md:text-7xl font-bold text-foreground">
+              Lucas Wang
+            </h1>
             </div>
                         <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
               Game Developer & Design Student
@@ -118,11 +118,11 @@ export default function Home() {
 
       {/* Featured Projects Gallery */}
               <Section id="featured-projects" background="secondary" separator={true}>
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Featured Games</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Featured Games</h2>
           <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
             An assortment of my favorite game projects from the last few years! All published on Itch.io.
-          </p>
-
+        </p>
+        
         {/* Loading State */}
         {loading ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -191,7 +191,7 @@ export default function Home() {
                 createdAt={game.created_at}
               />
             ))}
-            </div>
+          </div>
             
             {/* More Projects Gallery - Integrated */}
                           {otherGames.length > 0 && (
@@ -246,7 +246,15 @@ export default function Home() {
       <footer className="py-12 px-4 border-t border-border/50 bg-secondary/10">
         <div className="container mx-auto max-w-4xl text-center">
           <p className="text-muted-foreground">
-            © {new Date().getFullYear()} Lucas Wang.
+            © {new Date().getFullYear()} Lucas Wang
+          </p>
+          <p className="text-sm text-muted-foreground mt-1">
+            <a 
+              href="mailto:lswang05@stanford.edu"
+              className="hover:text-primary transition-colors"
+            >
+              lswang05@stanford.edu
+            </a>
           </p>
         </div>
       </footer>

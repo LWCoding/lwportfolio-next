@@ -2,51 +2,36 @@
 
 import { useState, useEffect } from 'react';
 
-// Game categories with their symbols
-export type GameCategory = 'fun' | 'work' | 'competition';
-
-export const CATEGORY_CONFIG = {
-  fun: { symbol: '🎮', label: 'For Fun' },
-  work: { symbol: '💼', label: 'For School/Work' },
-  competition: { symbol: '🏆', label: 'For Competition' }
-} as const;
-
-// Featured games with their custom tags, categories, and descriptions in display order
+// Featured games with their custom tags and descriptions in display order
 const FEATURED_GAMES_CONFIG = [
   { 
     id: 3766251, 
     tags: ["Unity", "GMTK 2025"], 
-    category: 'competition' as GameCategory,
     description: "A creative puzzle game made for GMTK Game Jam 2025. Features innovative mechanics and engaging gameplay."
   },
   { 
     id: 2904867, 
     tags: ["Unity", "GMTK 2024"], 
-    category: 'competition' as GameCategory,
     description: "My entry for GMTK Game Jam 2024, exploring unique game design concepts within the jam's theme."
   },
   { 
     id: 2741477, 
     tags: ["Unity", "CS247G"], 
-    category: 'work' as GameCategory,
     description: "A course project for CS247G focusing on game design principles and user experience."
   },
   { 
     id: 1940212, 
     tags: ["Unity", "Wonderjam 3"], 
-    category: 'competition' as GameCategory,
     description: "Created for Wonderjam 3, this game showcases creative problem-solving and artistic vision."
   },
   { 
     id: 1865877, 
     tags: ["Unity", "Passion Project"], 
-    category: 'fun' as GameCategory,
     description: "A personal passion project where I experimented with new gameplay mechanics and visual styles."
   },
   { 
     id: 1149440, 
     tags: ["Unity", "3D Test"], 
-    category: 'fun' as GameCategory,
     description: "An experimental 3D game used to test new development techniques and 3D gameplay concepts."
   }
 ];
@@ -66,7 +51,6 @@ export interface GameData {
   still_cover_url?: string;
   tags?: string[];
   created_at?: string;
-  category?: GameCategory;
   classification?: string;
 }
 
@@ -107,7 +91,6 @@ export function useGames() {
             const game = data.games.find((g: GameData) => g.id === config.id);
             if (game) {
               game.tags = config.tags;  // Override the tags with our own, screw those :)
-              game.category = config.category;
               game.short_text = config.description; // Override description too!
             }
             return game || null;
