@@ -120,7 +120,7 @@ export default function Home() {
               <Section id="featured-projects" background="secondary" separator={true}>
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Featured Games</h2>
           <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
-            An assortment of my favorite games from the last few years! All published on Itch.io.
+            An assortment of my favorite game projects from the last few years! All published on Itch.io.
           </p>
 
         {/* Loading State */}
