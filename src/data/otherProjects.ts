@@ -12,35 +12,30 @@ export interface OtherProject {
 export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   {
     id: 'portfolio-website',
-    title: 'Personal Portfolio',
-    description: 'A modern, responsive portfolio website built with Next.js and Tailwind CSS showcasing my work and skills.',
-    tags: ['Next.js', 'React', 'Tailwind CSS', 'TypeScript'],
-    href: 'https://yourportfolio.com',
-    createdAt: '2024-01-15'
+    title: 'Portfolio Website',
+    description: 'You\'re here now! A modern, responsive portfolio website showcasing my favorite projects and skills.',
+    tags: ['Website', 'Next.js'],
+    href: '/',
+    coverImage: '/images/portfoliosite.png',
+    createdAt: '2025-08-26'
   },
   {
-    id: 'task-manager',
-    title: 'Task Manager App',
-    description: 'A full-stack task management application with real-time updates and collaborative features.',
-    tags: ['React', 'Node.js', 'MongoDB', 'Socket.io'],
-    href: 'https://github.com/yourusername/task-manager',
-    createdAt: '2023-11-20'
+    id: 'always-be-closing',
+    title: 'Always Be Closing',
+    description: 'A simulation of customer management software designed to train salespeople to be more effective in their sales calls.',
+    tags: ['Tool', 'Unity'],
+    href: 'https://sale-prod.s3.amazonaws.com/Build_Prod/index.html',
+    coverImage: '/images/alwaysbeclosing.png',
+    createdAt: '2025-06-15'
   },
   {
-    id: 'design-system',
-    title: 'UI Design System',
-    description: 'A comprehensive design system with reusable components and design tokens for consistent branding.',
-    tags: ['Figma', 'Storybook', 'Design Tokens', 'CSS'],
-    href: 'https://figma.com/your-design-system',
-    createdAt: '2023-09-10'
-  },
-  {
-    id: 'build-tool',
-    title: 'Development Tool',
-    description: 'A CLI tool that automates common development workflows and improves developer productivity.',
-    tags: ['Node.js', 'CLI', 'Automation', 'JavaScript'],
-    href: 'https://github.com/yourusername/dev-tool',
-    createdAt: '2023-07-05'
+    id: 'obscure-courses',
+    title: 'Obscure Courses',
+    description: 'A gamified website that allows users to guess the names of obscure courses at Stanford University.',
+    tags: ['Website', 'Svelte'],
+    href: 'https://obscure-courses.vercel.app/',
+    coverImage: '/images/obscurecourses.png',
+    createdAt: '2024-02-10'
   },
   // Add more projects here...
 ];

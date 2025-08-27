@@ -63,7 +63,7 @@ export default function OtherProjectCard({
         </h3>
         {createdAt && (
           <p className="text-sm text-muted-foreground mb-2">
-            Created {formatCreatedDate(createdAt)}
+            Published {formatCreatedDate(createdAt)}
           </p>
         )}
         <p className="text-sm lg:text-base text-muted-foreground mb-2 lg:mb-3">

@@ -38,7 +38,7 @@ const FEATURED_GAMES_CONFIG = [
 
 // Other games to show in the horizontal gallery (just IDs, we'll use itch.io data)
 const OTHER_GAMES_IDS: number[] = [
-  2027811, 1659614, 2835382, 1089240, 2607625, 2193616
+  2027811, 1659614, 2835382, 1089240, 2607625, 2393708, 2193616
 ];
 
 export interface GameData {
