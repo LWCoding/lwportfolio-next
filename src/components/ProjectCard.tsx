@@ -2,6 +2,7 @@
 
 import Button from './Button';
 import Image from 'next/image';
+import { useState } from 'react';
 
 interface ProjectCardProps {
   title: string;
@@ -24,6 +25,7 @@ export default function ProjectCard({
   coverImage,
   viewCount
 }: ProjectCardProps) {
+  const [imageError, setImageError] = useState(false);
 
   const formatNumber = (num: number) => {
     if (num >= 1000000) {
@@ -36,26 +38,17 @@ export default function ProjectCard({
 
   return (
     <div className="bg-secondary/30 rounded-lg border border-border overflow-hidden hover:border-primary/50 transition-colors">
-      <div className={`aspect-video relative overflow-hidden ${!coverImage ? `bg-gradient-to-br ${gradientClasses} flex items-center justify-center` : ''}`}>
-        {coverImage ? (
+      <div className={`aspect-video relative overflow-hidden ${!coverImage || imageError ? `bg-gradient-to-br ${gradientClasses} flex items-center justify-center` : ''}`}>
+        {coverImage && !imageError ? (
           <Image 
             src={coverImage} 
             alt={title}
             fill
             className="object-cover"
-            onError={(e) => {
-              // Fallback to gradient background if image fails to load
-              const target = e.target as HTMLImageElement;
-              target.style.display = 'none';
-              const parent = target.parentElement;
-              if (parent) {
-                parent.className = `aspect-video relative overflow-hidden bg-gradient-to-br ${gradientClasses} flex items-center justify-center`;
-                const fallbackText = document.createElement('span');
-                fallbackText.className = 'text-primary font-semibold';
-                fallbackText.textContent = displayText;
-                parent.appendChild(fallbackText);
-              }
+            onError={() => {
+              setImageError(true);
             }}
+            priority
           />
         ) : (
           <span className="text-primary font-semibold">{displayText}</span>
