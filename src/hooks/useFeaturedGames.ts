@@ -6,33 +6,33 @@ import { useState, useEffect } from 'react';
 const FEATURED_GAMES_CONFIG = [
   { 
     id: 3766251, 
-    tags: ["Unity", "GMTK 2025"], 
-    description: "A creative puzzle game made for GMTK Game Jam 2025. Features innovative mechanics and engaging gameplay."
+    tags: ["Placed #722 (9605 entries)"], 
+    description: "An arcade game made for the GMTK Jam 2025. Use new stylus technology to loop rats before they eat all of your cheese."
   },
   { 
     id: 2904867, 
-    tags: ["Unity", "GMTK 2024"], 
-    description: "My entry for GMTK Game Jam 2024, exploring unique game design concepts within the jam's theme."
-  },
-  { 
-    id: 2741477, 
-    tags: ["Unity", "CS247G"], 
-    description: "A course project for CS247G focusing on game design principles and user experience."
+    tags: ["Placed #4266 (7557 entries)"], 
+    description: "An arcade game made for the GMTK Jam 2024. Cook food, serve customers, and manage a kitchen that gets larger every night."
   },
   { 
     id: 1940212, 
-    tags: ["Unity", "Wonderjam 3"], 
-    description: "Created for Wonderjam 3, this game showcases creative problem-solving and artistic vision."
+    tags: ["Placed #2 (25 entries)"], 
+    description: "A top-down shooter game made for the Wonderjam 4. Destroy enemy ships, get XP, and unlock upgrades to prolong your run."
+  },
+  { 
+    id: 2741477, 
+    tags: [], 
+    description: "A course project for CS247G: Design for Play where you play as a critter exploring a large, unfamiliar, damaged world."
   },
   { 
     id: 1865877, 
-    tags: ["Unity", "Passion Project"], 
-    description: "A personal passion project where I experimented with new gameplay mechanics and visual styles."
+    tags: [], 
+    description: "A card-battler RPG made for fun! Inspired by Slay the Spire, build a deck of cards and fight your way through a forest."
   },
   { 
     id: 1149440, 
-    tags: ["Unity", "3D Test"], 
-    description: "An experimental 3D game used to test new development techniques and 3D gameplay concepts."
+    tags: [], 
+    description: "An experimental 3D game made for fun! Inspired by Papers Please, screen potentially malicious boxes going through a warehouse."
   }
 ];
 
