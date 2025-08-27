@@ -5,9 +5,10 @@ import Navigation from "@/components/Navigation";
 import Section from "@/components/Section";
 import DesignModal from "@/components/DesignModal";
 import ProjectCard from "@/components/ProjectCard";
-import CategoryLegend from "@/components/CategoryLegend";
 import HorizontalGallery from "@/components/HorizontalGallery";
+import OtherProjectCard from "@/components/OtherProjectCard";
 import { useGames } from "@/hooks/useFeaturedGames";
+import { OTHER_PROJECTS_CONFIG } from "@/data/otherProjects";
 import { useState } from "react";
 import Image from "next/image";
 
@@ -31,9 +32,18 @@ export default function Home() {
       <Section className="pt-24 pb-16" container={false}>
         <div className="container mx-auto max-w-4xl">
           <div className="text-center space-y-6">
-            <h1 className="text-5xl md:text-7xl font-bold text-foreground">
-              Lucas Wang
-            </h1>
+            <div className="flex items-center justify-center gap-1">
+              <Image 
+                src="/images/stanfordlogo.avif" 
+                alt="Stanford University Logo" 
+                width={80}
+                height={80}
+                className="w-16 h-16 md:w-20 md:h-20 object-contain"
+              />
+              <h1 className="text-5xl md:text-7xl font-bold text-foreground">
+                Lucas Wang
+              </h1>
+            </div>
                         <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
               Game Developer & Design Student
             </p>
@@ -162,9 +172,6 @@ export default function Home() {
           </div>
         ) : (
           <>
-            {/* Category Legend */}
-            <CategoryLegend />
-            
             {/* Dynamic Games Grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredGames.map((game, index) => (
@@ -196,6 +203,32 @@ export default function Home() {
             )}
           </>
         )}
+      </Section>
+
+      {/* Other Projects Section */}
+      <Section id="other-projects" background="secondary">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">Other Projects</h2>
+        <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
+          Beyond games, I&apos;ve worked on various websites, applications, and tools. 
+          Here&apos;s a showcase of my other development work.
+        </p>
+
+        {/* Other Projects Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {OTHER_PROJECTS_CONFIG.map((project) => (
+            <OtherProjectCard
+              key={project.id}
+              title={project.title}
+              description={project.description}
+              tags={project.tags}
+              href={project.href}
+              category={project.category}
+              coverImage={project.coverImage}
+              gradientClasses={project.gradientClasses}
+              createdAt={project.createdAt}
+            />
+          ))}
+        </div>
       </Section>
 
       {/* Programming Timeline */}

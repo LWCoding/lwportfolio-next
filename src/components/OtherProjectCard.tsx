@@ -2,45 +2,33 @@
 
 import Button from './Button';
 import Image from 'next/image';
-import CategoryBadge from './CategoryBadge';
 import { useState } from 'react';
-import { GameCategory } from '@/hooks/useFeaturedGames';
+import { OtherProjectCategory } from '@/data/otherProjects';
 
-interface ProjectCardProps {
+interface OtherProjectCardProps {
   title: string;
   description: string;
   tags: string[];
   href: string;
+  category: OtherProjectCategory;
+  coverImage?: string;
   gradientClasses?: string;
   displayText?: string;
-  coverImage?: string;
-  viewCount?: number;
   createdAt?: string;
-  category?: GameCategory;
 }
 
-export default function ProjectCard({
+export default function OtherProjectCard({
   title,
   description,
   tags,
   href,
-  gradientClasses = "from-primary/20 to-accent/20",
-  displayText = "Game Project",
+  category,
   coverImage,
-  viewCount,
-  createdAt,
-  category
-}: ProjectCardProps) {
+  gradientClasses = "from-primary/20 to-accent/20",
+  displayText = "Project",
+  createdAt
+}: OtherProjectCardProps) {
   const [imageError, setImageError] = useState(false);
-
-  const formatNumber = (num: number) => {
-    if (num >= 1000000) {
-      return `${(num / 1000000).toFixed(1)}M`;
-    } else if (num >= 1000) {
-      return `${(num / 1000).toFixed(1)}K`;
-    }
-    return num.toString();
-  };
 
   const formatCreatedDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -49,6 +37,8 @@ export default function ProjectCard({
       year: 'numeric' 
     });
   };
+
+
 
   return (
     <div className="bg-secondary/30 rounded-lg border border-border overflow-hidden hover:border-primary/50 transition-colors">
@@ -67,20 +57,15 @@ export default function ProjectCard({
         ) : (
           <span className="text-primary font-semibold">{displayText}</span>
         )}
-        {viewCount && (
-          <div className="absolute top-2 right-2 bg-background/80 backdrop-blur-sm px-2 py-1 rounded text-xs">
-            <span className="text-primary font-medium">{formatNumber(viewCount)}</span>
-            <span className="text-muted-foreground ml-1">views</span>
-          </div>
-        )}
       </div>
+      
       <div className="p-4 text-center">
         <h3 className="text-xl font-semibold mb-1">
           {title}
         </h3>
         {createdAt && (
           <p className="text-sm text-muted-foreground mb-2">
-            Published {formatCreatedDate(createdAt)}
+            Created {formatCreatedDate(createdAt)}
           </p>
         )}
         <p className="text-muted-foreground mb-3">
@@ -95,7 +80,7 @@ export default function ProjectCard({
         </div>
         <div className="flex justify-center">
           <Button href={href} variant="outline" size="sm" target="_blank" rel="noopener noreferrer">
-            Play Game →
+            View Project →
           </Button>
         </div>
       </div>
