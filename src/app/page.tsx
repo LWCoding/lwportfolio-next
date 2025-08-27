@@ -194,13 +194,9 @@ export default function Home() {
             </div>
             
             {/* More Projects Gallery - Integrated */}
-            {otherGames.length > 0 && (
-              <div className="mt-12">
-                <h2 className="text-2xl md:text-3xl font-bold text-center mb-2">More Game Projects</h2>
-                                  <p className="text-center text-muted-foreground mb-6">
-                   Here&apos;s a few other smaller things I&apos;ve worked on! Experimental, silly, satire.
-                  </p>
-                <HorizontalGallery games={otherGames} />
+                          {otherGames.length > 0 && (
+                <div className="mt-12">
+                  <HorizontalGallery games={otherGames} />
                 <div className="text-center mt-4">
                   <a 
                     href="https://lwcoding.itch.io/" 
@@ -208,7 +204,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="text-sm text-muted-foreground hover:text-primary transition-colors underline underline-offset-2"
                   >
-                    View all games on Itch.io →
+                    View all my games on Itch.io →
                   </a>
                 </div>
               </div>
