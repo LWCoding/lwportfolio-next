@@ -52,7 +52,7 @@ export default function DesignModal({ isOpen, onClose }: DesignModalProps) {
           </p>
           
           <p className="text-foreground text-sm text-center">
-            It's in the engineering department! It&apos;s basically <span className="font-semibold text-primary">engineering + psychology + art</span> all mixed together.
+            It&apos;s in the engineering department! It&apos;s basically <span className="font-semibold text-primary">engineering + psychology + art</span> all mixed together.
           </p>
           
           <p className="text-muted-foreground text-sm text-center">

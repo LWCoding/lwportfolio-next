@@ -7,6 +7,7 @@ import DesignModal from "@/components/DesignModal";
 import ProjectCard from "@/components/ProjectCard";
 import { useFeaturedGames } from "@/hooks/useFeaturedGames";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function Home() {
   const [isDesignModalOpen, setIsDesignModalOpen] = useState(false);
@@ -35,7 +36,7 @@ export default function Home() {
               Game Developer & Design Student
             </p>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Hey there! I'm an undergraduate at Stanford University who loves bringing silly ideas to life through games. I also love nerding out and teaching game development to others. :)
+              Hey there! I&apos;m an undergraduate at Stanford University who loves bringing silly ideas to life through games. I also love nerding out and teaching game development to others. :)
             </p>
                         <div className="flex justify-center gap-8 pt-4">
               {/* Itch.io */}
@@ -46,9 +47,11 @@ export default function Home() {
                 className="w-16 h-16 bg-gray-100 hover:bg-white rounded-full overflow-hidden transition-all duration-300 hover:scale-110 shadow-lg flex items-center justify-center"
                 aria-label="Visit my Itch.io profile"
               >
-                <img 
+                <Image 
                   src="/images/itchio.png" 
                   alt="Itch.io" 
+                  width={48}
+                  height={48}
                   className="w-12 h-12 object-contain"
                 />
               </a>
@@ -61,9 +64,11 @@ export default function Home() {
                 className="w-16 h-16 bg-gray-100 hover:bg-white rounded-full overflow-hidden transition-all duration-300 hover:scale-110 shadow-lg flex items-center justify-center"
                 aria-label="Visit my GitHub profile"
               >
-                <img 
+                <Image 
                   src="/images/github.png" 
                   alt="GitHub" 
+                  width={48}
+                  height={48}
                   className="w-12 h-12 object-contain"
                 />
               </a>
@@ -76,9 +81,11 @@ export default function Home() {
                 className="w-16 h-16 bg-gray-100 hover:bg-white rounded-full overflow-hidden transition-all duration-300 hover:scale-110 shadow-lg flex items-center justify-center"
                 aria-label="Visit my LinkedIn profile"
               >
-                <img 
+                <Image 
                   src="/images/linkedin.png" 
                   alt="LinkedIn" 
+                  width={48}
+                  height={48}
                   className="w-12 h-12 object-contain"
                 />
               </a>
@@ -101,13 +108,13 @@ export default function Home() {
       <Section id="featured-projects" background="secondary">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Featured Games</h2>
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Here are my favorite games that I've created! Each one represents a unique challenge and creative journey.
+          Here are my favorite games that I&apos;ve created! Each one represents a unique challenge and creative journey.
         </p>
         
         {/* Loading State */}
         {loading ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[...Array(4)].map((_, i) => (
+            {[...Array(4)].map((_: unknown, i: number) => (
               <div key={i} className="bg-secondary/30 rounded-lg border border-border overflow-hidden animate-pulse">
                 <div className="aspect-video bg-gradient-to-br from-primary/10 to-accent/10"></div>
                 <div className="p-6">
@@ -125,7 +132,7 @@ export default function Home() {
         ) : error ? (
           <div className="text-center py-12">
             <p className="text-muted-foreground mb-4">
-              Oops! Couldn't load games from Itch.io right now.
+              Oops! Couldn&apos;t load games from Itch.io right now.
             </p>
             <p className="text-sm text-muted-foreground">
               Error: {error}

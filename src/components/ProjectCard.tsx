@@ -1,6 +1,7 @@
 "use client";
 
 import Button from './Button';
+import Image from 'next/image';
 
 interface ProjectCardProps {
   title: string;
@@ -37,10 +38,11 @@ export default function ProjectCard({
     <div className="bg-secondary/30 rounded-lg border border-border overflow-hidden hover:border-primary/50 transition-colors">
       <div className={`aspect-video relative overflow-hidden ${!coverImage ? `bg-gradient-to-br ${gradientClasses} flex items-center justify-center` : ''}`}>
         {coverImage ? (
-          <img 
+          <Image 
             src={coverImage} 
             alt={title}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
             onError={(e) => {
               // Fallback to gradient background if image fails to load
               const target = e.target as HTMLImageElement;
