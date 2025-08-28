@@ -29,7 +29,7 @@ export default function Home() {
       <Navigation />
 
       {/* Hero Section */}
-      <Section className="pt-24 pb-16" container={false}>
+      <Section className="pt-24 pb-12" container={false}>
         <div className="container mx-auto max-w-4xl">
           <div className="text-center space-y-6">
             <div className="flex items-center justify-center gap-1">
@@ -193,9 +193,9 @@ export default function Home() {
             ))}
           </div>
             
-            {/* More Projects Gallery - Integrated */}
+            {/* More Projects Gallery - Integrated - Hidden on small devices */}
                           {otherGames.length > 0 && (
-                <div className="mt-12">
+                <div className="mt-12 hidden md:block">
                   <HorizontalGallery games={otherGames} />
                 <div className="text-center mt-4">
                   <a 
@@ -217,8 +217,7 @@ export default function Home() {
       <Section id="other-projects" separator={true}>
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">Other Projects</h2>
         <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Beyond games, I&apos;ve worked on various websites, applications, and tools. 
-          Here&apos;s a showcase of my other development work.
+          Beyond games, I&apos;ve worked on various websites, applications, and tools!
         </p>
 
         {/* Other Projects Grid */}
