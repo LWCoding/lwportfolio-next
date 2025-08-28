@@ -47,7 +47,7 @@ export default function ProjectCard({
   };
 
   return (
-    <div className="bg-secondary/30 rounded-lg border border-border overflow-hidden hover:border-primary/50 transition-colors">
+    <div className="bg-secondary/30 rounded-lg border border-border overflow-hidden hover:border-primary/50 transition-colors flex flex-col h-full">
       <div className={`aspect-[3/2] lg:aspect-video relative overflow-hidden ${!coverImage || imageError ? `bg-gradient-to-br ${gradientClasses} flex items-center justify-center` : ''}`}>
         {coverImage && !imageError ? (
           <Image 
@@ -70,7 +70,7 @@ export default function ProjectCard({
           </div>
         )}
       </div>
-      <div className="p-3 lg:p-4 text-center">
+      <div className="p-3 lg:p-4 text-center flex flex-col flex-grow">
         <h3 className="text-lg lg:text-xl font-semibold mb-1">
           {title}
         </h3>
@@ -79,7 +79,7 @@ export default function ProjectCard({
             Published {formatCreatedDate(createdAt)}
           </p>
         )}
-        <p className="text-sm lg:text-base text-muted-foreground mb-2 lg:mb-3">
+        <p className="text-sm lg:text-base text-muted-foreground mb-2 lg:mb-3 flex-grow">
           {description}
         </p>
         <div className="flex flex-wrap gap-1 lg:gap-2 mb-2 lg:mb-3 justify-center">
@@ -89,7 +89,7 @@ export default function ProjectCard({
             </span>
           ))}
         </div>
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-auto">
           <Button href={href} variant="outline" size="sm" target="_blank" rel="noopener noreferrer">
             Play Game →
           </Button>
