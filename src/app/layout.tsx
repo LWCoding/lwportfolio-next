@@ -18,6 +18,11 @@ export const metadata: Metadata = {
   keywords: ["Lucas Wang", "Game Development", "Stanford", "Unity", "VR Development", "2D Game Development", "LWCoding"],
   authors: [{ name: "Lucas Wang" }],
   creator: "Lucas Wang",
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   openGraph: {
     title: "Lucas Wang",
     description: "Junior at Stanford University, founder of Stanford Video Game Development club, and instructor for CS11SI and CS42SI.",
