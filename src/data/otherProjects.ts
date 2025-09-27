@@ -29,6 +29,33 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     createdAt: '2025-06-15'
   },
   {
+    id: 'cs11si',
+    title: 'CS11SI Website',
+    description: 'Course website for CS11SI at Stanford University, a course teaching virtual reality development.',
+    tags: ['Website', 'Next.js'],
+    href: 'https://web.stanford.edu/class/cs11si/',
+    coverImage: '/images/cs11si.png',
+    createdAt: '2025-09-05'
+  },
+  {
+    id: 'cs42si',
+    title: 'CS42SI Website',
+    description: 'Course website for CS42SI at Stanford University, a course teaching Unity and introductory game development.',
+    tags: ['Website', 'Next.js'],
+    href: 'https://web.stanford.edu/class/cs42si/',
+    coverImage: '/images/cs42si.png',
+    createdAt: '2025-09-03'
+  },
+  {
+    id: 'planet',
+    title: 'Planet Mobile App',
+    description: 'A mental health application designed to help people more easily connect with pre-existing friends.',
+    tags: ['App', 'React Native'],
+    href: 'https://hci.stanford.edu/courses/cs147/2024/au/projects/Technology-for-Mental-Health/Planet/',
+    coverImage: '/images/planet.png',
+    createdAt: '2024-12-09'
+  },
+  {
     id: 'obscure-courses',
     title: 'Obscure Courses',
     description: 'A gamified website that allows users to guess the names of obscure courses at Stanford University.',

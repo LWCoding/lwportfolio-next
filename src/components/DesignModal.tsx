@@ -47,12 +47,8 @@ export default function DesignModal({ isOpen, onClose }: DesignModalProps) {
 
         {/* Content */}
         <div className="p-4 space-y-3">
-          <p className="text-muted-foreground text-sm italic text-center">
-            *I get this question a lot...*
-          </p>
-          
           <p className="text-foreground text-sm text-center">
-            Stanford&apos;s design program focuses on researching and actively solving real-world problems. We focus on needfinding, iteration, production, and feedback. It combines engineering, psychology, and visual design.
+            I get this question a lot! Stanford&apos;s design program focuses on research and problem-solving. We focus on needfinding, iteration, production, and feedback. It combines engineering, psychology, and visual design.
           </p>
           
           <p className="text-muted-foreground text-sm text-center">
