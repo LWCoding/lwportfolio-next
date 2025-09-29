@@ -27,7 +27,7 @@ const FEATURED_GAMES_CONFIG = [
   { 
     id: 1865877, 
     tags: [], 
-    description: "A card-battler RPG made for fun! Inspired by Slay the Spire, build a deck of cards and fight your way through a forest."
+    description: "Named after our team's online initials, a card-battler RPG made for fun over 2 years! Build a deck of cards and fight enemies."
   },
   { 
     id: 1149440, 
