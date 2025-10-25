@@ -51,7 +51,6 @@ export default function Home() {
             <div className="bg-gray-800 border-b border-gray-700 px-4 py-2 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="text-sm text-blue-400 font-medium">Scene</span>
-                <span className="text-sm text-gray-400">Game</span>
               </div>
             </div>
             
@@ -72,88 +71,112 @@ export default function Home() {
               <div className="max-w-4xl text-center space-y-8">
                 <div className="space-y-4">
                   <div className="flex items-center justify-center gap-3">
-              <Image 
-                src="/images/stanfordlogo.avif" 
-                alt="Stanford University Logo" 
-                      width={60}
-                      height={60}
-                      className="w-12 h-12 md:w-16 md:h-16 object-contain"
-                    />
-                    <h1 className="text-4xl md:text-6xl font-bold text-white">
-              Lucas Wang
-            </h1>
-            </div>
-                  <p className="text-xl md:text-2xl text-blue-400 font-semibold">
-                    Game Designer & Lifelong Learner
-            </p>
-                  <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              Hey there! I&apos;m an undergraduate at Stanford University who loves bringing silly ideas to life through games. I also love nerding out and teaching game development to others. :)
-            </p>
+                    <div className="group relative cursor-pointer">
+                      <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
+                      <Image 
+                        src="/images/stanfordlogo.avif" 
+                        alt="Stanford University Logo" 
+                        width={60}
+                        height={60}
+                        className="w-12 h-12 md:w-16 md:h-16 object-contain relative z-10"
+                      />
+                    </div>
+                    <div className="group relative cursor-pointer">
+                      <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
+                      <h1 className="text-4xl md:text-6xl font-bold text-white relative z-10">
+                        Lucas Wang
+                      </h1>
+                    </div>
+                  </div>
+                  <div className="group relative cursor-pointer">
+                    <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
+                    <p className="text-xl md:text-2xl text-blue-400 font-semibold relative z-10">
+                      Game Designer & Lifelong Learner
+                    </p>
+                  </div>
+                  <div className="group relative cursor-pointer">
+                    <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
+                    <p className="text-lg text-gray-300 max-w-2xl mx-auto relative z-10">
+                      Hey there! I&apos;m an undergraduate at Stanford University who loves bringing silly ideas to life through games. I also love nerding out and teaching game development to others. :)
+                    </p>
+                  </div>
                 </div>
                 
                 <div className="flex justify-center gap-4">
-              {/* Itch.io */}
-              <a 
-                href="https://lwcoding.itch.io/"
-            target="_blank"
-            rel="noopener noreferrer"
-                    className="w-14 h-14 bg-gray-700 hover:bg-gray-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 shadow-lg flex items-center justify-center border border-gray-600 cursor-pointer"
-                aria-label="Visit my Itch.io profile"
-              >
-                <Image 
-                  src="/images/itchio.png" 
-                  alt="Itch.io" 
-                      width={32}
-                      height={32}
-                      className="w-8 h-8 object-contain"
-                />
-              </a>
+                  {/* Itch.io */}
+                  <div className="group relative cursor-pointer">
+                    <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
+                    <a 
+                      href="https://lwcoding.itch.io/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-14 h-14 bg-gray-700 rounded-full overflow-hidden shadow-lg flex items-center justify-center border border-gray-600 cursor-pointer relative z-10"
+                      aria-label="Visit my Itch.io profile"
+                    >
+                      <Image 
+                        src="/images/itchio.png" 
+                        alt="Itch.io" 
+                        width={32}
+                        height={32}
+                        className="w-8 h-8 object-contain"
+                      />
+                    </a>
+                  </div>
 
-              {/* GitHub */}
-              <a 
-                href="https://github.com/LWCoding"
-            target="_blank"
-            rel="noopener noreferrer"
-                    className="w-14 h-14 bg-gray-700 hover:bg-gray-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 shadow-lg flex items-center justify-center border border-gray-600 cursor-pointer"
-                aria-label="Visit my GitHub profile"
-              >
-                <Image 
-                  src="/images/github.png" 
-                  alt="GitHub" 
-                      width={32}
-                      height={32}
-                      className="w-8 h-8 object-contain"
-                />
-              </a>
+                  {/* GitHub */}
+                  <div className="group relative cursor-pointer">
+                    <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
+                    <a 
+                      href="https://github.com/LWCoding"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-14 h-14 bg-gray-700 rounded-full overflow-hidden shadow-lg flex items-center justify-center border border-gray-600 cursor-pointer relative z-10"
+                      aria-label="Visit my GitHub profile"
+                    >
+                      <Image 
+                        src="/images/github.png" 
+                        alt="GitHub" 
+                        width={32}
+                        height={32}
+                        className="w-8 h-8 object-contain"
+                      />
+                    </a>
+                  </div>
 
-              {/* LinkedIn */}
-              <a 
-                href="https://www.linkedin.com/in/lucas-wang-3160b720a/"
-          target="_blank"
-          rel="noopener noreferrer"
-                    className="w-14 h-14 bg-gray-700 hover:bg-gray-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 shadow-lg flex items-center justify-center border border-gray-600 cursor-pointer"
-                aria-label="Visit my LinkedIn profile"
-              >
-                <Image 
-                  src="/images/linkedin.png" 
-                  alt="LinkedIn" 
-                      width={32}
-                      height={32}
-                      className="w-8 h-8 object-contain"
-                />
-              </a>
-            </div>
+                  {/* LinkedIn */}
+                  <div className="group relative cursor-pointer">
+                    <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
+                    <a 
+                      href="https://www.linkedin.com/in/lucas-wang-3160b720a/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-14 h-14 bg-gray-700 rounded-full overflow-hidden shadow-lg flex items-center justify-center border border-gray-600 cursor-pointer relative z-10"
+                      aria-label="Visit my LinkedIn profile"
+                    >
+                      <Image 
+                        src="/images/linkedin.png" 
+                        alt="LinkedIn" 
+                        width={32}
+                        height={32}
+                        className="w-8 h-8 object-contain"
+                      />
+                    </a>
+                  </div>
+                </div>
                 
                 <div className="pt-2">
-              <button
-                onClick={() => setIsDesignModalOpen(true)}
-                    className="text-sm text-gray-400 hover:text-blue-400 transition-colors underline underline-offset-2 cursor-pointer"
-              >
-                Wait, what is design..?
-              </button>
+                  <div className="group relative cursor-pointer inline-block">
+                    <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
+                    <button
+                      onClick={() => setIsDesignModalOpen(true)}
+                      className="text-sm text-gray-400 hover:text-blue-400 transition-colors underline underline-offset-2 cursor-pointer relative z-10"
+                    >
+                      Wait, what is design..?
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
         </div>
       </div>
