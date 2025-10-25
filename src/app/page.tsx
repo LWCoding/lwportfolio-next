@@ -8,13 +8,85 @@ import HorizontalGallery from "@/components/HorizontalGallery";
 import OtherProjectCard from "@/components/OtherProjectCard";
 import { useGames } from "@/hooks/useFeaturedGames";
 import { OTHER_PROJECTS_CONFIG } from "@/data/otherProjects";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   const [isDesignModalOpen, setIsDesignModalOpen] = useState(false);
   const { featuredGames, otherGames, loading, error } = useGames();
+  
+  // Drag state for individual elements
+  const [draggedElement, setDraggedElement] = useState<string | null>(null);
+  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+  const [positions, setPositions] = useState<Record<string, { x: number; y: number }>>({
+    stanfordLogo: { x: 0, y: 0 },
+    name: { x: 0, y: 0 },
+    title: { x: 0, y: 0 },
+    description: { x: 0, y: 0 },
+    itchIcon: { x: 0, y: 0 },
+    githubIcon: { x: 0, y: 0 },
+    linkedinIcon: { x: 0, y: 0 },
+    designButton: { x: 0, y: 0 }
+  });
+
+  // Drag handlers for individual elements
+  const handleMouseDown = (e: React.MouseEvent, elementId: string) => {
+    e.preventDefault();
+    setDragOffset({
+      x: e.clientX - positions[elementId].x,
+      y: e.clientY - positions[elementId].y
+    });
+    setDraggedElement(elementId);
+  };
+
+  const handleMouseMove = (e: MouseEvent) => {
+    if (draggedElement) {
+      setHasDragged(true);
+      setPositions(prev => ({
+        ...prev,
+        [draggedElement]: {
+          x: e.clientX - dragOffset.x,
+          y: e.clientY - dragOffset.y
+        }
+      }));
+    }
+  };
+
+  const handleMouseUp = () => {
+    setDraggedElement(null);
+    // Reset hasDragged after a short delay to allow click events to be processed
+    setTimeout(() => setHasDragged(false), 10);
+  };
+
+  // Check if we should prevent click events (if element was dragged)
+  const [hasDragged, setHasDragged] = useState(false);
+
+  // Reset all positions to original
+  const resetPositions = () => {
+    setPositions({
+      stanfordLogo: { x: 0, y: 0 },
+      name: { x: 0, y: 0 },
+      title: { x: 0, y: 0 },
+      description: { x: 0, y: 0 },
+      itchIcon: { x: 0, y: 0 },
+      githubIcon: { x: 0, y: 0 },
+      linkedinIcon: { x: 0, y: 0 },
+      designButton: { x: 0, y: 0 }
+    });
+  };
+
+  // Add event listeners for drag
+  useEffect(() => {
+    if (draggedElement) {
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+      return () => {
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseup', handleMouseUp);
+      };
+    }
+  }, [draggedElement, dragOffset]);
 
   // Playful blue and orange gradient classes for variety
   const gradientClasses = [
@@ -47,31 +119,42 @@ export default function Home() {
 
           {/* Center Area - Scene View */}
           <div className="flex-1 bg-gray-900 relative">
-            {/* Scene View Header */}
-            <div className="bg-gray-800 border-b border-gray-700 px-4 py-2 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-blue-400 font-medium">Scene</span>
-              </div>
-            </div>
-            
             {/* Unity Grid Background */}
-            <div className="absolute inset-0 opacity-20">
+            <div className="absolute inset-0 opacity-40">
               <div className="w-full h-full" style={{
                 backgroundImage: `
-                  linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                  linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+                  linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)
                 `,
                 backgroundSize: '20px 20px'
               }}></div>
             </div>
             
             
+            {/* Reset Button */}
+            <div className="absolute bottom-4 right-4 z-20">
+              <button
+                onClick={resetPositions}
+                className="bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white px-3 py-2 rounded border border-gray-600 text-sm font-medium transition-colors cursor-pointer"
+                title="Reset all elements to original positions"
+              >
+                Reset Layout
+              </button>
+            </div>
+
             {/* Scene Content - Introduction */}
             <div className="h-full flex items-center justify-center p-8 relative z-10">
               <div className="max-w-4xl text-center space-y-8">
                 <div className="space-y-4">
                   <div className="flex items-center justify-center gap-3">
-                    <div className="group relative cursor-pointer">
+                    <div 
+                      className="group relative cursor-move select-none"
+                      style={{
+                        transform: `translate(${positions.stanfordLogo.x}px, ${positions.stanfordLogo.y}px)`,
+                        transition: draggedElement === 'stanfordLogo' ? 'none' : 'transform 0.2s ease-out'
+                      }}
+                      onMouseDown={(e) => handleMouseDown(e, 'stanfordLogo')}
+                    >
                       <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
                       <Image 
                         src="/images/stanfordlogo.avif" 
@@ -81,20 +164,41 @@ export default function Home() {
                         className="w-12 h-12 md:w-16 md:h-16 object-contain relative z-10"
                       />
                     </div>
-                    <div className="group relative cursor-pointer">
+                    <div 
+                      className="group relative cursor-move select-none"
+                      style={{
+                        transform: `translate(${positions.name.x}px, ${positions.name.y}px)`,
+                        transition: draggedElement === 'name' ? 'none' : 'transform 0.2s ease-out'
+                      }}
+                      onMouseDown={(e) => handleMouseDown(e, 'name')}
+                    >
                       <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
                       <h1 className="text-4xl md:text-6xl font-bold text-white relative z-10">
                         Lucas Wang
                       </h1>
                     </div>
                   </div>
-                  <div className="group relative cursor-pointer">
+                  <div 
+                    className="group relative cursor-move select-none"
+                    style={{
+                      transform: `translate(${positions.title.x}px, ${positions.title.y}px)`,
+                      transition: draggedElement === 'title' ? 'none' : 'transform 0.2s ease-out'
+                    }}
+                    onMouseDown={(e) => handleMouseDown(e, 'title')}
+                  >
                     <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
                     <p className="text-xl md:text-2xl text-blue-400 font-semibold relative z-10">
                       Game Designer & Lifelong Learner
                     </p>
                   </div>
-                  <div className="group relative cursor-pointer">
+                  <div 
+                    className="group relative cursor-move select-none"
+                    style={{
+                      transform: `translate(${positions.description.x}px, ${positions.description.y}px)`,
+                      transition: draggedElement === 'description' ? 'none' : 'transform 0.2s ease-out'
+                    }}
+                    onMouseDown={(e) => handleMouseDown(e, 'description')}
+                  >
                     <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
                     <p className="text-lg text-gray-300 max-w-2xl mx-auto relative z-10">
                       Hey there! I&apos;m an undergraduate at Stanford University who loves bringing silly ideas to life through games. I also love nerding out and teaching game development to others. :)
@@ -104,7 +208,14 @@ export default function Home() {
                 
                 <div className="flex justify-center gap-4">
                   {/* Itch.io */}
-                  <div className="group relative cursor-pointer">
+                  <div 
+                    className="group relative cursor-move select-none"
+                    style={{
+                      transform: `translate(${positions.itchIcon.x}px, ${positions.itchIcon.y}px)`,
+                      transition: draggedElement === 'itchIcon' ? 'none' : 'transform 0.2s ease-out'
+                    }}
+                    onMouseDown={(e) => handleMouseDown(e, 'itchIcon')}
+                  >
                     <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
                     <a 
                       href="https://lwcoding.itch.io/"
@@ -112,6 +223,11 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className="w-14 h-14 bg-gray-700 rounded-full overflow-hidden shadow-lg flex items-center justify-center border border-gray-600 cursor-pointer relative z-10"
                       aria-label="Visit my Itch.io profile"
+                      onClick={(e) => {
+                        if (hasDragged) {
+                          e.preventDefault();
+                        }
+                      }}
                     >
                       <Image 
                         src="/images/itchio.png" 
@@ -124,7 +240,14 @@ export default function Home() {
                   </div>
 
                   {/* GitHub */}
-                  <div className="group relative cursor-pointer">
+                  <div 
+                    className="group relative cursor-move select-none"
+                    style={{
+                      transform: `translate(${positions.githubIcon.x}px, ${positions.githubIcon.y}px)`,
+                      transition: draggedElement === 'githubIcon' ? 'none' : 'transform 0.2s ease-out'
+                    }}
+                    onMouseDown={(e) => handleMouseDown(e, 'githubIcon')}
+                  >
                     <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
                     <a 
                       href="https://github.com/LWCoding"
@@ -132,6 +255,11 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className="w-14 h-14 bg-gray-700 rounded-full overflow-hidden shadow-lg flex items-center justify-center border border-gray-600 cursor-pointer relative z-10"
                       aria-label="Visit my GitHub profile"
+                      onClick={(e) => {
+                        if (hasDragged) {
+                          e.preventDefault();
+                        }
+                      }}
                     >
                       <Image 
                         src="/images/github.png" 
@@ -144,7 +272,14 @@ export default function Home() {
                   </div>
 
                   {/* LinkedIn */}
-                  <div className="group relative cursor-pointer">
+                  <div 
+                    className="group relative cursor-move select-none"
+                    style={{
+                      transform: `translate(${positions.linkedinIcon.x}px, ${positions.linkedinIcon.y}px)`,
+                      transition: draggedElement === 'linkedinIcon' ? 'none' : 'transform 0.2s ease-out'
+                    }}
+                    onMouseDown={(e) => handleMouseDown(e, 'linkedinIcon')}
+                  >
                     <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
                     <a 
                       href="https://www.linkedin.com/in/lucas-wang-3160b720a/"
@@ -152,6 +287,11 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className="w-14 h-14 bg-gray-700 rounded-full overflow-hidden shadow-lg flex items-center justify-center border border-gray-600 cursor-pointer relative z-10"
                       aria-label="Visit my LinkedIn profile"
+                      onClick={(e) => {
+                        if (hasDragged) {
+                          e.preventDefault();
+                        }
+                      }}
                     >
                       <Image 
                         src="/images/linkedin.png" 
@@ -164,11 +304,24 @@ export default function Home() {
                   </div>
                 </div>
                 
-                <div className="pt-2">
+                <div 
+                  className="pt-2 cursor-move select-none inline-block"
+                  style={{
+                    transform: `translate(${positions.designButton.x}px, ${positions.designButton.y}px)`,
+                    transition: draggedElement === 'designButton' ? 'none' : 'transform 0.2s ease-out'
+                  }}
+                  onMouseDown={(e) => handleMouseDown(e, 'designButton')}
+                >
                   <div className="group relative cursor-pointer inline-block">
                     <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
                     <button
-                      onClick={() => setIsDesignModalOpen(true)}
+                      onClick={(e) => {
+                        if (hasDragged) {
+                          e.preventDefault();
+                        } else {
+                          setIsDesignModalOpen(true);
+                        }
+                      }}
                       className="text-sm text-gray-400 hover:text-blue-400 transition-colors underline underline-offset-2 cursor-pointer relative z-10"
                     >
                       Wait, what is design..?
