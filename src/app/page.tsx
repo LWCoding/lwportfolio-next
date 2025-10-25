@@ -80,11 +80,21 @@ export default function Home() {
       y: e.clientY - currentPositions[elementId].y
     });
     setDraggedElement(elementId);
+    setDragStartPos({ x: e.clientX, y: e.clientY });
+    setHasDragged(false);
   };
 
   const handleMouseMove = (e: MouseEvent) => {
-    if (draggedElement) {
-      setHasDragged(true);
+    if (draggedElement && dragStartPos) {
+      // Only set hasDragged if we've moved more than 5 pixels
+      const distance = Math.sqrt(
+        Math.pow(e.clientX - dragStartPos.x, 2) + Math.pow(e.clientY - dragStartPos.y, 2)
+      );
+      
+      if (distance > 5) {
+        setHasDragged(true);
+      }
+      
       const newPosition = {
         x: e.clientX - dragOffset.x,
         y: e.clientY - dragOffset.y
@@ -106,12 +116,14 @@ export default function Home() {
 
   const handleMouseUp = () => {
     setDraggedElement(null);
+    setDragStartPos(null);
     // Reset hasDragged after a short delay to allow click events to be processed
-    setTimeout(() => setHasDragged(false), 10);
+    setTimeout(() => setHasDragged(false), 50);
   };
 
   // Check if we should prevent click events (if element was dragged)
   const [hasDragged, setHasDragged] = useState(false);
+  const [dragStartPos, setDragStartPos] = useState<{ x: number; y: number } | null>(null);
 
   // Reset all positions to original
   const resetPositions = () => {
@@ -189,7 +201,10 @@ export default function Home() {
     coverImage, 
     gradientClass,
     viewCount,
-    isGame = false 
+    isGame = false,
+    description,
+    tags,
+    createdAt
   }: {
     id: string;
     title: string;
@@ -198,6 +213,9 @@ export default function Home() {
     gradientClass: string;
     viewCount?: number;
     isGame?: boolean;
+    description?: string;
+    tags?: string[];
+    createdAt?: string;
   }) => {
     const position = projectPositions[id] || { x: 0, y: 0 };
     
@@ -213,6 +231,44 @@ export default function Home() {
         onMouseDown={(e) => handleMouseDown(e, id)}
       >
         <div className="absolute -inset-1 border-0 group-hover:border group-hover:border-blue-400/50 rounded-lg"></div>
+        
+        {/* Tooltip */}
+        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50">
+          <div className="bg-gray-800 border border-gray-600 rounded-lg p-3 w-96 shadow-lg">
+            <h3 className="text-sm font-semibold text-white mb-1">{title}</h3>
+            {description && (
+              <p className="text-xs text-gray-300 mb-2 line-clamp-3">{description}</p>
+            )}
+            {tags && tags.length > 0 && (
+              <div className="flex flex-wrap gap-1 mb-2">
+                {tags.slice(0, 3).map((tag, index) => (
+                  <span key={index} className="bg-blue-600/20 text-blue-300 px-2 py-0.5 rounded text-xs">
+                    {tag}
+                  </span>
+                ))}
+                {tags.length > 3 && (
+                  <span className="text-xs text-gray-400">+{tags.length - 3} more</span>
+                )}
+              </div>
+            )}
+            {viewCount && (
+              <div className="text-xs text-gray-400">
+                {viewCount > 1000 ? `${(viewCount/1000).toFixed(1)}K` : viewCount} views
+              </div>
+            )}
+            {createdAt && (
+              <div className="text-xs text-gray-400">
+                {new Date(createdAt).toLocaleDateString('en-US', { 
+                  month: 'short', 
+                  year: 'numeric' 
+                })}
+              </div>
+            )}
+          </div>
+          {/* Tooltip arrow */}
+          <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-gray-600"></div>
+        </div>
+        
         <div className="w-40 h-24 bg-gray-700/80 rounded-lg border border-gray-600 overflow-hidden shadow-lg relative z-10">
           <div className={`w-full h-full ${!coverImage ? `bg-gradient-to-br ${gradientClass} flex items-center justify-center` : ''}`}>
             {coverImage ? (
@@ -238,9 +294,12 @@ export default function Home() {
           rel="noopener noreferrer"
           className="absolute inset-0 z-20"
           onClick={(e) => {
+            // Only prevent if we actually dragged (moved more than 5 pixels)
             if (hasDragged) {
               e.preventDefault();
+              return;
             }
+            // Allow the link to open normally
           }}
         />
       </div>
@@ -564,6 +623,9 @@ export default function Home() {
                           gradientClass={gradientClasses[index % gradientClasses.length]}
                           viewCount={game.views_count}
                           isGame={true}
+                          description={game.short_text}
+                          tags={game.tags}
+                          createdAt={game.created_at}
                         />
                       ))}
                       
@@ -578,6 +640,9 @@ export default function Home() {
                           gradientClass={gradientClasses[(index + (featuredGames?.length || 0)) % gradientClasses.length]}
                           viewCount={game.views_count}
                           isGame={true}
+                          description={game.short_text}
+                          tags={game.tags}
+                          createdAt={game.created_at}
                         />
                       ))}
                     </>
@@ -622,6 +687,9 @@ export default function Home() {
                       coverImage={project.coverImage}
                       gradientClass={gradientClasses[index % gradientClasses.length]}
                       isGame={false}
+                      description={project.description}
+                      tags={project.tags}
+                      createdAt={project.createdAt}
                     />
                   ))}
                 </div>
