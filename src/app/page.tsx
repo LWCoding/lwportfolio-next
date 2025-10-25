@@ -12,6 +12,7 @@ import Image from "next/image";
 export default function Home() {
   const [isDesignModalOpen, setIsDesignModalOpen] = useState(false);
   const [showProjects, setShowProjects] = useState(false);
+  const [activeTab, setActiveTab] = useState<'games' | 'other-projects' | null>(null);
   const { featuredGames, otherGames, loading, error } = useGames();
   
   // Drag state for individual elements
@@ -28,12 +29,55 @@ export default function Home() {
     designButton: { x: 0, y: 0 }
   });
 
+  // Project positions - initialize with random positions
+  const [projectPositions, setProjectPositions] = useState<Record<string, { x: number; y: number }>>({});
+
+  // Initialize project positions in a circle around the center
+  useEffect(() => {
+    const getCurrentProjects = () => {
+      if (activeTab === 'games') {
+        // Show all games (featured + other games)
+        const allGames = [
+          ...(featuredGames || []),
+          ...(otherGames || [])
+        ];
+        return allGames.map(game => ({ id: `game-${game.id}`, type: 'game' }));
+      } else if (activeTab === 'other-projects') {
+        return OTHER_PROJECTS_CONFIG.map(project => ({ id: `project-${project.id}`, type: 'project' }));
+      }
+      return [];
+    };
+    
+    const currentProjects = getCurrentProjects();
+    
+    if (currentProjects.length > 0) {
+      const newPositions: Record<string, { x: number; y: number }> = {};
+      const totalProjects = currentProjects.length;
+      const radius = 300; // Distance from center
+      
+      currentProjects.forEach((item, index) => {
+        // Calculate position in circle
+        const angle = (2 * Math.PI * index) / totalProjects;
+        const x = Math.cos(angle) * radius;
+        const y = Math.sin(angle) * radius;
+        
+        newPositions[item.id] = { x, y };
+      });
+      
+      setProjectPositions(newPositions);
+    }
+  }, [activeTab, featuredGames, OTHER_PROJECTS_CONFIG]);
+
   // Drag handlers for individual elements
   const handleMouseDown = (e: React.MouseEvent, elementId: string) => {
     e.preventDefault();
+    const currentPositions = elementId.startsWith('game-') || elementId.startsWith('project-') 
+      ? projectPositions 
+      : positions;
+    
     setDragOffset({
-      x: e.clientX - positions[elementId].x,
-      y: e.clientY - positions[elementId].y
+      x: e.clientX - currentPositions[elementId].x,
+      y: e.clientY - currentPositions[elementId].y
     });
     setDraggedElement(elementId);
   };
@@ -41,13 +85,22 @@ export default function Home() {
   const handleMouseMove = (e: MouseEvent) => {
     if (draggedElement) {
       setHasDragged(true);
-      setPositions(prev => ({
-        ...prev,
-        [draggedElement]: {
-          x: e.clientX - dragOffset.x,
-          y: e.clientY - dragOffset.y
-        }
-      }));
+      const newPosition = {
+        x: e.clientX - dragOffset.x,
+        y: e.clientY - dragOffset.y
+      };
+      
+      if (draggedElement.startsWith('game-') || draggedElement.startsWith('project-')) {
+        setProjectPositions(prev => ({
+          ...prev,
+          [draggedElement]: newPosition
+        }));
+      } else {
+        setPositions(prev => ({
+          ...prev,
+          [draggedElement]: newPosition
+        }));
+      }
     }
   };
 
@@ -72,6 +125,40 @@ export default function Home() {
       linkedinIcon: { x: 0, y: 0 },
       designButton: { x: 0, y: 0 }
     });
+    
+    // Reset project positions to circle around center based on active tab
+    const getCurrentProjects = () => {
+      if (activeTab === 'games') {
+        // Show all games (featured + other games)
+        const allGames = [
+          ...(featuredGames || []),
+          ...(otherGames || [])
+        ];
+        return allGames.map(game => `game-${game.id}`);
+      } else if (activeTab === 'other-projects') {
+        return OTHER_PROJECTS_CONFIG.map(project => `project-${project.id}`);
+      }
+      return [];
+    };
+    
+    const currentProjects = getCurrentProjects();
+    
+    if (currentProjects.length > 0) {
+      const newProjectPositions: Record<string, { x: number; y: number }> = {};
+      const totalProjects = currentProjects.length;
+      const radius = 300; // Distance from center
+      
+      currentProjects.forEach((id, index) => {
+        // Calculate position in circle
+        const angle = (2 * Math.PI * index) / totalProjects;
+        const x = Math.cos(angle) * radius;
+        const y = Math.sin(angle) * radius;
+        
+        newProjectPositions[id] = { x, y };
+      });
+      
+      setProjectPositions(newProjectPositions);
+    }
   };
 
   // Add event listeners for drag
@@ -94,6 +181,72 @@ export default function Home() {
     "from-orange-300/20 to-blue-500/20",
   ];
 
+  // Small draggable project card component
+  const DraggableProjectCard = ({ 
+    id, 
+    title, 
+    href, 
+    coverImage, 
+    gradientClass,
+    viewCount,
+    isGame = false 
+  }: {
+    id: string;
+    title: string;
+    href: string;
+    coverImage?: string;
+    gradientClass: string;
+    viewCount?: number;
+    isGame?: boolean;
+  }) => {
+    const position = projectPositions[id] || { x: 0, y: 0 };
+    
+    return (
+      <div 
+        className="group absolute cursor-move select-none"
+        style={{
+          left: '50%',
+          top: '50%',
+          transform: `translate(calc(-50% + ${position.x}px), calc(-50% + ${position.y}px))`,
+          transition: draggedElement === id ? 'none' : 'transform 0.2s ease-out'
+        }}
+        onMouseDown={(e) => handleMouseDown(e, id)}
+      >
+        <div className="absolute -inset-1 border-0 group-hover:border group-hover:border-blue-400/50 rounded-lg"></div>
+        <div className="w-40 h-24 bg-gray-700/80 rounded-lg border border-gray-600 overflow-hidden shadow-lg relative z-10">
+          <div className={`w-full h-full ${!coverImage ? `bg-gradient-to-br ${gradientClass} flex items-center justify-center` : ''}`}>
+            {coverImage ? (
+              <Image 
+                src={coverImage} 
+                alt={title}
+                fill
+                className="object-cover"
+              />
+            ) : (
+              <span className="text-xs text-white font-medium text-center px-2 break-words leading-tight">{title}</span>
+            )}
+          </div>
+          {viewCount && (
+            <div className="absolute top-1 right-1 bg-black/60 backdrop-blur-sm px-1 py-0.5 rounded text-xs">
+              <span className="text-white text-xs">{viewCount > 1000 ? `${(viewCount/1000).toFixed(1)}K` : viewCount}</span>
+            </div>
+          )}
+        </div>
+        <a 
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute inset-0 z-20"
+          onClick={(e) => {
+            if (hasDragged) {
+              e.preventDefault();
+            }
+          }}
+        />
+      </div>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
 
@@ -108,25 +261,63 @@ export default function Home() {
             
             {/* Hierarchy Items */}
             <div className="flex-1 p-2 space-y-1">
-              {/* Introduction - Selected */}
-              <div className="bg-blue-600/20 border border-blue-500/30 rounded px-2 py-1 cursor-pointer">
-                <span className="text-sm text-blue-300 font-medium">Introduction</span>
+              {/* Introduction - Toggle Button */}
+              <div 
+                className={`border border-gray-600/50 rounded px-2 py-1 cursor-pointer transition-colors ${
+                  activeTab === null && !showProjects
+                    ? 'bg-blue-600/20 border-blue-500/30' 
+                    : 'bg-gray-700/50 hover:bg-gray-600/50'
+                }`}
+                onClick={() => {
+                  setActiveTab(null);
+                  setShowProjects(false);
+                }}
+              >
+                <span className={`text-sm font-medium ${
+                  activeTab === null && !showProjects ? 'text-blue-300' : 'text-gray-300'
+                }`}>
+                  Introduction
+                </span>
               </div>
               
-              {/* Projects - Toggle Button */}
+              {/* Games Tab */}
               <div className="mt-2">
                 <div 
                   className={`border border-gray-600/50 rounded px-2 py-1 cursor-pointer transition-colors ${
-                    showProjects 
+                    activeTab === 'games' 
                       ? 'bg-blue-600/20 border-blue-500/30' 
                       : 'bg-gray-700/50 hover:bg-gray-600/50'
                   }`}
-                  onClick={() => setShowProjects(!showProjects)}
+                  onClick={() => {
+                    setActiveTab(activeTab === 'games' ? null : 'games');
+                    setShowProjects(activeTab === 'games' ? false : true);
+                  }}
                 >
                   <span className={`text-sm font-medium ${
-                    showProjects ? 'text-blue-300' : 'text-gray-300'
+                    activeTab === 'games' ? 'text-blue-300' : 'text-gray-300'
                   }`}>
-                    Projects
+                    Games
+                  </span>
+                </div>
+              </div>
+
+              {/* Other Projects Tab */}
+              <div className="mt-2">
+                <div 
+                  className={`border border-gray-600/50 rounded px-2 py-1 cursor-pointer transition-colors ${
+                    activeTab === 'other-projects' 
+                      ? 'bg-blue-600/20 border-blue-500/30' 
+                      : 'bg-gray-700/50 hover:bg-gray-600/50'
+                  }`}
+                  onClick={() => {
+                    setActiveTab(activeTab === 'other-projects' ? null : 'other-projects');
+                    setShowProjects(activeTab === 'other-projects' ? false : true);
+                  }}
+                >
+                  <span className={`text-sm font-medium ${
+                    activeTab === 'other-projects' ? 'text-blue-300' : 'text-gray-300'
+                  }`}>
+                    Other Projects
                   </span>
                 </div>
               </div>
@@ -158,240 +349,288 @@ export default function Home() {
               </button>
             </div>
 
-            {/* Scene Content - Introduction */}
-            <div className="h-full flex items-center justify-center p-8 relative z-10">
-              <div className="max-w-4xl text-center space-y-8">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-center gap-3">
-                    <div 
-                      className="group relative cursor-move select-none"
-                      style={{
-                        transform: `translate(${positions.stanfordLogo.x}px, ${positions.stanfordLogo.y}px)`,
-                        transition: draggedElement === 'stanfordLogo' ? 'none' : 'transform 0.2s ease-out'
-                      }}
-                      onMouseDown={(e) => handleMouseDown(e, 'stanfordLogo')}
-                    >
-                      <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
-                      <Image 
-                        src="/images/stanfordlogo.avif" 
-                        alt="Stanford University Logo" 
-                        width={60}
-                        height={60}
-                        className="w-12 h-12 md:w-16 md:h-16 object-contain relative z-10"
-                      />
+            {/* Scene Content - Conditional */}
+            <div className="h-full p-8 relative z-10 overflow-y-auto">
+              {!showProjects && activeTab === null ? (
+                // Introduction Content
+                <div className="h-full flex items-center justify-center">
+                  <div className="max-w-4xl text-center space-y-8">
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-center gap-3">
+                        <div 
+                          className="group relative cursor-move select-none"
+                          style={{
+                            transform: `translate(${positions.stanfordLogo.x}px, ${positions.stanfordLogo.y}px)`,
+                            transition: draggedElement === 'stanfordLogo' ? 'none' : 'transform 0.2s ease-out'
+                          }}
+                          onMouseDown={(e) => handleMouseDown(e, 'stanfordLogo')}
+                        >
+                          <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
+                          <Image 
+                            src="/images/stanfordlogo.avif" 
+                            alt="Stanford University Logo" 
+                            width={60}
+                            height={60}
+                            className="w-12 h-12 md:w-16 md:h-16 object-contain relative z-10"
+                          />
+                        </div>
+                        <div 
+                          className="group relative cursor-move select-none"
+                          style={{
+                            transform: `translate(${positions.name.x}px, ${positions.name.y}px)`,
+                            transition: draggedElement === 'name' ? 'none' : 'transform 0.2s ease-out'
+                          }}
+                          onMouseDown={(e) => handleMouseDown(e, 'name')}
+                        >
+                          <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
+                          <h1 className="text-4xl md:text-6xl font-bold text-white relative z-10">
+                            Lucas Wang
+                          </h1>
+                        </div>
+                      </div>
+                      <div 
+                        className="group relative cursor-move select-none"
+                        style={{
+                          transform: `translate(${positions.title.x}px, ${positions.title.y}px)`,
+                          transition: draggedElement === 'title' ? 'none' : 'transform 0.2s ease-out'
+                        }}
+                        onMouseDown={(e) => handleMouseDown(e, 'title')}
+                      >
+                        <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
+                        <p className="text-xl md:text-2xl text-blue-400 font-semibold relative z-10">
+                          Game Designer & Lifelong Learner
+                        </p>
+                      </div>
+                      <div 
+                        className="group relative cursor-move select-none"
+                        style={{
+                          transform: `translate(${positions.description.x}px, ${positions.description.y}px)`,
+                          transition: draggedElement === 'description' ? 'none' : 'transform 0.2s ease-out'
+                        }}
+                        onMouseDown={(e) => handleMouseDown(e, 'description')}
+                      >
+                        <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
+                        <p className="text-lg text-gray-300 max-w-2xl mx-auto relative z-10">
+                          Hey there! I&apos;m an undergraduate at Stanford University who loves bringing silly ideas to life through games. I also love nerding out and teaching game development to others. :)
+                        </p>
+                      </div>
                     </div>
+                    
+                    <div className="flex justify-center gap-4">
+                      {/* Itch.io */}
+                      <div 
+                        className="group relative cursor-move select-none"
+                        style={{
+                          transform: `translate(${positions.itchIcon.x}px, ${positions.itchIcon.y}px)`,
+                          transition: draggedElement === 'itchIcon' ? 'none' : 'transform 0.2s ease-out'
+                        }}
+                        onMouseDown={(e) => handleMouseDown(e, 'itchIcon')}
+                      >
+                        <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
+                        <a 
+                          href="https://lwcoding.itch.io/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-14 h-14 bg-gray-700 rounded-full overflow-hidden shadow-lg flex items-center justify-center border border-gray-600 cursor-pointer relative z-10"
+                          aria-label="Visit my Itch.io profile"
+                          onClick={(e) => {
+                            if (hasDragged) {
+                              e.preventDefault();
+                            }
+                          }}
+                        >
+                          <Image 
+                            src="/images/itchio.png" 
+                            alt="Itch.io" 
+                            width={32}
+                            height={32}
+                            className="w-8 h-8 object-contain"
+                          />
+                        </a>
+                      </div>
+
+                      {/* GitHub */}
+                      <div 
+                        className="group relative cursor-move select-none"
+                        style={{
+                          transform: `translate(${positions.githubIcon.x}px, ${positions.githubIcon.y}px)`,
+                          transition: draggedElement === 'githubIcon' ? 'none' : 'transform 0.2s ease-out'
+                        }}
+                        onMouseDown={(e) => handleMouseDown(e, 'githubIcon')}
+                      >
+                        <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
+                        <a 
+                          href="https://github.com/LWCoding"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-14 h-14 bg-gray-700 rounded-full overflow-hidden shadow-lg flex items-center justify-center border border-gray-600 cursor-pointer relative z-10"
+                          aria-label="Visit my GitHub profile"
+                          onClick={(e) => {
+                            if (hasDragged) {
+                              e.preventDefault();
+                            }
+                          }}
+                        >
+                          <Image 
+                            src="/images/github.png" 
+                            alt="GitHub" 
+                            width={32}
+                            height={32}
+                            className="w-8 h-8 object-contain"
+                          />
+                        </a>
+                      </div>
+
+                      {/* LinkedIn */}
+                      <div 
+                        className="group relative cursor-move select-none"
+                        style={{
+                          transform: `translate(${positions.linkedinIcon.x}px, ${positions.linkedinIcon.y}px)`,
+                          transition: draggedElement === 'linkedinIcon' ? 'none' : 'transform 0.2s ease-out'
+                        }}
+                        onMouseDown={(e) => handleMouseDown(e, 'linkedinIcon')}
+                      >
+                        <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
+                        <a 
+                          href="https://www.linkedin.com/in/lucas-wang-3160b720a/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-14 h-14 bg-gray-700 rounded-full overflow-hidden shadow-lg flex items-center justify-center border border-gray-600 cursor-pointer relative z-10"
+                          aria-label="Visit my LinkedIn profile"
+                          onClick={(e) => {
+                            if (hasDragged) {
+                              e.preventDefault();
+                            }
+                          }}
+                        >
+                          <Image 
+                            src="/images/linkedin.png" 
+                            alt="LinkedIn" 
+                            width={32}
+                            height={32}
+                            className="w-8 h-8 object-contain"
+                          />
+                        </a>
+                      </div>
+                    </div>
+                    
                     <div 
-                      className="group relative cursor-move select-none"
+                      className="pt-2 cursor-move select-none inline-block"
                       style={{
-                        transform: `translate(${positions.name.x}px, ${positions.name.y}px)`,
-                        transition: draggedElement === 'name' ? 'none' : 'transform 0.2s ease-out'
+                        transform: `translate(${positions.designButton.x}px, ${positions.designButton.y}px)`,
+                        transition: draggedElement === 'designButton' ? 'none' : 'transform 0.2s ease-out'
                       }}
-                      onMouseDown={(e) => handleMouseDown(e, 'name')}
+                      onMouseDown={(e) => handleMouseDown(e, 'designButton')}
                     >
-                      <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
-                      <h1 className="text-4xl md:text-6xl font-bold text-white relative z-10">
-                        Lucas Wang
-                      </h1>
+                      <div className="group relative cursor-pointer inline-block">
+                        <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
+                        <button
+                          onClick={(e) => {
+                            if (hasDragged) {
+                              e.preventDefault();
+                            } else {
+                              setIsDesignModalOpen(true);
+                            }
+                          }}
+                          className="text-sm text-gray-400 hover:text-blue-400 transition-colors underline underline-offset-2 cursor-pointer relative z-10"
+                        >
+                          Wait, what is design..?
+                        </button>
+                      </div>
                     </div>
                   </div>
-                  <div 
-                    className="group relative cursor-move select-none"
-                    style={{
-                      transform: `translate(${positions.title.x}px, ${positions.title.y}px)`,
-                      transition: draggedElement === 'title' ? 'none' : 'transform 0.2s ease-out'
-                    }}
-                    onMouseDown={(e) => handleMouseDown(e, 'title')}
-                  >
-                    <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
-                    <p className="text-xl md:text-2xl text-blue-400 font-semibold relative z-10">
-                      Game Designer & Lifelong Learner
-                    </p>
-                  </div>
-                  <div 
-                    className="group relative cursor-move select-none"
-                    style={{
-                      transform: `translate(${positions.description.x}px, ${positions.description.y}px)`,
-                      transition: draggedElement === 'description' ? 'none' : 'transform 0.2s ease-out'
-                    }}
-                    onMouseDown={(e) => handleMouseDown(e, 'description')}
-                  >
-                    <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
-                    <p className="text-lg text-gray-300 max-w-2xl mx-auto relative z-10">
-                      Hey there! I&apos;m an undergraduate at Stanford University who loves bringing silly ideas to life through games. I also love nerding out and teaching game development to others. :)
-                    </p>
-                  </div>
                 </div>
-                
-                <div className="flex justify-center gap-4">
-                  {/* Itch.io */}
-                  <div 
-                    className="group relative cursor-move select-none"
-                    style={{
-                      transform: `translate(${positions.itchIcon.x}px, ${positions.itchIcon.y}px)`,
-                      transition: draggedElement === 'itchIcon' ? 'none' : 'transform 0.2s ease-out'
-                    }}
-                    onMouseDown={(e) => handleMouseDown(e, 'itchIcon')}
-                  >
-                    <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
-                    <a 
-                      href="https://lwcoding.itch.io/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-14 h-14 bg-gray-700 rounded-full overflow-hidden shadow-lg flex items-center justify-center border border-gray-600 cursor-pointer relative z-10"
-                      aria-label="Visit my Itch.io profile"
-                      onClick={(e) => {
-                        if (hasDragged) {
-                          e.preventDefault();
-                        }
-                      }}
-                    >
-                      <Image 
-                        src="/images/itchio.png" 
-                        alt="Itch.io" 
-                        width={32}
-                        height={32}
-                        className="w-8 h-8 object-contain"
-                      />
-                    </a>
+              ) : activeTab === 'games' ? (
+                // Games Content - Draggable Cards
+                <div className="h-full relative">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center text-gray-400 mb-8">
+                      <h2 className="text-2xl font-bold text-white mb-2">All Games</h2>
+                      <p className="text-sm">Drag the cards around to explore!</p>
+                    </div>
                   </div>
-
-                  {/* GitHub */}
-                  <div 
-                    className="group relative cursor-move select-none"
-                    style={{
-                      transform: `translate(${positions.githubIcon.x}px, ${positions.githubIcon.y}px)`,
-                      transition: draggedElement === 'githubIcon' ? 'none' : 'transform 0.2s ease-out'
-                    }}
-                    onMouseDown={(e) => handleMouseDown(e, 'githubIcon')}
-                  >
-                    <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
-                    <a 
-                      href="https://github.com/LWCoding"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-14 h-14 bg-gray-700 rounded-full overflow-hidden shadow-lg flex items-center justify-center border border-gray-600 cursor-pointer relative z-10"
-                      aria-label="Visit my GitHub profile"
-                      onClick={(e) => {
-                        if (hasDragged) {
-                          e.preventDefault();
-                        }
-                      }}
-                    >
-                      <Image 
-                        src="/images/github.png" 
-                        alt="GitHub" 
-                        width={32}
-                        height={32}
-                        className="w-8 h-8 object-contain"
-                      />
-                    </a>
-                  </div>
-
-                  {/* LinkedIn */}
-                  <div 
-                    className="group relative cursor-move select-none"
-                    style={{
-                      transform: `translate(${positions.linkedinIcon.x}px, ${positions.linkedinIcon.y}px)`,
-                      transition: draggedElement === 'linkedinIcon' ? 'none' : 'transform 0.2s ease-out'
-                    }}
-                    onMouseDown={(e) => handleMouseDown(e, 'linkedinIcon')}
-                  >
-                    <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
-                    <a 
-                      href="https://www.linkedin.com/in/lucas-wang-3160b720a/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-14 h-14 bg-gray-700 rounded-full overflow-hidden shadow-lg flex items-center justify-center border border-gray-600 cursor-pointer relative z-10"
-                      aria-label="Visit my LinkedIn profile"
-                      onClick={(e) => {
-                        if (hasDragged) {
-                          e.preventDefault();
-                        }
-                      }}
-                    >
-                      <Image 
-                        src="/images/linkedin.png" 
-                        alt="LinkedIn" 
-                        width={32}
-                        height={32}
-                        className="w-8 h-8 object-contain"
-                      />
-                    </a>
-                  </div>
+                  
+                  {/* All Games Cards */}
+                  {!loading && !error && (
+                    <>
+                      {/* Featured Games */}
+                      {featuredGames && featuredGames.length > 0 && featuredGames.map((game, index) => (
+                        <DraggableProjectCard
+                          key={`game-${game.id}`}
+                          id={`game-${game.id}`}
+                          title={game.title}
+                          href={game.url}
+                          coverImage={game.cover_url || game.still_cover_url}
+                          gradientClass={gradientClasses[index % gradientClasses.length]}
+                          viewCount={game.views_count}
+                          isGame={true}
+                        />
+                      ))}
+                      
+                      {/* Other Games */}
+                      {otherGames && otherGames.length > 0 && otherGames.map((game, index) => (
+                        <DraggableProjectCard
+                          key={`game-${game.id}`}
+                          id={`game-${game.id}`}
+                          title={game.title}
+                          href={game.url}
+                          coverImage={game.cover_url || game.still_cover_url}
+                          gradientClass={gradientClasses[(index + (featuredGames?.length || 0)) % gradientClasses.length]}
+                          viewCount={game.views_count}
+                          isGame={true}
+                        />
+                      ))}
+                    </>
+                  )}
+                  
+                  {/* Loading State */}
+                  {loading && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center text-gray-400">
+                        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400 mx-auto mb-4"></div>
+                        <p>Loading games...</p>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Error State */}
+                  {error && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center text-red-400">
+                        <p>Error loading games: {error}</p>
+                      </div>
+                    </div>
+                  )}
                 </div>
-                
-                <div 
-                  className="pt-2 cursor-move select-none inline-block"
-                  style={{
-                    transform: `translate(${positions.designButton.x}px, ${positions.designButton.y}px)`,
-                    transition: draggedElement === 'designButton' ? 'none' : 'transform 0.2s ease-out'
-                  }}
-                  onMouseDown={(e) => handleMouseDown(e, 'designButton')}
-                >
-                  <div className="group relative cursor-pointer inline-block">
-                    <div className="absolute inset-0 border-0 group-hover:border group-hover:border-blue-400/50"></div>
-                    <button
-                      onClick={(e) => {
-                        if (hasDragged) {
-                          e.preventDefault();
-                        } else {
-                          setIsDesignModalOpen(true);
-                        }
-                      }}
-                      className="text-sm text-gray-400 hover:text-blue-400 transition-colors underline underline-offset-2 cursor-pointer relative z-10"
-                    >
-                      Wait, what is design..?
-                    </button>
+              ) : activeTab === 'other-projects' ? (
+                // Other Projects Content - Draggable Cards
+                <div className="h-full relative">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center text-gray-400 mb-8">
+                      <h2 className="text-2xl font-bold text-white mb-2">Other Projects</h2>
+                      <p className="text-sm">Drag the cards around to explore!</p>
+                    </div>
                   </div>
+                  
+                  {/* Other Projects Cards */}
+                  {OTHER_PROJECTS_CONFIG.map((project, index) => (
+                    <DraggableProjectCard
+                      key={`project-${project.id}`}
+                      id={`project-${project.id}`}
+                      title={project.title}
+                      href={project.href}
+                      coverImage={project.coverImage}
+                      gradientClass={gradientClasses[index % gradientClasses.length]}
+                      isGame={false}
+                    />
+                  ))}
                 </div>
-              </div>
+              ) : null}
             </div>
 
         </div>
       </div>
 
-      {/* Projects Section */}
-      {showProjects && (
-        <div className="bg-gray-900 min-h-screen py-12">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Featured Games Section */}
-            <div className="mb-16">
-              <h2 className="text-3xl font-bold text-white mb-8 text-center">
-                Featured Games
-              </h2>
-              {loading ? (
-                <div className="text-center text-gray-400">Loading games...</div>
-              ) : error ? (
-                <div className="text-center text-red-400">Error loading games: {error}</div>
-              ) : featuredGames && featuredGames.length > 0 ? (
-                <HorizontalGallery games={featuredGames} />
-              ) : (
-                <div className="text-center text-gray-400">No featured games available</div>
-              )}
-            </div>
-
-            {/* Other Projects Section */}
-            <div>
-              <h2 className="text-3xl font-bold text-white mb-8 text-center">
-                Other Projects
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {OTHER_PROJECTS_CONFIG.map((project) => (
-                  <OtherProjectCard
-                    key={project.id}
-                    title={project.title}
-                    description={project.description}
-                    tags={project.tags}
-                    href={project.href}
-                    coverImage={project.coverImage}
-                    createdAt={project.createdAt}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Design Modal */}
       <DesignModal
