@@ -16,223 +16,213 @@ export default function Home() {
   const [isDesignModalOpen, setIsDesignModalOpen] = useState(false);
   const { featuredGames, otherGames, loading, error } = useGames();
 
-  // Simple gradient classes for variety
+  // Playful blue and orange gradient classes for variety
   const gradientClasses = [
-    "from-red-500/20 to-orange-500/20",
-    "from-blue-500/20 to-purple-500/20", 
-    "from-green-500/20 to-teal-500/20",
-    "from-purple-500/20 to-pink-500/20",
+    "from-blue-400/20 to-blue-600/20",
+    "from-orange-400/20 to-orange-600/20", 
+    "from-blue-300/20 to-orange-400/20",
+    "from-orange-300/20 to-blue-500/20",
   ];
 
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
 
-      {/* Hero Section */}
-      <Section className="pt-24 pb-12" container={false}>
-        <div className="container mx-auto max-w-4xl">
-          <div className="text-center space-y-6">
-            <div className="flex items-center justify-center gap-1">
-              <Image 
-                src="/images/stanfordlogo.avif" 
-                alt="Stanford University Logo" 
-                width={80}
-                height={80}
-                className="w-16 h-16 md:w-20 md:h-20 object-contain"
-              />
-            <h1 className="text-5xl md:text-7xl font-bold text-foreground">
-              Lucas Wang
-            </h1>
-            </div>
-                        <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
-              Game Developer & Design Student
-            </p>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Hey there! I&apos;m an undergraduate at Stanford University who loves bringing silly ideas to life through games. I also love nerding out and teaching game development to others. :)
-            </p>
-                        <div className="flex justify-center gap-8 pt-4">
-              {/* Itch.io */}
-              <a 
-                href="https://lwcoding.itch.io/"
-            target="_blank"
-            rel="noopener noreferrer"
-                className="w-16 h-16 bg-gray-100 hover:bg-white rounded-full overflow-hidden transition-all duration-300 hover:scale-110 shadow-lg flex items-center justify-center"
-                aria-label="Visit my Itch.io profile"
-              >
-                <Image 
-                  src="/images/itchio.png" 
-                  alt="Itch.io" 
-                  width={48}
-                  height={48}
-                  className="w-12 h-12 object-contain"
-                />
-              </a>
+      {/* Hero Section - Full Viewport Height */}
+      <div className="relative h-screen overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-primary/10">
+          {/* You can replace this with your actual background image */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-100/30 via-orange-100/20 to-blue-200/30"></div>
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto max-w-6xl px-8">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              {/* Left side - Text content */}
+              <div className="space-y-8 order-2 lg:order-1">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <Image 
+                      src="/images/stanfordlogo.avif" 
+                      alt="Stanford University Logo" 
+                      width={60}
+                      height={60}
+                      className="w-12 h-12 md:w-16 md:h-16 object-contain"
+                    />
+                    <h1 className="text-4xl md:text-6xl font-bold text-foreground">
+                      Lucas Wang
+                    </h1>
+                  </div>
+                  <p className="text-xl md:text-2xl text-accent font-semibold">
+                    Game Developer & Design Student
+                  </p>
+                  <p className="text-lg text-muted-foreground max-w-2xl">
+                    Hey there! I&apos;m an undergraduate at Stanford University who loves bringing silly ideas to life through games. I also love nerding out and teaching game development to others. :)
+                  </p>
+                </div>
+                
+                <div className="flex flex-wrap gap-4">
+                  {/* Itch.io */}
+                  <a 
+                    href="https://lwcoding.itch.io/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-14 h-14 bg-gradient-to-br from-primary/10 to-primary/20 hover:from-primary/20 hover:to-primary/30 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 shadow-lg flex items-center justify-center border border-primary/20 cursor-pointer"
+                    aria-label="Visit my Itch.io profile"
+                  >
+                    <Image 
+                      src="/images/itchio.png" 
+                      alt="Itch.io" 
+                      width={32}
+                      height={32}
+                      className="w-8 h-8 object-contain"
+                    />
+                  </a>
 
-              {/* GitHub */}
-              <a 
-                href="https://github.com/LWCoding"
-            target="_blank"
-            rel="noopener noreferrer"
-                className="w-16 h-16 bg-gray-100 hover:bg-white rounded-full overflow-hidden transition-all duration-300 hover:scale-110 shadow-lg flex items-center justify-center"
-                aria-label="Visit my GitHub profile"
-              >
-                <Image 
-                  src="/images/github.png" 
-                  alt="GitHub" 
-                  width={48}
-                  height={48}
-                  className="w-12 h-12 object-contain"
-                />
-              </a>
+                  {/* GitHub */}
+                  <a 
+                    href="https://github.com/LWCoding"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-14 h-14 bg-gradient-to-br from-accent/10 to-accent/20 hover:from-accent/20 hover:to-accent/30 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 shadow-lg flex items-center justify-center border border-accent/20 cursor-pointer"
+                    aria-label="Visit my GitHub profile"
+                  >
+                    <Image 
+                      src="/images/github.png" 
+                      alt="GitHub" 
+                      width={32}
+                      height={32}
+                      className="w-8 h-8 object-contain"
+                    />
+                  </a>
 
-              {/* LinkedIn */}
-              <a 
-                href="https://www.linkedin.com/in/lucas-wang-3160b720a/"
-          target="_blank"
-          rel="noopener noreferrer"
-                className="w-16 h-16 bg-gray-100 hover:bg-white rounded-full overflow-hidden transition-all duration-300 hover:scale-110 shadow-lg flex items-center justify-center"
-                aria-label="Visit my LinkedIn profile"
-              >
-                <Image 
-                  src="/images/linkedin.png" 
-                  alt="LinkedIn" 
-                  width={48}
-                  height={48}
-                  className="w-12 h-12 object-contain"
-                />
-              </a>
+                  {/* LinkedIn */}
+                  <a 
+                    href="https://www.linkedin.com/in/lucas-wang-3160b720a/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-14 h-14 bg-gradient-to-br from-primary/10 to-primary/20 hover:from-primary/20 hover:to-primary/30 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 shadow-lg flex items-center justify-center border border-primary/20 cursor-pointer"
+                    aria-label="Visit my LinkedIn profile"
+                  >
+                    <Image 
+                      src="/images/linkedin.png" 
+                      alt="LinkedIn" 
+                      width={32}
+                      height={32}
+                      className="w-8 h-8 object-contain"
+                    />
+                  </a>
+                </div>
+                
+                <div className="pt-2">
+                  <button
+                    onClick={() => setIsDesignModalOpen(true)}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors underline underline-offset-2 cursor-pointer"
+                  >
+                    Wait, what is design..?
+                  </button>
+                </div>
+              </div>
+
+              {/* Right side - Floating headshot bubble */}
+              <div className="flex justify-center lg:justify-end order-1 lg:order-2">
+                <div className="relative">
+                  {/* Floating bubble with headshot */}
+                  <div className="w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-primary/20 via-accent/20 to-primary/30 rounded-full shadow-2xl flex items-center justify-center border-4 border-white/50 relative overflow-hidden">
+                    {/* Headshot placeholder using Stanford logo */}
+                    <div className="w-48 h-48 md:w-60 md:h-60 bg-gradient-to-br from-white/80 to-white/60 rounded-full flex items-center justify-center shadow-inner">
+                      <Image 
+                        src="/images/stanfordlogo.avif" 
+                        alt="Lucas Wang Headshot Placeholder" 
+                        width={120}
+                        height={120}
+                        className="w-24 h-24 md:w-32 md:h-32 object-contain"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="pt-1">
-              <button
-                onClick={() => setIsDesignModalOpen(true)}
-                className="text-sm text-muted-foreground hover:text-primary transition-colors underline underline-offset-2 cursor-pointer"
-              >
-                Wait, what is design..?
-              </button>
+          </div>
+        </div>
+      </div>
+
+
+
+      {/* About Section */}
+      <Section id="about" background="secondary" separator={true}>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">About Me</h2>
+        <div className="max-w-4xl mx-auto space-y-8">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="space-y-4">
+              <h3 className="text-2xl font-semibold text-foreground">My Journey</h3>
+              <p className="text-muted-foreground">
+                I&apos;m currently pursuing my undergraduate degree at Stanford University, where I&apos;m diving deep into the world of game development and design. My passion for creating interactive experiences started when I was young, and it&apos;s only grown stronger over the years.
+              </p>
+              <p className="text-muted-foreground">
+                What I love most about game development is the unique blend of creativity and technical problem-solving. Every project is a new adventure, whether I&apos;m crafting silly puzzle games or building tools that help other developers.
+              </p>
             </div>
+            <div className="space-y-4">
+              <h3 className="text-2xl font-semibold text-foreground">Teaching & Community</h3>
+              <p className="text-muted-foreground">
+                One of my favorite parts of being a game developer is sharing knowledge with others. I love teaching game development concepts and helping fellow students discover the joy of creating interactive experiences.
+              </p>
+              <p className="text-muted-foreground">
+                Whether it&apos;s through workshops, one-on-one mentoring, or collaborative projects, I believe that the best way to learn is by doing and sharing with others.
+              </p>
+            </div>
+          </div>
+          
+          <div className="text-center">
+            <Button 
+              href="/projects" 
+              variant="primary"
+              className="text-lg px-8 py-4"
+            >
+              View My Projects →
+            </Button>
           </div>
         </div>
       </Section>
 
-
-
-      {/* Games Gallery */}
-              <Section id="featured-projects" background="secondary" separator={true}>
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Featured Games</h2>
-          <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
-            An assortment of my favorite game projects from the last few years! All published on Itch.io.
-        </p>
-        
-        {/* Loading State */}
-        {loading ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[...Array(4)].map((_: unknown, i: number) => (
-              <div key={i} className="bg-secondary/30 rounded-lg border border-border overflow-hidden animate-pulse">
-                <div className="aspect-video bg-gradient-to-br from-primary/10 to-accent/10"></div>
-                <div className="p-6">
-                  <div className="h-6 bg-muted/20 rounded mb-2"></div>
-                  <div className="h-4 bg-muted/20 rounded mb-4"></div>
-                  <div className="flex gap-2 mb-4">
-                    <div className="h-6 w-16 bg-muted/20 rounded"></div>
-                    <div className="h-6 w-20 bg-muted/20 rounded"></div>
-                  </div>
-                  <div className="h-8 bg-muted/20 rounded"></div>
-                </div>
+      {/* Skills & Interests Section */}
+      <Section id="skills" separator={true}>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">Skills & Interests</h2>
+        <div className="max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center space-y-4">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+                <span className="text-2xl">🎮</span>
               </div>
-            ))}
-          </div>
-        ) : error ? (
-          <div className="text-center py-12">
-            <p className="text-muted-foreground mb-4">
-              Oops! Couldn&apos;t load games from Itch.io right now.
-            </p>
-            <p className="text-sm text-muted-foreground">
-              Error: {error}
-            </p>
-            <Button 
-              href="https://lwcoding.itch.io/" 
-              variant="outline" 
-              className="mt-4"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View on Itch.io →
-            </Button>
-          </div>
-        ) : featuredGames.length === 0 ? (
-          <div className="text-center py-12">
-            <p className="text-muted-foreground mb-4">
-              No games found in your Itch.io account.
-            </p>
-            <Button 
-              href="https://lwcoding.itch.io/" 
-              variant="outline"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-              View on Itch.io →
-            </Button>
-          </div>
-        ) : (
-          <>
-            {/* Dynamic Games Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-            {featuredGames.map((game, index) => (
-              <ProjectCard
-                key={game.id}
-                title={game.title}
-                description={game.short_text || "An exciting game experience awaits!"}
-                tags={game.tags || []}
-                href={game.url}
-                gradientClasses={gradientClasses[index % gradientClasses.length]}
-                displayText="Game"
-                coverImage={game.cover_url || game.still_cover_url}
-                viewCount={game.views_count}
-                createdAt={game.created_at}
-              />
-            ))}
-          </div>
+              <h3 className="text-xl font-semibold text-foreground">Game Development</h3>
+              <p className="text-muted-foreground">
+                Unity, C#, game design, prototyping, and bringing creative ideas to life through interactive experiences.
+              </p>
+            </div>
             
-            {/* More Projects Gallery - Integrated - Hidden on small devices */}
-                          {otherGames.length > 0 && (
-                <div className="mt-12 hidden md:block">
-                  <HorizontalGallery games={otherGames} />
-                <div className="text-center mt-4">
-                  <a 
-                    href="https://lwcoding.itch.io/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors underline underline-offset-2"
-                  >
-                    View all my games on Itch.io →
-                  </a>
-                </div>
+            <div className="text-center space-y-4">
+              <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto">
+                <span className="text-2xl">💻</span>
               </div>
-            )}
-          </>
-        )}
-      </Section>
-
-      {/* Other Projects Section */}
-      <Section id="other-projects" separator={true}>
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">Other Projects</h2>
-        <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Beyond games, I&apos;ve worked on various websites, applications, and tools!
-        </p>
-
-        {/* Other Projects Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-          {OTHER_PROJECTS_CONFIG.map((project) => (
-            <OtherProjectCard
-              key={project.id}
-              title={project.title}
-              description={project.description}
-              tags={project.tags}
-              href={project.href}
-              coverImage={project.coverImage}
-              createdAt={project.createdAt}
-            />
-          ))}
+              <h3 className="text-xl font-semibold text-foreground">Web Development</h3>
+              <p className="text-muted-foreground">
+                React, Next.js, TypeScript, and building modern web applications that are both functional and beautiful.
+              </p>
+            </div>
+            
+            <div className="text-center space-y-4">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+                <span className="text-2xl">🎨</span>
+              </div>
+              <h3 className="text-xl font-semibold text-foreground">Design Thinking</h3>
+              <p className="text-muted-foreground">
+                User research, prototyping, iteration, and creating solutions that truly meet people&apos;s needs.
+              </p>
+            </div>
+          </div>
         </div>
       </Section>
 
@@ -249,7 +239,7 @@ export default function Home() {
           <p className="text-sm text-muted-foreground mt-1">
             <a 
               href="mailto:lswang05@stanford.edu"
-              className="hover:text-primary transition-colors"
+              className="hover:text-primary transition-colors cursor-pointer"
             >
               lswang05@stanford.edu
             </a>

@@ -14,16 +14,16 @@ export default function HorizontalGallery({ games }: HorizontalGalleryProps) {
   const [isBursting, setIsBursting] = useState(false);
   const [hoveredDirection, setHoveredDirection] = useState<number | null>(null);
 
-  // Simple gradient classes for variety
+  // Playful blue and orange gradient classes for variety
   const gradientClasses = [
-    "from-red-500/20 to-orange-500/20",
-    "from-blue-500/20 to-purple-500/20", 
-    "from-green-500/20 to-teal-500/20",
-    "from-purple-500/20 to-pink-500/20",
-    "from-yellow-500/20 to-red-500/20",
-    "from-indigo-500/20 to-cyan-500/20",
-    "from-pink-500/20 to-rose-500/20",
-    "from-emerald-500/20 to-lime-500/20",
+    "from-blue-400/20 to-blue-600/20",
+    "from-orange-400/20 to-orange-600/20", 
+    "from-blue-300/20 to-orange-400/20",
+    "from-orange-300/20 to-blue-500/20",
+    "from-blue-500/20 to-orange-300/20",
+    "from-orange-500/20 to-blue-400/20",
+    "from-blue-400/20 to-orange-500/20",
+    "from-orange-400/20 to-blue-600/20",
   ];
 
   // Double the games array for seamless looping

@@ -36,7 +36,7 @@ export default function MiniProjectCard({
       href={href} 
       target="_blank" 
       rel="noopener noreferrer"
-      className="flex-shrink-0 w-48 bg-secondary/30 rounded-lg border border-border overflow-hidden hover:border-primary/50 transition-colors group"
+      className="flex-shrink-0 w-48 bg-secondary/30 rounded-lg border border-border overflow-hidden hover:border-primary/50 transition-colors group cursor-pointer"
       onMouseEnter={() => onHover?.(true)}
       onMouseLeave={() => onHover?.(false)}
     >
