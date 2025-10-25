@@ -1,7 +1,6 @@
 "use client";
 
 import Button from "@/components/Button";
-import Navigation from "@/components/Navigation";
 import Section from "@/components/Section";
 import DesignModal from "@/components/DesignModal";
 import ProjectCard from "@/components/ProjectCard";
@@ -11,6 +10,7 @@ import { useGames } from "@/hooks/useFeaturedGames";
 import { OTHER_PROJECTS_CONFIG } from "@/data/otherProjects";
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   const [isDesignModalOpen, setIsDesignModalOpen] = useState(false);
@@ -26,130 +26,137 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
 
-      {/* Hero Section - Full Viewport Height */}
-      <div className="relative h-screen overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-primary/10">
-          {/* You can replace this with your actual background image */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-100/30 via-orange-100/20 to-blue-200/30"></div>
-        </div>
-        
-        {/* Content */}
-        <div className="relative z-10 h-full flex items-center">
-          <div className="container mx-auto max-w-6xl px-8">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              {/* Left side - Text content */}
-              <div className="space-y-8 order-2 lg:order-1">
+      {/* Unity Editor Style Hero Section */}
+      <div className="h-screen flex bg-gray-900">
+          {/* Left Sidebar - Hierarchy */}
+          <div className="w-1/4 bg-gray-800 border-r border-gray-700 flex flex-col">
+            {/* Hierarchy Header */}
+            <div className="bg-gray-700 px-3 py-2 border-b border-gray-600">
+              <span className="text-sm font-semibold text-gray-200">Hierarchy</span>
+            </div>
+            
+            {/* Hierarchy Items */}
+            <div className="flex-1 p-2 space-y-1">
+              {/* Introduction - Selected */}
+              <div className="bg-blue-600/20 border border-blue-500/30 rounded px-2 py-1 cursor-pointer">
+                <span className="text-sm text-blue-300 font-medium">Introduction</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Center Area - Scene View */}
+          <div className="flex-1 bg-gray-900 relative">
+            {/* Scene View Header */}
+            <div className="bg-gray-800 border-b border-gray-700 px-4 py-2 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-blue-400 font-medium">Scene</span>
+                <span className="text-sm text-gray-400">Game</span>
+              </div>
+            </div>
+            
+            {/* Unity Grid Background */}
+            <div className="absolute inset-0 opacity-20">
+              <div className="w-full h-full" style={{
+                backgroundImage: `
+                  linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+                `,
+                backgroundSize: '20px 20px'
+              }}></div>
+            </div>
+            
+            
+            {/* Scene Content - Introduction */}
+            <div className="h-full flex items-center justify-center p-8 relative z-10">
+              <div className="max-w-4xl text-center space-y-8">
                 <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <Image 
-                      src="/images/stanfordlogo.avif" 
-                      alt="Stanford University Logo" 
+                  <div className="flex items-center justify-center gap-3">
+              <Image 
+                src="/images/stanfordlogo.avif" 
+                alt="Stanford University Logo" 
                       width={60}
                       height={60}
                       className="w-12 h-12 md:w-16 md:h-16 object-contain"
                     />
-                    <h1 className="text-4xl md:text-6xl font-bold text-foreground">
-                      Lucas Wang
-                    </h1>
-                  </div>
-                  <p className="text-xl md:text-2xl text-accent font-semibold">
-                    Game Developer & Design Student
-                  </p>
-                  <p className="text-lg text-muted-foreground max-w-2xl">
-                    Hey there! I&apos;m an undergraduate at Stanford University who loves bringing silly ideas to life through games. I also love nerding out and teaching game development to others. :)
-                  </p>
+                    <h1 className="text-4xl md:text-6xl font-bold text-white">
+              Lucas Wang
+            </h1>
+            </div>
+                  <p className="text-xl md:text-2xl text-blue-400 font-semibold">
+                    Game Designer & Lifelong Learner
+            </p>
+                  <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+              Hey there! I&apos;m an undergraduate at Stanford University who loves bringing silly ideas to life through games. I also love nerding out and teaching game development to others. :)
+            </p>
                 </div>
                 
-                <div className="flex flex-wrap gap-4">
-                  {/* Itch.io */}
-                  <a 
-                    href="https://lwcoding.itch.io/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-14 h-14 bg-gradient-to-br from-primary/10 to-primary/20 hover:from-primary/20 hover:to-primary/30 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 shadow-lg flex items-center justify-center border border-primary/20 cursor-pointer"
-                    aria-label="Visit my Itch.io profile"
-                  >
-                    <Image 
-                      src="/images/itchio.png" 
-                      alt="Itch.io" 
+                <div className="flex justify-center gap-4">
+              {/* Itch.io */}
+              <a 
+                href="https://lwcoding.itch.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+                    className="w-14 h-14 bg-gray-700 hover:bg-gray-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 shadow-lg flex items-center justify-center border border-gray-600 cursor-pointer"
+                aria-label="Visit my Itch.io profile"
+              >
+                <Image 
+                  src="/images/itchio.png" 
+                  alt="Itch.io" 
                       width={32}
                       height={32}
                       className="w-8 h-8 object-contain"
-                    />
-                  </a>
+                />
+              </a>
 
-                  {/* GitHub */}
-                  <a 
-                    href="https://github.com/LWCoding"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-14 h-14 bg-gradient-to-br from-accent/10 to-accent/20 hover:from-accent/20 hover:to-accent/30 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 shadow-lg flex items-center justify-center border border-accent/20 cursor-pointer"
-                    aria-label="Visit my GitHub profile"
-                  >
-                    <Image 
-                      src="/images/github.png" 
-                      alt="GitHub" 
+              {/* GitHub */}
+              <a 
+                href="https://github.com/LWCoding"
+            target="_blank"
+            rel="noopener noreferrer"
+                    className="w-14 h-14 bg-gray-700 hover:bg-gray-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 shadow-lg flex items-center justify-center border border-gray-600 cursor-pointer"
+                aria-label="Visit my GitHub profile"
+              >
+                <Image 
+                  src="/images/github.png" 
+                  alt="GitHub" 
                       width={32}
                       height={32}
                       className="w-8 h-8 object-contain"
-                    />
-                  </a>
+                />
+              </a>
 
-                  {/* LinkedIn */}
-                  <a 
-                    href="https://www.linkedin.com/in/lucas-wang-3160b720a/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-14 h-14 bg-gradient-to-br from-primary/10 to-primary/20 hover:from-primary/20 hover:to-primary/30 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 shadow-lg flex items-center justify-center border border-primary/20 cursor-pointer"
-                    aria-label="Visit my LinkedIn profile"
-                  >
-                    <Image 
-                      src="/images/linkedin.png" 
-                      alt="LinkedIn" 
+              {/* LinkedIn */}
+              <a 
+                href="https://www.linkedin.com/in/lucas-wang-3160b720a/"
+          target="_blank"
+          rel="noopener noreferrer"
+                    className="w-14 h-14 bg-gray-700 hover:bg-gray-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 shadow-lg flex items-center justify-center border border-gray-600 cursor-pointer"
+                aria-label="Visit my LinkedIn profile"
+              >
+                <Image 
+                  src="/images/linkedin.png" 
+                  alt="LinkedIn" 
                       width={32}
                       height={32}
                       className="w-8 h-8 object-contain"
-                    />
-                  </a>
-                </div>
+                />
+              </a>
+            </div>
                 
                 <div className="pt-2">
-                  <button
-                    onClick={() => setIsDesignModalOpen(true)}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors underline underline-offset-2 cursor-pointer"
-                  >
-                    Wait, what is design..?
-                  </button>
-                </div>
-              </div>
-
-              {/* Right side - Floating headshot bubble */}
-              <div className="flex justify-center lg:justify-end order-1 lg:order-2">
-                <div className="relative">
-                  {/* Floating bubble with headshot */}
-                  <div className="w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-primary/20 via-accent/20 to-primary/30 rounded-full shadow-2xl flex items-center justify-center border-4 border-white/50 relative overflow-hidden">
-                    {/* Headshot placeholder using Stanford logo */}
-                    <div className="w-48 h-48 md:w-60 md:h-60 bg-gradient-to-br from-white/80 to-white/60 rounded-full flex items-center justify-center shadow-inner">
-                      <Image 
-                        src="/images/stanfordlogo.avif" 
-                        alt="Lucas Wang Headshot Placeholder" 
-                        width={120}
-                        height={120}
-                        className="w-24 h-24 md:w-32 md:h-32 object-contain"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <button
+                onClick={() => setIsDesignModalOpen(true)}
+                    className="text-sm text-gray-400 hover:text-blue-400 transition-colors underline underline-offset-2 cursor-pointer"
+              >
+                Wait, what is design..?
+              </button>
             </div>
           </div>
         </div>
+
+        </div>
       </div>
-
-
 
       {/* About Section */}
       <Section id="about" background="secondary" separator={true}>
@@ -201,7 +208,7 @@ export default function Home() {
               <p className="text-muted-foreground">
                 Unity, C#, game design, prototyping, and bringing creative ideas to life through interactive experiences.
               </p>
-            </div>
+          </div>
             
             <div className="text-center space-y-4">
               <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto">
@@ -211,7 +218,7 @@ export default function Home() {
               <p className="text-muted-foreground">
                 React, Next.js, TypeScript, and building modern web applications that are both functional and beautiful.
               </p>
-            </div>
+                </div>
             
             <div className="text-center space-y-4">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
