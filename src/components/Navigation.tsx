@@ -1,15 +1,29 @@
 export default function Navigation() {
   return (
-    <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-sm border-b border-border z-50">
+    <nav className="w-full bg-gray-800 z-50">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <h1 className="text-xl font-bold text-foreground">Lucas Wang</h1>
-          <div className="hidden md:flex items-center">
+          <div>
+            <h1 className="text-xl font-bold text-white">lucas wang.</h1>
+          </div>
+          <div className="flex items-center gap-8">
             <a 
-              href="mailto:lswang05@stanford.edu"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+              href="#featured-projects"
+              className="text-white hover:text-gray-300 transition-colors cursor-pointer"
             >
-              lswang05@stanford.edu
+              projects
+            </a>
+            <a 
+              href="#journey"
+              className="text-white hover:text-gray-300 transition-colors cursor-pointer"
+            >
+              journey
+            </a>
+            <a 
+              href="#contact"
+              className="text-white hover:text-gray-300 transition-colors cursor-pointer"
+            >
+              contact
             </a>
           </div>
         </div>
