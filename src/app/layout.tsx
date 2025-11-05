@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Lucas Wang",
-  description: "Junior at Stanford University, founder of Stanford Video Game Development club, and instructor for CS11SI and CS42SI. Game developer with over half a million views on Scratch projects.",
+  description: "A passionate game designer, educator, and learner at Stanford University",
   keywords: ["Lucas Wang", "Game Development", "Stanford", "Unity", "VR Development", "2D Game Development", "LWCoding"],
   authors: [{ name: "Lucas Wang" }],
   creator: "Lucas Wang",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Lucas Wang",
-    description: "Junior at Stanford University, founder of Stanford Video Game Development club, and instructor for CS11SI and CS42SI.",
+    description: "A passionate game designer, educator, and learner at Stanford University",
     type: "website",
   },
 };
