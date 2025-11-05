@@ -6,8 +6,6 @@ import Section from "@/components/Section";
 import DesignModal from "@/components/DesignModal";
 import ProjectCard from "@/components/ProjectCard";
 import NewspaperGameCard from "@/components/NewspaperGameCard";
-import HorizontalGallery from "@/components/HorizontalGallery";
-import OtherProjectCard from "@/components/OtherProjectCard";
 import { useGames } from "@/hooks/useFeaturedGames";
 import { OTHER_PROJECTS_CONFIG } from "@/data/otherProjects";
 import { useState } from "react";
@@ -120,9 +118,10 @@ export default function Home() {
       </div>
 
       {/* Games Gallery */}
-      <Section id="featured-projects" background="secondary" separator={true} container={false} padding={false}>
-        <div className="container mx-auto px-4 max-w-7xl">
-          {/* Loading State */}
+      <Section id="featured-projects" separator={false} container={false} padding={false} className="px-0">
+        <div className="bg-gray-800">
+          <div className="py-8">
+            {/* Loading State */}
           {loading ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[...Array(4)].map((_: unknown, i: number) => (
@@ -142,10 +141,10 @@ export default function Home() {
             </div>
           ) : error ? (
           <div className="text-center py-12">
-            <p className="text-muted-foreground mb-4">
+            <p className="text-gray-300 mb-4">
               Oops! Couldn&apos;t load games from Itch.io right now.
             </p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-gray-300">
               Error: {error}
             </p>
             <Button 
@@ -160,7 +159,7 @@ export default function Home() {
             </div>
           ) : featuredGames.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-muted-foreground mb-4">
+            <p className="text-gray-300 mb-4">
               No games found in your Itch.io account.
             </p>
             <Button 
@@ -176,7 +175,8 @@ export default function Home() {
             <>
               {/* Newspaper-style Games Layout */}
               {/* First row: 2 columns, subsequent rows: 3 columns */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-0">
+              <div className="container mx-auto max-w-7xl px-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-0">
             {featuredGames.map((game, index) => {
               // Create alternating colors for newspaper effect
               const variants: Array<'white' | 'grey'> = ['white', 'grey'];
@@ -234,53 +234,95 @@ export default function Home() {
                     size={size}
                     isLastInRow={isLastInRow}
                     isLastRow={isLastRow}
+                    borderColor="border-gray-800"
                   />
                 </div>
               );
               })}
-            </div>
-              
-              {/* More Projects Gallery - Integrated - Hidden on small devices */}
-              {otherGames.length > 0 && (
-                <div className="mt-12 hidden md:block">
-                  <HorizontalGallery games={otherGames} />
-                  <div className="text-center mt-4">
-                    <a 
-                      href="https://lwcoding.itch.io/" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors underline underline-offset-2"
-                    >
-                      View all my games on Itch.io →
-                    </a>
-                  </div>
                 </div>
-              )}
+              </div>
             </>
           )}
+          </div>
         </div>
       </Section>
 
-      {/* Other Projects Section */}
-      <Section id="other-projects" separator={true}>
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">Other Projects</h2>
-        <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Beyond games, I&apos;ve worked on various websites, applications, and tools!
-        </p>
+      {/* Divider */}
+      <div className="w-full bg-white py-4">
+        <div className="text-center text-black">
+          <span className="inline-block align-middle">▼</span> or, see my other projects <span className="inline-block align-middle">▼</span>
+        </div>
+      </div>
 
-        {/* Other Projects Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-          {OTHER_PROJECTS_CONFIG.map((project) => (
-            <OtherProjectCard
-              key={project.id}
-              title={project.title}
-              description={project.description}
-              tags={project.tags}
-              href={project.href}
-              coverImage={project.coverImage}
-              createdAt={project.createdAt}
-            />
-          ))}
+      {/* Other Projects Section */}
+      <Section id="other-projects" separator={false} container={false} padding={false} className="px-0">
+        <div className="bg-white">
+          <div className="py-8">
+            {/* Newspaper-style Projects Layout */}
+            {/* First row: 2 columns, subsequent rows: 3 columns */}
+            <div className="container mx-auto max-w-7xl px-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-0">
+            {OTHER_PROJECTS_CONFIG.map((project, index) => {
+              // Create alternating colors for newspaper effect
+              const variants: Array<'white' | 'grey'> = ['white', 'grey'];
+              
+              // Determine which row this project is in
+              // First 2 projects: row 1 (2 columns)
+              // Projects 2+ (index 2+): row 2+ (3 columns each)
+              const isFirstRow = index < 2;
+              
+              // Calculate if this is the last item in its row
+              let isLastInRow = false;
+              if (isFirstRow) {
+                // First row: last item is at index 1
+                isLastInRow = index === 1;
+              } else {
+                // Subsequent rows: 3 items per row
+                const rowIndex = index - 2; // 0-based row index for rows after first
+                const positionInRow = rowIndex % 3;
+                isLastInRow = positionInRow === 2; // Last position in a 3-item row
+              }
+              
+              // First row: each item spans 3 columns (6/2 = 3)
+              // Subsequent rows: each item spans 2 columns (6/3 = 2)
+              const columnSpan = isFirstRow 
+                ? 'md:col-span-1 lg:col-span-3' 
+                : 'md:col-span-1 lg:col-span-2';
+              
+              // All items are medium size for consistency
+              const size: 'large' | 'medium' | 'small' = 'medium';
+              
+              const variant = variants[index % variants.length] as 'white' | 'grey';
+              
+              // Calculate if this is in the last row
+              const totalProjects = OTHER_PROJECTS_CONFIG.length;
+              const isLastRow = isFirstRow 
+                ? false 
+                : index >= totalProjects - 3; // Last 3 items are in the last row
+              
+              return (
+                <div key={project.id} className={`${columnSpan}`} style={{ aspectRatio: '3/2' }}>
+                  <NewspaperGameCard
+                    title={project.title}
+                    description={project.description}
+                    tags={project.tags}
+                    href={project.href}
+                    gradientClasses={gradientClasses[index % gradientClasses.length]}
+                    displayText="Project"
+                    coverImage={project.coverImage}
+                    createdAt={project.createdAt}
+                    variant={variant}
+                    size={size}
+                    isLastInRow={isLastInRow}
+                    isLastRow={isLastRow}
+                    borderColor="border-white"
+                  />
+                </div>
+              );
+            })}
+              </div>
+            </div>
+          </div>
         </div>
       </Section>
 

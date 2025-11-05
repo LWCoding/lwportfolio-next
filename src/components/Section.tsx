@@ -30,7 +30,10 @@ export default function Section({
       ? padding 
       : 'py-20';
   
-  const sectionClasses = `${paddingClass} px-4 ${backgroundClasses[background]} ${separator ? 'border-t border-border/50' : ''} ${className}`;
+  // Only add px-4 if className doesn't explicitly set horizontal padding
+  const horizontalPadding = className.includes('px-0') || className.includes('px-') ? '' : 'px-4';
+  
+  const sectionClasses = `${paddingClass} ${horizontalPadding} ${backgroundClasses[background]} ${separator ? 'border-t border-border/50' : ''} ${className}`;
   
   if (container) {
     return (

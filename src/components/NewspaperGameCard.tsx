@@ -18,6 +18,7 @@ interface NewspaperGameCardProps {
   size?: 'large' | 'medium' | 'small';
   isLastInRow?: boolean;
   isLastRow?: boolean;
+  borderColor?: string;
 }
 
 export default function NewspaperGameCard({
@@ -33,7 +34,8 @@ export default function NewspaperGameCard({
   variant = 'white',
   size = 'medium',
   isLastInRow = false,
-  isLastRow = false
+  isLastRow = false,
+  borderColor = "border-gray-300"
 }: NewspaperGameCardProps) {
   const [imageError, setImageError] = useState(false);
 
@@ -54,12 +56,22 @@ export default function NewspaperGameCard({
     });
   };
 
+  // Map border color class to actual color value
+  const getBorderColorValue = (colorClass: string): string => {
+    const colorMap: Record<string, string> = {
+      'border-gray-800': '#1f2937',
+      'border-white': '#ffffff',
+    };
+    return colorMap[colorClass] || '#e5e7eb'; // default to gray-300
+  };
+
   return (
     <Link 
       href={href} 
       target="_blank" 
       rel="noopener noreferrer"
-      className={`relative h-full w-full ${!isLastRow ? 'border-b' : ''} border-gray-300 ${!isLastInRow ? 'border-r' : ''} overflow-hidden cursor-pointer block group`}
+      className="relative h-full w-full overflow-hidden cursor-pointer block group border-4"
+      style={{ borderColor: getBorderColorValue(borderColor) }}
     >
       {/* Background Image - covers entire card */}
       <div className="absolute inset-0">
@@ -80,6 +92,9 @@ export default function NewspaperGameCard({
         )}
       </div>
 
+      {/* Ambient Dark Background Overlay - always visible */}
+      <div className="absolute inset-0 bg-black/10 z-[1]" />
+
       {/* View Count Badge */}
       {viewCount && (
         <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-xs z-10">
@@ -89,7 +104,7 @@ export default function NewspaperGameCard({
       )}
 
       {/* Gradient Overlay for text readability - transparent at top, black at bottom */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-[2]" />
 
       {/* Text Content Overlay */}
       <div className="absolute inset-x-0 bottom-0 p-4 md:p-6 lg:p-8 z-10 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
