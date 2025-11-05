@@ -10,6 +10,7 @@ import { useGames, FEATURED_GAMES_CONFIG } from "@/hooks/useFeaturedGames";
 import { OTHER_PROJECTS_CONFIG } from "@/data/otherProjects";
 import { useState, useEffect } from "react";
 import { calculateNewspaperGridProps } from "@/utils/newspaperGrid";
+import Image from "next/image";
 
 export default function Home() {
   const [isDesignModalOpen, setIsDesignModalOpen] = useState(false);
@@ -134,6 +135,8 @@ export default function Home() {
             >
               <source src="/videos/GameShowcase.mp4" type="video/mp4" />
             </video>
+            {/* Darker overlay on small devices */}
+            <div className="absolute inset-0 bg-black/40 md:bg-transparent z-10"></div>
           </div>
         </div>
 
@@ -366,6 +369,70 @@ export default function Home() {
               lswang05@stanford.edu
             </a>
           </p>
+          
+          {/* Social Icons */}
+          <div className="flex items-center justify-center gap-3 mt-4">
+            <a 
+              href="https://www.linkedin.com/in/lucas-wang-3160b720a/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 bg-white rounded-full transition-all duration-300 hover:scale-110 flex items-center justify-center cursor-pointer shadow-sm"
+              aria-label="Visit my LinkedIn profile"
+            >
+              <Image 
+                src="/images/linkedin.png" 
+                alt="LinkedIn" 
+                width={32}
+                height={32}
+                className="w-8 h-8 object-contain"
+              />
+            </a>
+            <a 
+              href="https://github.com/LWCoding"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 bg-white rounded-full transition-all duration-300 hover:scale-110 flex items-center justify-center cursor-pointer shadow-sm"
+              aria-label="Visit my GitHub profile"
+            >
+              <Image 
+                src="/images/github.png" 
+                alt="GitHub" 
+                width={32}
+                height={32}
+                className="w-8 h-8 object-contain"
+              />
+            </a>
+            <a 
+              href="https://lwcoding.itch.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 bg-white rounded-full transition-all duration-300 hover:scale-110 flex items-center justify-center cursor-pointer shadow-sm"
+              aria-label="Visit my Itch.io profile"
+            >
+              <Image 
+                src="/images/itchio.png" 
+                alt="Itch.io" 
+                width={32}
+                height={32}
+                className="w-8 h-8 object-contain"
+              />
+            </a>
+            <a 
+              href="https://scratch.mit.edu/users/LWCoding/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 bg-white rounded-full transition-all duration-300 hover:scale-110 flex items-center justify-center cursor-pointer shadow-sm"
+              aria-label="Visit my Scratch profile"
+            >
+              <Image 
+                src="/images/scratch.svg" 
+                alt="Scratch" 
+                width={32}
+                height={32}
+                className="w-8 h-8 object-contain"
+              />
+            </a>
+          </div>
         </div>
       </footer>
 
