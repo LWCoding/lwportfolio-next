@@ -95,6 +95,20 @@ export default function NewspaperGameCard({
       {/* Ambient Dark Background Overlay - always visible */}
       <div className="absolute inset-0 bg-black/10 z-[1]" />
 
+      {/* Tags - top left, shown on hover */}
+      {tags && tags.length > 0 && (
+        <div className="absolute top-2 left-2 flex flex-wrap gap-2 z-10 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+          {tags.map((tag, index) => (
+            <span
+              key={index}
+              className="bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-medium text-primary"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+
       {/* View Count Badge */}
       {viewCount && (
         <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-xs z-10">

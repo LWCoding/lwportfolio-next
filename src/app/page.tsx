@@ -28,91 +28,101 @@ export default function Home() {
       <Navigation />
 
       {/* Hero Section - Takes up remaining viewport height */}
-      <div className="flex-1 bg-white flex items-center" style={{ minHeight: 'calc(100vh - 64px - 56px)', height: 'calc(100vh - 64px - 56px)' }}>
-        <div className="w-full h-full">
-          <div className="container mx-auto px-4 h-full">
-            <div className="flex flex-col md:flex-row gap-8 md:gap-12 h-full items-center">
-              {/* Left Section - Text Content */}
-              <div className="flex-1 flex flex-col justify-center space-y-4 md:space-y-6">
-                <h1 className="text-5xl md:text-7xl font-bold text-black">
-                  lucas wang,
-                </h1>
-                
-                {/* Profession Lines */}
-                <div className="space-y-2 text-2xl md:text-3xl pl-6 md:pl-10">
-                  <p className="text-red-600">a game developer,</p>
-                  <p className="text-green-600">incentive designer,</p>
-                  <p className="text-orange-600">educator</p>
-                </div>
-
-                {/* Social Icons */}
-                <div className="flex gap-4 pt-4">
-                  {/* LinkedIn */}
-                  <a 
-                    href="https://www.linkedin.com/in/lucas-wang-3160b720a/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-white hover:bg-gray-100 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 flex items-center justify-center cursor-pointer border border-gray-200"
-                    aria-label="Visit my LinkedIn profile"
-                  >
-                    <Image 
-                      src="/images/linkedin.png" 
-                      alt="LinkedIn" 
-                      width={32}
-                      height={32}
-                      className="w-8 h-8 object-contain"
-                    />
-                  </a>
-
-                  {/* GitHub */}
-                  <a 
-                    href="https://github.com/LWCoding"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-white hover:bg-gray-100 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 flex items-center justify-center cursor-pointer border border-gray-200"
-                    aria-label="Visit my GitHub profile"
-                  >
-                    <Image 
-                      src="/images/github.png" 
-                      alt="GitHub" 
-                      width={32}
-                      height={32}
-                      className="w-8 h-8 object-contain"
-                    />
-                  </a>
-
-                  {/* Itch.io */}
-                  <a 
-                    href="https://lwcoding.itch.io/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-white hover:bg-gray-100 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 flex items-center justify-center cursor-pointer border border-gray-200"
-                    aria-label="Visit my Itch.io profile"
-                  >
-                    <Image 
-                      src="/images/itchio.png" 
-                      alt="Itch.io" 
-                      width={32}
-                      height={32}
-                      className="w-8 h-8 object-contain"
-                    />
-                  </a>
-                </div>
+      <div 
+        className="flex-1 flex items-center justify-center relative overflow-hidden" 
+        style={{ minHeight: 'calc(100vh - 64px - 56px)', height: 'calc(100vh - 64px - 56px)' }}
+      >
+        {/* Background Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/videos/GameShowcase.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-white/60 z-[2]" />
+        
+        {/* Centered Text Content */}
+        <div className="relative z-[3] container mx-auto px-4">
+          <div className="flex flex-col items-center justify-center text-center space-y-4 md:space-y-6">
+            {/* Text backdrop for enhanced readability */}
+            <div className="px-8 py-6 md:px-12 md:py-8 rounded-2xl bg-white/80 backdrop-blur-sm">
+              <h1 className="text-5xl md:text-7xl font-bold text-black drop-shadow-sm">
+                lucas wang!
+              </h1>
+              
+              {/* Profession Lines */}
+              <div className="space-y-2 text-2xl md:text-3xl text-black font-medium">
+                <p>game developer,</p>
+                <p>incentive designer,</p>
+                <p>educator</p>
               </div>
+            </div>
 
-              {/* Right Section - Placeholder */}
-              <div className="flex-1 md:max-w-[40%] bg-gray-200 rounded-lg flex items-center justify-center min-h-[400px] md:min-h-[500px]">
-                {/* Placeholder content - can be replaced with image later */}
-                <div className="text-gray-400 text-sm">Image placeholder</div>
-              </div>
+            {/* Social Icons */}
+            <div className="flex gap-4 pt-4">
+              {/* LinkedIn */}
+              <a 
+                href="https://www.linkedin.com/in/lucas-wang-3160b720a/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 bg-white hover:bg-gray-100 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 flex items-center justify-center cursor-pointer border border-gray-200"
+                aria-label="Visit my LinkedIn profile"
+              >
+                <Image 
+                  src="/images/linkedin.png" 
+                  alt="LinkedIn" 
+                  width={32}
+                  height={32}
+                  className="w-8 h-8 object-contain"
+                />
+              </a>
+
+              {/* GitHub */}
+              <a 
+                href="https://github.com/LWCoding"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 bg-white hover:bg-gray-100 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 flex items-center justify-center cursor-pointer border border-gray-200"
+                aria-label="Visit my GitHub profile"
+              >
+                <Image 
+                  src="/images/github.png" 
+                  alt="GitHub" 
+                  width={32}
+                  height={32}
+                  className="w-8 h-8 object-contain"
+                />
+              </a>
+
+              {/* Itch.io */}
+              <a 
+                href="https://lwcoding.itch.io/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 bg-white hover:bg-gray-100 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 flex items-center justify-center cursor-pointer border border-gray-200"
+                aria-label="Visit my Itch.io profile"
+              >
+                <Image 
+                  src="/images/itchio.png" 
+                  alt="Itch.io" 
+                  width={32}
+                  height={32}
+                  className="w-8 h-8 object-contain"
+                />
+              </a>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom Gray Bar */}
-      <div className="w-full bg-gray-800 py-4">
-        <div className="text-center text-white">
+      {/* Bottom Yellow Bar */}
+      <div className="w-full bg-yellow-400 py-4">
+        <div className="text-center text-black font-semibold">
           ▼ take a break, play a game ▼
         </div>
       </div>

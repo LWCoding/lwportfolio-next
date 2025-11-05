@@ -6,32 +6,32 @@ import { useState, useEffect } from 'react';
 const FEATURED_GAMES_CONFIG = [
   { 
     id: 3766251, 
-    tags: ["Placed #722 (9605 entries)"], 
-    description: "An arcade game made for the GMTK Jam 2025. Use new stylus technology to loop rats before they eat all of your cheese."
+    tags: ["🏆 GMTK 2025: #722/9605", "Unity/C#"], 
+    description: "An arcade game. Use new stylus technology to loop rats before they eat all of your cheese."
   },
   { 
     id: 2904867, 
-    tags: ["Placed #4266 (7557 entries)"], 
-    description: "An arcade game made for the GMTK Jam 2024. Cook food, serve customers, and manage a kitchen that gets larger every night."
+    tags: ["🏆 GMTK 2024: #4266/7557", "Unity/C#"], 
+    description: "An arcade game. Cook food, serve customers, and manage a kitchen that gets larger every night."
   },
   { 
     id: 1940212, 
-    tags: ["Placed #2 (25 entries)"], 
-    description: "A top-down shooter game made for the Wonderjam 4. Destroy enemy ships, get XP, and unlock upgrades to prolong your run."
+    tags: ["🏆 Wonderjam 4: #2/25 entries", "Unity/C#"], 
+    description: "A top-down shooter game. Destroy enemy ships, get XP, and unlock upgrades to prolong your run."
   },
   { 
     id: 2741477, 
-    tags: [], 
+    tags: ["Unity/C#"], 
     description: "A course project for CS247G: Design for Play where you play as a critter exploring a large, unfamiliar, damaged world."
   },
   { 
     id: 1865877, 
-    tags: [], 
+    tags: ["Unity/C#"], 
     description: "Named after our team's online initials, a card-battler RPG made for fun over 2 years! Build a deck of cards and fight enemies."
   },
   { 
     id: 1149440, 
-    tags: [], 
+    tags: ["Unity/C#"], 
     description: "An experimental 3D game made for fun! Inspired by Papers Please, screen potentially malicious boxes going through a warehouse."
   }
 ];
