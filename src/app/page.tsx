@@ -8,12 +8,47 @@ import ProjectCard from "@/components/ProjectCard";
 import NewspaperGameCard from "@/components/NewspaperGameCard";
 import { useGames } from "@/hooks/useFeaturedGames";
 import { OTHER_PROJECTS_CONFIG } from "@/data/otherProjects";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 export default function Home() {
   const [isDesignModalOpen, setIsDesignModalOpen] = useState(false);
   const { featuredGames, otherGames, loading, error } = useGames();
+  const [animatedProjects, setAnimatedProjects] = useState(0);
+  const [animatedViews, setAnimatedViews] = useState(0);
+
+  // Calculate totals
+  const totalProjects = featuredGames.length + otherGames.length + OTHER_PROJECTS_CONFIG.length;
+  const totalViews = [...featuredGames, ...otherGames].reduce((sum, game) => {
+    return sum + (game.views_count || 0);
+  }, 0);
+
+  // Animate counters
+  useEffect(() => {
+    if (!loading && totalProjects > 0) {
+      const duration = 2000; // 2 seconds
+      const steps = 60;
+      const stepTime = duration / steps;
+      
+      const projectsStep = totalProjects / steps;
+      const viewsStep = totalViews / steps;
+      
+      let currentStep = 0;
+      const interval = setInterval(() => {
+        currentStep++;
+        if (currentStep <= steps) {
+          setAnimatedProjects(Math.min(Math.floor(projectsStep * currentStep), totalProjects));
+          setAnimatedViews(Math.min(Math.floor(viewsStep * currentStep), totalViews));
+        } else {
+          setAnimatedProjects(totalProjects);
+          setAnimatedViews(totalViews);
+          clearInterval(interval);
+        }
+      }, stepTime);
+      
+      return () => clearInterval(interval);
+    }
+  }, [loading, totalProjects, totalViews]);
 
   // Simple gradient classes for variety
   const gradientClasses = [
@@ -24,106 +59,97 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col pt-[56px]">
       <Navigation />
 
-      {/* Hero Section - Takes up remaining viewport height */}
+      {/* Hero Section Container - Takes up 100vh minus navbar */}
       <div 
-        className="flex-1 flex items-center justify-center relative overflow-hidden" 
-        style={{ minHeight: 'calc(100vh - 64px - 56px)', height: 'calc(100vh - 64px - 56px)' }}
+        className="flex flex-col"
+        style={{ height: 'calc(100vh - 56px)' }}
       >
-        {/* Background Video */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+        {/* Hero Section - Flexible, takes remaining space */}
+        <div 
+          className="flex-1 flex items-start justify-center relative overflow-hidden"
         >
-          <source src="/videos/GameShowcase.mp4" type="video/mp4" />
-        </video>
-        
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-white/60 z-[2]" />
-        
-        {/* Centered Text Content */}
-        <div className="relative z-[3] container mx-auto px-4">
-          <div className="flex flex-col items-center justify-center text-center space-y-4 md:space-y-6">
-            {/* Text backdrop for enhanced readability */}
-            <div className="px-8 py-6 md:px-12 md:py-8 rounded-2xl bg-white/80 backdrop-blur-sm">
-              <h1 className="text-5xl md:text-7xl font-bold text-black drop-shadow-sm">
-                lucas wang!
-              </h1>
-              
-              {/* Profession Lines */}
-              <div className="space-y-2 text-2xl md:text-3xl text-black font-medium">
-                <p>game developer,</p>
-                <p>incentive designer,</p>
-                <p>educator</p>
+          {/* Background Video */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/videos/GameShowcase.mp4" type="video/mp4" />
+          </video>
+          
+          {/* Overlay for better text readability */}
+          <div className="absolute inset-0 bg-white/60 z-[2]" />
+          
+          {/* Text Content - Closer to top */}
+          <div className="relative z-[3] container mx-auto px-4 pt-12 md:pt-16">
+            <div className="flex flex-col items-center justify-start text-center">
+              {/* Combined backdrop for all content */}
+              <div className="px-8 py-6 md:px-12 md:py-8 rounded-2xl bg-white/80 backdrop-blur-sm space-y-4 md:space-y-5">
+                {/* Main Heading */}
+                <h1 className="text-5xl md:text-7xl font-bold text-black drop-shadow-sm">
+                  lucas wang!
+                </h1>
+
+                {/* Descriptive Text */}
+                <div className="max-w-2xl mx-auto">
+                  <p className="text-lg md:text-xl text-black font-medium">
+                    Crafting interactive experiences through game development, thoughtful incentive design, and educational innovation.
+                  </p>
+                </div>
+
+                {/* Stats Counter */}
+                <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-black">
+                  <div className="text-center">
+                    <div className="text-2xl md:text-3xl font-bold text-yellow-600">
+                      {loading ? '...' : animatedProjects.toLocaleString()}
+                    </div>
+                    <div className="text-xs md:text-sm font-medium mt-0.5">
+                      Projects
+                    </div>
+                  </div>
+                  <div className="hidden md:block w-px h-8 bg-black/20"></div>
+                  <div className="text-center">
+                    <div className="text-2xl md:text-3xl font-bold text-yellow-600">
+                      {loading ? '...' : animatedViews.toLocaleString()}
+                    </div>
+                    <div className="text-xs md:text-sm font-medium mt-0.5">
+                      Total Views
+                    </div>
+                  </div>
+                </div>
+
+                {/* Play Button CTA */}
+                <div className="flex justify-center pt-2">
+                  <a 
+                    href="#featured-projects"
+                    className="group flex items-center justify-center gap-3 px-8 py-4 bg-green-500 hover:bg-green-600 text-white font-bold text-lg rounded-full transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl cursor-pointer"
+                    aria-label="View featured games"
+                  >
+                    <svg 
+                      className="w-6 h-6 transition-transform group-hover:scale-110" 
+                      fill="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    <span>Play Games</span>
+                  </a>
+                </div>
               </div>
-            </div>
-
-            {/* Social Icons */}
-            <div className="flex gap-4 pt-4">
-              {/* LinkedIn */}
-              <a 
-                href="https://www.linkedin.com/in/lucas-wang-3160b720a/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 bg-white hover:bg-gray-100 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 flex items-center justify-center cursor-pointer border border-gray-200"
-                aria-label="Visit my LinkedIn profile"
-              >
-                <Image 
-                  src="/images/linkedin.png" 
-                  alt="LinkedIn" 
-                  width={32}
-                  height={32}
-                  className="w-8 h-8 object-contain"
-                />
-              </a>
-
-              {/* GitHub */}
-              <a 
-                href="https://github.com/LWCoding"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 bg-white hover:bg-gray-100 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 flex items-center justify-center cursor-pointer border border-gray-200"
-                aria-label="Visit my GitHub profile"
-              >
-                <Image 
-                  src="/images/github.png" 
-                  alt="GitHub" 
-                  width={32}
-                  height={32}
-                  className="w-8 h-8 object-contain"
-                />
-              </a>
-
-              {/* Itch.io */}
-              <a 
-                href="https://lwcoding.itch.io/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 bg-white hover:bg-gray-100 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 flex items-center justify-center cursor-pointer border border-gray-200"
-                aria-label="Visit my Itch.io profile"
-              >
-                <Image 
-                  src="/images/itchio.png" 
-                  alt="Itch.io" 
-                  width={32}
-                  height={32}
-                  className="w-8 h-8 object-contain"
-                />
-              </a>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Yellow Bar */}
-      <div className="w-full bg-yellow-400 py-4">
-        <div className="text-center text-black font-semibold">
-          ▼ take a break, play a game ▼
+        {/* Bottom Yellow Bar */}
+        <div className="w-full bg-yellow-400 py-4 flex-shrink-0">
+          <div className="text-center text-black font-semibold">
+            ▼ take a break, play a game ▼
+          </div>
         </div>
       </div>
 
