@@ -123,23 +123,15 @@ export default function NewspaperGameCard({
     });
   };
 
-  // Map border color class to actual color value
-  const getBorderColorValue = (colorClass: string): string => {
-    const colorMap: Record<string, string> = {
-      'border-gray-800': '#1f2937',
-      'border-white': '#ffffff',
-    };
-    return colorMap[colorClass] || '#e5e7eb'; // default to gray-300
-  };
+  // No border color mapping needed; borders removed in favor of margins
 
   return (
     <Link 
       href={href} 
       target="_blank" 
       rel="noopener noreferrer"
-      className="relative h-full w-full overflow-hidden cursor-pointer block group border-[12px]"
+      className="relative h-full w-full overflow-hidden cursor-pointer block group"
       style={{ 
-        borderColor: getBorderColorValue(borderColor),
         borderRadius: '1rem'
       }}
       onMouseEnter={() => isDesktop && setIsHovered(true)}

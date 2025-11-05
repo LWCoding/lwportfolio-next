@@ -150,7 +150,7 @@ export default function Home() {
 
       {/* Games Gallery */}
       <Section separator={false} container={false} padding={false} className="px-0">
-        <div className="bg-gray-800 flex">
+        <div className="bg-yellow-600 flex">
           {/* Yellow Strip with GAMES */}
           <div className="bg-yellow-400 flex items-center justify-center w-12 md:w-16 flex-shrink-0">
             <div className="text-black font-bold text-lg md:text-xl whitespace-nowrap" style={{ transform: 'rotate(-90deg)' }}>
@@ -167,11 +167,10 @@ export default function Home() {
             {[...Array(FEATURED_GAMES_CONFIG.length)].map((_: unknown, i: number) => {
               const gridProps = calculateNewspaperGridProps(i, FEATURED_GAMES_CONFIG.length);
               return (
-                <div key={i} className={gridProps.columnSpan} style={{ aspectRatio: '3/2' }}>
+                <div key={i} className={`${gridProps.columnSpan} p-2 md:p-3`} style={{ aspectRatio: '3/2' }}>
                   <div 
-                    className="relative h-full w-full overflow-hidden animate-pulse border-[12px]"
+                    className="relative h-full w-full overflow-hidden animate-pulse"
                     style={{ 
-                      borderColor: '#1f2937',
                       borderRadius: '1rem'
                     }}
                   >
@@ -232,7 +231,7 @@ export default function Home() {
               const size: 'large' | 'medium' | 'small' = 'medium';
               
               return (
-                <div key={game.id} className={gridProps.columnSpan} style={{ aspectRatio: '3/2' }}>
+                <div key={game.id} className={`${gridProps.columnSpan} p-2 md:p-3`} style={{ aspectRatio: '3/2' }}>
                   <NewspaperGameCard
                     title={game.title}
                     description={game.short_text || "An exciting game experience awaits!"}
@@ -247,7 +246,6 @@ export default function Home() {
                     size={size}
                     isLastInRow={gridProps.isLastInRow}
                     isLastRow={gridProps.isLastRow}
-                    borderColor="border-gray-800"
                     platforms={game.platforms}
                   />
                 </div>
@@ -263,7 +261,7 @@ export default function Home() {
       </Section>
 
       {/* Divider */}
-      <div className="w-full bg-gray-300 py-4">
+      <div className="w-full bg-blue-300 py-4">
         <div className="text-center text-black font-semibold">
           <span className="inline-block align-middle">▼</span> or instead, see one of my other projects <span className="inline-block align-middle">▼</span>
         </div>
@@ -271,9 +269,9 @@ export default function Home() {
 
       {/* Other Projects Section */}
       <Section id="other-projects" separator={false} container={false} padding={false} className="px-0">
-        <div className="bg-gray-800 flex">
-          {/* Gray Strip with PROJECTS */}
-          <div className="bg-gray-300 flex items-center justify-center w-12 md:w-16 flex-shrink-0">
+        <div className="bg-blue-950 flex">
+          {/* Blue Strip with PROJECTS */}
+          <div className="bg-blue-300 flex items-center justify-center w-12 md:w-16 flex-shrink-0">
             <div className="text-black font-bold text-lg md:text-xl whitespace-nowrap" style={{ transform: 'rotate(-90deg)' }}>
               PROJECTS
             </div>
@@ -290,7 +288,7 @@ export default function Home() {
               const size: 'large' | 'medium' | 'small' = 'medium';
               
               return (
-                <div key={project.id} className={gridProps.columnSpan} style={{ aspectRatio: '3/2' }}>
+                <div key={project.id} className={`${gridProps.columnSpan} p-2 md:p-3`} style={{ aspectRatio: '3/2' }}>
                   <NewspaperGameCard
                     title={project.title}
                     description={project.description}
@@ -304,7 +302,6 @@ export default function Home() {
                     size={size}
                     isLastInRow={gridProps.isLastInRow}
                     isLastRow={gridProps.isLastRow}
-                    borderColor="border-gray-800"
                     platforms={project.platforms}
                   />
                 </div>
