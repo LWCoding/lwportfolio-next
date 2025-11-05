@@ -321,7 +321,7 @@ export default function Home() {
         <div className="bg-yellow-400 py-8 md:py-12">
           <div className="container mx-auto max-w-7xl px-4">
             <h2 className="text-3xl md:text-4xl font-bold text-center text-black">
-              Journey
+              about my journey
             </h2>
           </div>
         </div>
@@ -359,7 +359,7 @@ export default function Home() {
       <footer id="contact" className="py-6 px-4 border-t border-black/20 bg-yellow-400 mt-auto scroll-mt-[64px]">
         <div className="container mx-auto max-w-4xl text-center">
           <p className="text-black font-bold">
-            © {new Date().getFullYear()} Lucas Wang
+            lucas wang © {new Date().getFullYear()}
           </p>
           <p className="text-sm text-black font-bold mt-1">
             <a 

@@ -42,6 +42,7 @@ export default function NewspaperGameCard({
   const [imageError, setImageError] = useState(false);
   const [hoverTranslateY, setHoverTranslateY] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const publishedDateRef = useRef<HTMLParagraphElement>(null);
   const hoverContentRef = useRef<HTMLDivElement>(null);
@@ -81,6 +82,30 @@ export default function NewspaperGameCard({
     };
   }, [title, description, createdAt]);
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    const listener = (e: MediaQueryListEvent | MediaQueryList) => {
+      setIsDesktop('matches' in e ? e.matches : (e as MediaQueryList).matches);
+    };
+    // Initialize
+    listener(mediaQuery);
+    // Listen for changes
+    if ('addEventListener' in mediaQuery) {
+      mediaQuery.addEventListener('change', listener as (ev: Event) => void);
+    } else {
+      // @ts-expect-error Safari fallback
+      mediaQuery.addListener(listener);
+    }
+    return () => {
+      if ('removeEventListener' in mediaQuery) {
+        mediaQuery.removeEventListener('change', listener as (ev: Event) => void);
+      } else {
+        // @ts-expect-error Safari fallback
+        mediaQuery.removeListener(listener);
+      }
+    };
+  }, []);
+
   const formatNumber = (num: number) => {
     if (num >= 1000000) {
       return `${(num / 1000000).toFixed(1)}M`;
@@ -117,8 +142,8 @@ export default function NewspaperGameCard({
         borderColor: getBorderColorValue(borderColor),
         borderRadius: '1rem'
       }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={() => isDesktop && setIsHovered(true)}
+      onMouseLeave={() => isDesktop && setIsHovered(false)}
     >
       {/* Background Image - covers entire card */}
       <div className="absolute inset-0 overflow-hidden" style={{ borderRadius: '1rem' }}>
@@ -144,11 +169,11 @@ export default function NewspaperGameCard({
 
       {/* Tags - top left, always visible */}
       {tags && tags.length > 0 && (
-        <div className="absolute top-2 left-2 flex flex-wrap gap-2 z-10">
+        <div className="absolute top-2 left-2 z-10 flex flex-col gap-1 max-w-[65%] md:max-w-none md:flex-row md:flex-wrap md:gap-2">
           {tags.map((tag, index) => (
             <span
               key={index}
-              className="bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-medium text-primary"
+              className="bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-medium text-black w-fit whitespace-normal break-words"
             >
               {tag}
             </span>
@@ -165,14 +190,14 @@ export default function NewspaperGameCard({
       )}
 
       {/* Gradient Overlay for text readability - extends upward on hover */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/85 z-[2] group-hover:bg-gradient-to-b group-hover:from-transparent group-hover:via-black/40 group-hover:to-black/90 transition-all duration-300" style={{ borderRadius: '1rem' }} />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/85 z-[2] md:group-hover:bg-gradient-to-b md:group-hover:from-transparent md:group-hover:via-black/40 md:group-hover:to-black/90 transition-all duration-300" style={{ borderRadius: '1rem' }} />
 
       {/* Text Content Container - starts at bottom, moves up on hover */}
       <div 
         ref={containerRef}
         className="absolute left-0 bottom-0 right-0 px-4 md:px-6 lg:px-8 pb-3 z-10 transition-transform duration-300"
         style={{
-          transform: `translateY(${isHovered ? hoverTranslateY : 0}px)`,
+          transform: `translateY(${isDesktop && isHovered ? hoverTranslateY : 0}px)`,
         }}
       >
         {/* Title - Always visible, starts at bottom left */}
@@ -237,7 +262,7 @@ export default function NewspaperGameCard({
         {/* Hover Content - Description only - Absolutely positioned below title */}
         <div 
           ref={hoverContentRef}
-          className="absolute left-0 top-full mt-1 w-full px-4 md:px-6 lg:px-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75"
+          className="absolute left-0 top-full mt-1 w-full px-4 md:px-6 lg:px-8 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 delay-75"
         >
           <p className="text-sm md:text-base text-white drop-shadow-md">
             {description}

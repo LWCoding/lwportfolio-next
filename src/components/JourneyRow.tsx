@@ -22,7 +22,7 @@ export default function JourneyRow({
   const isReversed = layoutDirection === "right";
 
   return (
-    <div className={`w-full ${bgColor} relative overflow-hidden py-8 md:py-12`}>
+    <div className={`w-full ${bgColor} relative overflow-hidden py-6 md:py-8`}>
       <div className="container mx-auto max-w-7xl px-4 md:px-6">
         <div
           className={`relative flex flex-col ${
@@ -31,22 +31,22 @@ export default function JourneyRow({
         >
           {/* Text Section */}
           <div
-            className={`w-full md:w-[55%] space-y-4 md:space-y-6 ${
-              isReversed ? "md:pl-8" : "md:pr-8"
+            className={`w-full md:w-[55%] space-y-3 md:space-y-4 ${
+              isReversed ? "md:pl-6" : "md:pr-6"
             } relative z-10`}
           >
-            <h3 className="text-2xl md:text-4xl font-bold text-black">
+            <h3 className="text-2xl md:text-3xl font-bold text-black">
               {title}
             </h3>
-            <p className="text-base md:text-xl text-gray-800 leading-relaxed">
+            <p className="text-base md:text-lg text-gray-800 leading-normal md:leading-relaxed">
               {description}
             </p>
           </div>
 
           {/* Image Section with Diagonal Cut */}
           <div
-            className={`w-full md:w-[45%] relative aspect-video md:aspect-auto md:h-[500px] mt-6 md:mt-0 ${
-              isReversed ? "md:pr-8" : "md:pl-8"
+            className={`w-full md:w-[45%] relative aspect-video md:aspect-auto md:h-[380px] mt-6 md:mt-0 ${
+              isReversed ? "md:pr-6" : "md:pl-6"
             } overflow-hidden`}
           >
             <div className="absolute inset-0">
