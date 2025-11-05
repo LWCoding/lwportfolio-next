@@ -12,29 +12,29 @@ export interface OtherProject {
 // Configure your other projects here
 export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   {
-    id: 'portfolio-website',
-    title: 'Portfolio Website',
-    description: 'You\'re here now! A modern, responsive portfolio website showcasing my favorite projects and skills.',
-    tags: ['Website', 'Next.js'],
-    href: '/',
-    coverImage: '/images/portfoliosite.png',
-    createdAt: '2025-08-26',
-    platforms: ['html5']
-  },
-  {
     id: 'always-be-closing',
     title: 'Always Be Closing',
-    description: 'A simulation of customer management software designed to train salespeople to be more effective in their sales calls.',
-    tags: ['Tool', 'Unity'],
+    description: 'A simulation of customer management software designed to train salespeople to be more effective in their sales calls. Being used to teach STRAMGT351 at Stanford.',
+    tags: ['Simulation', 'Unity/C#'],
     href: 'https://sale-prod.s3.amazonaws.com/Build_Prod/index.html',
     coverImage: '/images/alwaysbeclosing.png',
     createdAt: '2025-06-15',
     platforms: ['html5']
   },
   {
+    id: 'immersifyvr',
+    title: 'ImmersifyVR App',
+    description: 'A VR exercise application designed to motivate older adults to exercise. Includes activities across a range of exercise intensities, as recommended by the World Health Organization.',
+    tags: ['App', 'Virtual Reality', 'Unity/C#'],
+    href: 'https://www.immersifyvr.org/',
+    coverImage: '/images/immersifyvr.png',
+    createdAt: '2024-10-24',
+    platforms: ['html5']
+  },
+  {
     id: 'cs11si',
     title: 'CS11SI Website',
-    description: 'Course website for CS11SI at Stanford University, a course teaching virtual reality development.',
+    description: 'Course website for CS11SI at Stanford University, a course teaching Unity\'s XR Interaction Toolkit.',
     tags: ['Website', 'Next.js'],
     href: 'https://web.stanford.edu/class/cs11si/',
     coverImage: '/images/cs11si.png',

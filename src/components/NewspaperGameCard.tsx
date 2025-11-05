@@ -68,7 +68,7 @@ export default function NewspaperGameCard({
         hoverContentRef.current.style.visibility = '';
         
         // Set the translate value for hover state
-        setHoverTranslateY(-totalHeight * 0.9);
+        setHoverTranslateY(-totalHeight * 0.7);
       }
     };
 
