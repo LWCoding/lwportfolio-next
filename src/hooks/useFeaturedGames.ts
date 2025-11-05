@@ -7,32 +7,38 @@ const FEATURED_GAMES_CONFIG = [
   { 
     id: 3766251, 
     tags: ["🏆 GMTK 2025: #722/9605", "Unity/C#"], 
-    description: "An arcade game. Use new stylus technology to loop rats before they eat all of your cheese."
+    description: "An arcade game. Use new stylus technology to loop rats before they eat all of your cheese.",
+    platforms: ['windows', 'apple', 'linux', 'html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
   },
   { 
     id: 2904867, 
     tags: ["🏆 GMTK 2024: #4266/7557", "Unity/C#"], 
-    description: "An arcade game. Cook food, serve customers, and manage a kitchen that gets larger every night."
+    description: "An arcade game. Cook food, serve customers, and manage a kitchen that gets larger every night.",
+    platforms: ['windows', 'apple', 'linux', 'html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
   },
   { 
     id: 1940212, 
     tags: ["🏆 Wonderjam 4: #2/25 entries", "Unity/C#"], 
-    description: "A top-down shooter game. Destroy enemy ships, get XP, and unlock upgrades to prolong your run."
+    description: "A top-down shooter game. Destroy enemy ships, get XP, and unlock upgrades to prolong your run.",
+    platforms: ['windows', 'html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
   },
   { 
     id: 2741477, 
     tags: ["Unity/C#"], 
-    description: "A course project for CS247G: Design for Play where you play as a critter exploring a large, unfamiliar, damaged world."
+    description: "A course project for CS247G: Design for Play where you play as a critter exploring a large, unfamiliar, damaged world.",
+    platforms: ['windows', 'html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
   },
   { 
     id: 1865877, 
     tags: ["Unity/C#"], 
-    description: "Named after our team's online initials, a card-battler RPG made for fun over 2 years! Build a deck of cards and fight enemies."
+    description: "Named after our team's online initials, a card-battler RPG made for fun over 2 years! Build a deck of cards and fight enemies.",
+    platforms: ['windows', 'apple', 'linux', 'html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
   },
   { 
     id: 1149440, 
     tags: ["Unity/C#"], 
-    description: "An experimental 3D game made for fun! Inspired by Papers Please, screen potentially malicious boxes going through a warehouse."
+    description: "An experimental 3D game made for fun! Inspired by Papers Please, screen potentially malicious boxes going through a warehouse.",
+    platforms: ['windows', 'html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
   }
 ];
 
@@ -52,6 +58,7 @@ export interface GameData {
   tags?: string[];
   created_at?: string;
   classification?: string;
+  platforms?: ('windows' | 'apple' | 'html5' | 'linux')[];
 }
 
 interface GamesState {
@@ -92,6 +99,7 @@ export function useGames() {
             if (game) {
               game.tags = config.tags;  // Override the tags with our own, screw those :)
               game.short_text = config.description; // Override description too!
+              game.platforms = config.platforms; // Add platforms from config
             }
             return game || null;
           }).filter((game): game is GameData => game !== null);

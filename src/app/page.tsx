@@ -81,7 +81,7 @@ export default function Home() {
 
               {/* Descriptive Text */}
               <p className="text-base md:text-lg text-black font-medium">
-                Crafting interactive experiences through game development, thoughtful incentive design, and educational innovation.
+                crafting interactive experiences through game development, thoughtful incentive design, and educational innovation.
               </p>
 
               {/* Stats Counter */}
@@ -138,7 +138,7 @@ export default function Home() {
         </div>
 
         {/* Bottom Yellow Bar */}
-        <div className="w-full bg-yellow-400 py-4 flex-shrink-0">
+        <div id="featured-projects" className="w-full bg-yellow-400 py-4 flex-shrink-0 scroll-mt-[64px]">
           <div className="text-center text-black font-semibold">
             ▼ take a break, play a game ▼
           </div>
@@ -146,7 +146,7 @@ export default function Home() {
       </div>
 
       {/* Games Gallery */}
-      <Section id="featured-projects" separator={false} container={false} padding={false} className="px-0">
+      <Section separator={false} container={false} padding={false} className="px-0">
         <div className="bg-gray-800 flex">
           {/* Yellow Strip with GAMES */}
           <div className="bg-yellow-400 flex items-center justify-center w-12 md:w-16 flex-shrink-0">
@@ -234,6 +234,7 @@ export default function Home() {
                     isLastInRow={gridProps.isLastInRow}
                     isLastRow={gridProps.isLastRow}
                     borderColor="border-gray-800"
+                    platforms={game.platforms}
                   />
                 </div>
               );
@@ -290,6 +291,7 @@ export default function Home() {
                     isLastInRow={gridProps.isLastInRow}
                     isLastRow={gridProps.isLastRow}
                     borderColor="border-gray-800"
+                    platforms={project.platforms}
                   />
                 </div>
               );
@@ -300,13 +302,9 @@ export default function Home() {
           </div>
         </div>
       </Section>
-
-      {/* Bottom Gray Bar */}
-      <div className="w-full bg-gray-300 py-4"></div>
-
       {/* Journey Section */}
-      <Section id="journey" separator={false} container={false} padding={false} className="px-0">
-        <div className="bg-yellow-400 py-8 md:py-12">
+      <Section id="journey" separator={false} container={false} padding={false} className="px-0 scroll-mt-[64px]">
+        <div className="bg-yellow-400 py-8 md:py-16">
           <div className="container mx-auto max-w-7xl px-4">
             <h2 className="text-3xl md:text-4xl font-bold text-center text-black">
               Journey
@@ -344,7 +342,7 @@ export default function Home() {
       </Section>
 
       {/* Footer / Contact */}
-      <footer id="contact" className="py-6 px-4 border-t border-black/20 bg-yellow-400 mt-auto">
+      <footer id="contact" className="py-6 px-4 border-t border-black/20 bg-yellow-400 mt-auto scroll-mt-[64px]">
         <div className="container mx-auto max-w-4xl text-center">
           <p className="text-black font-bold">
             © {new Date().getFullYear()} Lucas Wang

@@ -19,6 +19,7 @@ interface NewspaperGameCardProps {
   isLastInRow?: boolean;
   isLastRow?: boolean;
   borderColor?: string;
+  platforms?: ('windows' | 'apple' | 'html5' | 'linux')[];
 }
 
 export default function NewspaperGameCard({
@@ -35,7 +36,8 @@ export default function NewspaperGameCard({
   size = 'medium',
   isLastInRow = false,
   isLastRow = false,
-  borderColor = "border-gray-300"
+  borderColor = "border-gray-300",
+  platforms = []
 }: NewspaperGameCardProps) {
   const [imageError, setImageError] = useState(false);
   const [hoverTranslateY, setHoverTranslateY] = useState(0);
@@ -169,9 +171,56 @@ export default function NewspaperGameCard({
         }}
       >
         {/* Title - Always visible, starts at bottom left */}
-        <h3 ref={titleRef} className="text-xl md:text-2xl lg:text-3xl font-bold text-white drop-shadow-lg">
-          {title}
-        </h3>
+        <div className="flex items-center gap-2 flex-wrap">
+          <h3 ref={titleRef} className="text-xl md:text-2xl lg:text-3xl font-bold text-white drop-shadow-lg leading-tight">
+            {title}
+          </h3>
+          {/* Platform Logos */}
+          {platforms && platforms.length > 0 && (
+            <div className="flex items-center gap-1.5 self-center">
+              {platforms.includes('windows') && (
+                <img 
+                  src="/images/windows.png" 
+                  alt="Windows" 
+                  width={20} 
+                  height={20} 
+                  className="opacity-90 drop-shadow-md align-middle"
+                  style={{ verticalAlign: 'middle' }}
+                />
+              )}
+              {platforms.includes('apple') && (
+                <img 
+                  src="/images/apple.png" 
+                  alt="Apple" 
+                  width={20} 
+                  height={20} 
+                  className="opacity-90 drop-shadow-md align-middle"
+                  style={{ verticalAlign: 'middle', filter: 'brightness(0) invert(1)' }}
+                />
+              )}
+              {platforms.includes('html5') && (
+                <img 
+                  src="/images/html5.png" 
+                  alt="HTML5" 
+                  width={20} 
+                  height={20} 
+                  className="opacity-90 drop-shadow-md align-middle"
+                  style={{ verticalAlign: 'middle' }}
+                />
+              )}
+              {platforms.includes('linux') && (
+                <img 
+                  src="/images/linux.png" 
+                  alt="Linux" 
+                  width={20} 
+                  height={20} 
+                  className="opacity-90 drop-shadow-md align-middle"
+                  style={{ verticalAlign: 'middle' }}
+                />
+              )}
+            </div>
+          )}
+        </div>
 
         {/* Hover Content - Description and Published Date - Absolutely positioned below title */}
         <div 

@@ -6,6 +6,7 @@ export interface OtherProject {
   href: string;
   coverImage?: string;
   createdAt?: string;
+  platforms?: ('windows' | 'apple' | 'html5' | 'linux')[];
 }
 
 // Configure your other projects here
@@ -17,7 +18,8 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     tags: ['Website', 'Next.js'],
     href: '/',
     coverImage: '/images/portfoliosite.png',
-    createdAt: '2025-08-26'
+    createdAt: '2025-08-26',
+    platforms: ['html5']
   },
   {
     id: 'always-be-closing',
@@ -26,7 +28,8 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     tags: ['Tool', 'Unity'],
     href: 'https://sale-prod.s3.amazonaws.com/Build_Prod/index.html',
     coverImage: '/images/alwaysbeclosing.png',
-    createdAt: '2025-06-15'
+    createdAt: '2025-06-15',
+    platforms: ['html5']
   },
   {
     id: 'cs11si',
@@ -35,7 +38,8 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     tags: ['Website', 'Next.js'],
     href: 'https://web.stanford.edu/class/cs11si/',
     coverImage: '/images/cs11si.png',
-    createdAt: '2025-09-05'
+    createdAt: '2025-09-05',
+    platforms: ['html5']
   },
   {
     id: 'cs42si',
@@ -44,7 +48,8 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     tags: ['Website', 'Next.js'],
     href: 'https://web.stanford.edu/class/cs42si/',
     coverImage: '/images/cs42si.png',
-    createdAt: '2025-09-03'
+    createdAt: '2025-09-03',
+    platforms: ['html5']
   },
   {
     id: 'planet',
@@ -53,7 +58,8 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     tags: ['App', 'React Native'],
     href: 'https://hci.stanford.edu/courses/cs147/2024/au/projects/Technology-for-Mental-Health/Planet/',
     coverImage: '/images/planet.png',
-    createdAt: '2024-12-09'
+    createdAt: '2024-12-09',
+    platforms: ['apple', 'html5']
   },
   {
     id: 'obscure-courses',
@@ -62,7 +68,8 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     tags: ['Website', 'Svelte'],
     href: 'https://obscure-courses.vercel.app/',
     coverImage: '/images/obscurecourses.png',
-    createdAt: '2024-02-10'
+    createdAt: '2024-02-10',
+    platforms: ['html5']
   },
   // Add more projects here...
 ];
