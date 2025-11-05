@@ -284,7 +284,7 @@ export default function Home() {
 
       {/* Other Projects Section */}
       <Section id="other-projects" separator={false} container={false} padding={false} className="px-0">
-        <div className="bg-white">
+        <div className="bg-gray-800">
           <div className="py-12 md:py-16">
             {/* Newspaper-style Projects Layout */}
             {/* First row: 2 columns, subsequent rows: 3 columns */}
@@ -343,7 +343,7 @@ export default function Home() {
                     size={size}
                     isLastInRow={isLastInRow}
                     isLastRow={isLastRow}
-                    borderColor="border-white"
+                    borderColor="border-gray-800"
                   />
                 </div>
               );
