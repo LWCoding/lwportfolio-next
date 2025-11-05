@@ -4,12 +4,12 @@ import Button from "@/components/Button";
 import Navigation from "@/components/Navigation";
 import Section from "@/components/Section";
 import DesignModal from "@/components/DesignModal";
-import ProjectCard from "@/components/ProjectCard";
 import NewspaperGameCard from "@/components/NewspaperGameCard";
+import JourneyRow from "@/components/JourneyRow";
 import { useGames } from "@/hooks/useFeaturedGames";
 import { OTHER_PROJECTS_CONFIG } from "@/data/otherProjects";
 import { useState, useEffect } from "react";
-import Image from "next/image";
+import { calculateNewspaperGridProps } from "@/utils/newspaperGrid";
 
 export default function Home() {
   const [isDesignModalOpen, setIsDesignModalOpen] = useState(false);
@@ -206,48 +206,11 @@ export default function Home() {
               <div className="container mx-auto max-w-7xl px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-0">
             {featuredGames.map((game, index) => {
-              // Create alternating colors for newspaper effect
-              const variants: Array<'white' | 'grey'> = ['white', 'grey'];
-              
-              // Determine which row this game is in
-              // First 2 games: row 1 (2 columns)
-              // Games 2+ (index 2+): row 2+ (3 columns each)
-              const isFirstRow = index < 2;
-              
-              // Calculate if this is the last item in its row
-              let isLastInRow = false;
-              if (isFirstRow) {
-                // First row: last item is at index 1
-                isLastInRow = index === 1;
-              } else {
-                // Subsequent rows: 3 items per row
-                // Row 2: indices 2, 3, 4 (last at 4)
-                // Row 3: indices 5, 6, 7 (last at 7)
-                // Row 4: indices 8, 9, 10 (last at 10)
-                const rowIndex = index - 2; // 0-based row index for rows after first
-                const positionInRow = rowIndex % 3;
-                isLastInRow = positionInRow === 2; // Last position in a 3-item row
-              }
-              
-              // First row: each item spans 3 columns (6/2 = 3)
-              // Subsequent rows: each item spans 2 columns (6/3 = 2)
-              const columnSpan = isFirstRow 
-                ? 'md:col-span-1 lg:col-span-3' 
-                : 'md:col-span-1 lg:col-span-2';
-              
-              // All items are medium size for consistency
+              const gridProps = calculateNewspaperGridProps(index, featuredGames.length);
               const size: 'large' | 'medium' | 'small' = 'medium';
               
-              const variant = variants[index % variants.length] as 'white' | 'grey';
-              
-              // Calculate if this is in the last row
-              const totalGames = featuredGames.length;
-              const isLastRow = isFirstRow 
-                ? false 
-                : index >= totalGames - 3; // Last 3 items are in the last row
-              
               return (
-                <div key={game.id} className={`${columnSpan}`} style={{ aspectRatio: '3/2' }}>
+                <div key={game.id} className={gridProps.columnSpan} style={{ aspectRatio: '3/2' }}>
                   <NewspaperGameCard
                     title={game.title}
                     description={game.short_text || "An exciting game experience awaits!"}
@@ -258,10 +221,10 @@ export default function Home() {
                     coverImage={game.still_cover_url || game.cover_url}
                     viewCount={game.views_count}
                     createdAt={game.created_at}
-                    variant={variant}
+                    variant={gridProps.variant}
                     size={size}
-                    isLastInRow={isLastInRow}
-                    isLastRow={isLastRow}
+                    isLastInRow={gridProps.isLastInRow}
+                    isLastRow={gridProps.isLastRow}
                     borderColor="border-gray-800"
                   />
                 </div>
@@ -291,45 +254,11 @@ export default function Home() {
             <div className="container mx-auto max-w-7xl px-4">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-0">
             {OTHER_PROJECTS_CONFIG.map((project, index) => {
-              // Create alternating colors for newspaper effect
-              const variants: Array<'white' | 'grey'> = ['white', 'grey'];
-              
-              // Determine which row this project is in
-              // First 2 projects: row 1 (2 columns)
-              // Projects 2+ (index 2+): row 2+ (3 columns each)
-              const isFirstRow = index < 2;
-              
-              // Calculate if this is the last item in its row
-              let isLastInRow = false;
-              if (isFirstRow) {
-                // First row: last item is at index 1
-                isLastInRow = index === 1;
-              } else {
-                // Subsequent rows: 3 items per row
-                const rowIndex = index - 2; // 0-based row index for rows after first
-                const positionInRow = rowIndex % 3;
-                isLastInRow = positionInRow === 2; // Last position in a 3-item row
-              }
-              
-              // First row: each item spans 3 columns (6/2 = 3)
-              // Subsequent rows: each item spans 2 columns (6/3 = 2)
-              const columnSpan = isFirstRow 
-                ? 'md:col-span-1 lg:col-span-3' 
-                : 'md:col-span-1 lg:col-span-2';
-              
-              // All items are medium size for consistency
+              const gridProps = calculateNewspaperGridProps(index, OTHER_PROJECTS_CONFIG.length);
               const size: 'large' | 'medium' | 'small' = 'medium';
               
-              const variant = variants[index % variants.length] as 'white' | 'grey';
-              
-              // Calculate if this is in the last row
-              const totalProjects = OTHER_PROJECTS_CONFIG.length;
-              const isLastRow = isFirstRow 
-                ? false 
-                : index >= totalProjects - 3; // Last 3 items are in the last row
-              
               return (
-                <div key={project.id} className={`${columnSpan}`} style={{ aspectRatio: '3/2' }}>
+                <div key={project.id} className={gridProps.columnSpan} style={{ aspectRatio: '3/2' }}>
                   <NewspaperGameCard
                     title={project.title}
                     description={project.description}
@@ -339,10 +268,10 @@ export default function Home() {
                     displayText="Project"
                     coverImage={project.coverImage}
                     createdAt={project.createdAt}
-                    variant={variant}
+                    variant={gridProps.variant}
                     size={size}
-                    isLastInRow={isLastInRow}
-                    isLastRow={isLastRow}
+                    isLastInRow={gridProps.isLastInRow}
+                    isLastRow={gridProps.isLastRow}
                     borderColor="border-gray-800"
                   />
                 </div>
@@ -358,12 +287,39 @@ export default function Home() {
 
 
 
-      {/* Journey Section - Placeholder */}
-      <Section id="journey" separator={true}>
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">Journey</h2>
-        <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Coming soon...
-        </p>
+      {/* Journey Section */}
+      <Section id="journey" separator={true} container={false} padding={false} className="px-0">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16 text-black py-8 px-4">
+          Journey
+        </h2>
+        
+        {/* Journey Rows */}
+        <div className="space-y-0">
+          <JourneyRow
+            title="Starting Out"
+            description="My journey in game development began with a curiosity about how games bring people together and create meaningful experiences."
+            imageSrc="/images/dschoolheadshot.jpg"
+            imageAlt="Starting my journey"
+            bgColor="bg-gray-100"
+            layoutDirection="left"
+          />
+          <JourneyRow
+            title="Learning & Growing"
+            description="Through courses, projects, and experimentation, I've learned to combine design thinking with technical skills to create engaging interactive experiences."
+            imageSrc="/images/dschoolheadshot.jpg"
+            imageAlt="Learning and growing"
+            bgColor="bg-gray-200"
+            layoutDirection="right"
+          />
+          <JourneyRow
+            title="Building & Sharing"
+            description="Today, I continue to create games and projects that explore new ideas, pushing the boundaries of what interactive experiences can be."
+            imageSrc="/images/dschoolheadshot.jpg"
+            imageAlt="Building and sharing"
+            bgColor="bg-gray-300"
+            layoutDirection="left"
+          />
+        </div>
       </Section>
 
       {/* Footer / Contact */}
