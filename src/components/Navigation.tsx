@@ -79,6 +79,21 @@ export default function Navigation() {
                 className="w-8 h-8 object-contain"
               />
             </a>
+            <a 
+              href="https://scratch.mit.edu/users/LWCoding/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 bg-white rounded-full transition-all duration-300 hover:scale-110 flex items-center justify-center cursor-pointer shadow-sm"
+              aria-label="Visit my Scratch profile"
+            >
+              <Image 
+                src="/images/scratch.svg" 
+                alt="Scratch" 
+                width={32}
+                height={32}
+                className="w-8 h-8 object-contain"
+              />
+            </a>
           </div>
         </div>
       </div>

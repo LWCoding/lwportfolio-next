@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 interface NewspaperGameCardProps {
   title: string;
@@ -38,6 +38,44 @@ export default function NewspaperGameCard({
   borderColor = "border-gray-300"
 }: NewspaperGameCardProps) {
   const [imageError, setImageError] = useState(false);
+  const [hoverTranslateY, setHoverTranslateY] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const hoverContentRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const calculateTranslate = () => {
+      if (titleRef.current && hoverContentRef.current && containerRef.current) {
+        // Temporarily make hover content visible to measure
+        const originalDisplay = hoverContentRef.current.style.display;
+        hoverContentRef.current.style.display = 'block';
+        hoverContentRef.current.style.opacity = '1';
+        hoverContentRef.current.style.visibility = 'hidden';
+        hoverContentRef.current.style.position = 'absolute';
+        
+        const titleHeight = titleRef.current.offsetHeight;
+        const hoverHeight = hoverContentRef.current.offsetHeight;
+        const totalHeight = titleHeight + hoverHeight;
+        
+        // Reset hover content
+        hoverContentRef.current.style.display = originalDisplay;
+        hoverContentRef.current.style.opacity = '';
+        hoverContentRef.current.style.visibility = '';
+        
+        // Set the translate value for hover state
+        setHoverTranslateY(-totalHeight * 0.9);
+      }
+    };
+
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(calculateTranslate, 100);
+    window.addEventListener('resize', calculateTranslate);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', calculateTranslate);
+    };
+  }, [title, description, createdAt]);
 
   const formatNumber = (num: number) => {
     if (num >= 1000000) {
@@ -70,8 +108,10 @@ export default function NewspaperGameCard({
       href={href} 
       target="_blank" 
       rel="noopener noreferrer"
-      className="relative h-full w-full overflow-hidden cursor-pointer block group border-4"
+      className="relative h-full w-full overflow-hidden cursor-pointer block group border-8"
       style={{ borderColor: getBorderColorValue(borderColor) }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       {/* Background Image - covers entire card */}
       <div className="absolute inset-0">
@@ -117,33 +157,37 @@ export default function NewspaperGameCard({
         </div>
       )}
 
-      {/* Gradient Overlay for text readability - transparent at top, black at bottom */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-[2]" />
+      {/* Gradient Overlay for text readability - extends upward on hover */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 z-[2] group-hover:bg-gradient-to-b group-hover:from-transparent group-hover:via-black/40 group-hover:to-black/80 transition-all duration-300" />
 
-      {/* Text Content Overlay */}
-      <div className="absolute inset-x-0 bottom-0 p-4 md:p-6 lg:p-8 z-10 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-        {/* Title and Play Button Row */}
-        <div className="flex items-center gap-3 mb-2">
-          <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white drop-shadow-lg">
-            {title}
-          </h3>
-          <div className="inline-flex items-center justify-center font-medium rounded-lg transition-colors bg-green-500 hover:bg-green-600 px-3 py-1.5 text-xs text-white gap-1">
-            <span>Play</span>
-            <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z"/>
-            </svg>
-          </div>
-        </div>
-        
-        {createdAt && (
-          <p className="text-sm text-white/90 mb-2 drop-shadow-md">
-            Published {formatCreatedDate(createdAt)}
+      {/* Text Content Container - starts at bottom, moves up on hover */}
+      <div 
+        ref={containerRef}
+        className="absolute left-0 bottom-0 right-0 px-4 md:px-6 lg:px-8 pb-3 z-10 transition-transform duration-300"
+        style={{
+          transform: `translateY(${isHovered ? hoverTranslateY : 0}px)`,
+        }}
+      >
+        {/* Title - Always visible, starts at bottom left */}
+        <h3 ref={titleRef} className="text-xl md:text-2xl lg:text-3xl font-bold text-white drop-shadow-lg">
+          {title}
+        </h3>
+
+        {/* Hover Content - Description and Published Date - Absolutely positioned below title */}
+        <div 
+          ref={hoverContentRef}
+          className="absolute left-0 top-full -mt-1 w-full px-4 md:px-6 lg:px-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75"
+        >
+          {createdAt && (
+            <p className="text-sm text-white/90 mb-2 drop-shadow-md">
+              Published {formatCreatedDate(createdAt)}
+            </p>
+          )}
+          
+          <p className="text-sm md:text-base text-white drop-shadow-md">
+            {description}
           </p>
-        )}
-        
-        <p className="text-sm md:text-base text-white drop-shadow-md">
-          {description}
-        </p>
+        </div>
       </div>
     </Link>
   );

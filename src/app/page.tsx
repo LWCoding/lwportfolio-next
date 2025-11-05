@@ -67,81 +67,73 @@ export default function Home() {
         className="flex flex-col"
         style={{ height: 'calc(100vh - 56px)' }}
       >
-        {/* Hero Section - Flexible, takes remaining space */}
+        {/* Hero Section - Left/Right Split */}
         <div 
-          className="flex-1 flex items-start justify-center relative overflow-hidden"
+          className="flex-1 flex flex-col md:flex-row relative overflow-hidden"
         >
-          {/* Background Video */}
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover"
-          >
-            <source src="/videos/GameShowcase.mp4" type="video/mp4" />
-          </video>
-          
-          {/* Overlay for better text readability */}
-          <div className="absolute inset-0 bg-white/60 z-[2]" />
-          
-          {/* Text Content - Closer to top */}
-          <div className="relative z-[3] container mx-auto px-4 pt-12 md:pt-16">
-            <div className="flex flex-col items-center justify-start text-center">
-              {/* Combined backdrop for all content */}
-              <div className="px-8 py-6 md:px-12 md:py-8 rounded-2xl bg-white/80 backdrop-blur-sm space-y-4 md:space-y-5">
-                {/* Main Heading */}
-                <h1 className="text-5xl md:text-7xl font-bold text-black drop-shadow-sm">
-                  lucas wang!
-                </h1>
+          {/* Left Side - Text Content */}
+          <div className="w-full md:w-2/5 flex items-center justify-center bg-gray-200 p-8 md:p-12">
+            <div className="flex flex-col items-start text-left max-w-lg w-full space-y-6">
+              {/* Main Heading */}
+              <h1 className="text-4xl md:text-6xl font-bold text-black">
+                lucas wang!
+              </h1>
 
-                {/* Descriptive Text */}
-                <div className="max-w-2xl mx-auto">
-                  <p className="text-lg md:text-xl text-black font-medium">
-                    Crafting interactive experiences through game development, thoughtful incentive design, and educational innovation.
-                  </p>
-                </div>
+              {/* Descriptive Text */}
+              <p className="text-base md:text-lg text-black font-medium">
+                Crafting interactive experiences through game development, thoughtful incentive design, and educational innovation.
+              </p>
 
-                {/* Stats Counter */}
-                <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-black">
-                  <div className="text-center">
-                    <div className="text-2xl md:text-3xl font-bold text-yellow-600">
-                      {loading ? '...' : animatedProjects.toLocaleString()}
-                    </div>
-                    <div className="text-xs md:text-sm font-medium mt-0.5">
-                      Projects
-                    </div>
+              {/* Stats Counter */}
+              <div className="flex flex-wrap items-center gap-4 md:gap-6 text-black">
+                <div className="text-left">
+                  <div className="text-2xl md:text-3xl font-bold text-yellow-600">
+                    {loading ? '...' : animatedProjects.toLocaleString()}
                   </div>
-                  <div className="hidden md:block w-px h-8 bg-black/20"></div>
-                  <div className="text-center">
-                    <div className="text-2xl md:text-3xl font-bold text-yellow-600">
-                      {loading ? '...' : animatedViews.toLocaleString()}
-                    </div>
-                    <div className="text-xs md:text-sm font-medium mt-0.5">
-                      Total Views
-                    </div>
+                  <div className="text-xs md:text-sm font-medium mt-0.5">
+                    Projects
                   </div>
                 </div>
-
-                {/* Play Button CTA */}
-                <div className="flex justify-center pt-2">
-                  <a 
-                    href="#featured-projects"
-                    className="group flex items-center justify-center gap-3 px-8 py-4 bg-green-500 hover:bg-green-600 text-white font-bold text-lg rounded-full transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl cursor-pointer"
-                    aria-label="View featured games"
-                  >
-                    <svg 
-                      className="w-6 h-6 transition-transform group-hover:scale-110" 
-                      fill="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M8 5v14l11-7z"/>
-                    </svg>
-                    <span>Play Games</span>
-                  </a>
+                <div className="hidden md:block w-px h-8 bg-black/20"></div>
+                <div className="text-left">
+                  <div className="text-2xl md:text-3xl font-bold text-yellow-600">
+                    {loading ? '...' : animatedViews.toLocaleString()}
+                  </div>
+                  <div className="text-xs md:text-sm font-medium mt-0.5">
+                    Total Views
+                  </div>
                 </div>
               </div>
+
+              {/* Play Button */}
+              <a 
+                href="#featured-projects"
+                className="group flex items-center justify-center gap-2 px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+                aria-label="View featured games"
+              >
+                <svg 
+                  className="w-5 h-5 transition-transform group-hover:scale-110" 
+                  fill="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+                <span>Play</span>
+              </a>
             </div>
+          </div>
+
+          {/* Right Side - Video */}
+          <div className="flex-1 relative bg-gray-800">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+            >
+              <source src="/videos/GameShowcase.mp4" type="video/mp4" />
+            </video>
           </div>
         </div>
 
@@ -156,7 +148,7 @@ export default function Home() {
       {/* Games Gallery */}
       <Section id="featured-projects" separator={false} container={false} padding={false} className="px-0">
         <div className="bg-gray-800">
-          <div className="py-8">
+          <div className="py-12 md:py-16">
             {/* Loading State */}
           {loading ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -263,7 +255,7 @@ export default function Home() {
                     href={game.url}
                     gradientClasses={gradientClasses[index % gradientClasses.length]}
                     displayText="Game"
-                    coverImage={game.cover_url || game.still_cover_url}
+                    coverImage={game.still_cover_url || game.cover_url}
                     viewCount={game.views_count}
                     createdAt={game.created_at}
                     variant={variant}
@@ -284,7 +276,7 @@ export default function Home() {
       </Section>
 
       {/* Divider */}
-      <div className="w-full bg-white py-4">
+      <div className="w-full bg-gray-300 py-4">
         <div className="text-center text-black">
           <span className="inline-block align-middle">▼</span> or, see my other projects <span className="inline-block align-middle">▼</span>
         </div>
@@ -293,7 +285,7 @@ export default function Home() {
       {/* Other Projects Section */}
       <Section id="other-projects" separator={false} container={false} padding={false} className="px-0">
         <div className="bg-white">
-          <div className="py-8">
+          <div className="py-12 md:py-16">
             {/* Newspaper-style Projects Layout */}
             {/* First row: 2 columns, subsequent rows: 3 columns */}
             <div className="container mx-auto max-w-7xl px-4">
