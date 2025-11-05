@@ -43,6 +43,7 @@ export default function NewspaperGameCard({
   const [hoverTranslateY, setHoverTranslateY] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const publishedDateRef = useRef<HTMLParagraphElement>(null);
   const hoverContentRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -57,8 +58,9 @@ export default function NewspaperGameCard({
         hoverContentRef.current.style.position = 'absolute';
         
         const titleHeight = titleRef.current.offsetHeight;
+        const publishedHeight = publishedDateRef.current?.offsetHeight || 0;
         const hoverHeight = hoverContentRef.current.offsetHeight;
-        const totalHeight = titleHeight + hoverHeight;
+        const totalHeight = titleHeight + publishedHeight + hoverHeight;
         
         // Reset hover content
         hoverContentRef.current.style.display = originalDisplay;
@@ -111,12 +113,15 @@ export default function NewspaperGameCard({
       target="_blank" 
       rel="noopener noreferrer"
       className="relative h-full w-full overflow-hidden cursor-pointer block group border-[12px]"
-      style={{ borderColor: getBorderColorValue(borderColor) }}
+      style={{ 
+        borderColor: getBorderColorValue(borderColor),
+        borderRadius: '1rem'
+      }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Background Image - covers entire card */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden" style={{ borderRadius: '1rem' }}>
         {coverImage && !imageError ? (
           <Image 
             src={coverImage} 
@@ -135,11 +140,11 @@ export default function NewspaperGameCard({
       </div>
 
       {/* Ambient Dark Background Overlay - always visible */}
-      <div className="absolute inset-0 bg-black/10 z-[1]" />
+      <div className="absolute inset-0 bg-black/20 z-[1]" style={{ borderRadius: '1rem' }} />
 
-      {/* Tags - top left, shown on hover */}
+      {/* Tags - top left, always visible */}
       {tags && tags.length > 0 && (
-        <div className="absolute top-2 left-2 flex flex-wrap gap-2 z-10 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+        <div className="absolute top-2 left-2 flex flex-wrap gap-2 z-10">
           {tags.map((tag, index) => (
             <span
               key={index}
@@ -160,7 +165,7 @@ export default function NewspaperGameCard({
       )}
 
       {/* Gradient Overlay for text readability - extends upward on hover */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/80 z-[2] group-hover:bg-gradient-to-b group-hover:from-transparent group-hover:via-black/40 group-hover:to-black/90 transition-all duration-300" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/85 z-[2] group-hover:bg-gradient-to-b group-hover:from-transparent group-hover:via-black/40 group-hover:to-black/90 transition-all duration-300" style={{ borderRadius: '1rem' }} />
 
       {/* Text Content Container - starts at bottom, moves up on hover */}
       <div 
@@ -222,17 +227,18 @@ export default function NewspaperGameCard({
           )}
         </div>
 
-        {/* Hover Content - Description and Published Date - Absolutely positioned below title */}
+        {/* Published Date - Always visible, below title */}
+        {createdAt && (
+          <p ref={publishedDateRef} className="text-sm text-white/90 drop-shadow-md mt-1">
+            Published {formatCreatedDate(createdAt)}
+          </p>
+        )}
+
+        {/* Hover Content - Description only - Absolutely positioned below title */}
         <div 
           ref={hoverContentRef}
-          className="absolute left-0 top-full -mt-1 w-full px-4 md:px-6 lg:px-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75"
+          className="absolute left-0 top-full mt-1 w-full px-4 md:px-6 lg:px-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75"
         >
-          {createdAt && (
-            <p className="text-sm text-white/90 mb-2 drop-shadow-md">
-              Published {formatCreatedDate(createdAt)}
-            </p>
-          )}
-          
           <p className="text-sm md:text-base text-white drop-shadow-md">
             {description}
           </p>

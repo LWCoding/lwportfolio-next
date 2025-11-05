@@ -6,7 +6,7 @@ import Section from "@/components/Section";
 import DesignModal from "@/components/DesignModal";
 import NewspaperGameCard from "@/components/NewspaperGameCard";
 import JourneyRow from "@/components/JourneyRow";
-import { useGames } from "@/hooks/useFeaturedGames";
+import { useGames, FEATURED_GAMES_CONFIG } from "@/hooks/useFeaturedGames";
 import { OTHER_PROJECTS_CONFIG } from "@/data/otherProjects";
 import { useState, useEffect } from "react";
 import { calculateNewspaperGridProps } from "@/utils/newspaperGrid";
@@ -81,7 +81,7 @@ export default function Home() {
 
               {/* Descriptive Text */}
               <p className="text-base md:text-lg text-black font-medium">
-                crafting interactive experiences through game development, thoughtful incentive design, and educational innovation.
+                crafting interactive experiences through game development, incentive design, and education.
               </p>
 
               {/* Stats Counter */}
@@ -159,21 +159,32 @@ export default function Home() {
             <div className="py-12 md:py-16 pb-6 md:pb-8">
               {/* Loading State */}
           {loading ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[...Array(4)].map((_: unknown, i: number) => (
-              <div key={i} className="bg-secondary/30 rounded-lg border border-border overflow-hidden animate-pulse">
-                <div className="aspect-video bg-gradient-to-br from-primary/10 to-accent/10"></div>
-                <div className="p-6">
-                  <div className="h-6 bg-muted/20 rounded mb-2"></div>
-                  <div className="h-4 bg-muted/20 rounded mb-4"></div>
-                  <div className="flex gap-2 mb-4">
-                    <div className="h-6 w-16 bg-muted/20 rounded"></div>
-                    <div className="h-6 w-20 bg-muted/20 rounded"></div>
+            <div className="container mx-auto max-w-7xl px-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-0">
+            {[...Array(FEATURED_GAMES_CONFIG.length)].map((_: unknown, i: number) => {
+              const gridProps = calculateNewspaperGridProps(i, FEATURED_GAMES_CONFIG.length);
+              return (
+                <div key={i} className={gridProps.columnSpan} style={{ aspectRatio: '3/2' }}>
+                  <div 
+                    className="relative h-full w-full overflow-hidden animate-pulse border-[12px]"
+                    style={{ 
+                      borderColor: '#1f2937',
+                      borderRadius: '1rem'
+                    }}
+                  >
+                    <div className="absolute inset-0 overflow-hidden" style={{ borderRadius: '1rem' }}>
+                      <div className={`w-full h-full bg-gradient-to-br ${gradientClasses[i % gradientClasses.length]}`}></div>
+                    </div>
+                    <div className="absolute inset-0 bg-black/10 z-[1]"></div>
+                    <div className="absolute left-0 bottom-0 right-0 px-4 md:px-6 lg:px-8 pb-3 z-10">
+                      <div className="h-6 md:h-8 lg:h-10 bg-white/30 rounded w-3/4 mb-2"></div>
+                      <div className="h-4 bg-white/20 rounded w-1/2"></div>
+                    </div>
                   </div>
-                  <div className="h-8 bg-muted/20 rounded"></div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
+            </div>
             </div>
           ) : error ? (
           <div className="text-center py-12">

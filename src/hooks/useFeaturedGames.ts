@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 
 // Featured games with their custom tags and descriptions in display order
-const FEATURED_GAMES_CONFIG = [
+export const FEATURED_GAMES_CONFIG = [
   { 
     id: 3766251, 
     tags: ["🏆 GMTK 2025: #722/9605", "Unity/C#"], 
@@ -18,7 +18,7 @@ const FEATURED_GAMES_CONFIG = [
   },
   { 
     id: 1940212, 
-    tags: ["🏆 Wonderjam 4: #2/25 entries", "Unity/C#"], 
+    tags: ["🏆 Wonderjam 4: #2/25", "Unity/C#"], 
     description: "A top-down shooter game. Destroy enemy ships, get XP, and unlock upgrades to prolong your run.",
     platforms: ['windows', 'html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
   },
@@ -26,6 +26,12 @@ const FEATURED_GAMES_CONFIG = [
     id: 2741477, 
     tags: ["Unity/C#"], 
     description: "A course project for CS247G: Design for Play where you play as a critter exploring a large, unfamiliar, damaged world.",
+    platforms: ['windows', 'html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
+  },
+  {
+    id: 2393708,
+    tags: ['Unity/C#'],
+    description: "A course project for PHIL26Q where you explore Gibson's Theory of Affordances through a series of puzzles.",
     platforms: ['windows', 'html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
   },
   { 
@@ -39,6 +45,12 @@ const FEATURED_GAMES_CONFIG = [
     tags: ["Unity/C#"], 
     description: "An experimental 3D game made for fun! Inspired by Papers Please, screen potentially malicious boxes going through a warehouse.",
     platforms: ['windows', 'html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
+  },
+  {
+    id: 2193616,
+    tags: ["Unity/C#"],
+    description: "A multiplayer fighting game where you play as a character from Pokémon, fighting against other players in a 2D arena.",
+    platforms: ['html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
   }
 ];
 
