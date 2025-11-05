@@ -108,7 +108,7 @@ export default function NewspaperGameCard({
       href={href} 
       target="_blank" 
       rel="noopener noreferrer"
-      className="relative h-full w-full overflow-hidden cursor-pointer block group border-8"
+      className="relative h-full w-full overflow-hidden cursor-pointer block group border-[12px]"
       style={{ borderColor: getBorderColorValue(borderColor) }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -158,7 +158,7 @@ export default function NewspaperGameCard({
       )}
 
       {/* Gradient Overlay for text readability - extends upward on hover */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 z-[2] group-hover:bg-gradient-to-b group-hover:from-transparent group-hover:via-black/40 group-hover:to-black/80 transition-all duration-300" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/80 z-[2] group-hover:bg-gradient-to-b group-hover:from-transparent group-hover:via-black/40 group-hover:to-black/90 transition-all duration-300" />
 
       {/* Text Content Container - starts at bottom, moves up on hover */}
       <div 

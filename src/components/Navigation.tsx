@@ -11,22 +11,22 @@ export default function Navigation() {
           </div>
 
           {/* Navigation Links - Center */}
-          <div className="flex items-center justify-center gap-4">
+          <div className="flex items-center justify-center gap-8">
             <a 
               href="#featured-projects"
-              className="text-black font-medium transition-colors duration-300 hover:text-gray-800 cursor-pointer"
+              className="text-black font-medium underline transition-colors duration-300 hover:text-gray-800 cursor-pointer"
             >
               projects
             </a>
             <a 
               href="#journey"
-              className="text-black font-medium transition-colors duration-300 hover:text-gray-800 cursor-pointer"
+              className="text-black font-medium underline transition-colors duration-300 hover:text-gray-800 cursor-pointer"
             >
               journey
             </a>
             <a 
               href="#contact"
-              className="text-black font-medium transition-colors duration-300 hover:text-gray-800 cursor-pointer"
+              className="text-black font-medium underline transition-colors duration-300 hover:text-gray-800 cursor-pointer"
             >
               contact
             </a>

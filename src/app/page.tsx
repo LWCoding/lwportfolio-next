@@ -147,9 +147,17 @@ export default function Home() {
 
       {/* Games Gallery */}
       <Section id="featured-projects" separator={false} container={false} padding={false} className="px-0">
-        <div className="bg-gray-800">
-          <div className="py-12 md:py-16">
-            {/* Loading State */}
+        <div className="bg-gray-800 flex">
+          {/* Yellow Strip with GAMES */}
+          <div className="bg-yellow-400 flex items-center justify-center w-12 md:w-16 flex-shrink-0">
+            <div className="text-black font-bold text-lg md:text-xl whitespace-nowrap" style={{ transform: 'rotate(-90deg)' }}>
+              GAMES
+            </div>
+          </div>
+          
+          <div className="flex-1">
+            <div className="py-12 md:py-16 pb-6 md:pb-8">
+              {/* Loading State */}
           {loading ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[...Array(4)].map((_: unknown, i: number) => (
@@ -234,24 +242,33 @@ export default function Home() {
               </div>
             </>
           )}
+            </div>
           </div>
         </div>
       </Section>
 
       {/* Divider */}
       <div className="w-full bg-gray-300 py-4">
-        <div className="text-center text-black">
-          <span className="inline-block align-middle">▼</span> or, see my other projects <span className="inline-block align-middle">▼</span>
+        <div className="text-center text-black font-semibold">
+          <span className="inline-block align-middle">▼</span> or instead, see one of my other projects <span className="inline-block align-middle">▼</span>
         </div>
       </div>
 
       {/* Other Projects Section */}
       <Section id="other-projects" separator={false} container={false} padding={false} className="px-0">
-        <div className="bg-gray-800">
-          <div className="py-12 md:py-16">
-            {/* Newspaper-style Projects Layout */}
-            {/* First row: 2 columns, subsequent rows: 3 columns */}
-            <div className="container mx-auto max-w-7xl px-4">
+        <div className="bg-gray-800 flex">
+          {/* Gray Strip with PROJECTS */}
+          <div className="bg-gray-300 flex items-center justify-center w-12 md:w-16 flex-shrink-0">
+            <div className="text-black font-bold text-lg md:text-xl whitespace-nowrap" style={{ transform: 'rotate(-90deg)' }}>
+              PROJECTS
+            </div>
+          </div>
+          
+          <div className="flex-1">
+            <div className="pt-6 md:pt-8 pb-12 md:pb-16">
+              {/* Newspaper-style Projects Layout */}
+              {/* First row: 2 columns, subsequent rows: 3 columns */}
+              <div className="container mx-auto max-w-7xl px-4">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-0">
             {OTHER_PROJECTS_CONFIG.map((project, index) => {
               const gridProps = calculateNewspaperGridProps(index, OTHER_PROJECTS_CONFIG.length);
@@ -279,19 +296,23 @@ export default function Home() {
             })}
               </div>
             </div>
+            </div>
           </div>
         </div>
       </Section>
 
-
-
-
+      {/* Bottom Gray Bar */}
+      <div className="w-full bg-gray-300 py-4"></div>
 
       {/* Journey Section */}
-      <Section id="journey" separator={true} container={false} padding={false} className="px-0">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16 text-black py-8 px-4">
-          Journey
-        </h2>
+      <Section id="journey" separator={false} container={false} padding={false} className="px-0">
+        <div className="bg-yellow-400 py-8 md:py-12">
+          <div className="container mx-auto max-w-7xl px-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-center text-black">
+              Journey
+            </h2>
+          </div>
+        </div>
         
         {/* Journey Rows */}
         <div className="space-y-0">
@@ -323,15 +344,15 @@ export default function Home() {
       </Section>
 
       {/* Footer / Contact */}
-      <footer id="contact" className="py-12 px-4 border-t border-border/50 bg-secondary/10 mt-auto">
+      <footer id="contact" className="py-6 px-4 border-t border-black/20 bg-yellow-400 mt-auto">
         <div className="container mx-auto max-w-4xl text-center">
-          <p className="text-muted-foreground">
+          <p className="text-black font-bold">
             © {new Date().getFullYear()} Lucas Wang
           </p>
-          <p className="text-sm text-muted-foreground mt-1">
+          <p className="text-sm text-black font-bold mt-1">
             <a 
               href="mailto:lswang05@stanford.edu"
-              className="hover:text-primary transition-colors"
+              className="hover:text-gray-800 transition-colors"
             >
               lswang05@stanford.edu
             </a>
