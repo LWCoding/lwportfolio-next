@@ -271,9 +271,33 @@ export default function Home() {
             {featuredGames.map((game, index) => {
               const gridProps = calculateNewspaperGridProps(index, featuredGames.length);
               const size: 'large' | 'medium' | 'small' = 'medium';
+              const isFirstCard = index === 0;
               
               return (
-                <div key={game.id} className={`${gridProps.columnSpan} p-2 md:p-3`} style={{ aspectRatio: '3/2' }}>
+                <div 
+                  key={game.id} 
+                  className={`${gridProps.columnSpan} p-2 md:p-3 ${isFirstCard ? 'relative' : ''}`} 
+                  style={{ aspectRatio: '3/2' }}
+                >
+                  {/* Development Process Callout - Positioned above first card */}
+                  {isFirstCard && (
+                    <div className="absolute -top-10 md:-top-12 left-6 lg:left-1/2 lg:-translate-x-1/2 z-10 pointer-events-none" style={{ maxWidth: 'calc(100vw - 4rem)', minWidth: 'max-content' }}>
+                      <div className="flex items-center gap-3 md:gap-4">
+                        {/* Curved Arrow pointing down to first card */}
+                        <Image 
+                          src="/images/curvedarrow.png"
+                          alt=""
+                          width={40}
+                          height={40}
+                          className="w-8 h-8 md:w-10 md:h-10 flex-shrink-0 mt-8"
+                        />
+                        {/* Text */}
+                        <p className="text-white text-sm md:text-base font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] whitespace-nowrap">
+                          click to view my design process!
+                        </p>
+                      </div>
+                    </div>
+                  )}
                   <NewspaperGameCard
                     title={game.title}
                     description={game.short_text || "An exciting game experience awaits!"}
