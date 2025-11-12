@@ -22,7 +22,7 @@ export default function JourneyRow({
   const isReversed = layoutDirection === "right";
 
   return (
-    <div className={`w-full ${bgColor} relative overflow-hidden py-6 md:py-8`}>
+    <div className={`w-full ${bgColor} relative overflow-hidden py-4 md:py-6`}>
       <div className="container mx-auto max-w-7xl px-4 md:px-6">
         <div
           className={`relative flex flex-col ${
@@ -31,7 +31,7 @@ export default function JourneyRow({
         >
           {/* Text Section */}
           <div
-            className={`w-full md:w-[55%] space-y-3 md:space-y-4 ${
+            className={`w-full md:w-[55%] space-y-2 md:space-y-3 ${
               isReversed ? "md:pl-6" : "md:pr-6"
             } relative z-10`}
           >
@@ -45,7 +45,7 @@ export default function JourneyRow({
 
           {/* Image Section with Diagonal Cut */}
           <div
-            className={`w-full md:w-[45%] relative aspect-video md:aspect-auto md:h-[380px] mt-6 md:mt-0 ${
+            className={`w-full md:w-[45%] relative aspect-video md:aspect-auto md:h-[320px] mt-4 md:mt-0 ${
               isReversed ? "md:pr-6" : "md:pl-6"
             } overflow-hidden`}
           >

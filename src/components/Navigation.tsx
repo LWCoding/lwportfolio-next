@@ -13,16 +13,16 @@ export default function Navigation() {
           {/* Navigation Links - Right on mobile, Center on medium+ */}
           <div className="flex items-center justify-end md:justify-center gap-3 sm:gap-6 md:gap-8 flex-1 min-w-0 md:flex-1">
             <a 
-              href="#featured-projects"
-              className="text-sm sm:text-base text-black font-medium underline transition-colors duration-300 hover:text-gray-800 cursor-pointer whitespace-nowrap"
-            >
-              projects
-            </a>
-            <a 
               href="#journey"
               className="text-sm sm:text-base text-black font-medium underline transition-colors duration-300 hover:text-gray-800 cursor-pointer whitespace-nowrap"
             >
               journey
+            </a>
+            <a 
+              href="#featured-projects"
+              className="text-sm sm:text-base text-black font-medium underline transition-colors duration-300 hover:text-gray-800 cursor-pointer whitespace-nowrap"
+            >
+              projects
             </a>
             <a 
               href="#contact"
