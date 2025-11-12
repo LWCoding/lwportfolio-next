@@ -6,11 +6,23 @@ export interface OtherProject {
   href: string;
   coverImage?: string;
   createdAt?: string;
-  platforms?: ('windows' | 'apple' | 'html5' | 'linux')[];
+  platforms?: ('windows' | 'apple' | 'html5' | 'linux' | 'figma')[];
+  fadeOpacity?: number; // Controls fade amount: 0-1, where 1 is default (full fade), lower values = less fade
 }
 
 // Configure your other projects here
 export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
+  {
+    id: 'serendipi-tea',
+    title: 'Serendipi-Tea',
+    description: 'A card game and pop-up cafe connecting startup founders together, officially prototyped and tested at the StartX accelerator program.',
+    tags: ['In-Person', 'Experience', 'Figma'],
+    href: 'https://www.figma.com/design/it91COfADt2hqakFp3oiHu/Serendipi-tea-Print-and-Play?node-id=2284-2&t=yr4TKOw8Vh5lL8rz-1',
+    coverImage: '/images/serendipitea.JPG',
+    createdAt: '2025-04-10',
+    platforms: ['figma'],
+    fadeOpacity: 0.7
+  },
   {
     id: 'always-be-closing',
     title: 'Always Be Closing',
@@ -30,6 +42,16 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     coverImage: '/images/immersifyvr.png',
     createdAt: '2024-10-24',
     platforms: ['html5']
+  },
+  {
+    id: 'timesync',
+    title: 'Timesync',
+    description: 'A schedule-syncing app designed to help people easily coordinate their schedules with friends and family.',
+    tags: ['App', 'Figma'],
+    href: 'https://www.figma.com/design/Ng5ndVHBaIS4g86iEHsXzR/TimeSync-App?node-id=42-2988&t=WRYz7MBidzvsda76-1',
+    coverImage: '/images/timesync.png',
+    createdAt: '2025-04-10',
+    platforms: ['figma']
   },
   {
     id: 'cs11si',

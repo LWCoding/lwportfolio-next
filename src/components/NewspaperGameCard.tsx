@@ -20,8 +20,9 @@ interface NewspaperGameCardProps {
   isLastInRow?: boolean;
   isLastRow?: boolean;
   borderColor?: string;
-  platforms?: ('windows' | 'apple' | 'html5' | 'linux')[];
+  platforms?: ('windows' | 'apple' | 'html5' | 'linux' | 'figma')[];
   onClick?: () => void;
+  fadeOpacity?: number; // Controls fade amount: 0-1, where 1 is default (full fade), lower values = less fade
 }
 
 export default function NewspaperGameCard({
@@ -41,7 +42,8 @@ export default function NewspaperGameCard({
   isLastRow = false,
   borderColor = "border-gray-300",
   platforms = [],
-  onClick
+  onClick,
+  fadeOpacity = 1
 }: NewspaperGameCardProps) {
   const [imageError, setImageError] = useState(false);
   const [hoverTranslateY, setHoverTranslateY] = useState(0);
@@ -171,7 +173,13 @@ export default function NewspaperGameCard({
       </div>
 
       {/* Ambient Dark Background Overlay - always visible */}
-      <div className="absolute inset-0 bg-black/20 z-[1]" style={{ borderRadius: '1rem' }} />
+      <div 
+        className="absolute inset-0 z-[1]" 
+        style={{ 
+          borderRadius: '1rem',
+          backgroundColor: `rgba(0, 0, 0, ${0.2 * fadeOpacity})`
+        }} 
+      />
 
       {/* View Count Badge */}
       {viewCount && (
@@ -183,12 +191,13 @@ export default function NewspaperGameCard({
 
       {/* Gradient Overlay for text readability - extends upward on hover */}
       <div 
-        className={`absolute inset-0 z-[2] transition-all duration-300 ${
-          isDesktop && isHovered 
-            ? 'bg-gradient-to-b from-transparent via-black/40 to-black/90' 
-            : 'bg-gradient-to-b from-transparent via-black/30 to-black/85'
-        }`} 
-        style={{ borderRadius: '1rem' }} 
+        className="absolute inset-0 z-[2] transition-all duration-300" 
+        style={{ 
+          borderRadius: '1rem',
+          background: isDesktop && isHovered
+            ? `linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, ${0.4 * fadeOpacity}) 50%, rgba(0, 0, 0, ${0.9 * fadeOpacity}) 100%)`
+            : `linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, ${0.3 * fadeOpacity}) 50%, rgba(0, 0, 0, ${0.85 * fadeOpacity}) 100%)`
+        }}
       />
 
       {/* Text Content Container - starts higher up, moves up on hover */}
@@ -242,6 +251,16 @@ export default function NewspaperGameCard({
                 <img 
                   src="/images/linux.png" 
                   alt="Linux" 
+                  width={20} 
+                  height={20} 
+                  className="opacity-90 drop-shadow-md align-middle"
+                  style={{ verticalAlign: 'middle' }}
+                />
+              )}
+              {platforms.includes('figma') && (
+                <img 
+                  src="/images/figma.png" 
+                  alt="Figma" 
                   width={20} 
                   height={20} 
                   className="opacity-90 drop-shadow-md align-middle"
@@ -317,7 +336,13 @@ export default function NewspaperGameCard({
       </div>
 
       {/* Ambient Dark Background Overlay - always visible */}
-      <div className="absolute inset-0 bg-black/20 z-[1]" style={{ borderRadius: '1rem' }} />
+      <div 
+        className="absolute inset-0 z-[1]" 
+        style={{ 
+          borderRadius: '1rem',
+          backgroundColor: `rgba(0, 0, 0, ${0.2 * fadeOpacity})`
+        }} 
+      />
 
       {/* View Count Badge */}
       {viewCount && (
@@ -329,12 +354,13 @@ export default function NewspaperGameCard({
 
       {/* Gradient Overlay for text readability - extends upward on hover */}
       <div 
-        className={`absolute inset-0 z-[2] transition-all duration-300 ${
-          isDesktop && isHovered 
-            ? 'bg-gradient-to-b from-transparent via-black/40 to-black/90' 
-            : 'bg-gradient-to-b from-transparent via-black/30 to-black/85'
-        }`} 
-        style={{ borderRadius: '1rem' }} 
+        className="absolute inset-0 z-[2] transition-all duration-300" 
+        style={{ 
+          borderRadius: '1rem',
+          background: isDesktop && isHovered
+            ? `linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, ${0.4 * fadeOpacity}) 50%, rgba(0, 0, 0, ${0.9 * fadeOpacity}) 100%)`
+            : `linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, ${0.3 * fadeOpacity}) 50%, rgba(0, 0, 0, ${0.85 * fadeOpacity}) 100%)`
+        }}
       />
 
       {/* Text Content Container - starts higher up, moves up on hover */}
@@ -388,6 +414,16 @@ export default function NewspaperGameCard({
                 <img 
                   src="/images/linux.png" 
                   alt="Linux" 
+                  width={20} 
+                  height={20} 
+                  className="opacity-90 drop-shadow-md align-middle"
+                  style={{ verticalAlign: 'middle' }}
+                />
+              )}
+              {platforms.includes('figma') && (
+                <img 
+                  src="/images/figma.png" 
+                  alt="Figma" 
                   width={20} 
                   height={20} 
                   className="opacity-90 drop-shadow-md align-middle"
