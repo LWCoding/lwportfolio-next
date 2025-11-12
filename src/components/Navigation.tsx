@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Navigation() {
   return (
@@ -7,29 +8,31 @@ export default function Navigation() {
         <div className="flex items-center justify-between gap-2 sm:gap-4">
           {/* Name - Left */}
           <div className="flex-shrink-0">
-            <h1 className="text-lg sm:text-xl font-bold text-black whitespace-nowrap">lucas wang!</h1>
+            <Link href="/" className="cursor-pointer">
+              <h1 className="text-lg sm:text-xl font-bold text-black whitespace-nowrap hover:text-gray-800 transition-colors">lucas wang!</h1>
+            </Link>
           </div>
 
           {/* Navigation Links - Right on mobile, Center on medium+ */}
           <div className="flex items-center justify-end md:justify-center gap-3 sm:gap-6 md:gap-8 flex-1 min-w-0 md:flex-1">
-            <a 
-              href="#journey"
+            <Link 
+              href="/#journey"
               className="text-sm sm:text-base text-black font-medium underline transition-colors duration-300 hover:text-gray-800 cursor-pointer whitespace-nowrap"
             >
               journey
-            </a>
-            <a 
-              href="#featured-projects"
+            </Link>
+            <Link 
+              href="/#featured-projects"
               className="text-sm sm:text-base text-black font-medium underline transition-colors duration-300 hover:text-gray-800 cursor-pointer whitespace-nowrap"
             >
               projects
-            </a>
-            <a 
-              href="#contact"
+            </Link>
+            <Link 
+              href="/#contact"
               className="text-sm sm:text-base text-black font-medium underline transition-colors duration-300 hover:text-gray-800 cursor-pointer whitespace-nowrap"
             >
               contact
-            </a>
+            </Link>
           </div>
 
           {/* Social Icons - Right, hidden on mobile */}

@@ -5,9 +5,10 @@ import Navigation from "@/components/Navigation";
 import Section from "@/components/Section";
 import DesignModal from "@/components/DesignModal";
 import NewspaperGameCard from "@/components/NewspaperGameCard";
+import GameSidePanel from "@/components/GameSidePanel";
 import JourneyRow from "@/components/JourneyRow";
-import { useGames, FEATURED_GAMES_CONFIG } from "@/hooks/useFeaturedGames";
-import { OTHER_PROJECTS_CONFIG } from "@/data/otherProjects";
+import { useGames, FEATURED_GAMES_CONFIG, GameData } from "@/hooks/useFeaturedGames";
+import { OTHER_PROJECTS_CONFIG, OtherProject } from "@/data/otherProjects";
 import { useState, useEffect } from "react";
 import { calculateNewspaperGridProps } from "@/utils/newspaperGrid";
 import Image from "next/image";
@@ -17,6 +18,8 @@ export default function Home() {
   const { featuredGames, otherGames, loading, error } = useGames();
   const [animatedProjects, setAnimatedProjects] = useState(0);
   const [animatedViews, setAnimatedViews] = useState(0);
+  const [selectedItem, setSelectedItem] = useState<GameData | OtherProject | null>(null);
+  const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
 
   // Calculate totals
   const totalProjects = featuredGames.length + otherGames.length + OTHER_PROJECTS_CONFIG.length;
@@ -276,6 +279,7 @@ export default function Home() {
                     description={game.short_text || "An exciting game experience awaits!"}
                     tags={game.tags || []}
                     href={game.url}
+                    infoUrl={`/games/${game.id}`}
                     gradientClasses={gradientClasses[index % gradientClasses.length]}
                     displayText="Game"
                     coverImage={game.still_cover_url || game.cover_url}
@@ -286,6 +290,17 @@ export default function Home() {
                     isLastInRow={gridProps.isLastInRow}
                     isLastRow={gridProps.isLastRow}
                     platforms={game.platforms}
+                    onClick={() => {
+                      // First set the game, then trigger the open animation
+                      setSelectedItem(game);
+                      setIsSidePanelOpen(false);
+                      // Use requestAnimationFrame to ensure the panel renders in closed state first
+                      requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                          setIsSidePanelOpen(true);
+                        });
+                      });
+                    }}
                   />
                 </div>
               );
@@ -342,6 +357,17 @@ export default function Home() {
                     isLastInRow={gridProps.isLastInRow}
                     isLastRow={gridProps.isLastRow}
                     platforms={project.platforms}
+                    onClick={() => {
+                      // First set the project, then trigger the open animation
+                      setSelectedItem(project);
+                      setIsSidePanelOpen(false);
+                      // Use requestAnimationFrame to ensure the panel renders in closed state first
+                      requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                          setIsSidePanelOpen(true);
+                        });
+                      });
+                    }}
                   />
                 </div>
               );
@@ -438,6 +464,17 @@ export default function Home() {
       <DesignModal
         isOpen={isDesignModalOpen}
         onClose={() => setIsDesignModalOpen(false)}
+      />
+
+      {/* Game/Project Side Panel */}
+      <GameSidePanel
+        item={selectedItem}
+        isOpen={isSidePanelOpen}
+        onClose={() => {
+          setIsSidePanelOpen(false);
+          // Delay clearing selected item to allow animation to complete
+          setTimeout(() => setSelectedItem(null), 200);
+        }}
       />
     </div>
   );

@@ -19,37 +19,37 @@ export const FEATURED_GAMES_CONFIG = [
   { 
     id: 1940212, 
     tags: ["🏆 Wonderjam 4: #2/25", "Unity/C#"], 
-    description: "A top-down shooter game. Destroy enemy ships, get XP, and unlock upgrades to prolong your run.",
+    description: "A top-down shooter game. Destroy enemy ships, get XP, and unlock upgrades.",
     platforms: ['windows', 'html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
   },
   { 
     id: 2741477, 
     tags: ["Unity/C#"], 
-    description: "A course project for CS247G: Design for Play where you play as a critter exploring a large, unfamiliar, damaged world.",
+    description: "A course project for CS247G. Play as a critter exploring a large, unfamiliar, damaged world.",
     platforms: ['windows', 'html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
   },
   {
     id: 2393708,
     tags: ['Unity/C#'],
-    description: "A course project for PHIL26Q where you explore Gibson's Theory of Affordances through a series of puzzles.",
+    description: "A course project for PHIL26Q. Explore Gibson's Theory of Affordances through a series of puzzles.",
     platforms: ['windows', 'html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
   },
   { 
     id: 1865877, 
     tags: ["Unity/C#"], 
-    description: "Named after our team's online initials, a card-battler RPG made for fun over 2 years! Build a deck of cards and fight enemies.",
+    description: "A card-battler RPG named after our team's online initials! Build a deck and fight enemies.",
     platforms: ['windows', 'apple', 'linux', 'html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
   },
   { 
     id: 1149440, 
     tags: ["Unity/C#"], 
-    description: "An experimental 3D game made for fun! Inspired by Papers Please, screen potentially malicious boxes going through a warehouse.",
+    description: "An experimental 3D game. Inspired by Papers Please, screen malicious boxes in a warehouse.",
     platforms: ['windows', 'html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
   },
   {
     id: 2193616,
     tags: ["Unity/C#"],
-    description: "A multiplayer fighting game where you play as a character from Pokémon, fighting against other players in a 2D arena.",
+    description: "A multiplayer game. Play as a Pokémon and fight other players in a 2D arena.",
     platforms: ['html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
   }
 ];

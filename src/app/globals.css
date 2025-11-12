@@ -85,3 +85,12 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--foreground);
 }
+
+/* Override border-radius for split game cards to prevent visual gaps */
+.split-game-card-wrapper > div {
+  border-radius: 1rem 0 0 1rem !important;
+}
+
+.split-game-card-wrapper > div > div:first-child {
+  border-radius: 1rem 0 0 1rem !important;
+}
