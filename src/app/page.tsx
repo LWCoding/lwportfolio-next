@@ -4,51 +4,25 @@ import Navigation from "@/components/Navigation";
 import Section from "@/components/Section";
 import { useGames } from "@/hooks/useFeaturedGames";
 import { OTHER_PROJECTS_CONFIG } from "@/data/otherProjects";
-import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   const { featuredGames, otherGames, loading } = useGames();
-  const [animatedProjects, setAnimatedProjects] = useState(0);
-  const [animatedViews, setAnimatedViews] = useState(0);
-
-  // Calculate totals
-  const totalProjects = featuredGames.length + otherGames.length + OTHER_PROJECTS_CONFIG.length;
-  const totalViews = [...featuredGames, ...otherGames].reduce((sum, game) => {
-    return sum + (game.views_count || 0);
-  }, 0);
 
   // Get a few featured projects for preview (first 3)
   const previewProjects = OTHER_PROJECTS_CONFIG.slice(0, 3);
   const previewGames = featuredGames.slice(0, 3);
 
-  // Animate counters
-  useEffect(() => {
-    if (!loading && totalProjects > 0) {
-      const duration = 2000; // 2 seconds
-      const steps = 60;
-      const stepTime = duration / steps;
-      
-      const projectsStep = totalProjects / steps;
-      const viewsStep = totalViews / steps;
-      
-      let currentStep = 0;
-      const interval = setInterval(() => {
-        currentStep++;
-        if (currentStep <= steps) {
-          setAnimatedProjects(Math.min(Math.floor(projectsStep * currentStep), totalProjects));
-          setAnimatedViews(Math.min(Math.floor(viewsStep * currentStep), totalViews));
-        } else {
-          setAnimatedProjects(totalProjects);
-          setAnimatedViews(totalViews);
-          clearInterval(interval);
-        }
-      }, stepTime);
-      
-      return () => clearInterval(interval);
-    }
-  }, [loading, totalProjects, totalViews]);
+  // Tools I know how to use (extracted from projects and games)
+  const tools = [
+    { name: 'Figma', image: '/images/figma.png' },
+    { name: 'Unity', image: '/images/unity-logo.png' },
+    { name: 'Python', image: '/images/python-logo.png' },
+    { name: 'React', image: '/images/react-logo.png' },
+    { name: 'C#', image: '/images/csharp-logo.png' },
+    { name: 'C++', image: '/images/cplusplus-logo.png' },
+  ];
 
 
   return (
@@ -74,35 +48,37 @@ export default function Home() {
 
               {/* Descriptive Text */}
               <p className="text-base md:text-lg text-black font-medium">
-                crafting interactive experiences through game development, incentive design, and education.
+                i'm a product designer crafting interactive experiences through game development, incentive design, and education.
               </p>
 
-              {/* Stats Counter */}
-              <div className="flex flex-wrap items-center gap-4 md:gap-6 text-black">
-                <div className="text-left">
-                  <div className="text-2xl md:text-3xl font-bold text-yellow-600">
-                    {loading ? '...' : animatedProjects.toLocaleString()}
+              {/* Tools Row */}
+              <div className="flex flex-wrap items-center gap-3 md:gap-4 tools-row-wrap">
+                {tools.map((tool, index) => (
+                  <div
+                    key={index}
+                    className="group relative w-12 h-12 md:w-14 md:h-14 rounded-full bg-white flex items-center justify-center shadow-md hover:scale-110 transition-transform duration-300 p-2"
+                  >
+                    <Image
+                      src={tool.image}
+                      alt={tool.name}
+                      width={32}
+                      height={32}
+                      className="w-full h-full object-contain"
+                    />
+                    {/* Tooltip */}
+                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-black text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
+                      {tool.name}
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black"></div>
+                    </div>
                   </div>
-                  <div className="text-xs md:text-sm font-medium mt-0.5">
-                    Projects
-                  </div>
-                </div>
-                <div className="hidden md:block w-px h-8 bg-black/20"></div>
-                <div className="text-left">
-                  <div className="text-2xl md:text-3xl font-bold text-yellow-600">
-                    {loading ? '...' : animatedViews.toLocaleString()}
-                  </div>
-                  <div className="text-xs md:text-sm font-medium mt-0.5">
-                    Total Views
-                  </div>
-                </div>
+                ))}
               </div>
 
               {/* CTA Buttons */}
               <div className="flex flex-wrap gap-3">
                 <Link 
                   href="/games"
-                  className="group flex items-center justify-center gap-2 px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+                  className="group flex items-center justify-center gap-2 px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer w-full sm:w-auto min-w-[160px]"
                   aria-label="View games"
                 >
                   <svg 
@@ -116,7 +92,7 @@ export default function Home() {
                 </Link>
                 <Link 
                   href="/projects"
-                  className="group flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+                  className="group flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer w-full sm:w-auto min-w-[160px]"
                   aria-label="View projects"
                 >
                   <span>View Projects</span>
