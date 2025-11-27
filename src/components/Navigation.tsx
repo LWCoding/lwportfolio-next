@@ -3,9 +3,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 
 export default function Navigation() {
   const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Helper function to check if a link is active
   const isActive = (path: string) => {
@@ -22,6 +24,10 @@ export default function Navigation() {
       ? "text-black font-bold underline decoration-2 underline-offset-4"
       : "text-black/70 underline hover:text-black hover:font-semibold";
     return `${baseClasses} ${activeClasses}`;
+  };
+
+  const handleLinkClick = () => {
+    setIsMenuOpen(false);
   };
 
   return (
@@ -41,8 +47,20 @@ export default function Navigation() {
             </Link>
           </div>
 
-          {/* Navigation Links - Right on mobile, Center on medium+ */}
-          <div className="flex items-center justify-end md:justify-center gap-3 sm:gap-6 md:gap-8 flex-1 min-w-0 md:flex-1">
+          {/* Hamburger Menu Button - Mobile Only */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden flex flex-col gap-1.5 p-2 cursor-pointer"
+            aria-label="Toggle menu"
+            aria-expanded={isMenuOpen}
+          >
+            <span className={`w-6 h-0.5 bg-black transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+            <span className={`w-6 h-0.5 bg-black transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+            <span className={`w-6 h-0.5 bg-black transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+          </button>
+
+          {/* Navigation Links - Hidden on mobile, shown on medium+ */}
+          <div className="hidden md:flex items-center justify-center gap-3 sm:gap-6 md:gap-8 flex-1 min-w-0 md:flex-1">
             <Link 
               href="/"
               className={getLinkClasses('/')}
@@ -73,6 +91,51 @@ export default function Navigation() {
             >
               contact
             </Link>
+          </div>
+
+          {/* Mobile Menu - Slides down when open */}
+          <div 
+            className={`md:hidden absolute top-full left-0 right-0 bg-yellow-400 border-b-2 border-black/20 overflow-hidden transition-all duration-300 ${
+              isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+            }`}
+          >
+            <div className="flex flex-col py-4 px-4 space-y-4">
+              <Link 
+                href="/"
+                onClick={handleLinkClick}
+                className={getLinkClasses('/')}
+              >
+                home
+              </Link>
+              <Link 
+                href="/games"
+                onClick={handleLinkClick}
+                className={getLinkClasses('/games')}
+              >
+                games
+              </Link>
+              <Link 
+                href="/projects"
+                onClick={handleLinkClick}
+                className={getLinkClasses('/projects')}
+              >
+                projects
+              </Link>
+              <Link 
+                href="/about"
+                onClick={handleLinkClick}
+                className={getLinkClasses('/about')}
+              >
+                about
+              </Link>
+              <Link 
+                href="/#contact"
+                onClick={handleLinkClick}
+                className="text-sm sm:text-base text-black/70 font-medium underline transition-colors duration-300 hover:text-black hover:font-semibold cursor-pointer whitespace-nowrap"
+              >
+                contact
+              </Link>
+            </div>
           </div>
 
           {/* Social Icons - Right, hidden on mobile */}
