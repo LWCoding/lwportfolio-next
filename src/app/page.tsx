@@ -146,15 +146,26 @@ export default function Home() {
               }}
             ></div>
             {/* Text and Headshot - Bottom Right */}
-            <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 z-20 flex items-end gap-3 md:gap-4">
-              {/* Text - Left of headshot */}
-              <p className="text-white text-sm md:text-base font-medium whitespace-nowrap drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                <i>video of games i've worked on</i>
-              </p>
+            <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 z-20 flex items-center gap-3 md:gap-4">
+              {/* Dialogue Box - Left of headshot */}
+              <div className="relative bg-white/95 rounded-lg px-3 py-2 md:px-4 md:py-2.5 shadow-lg mr-2 md:mr-3">
+                {/* Speech bubble tail pointing right */}
+                <div 
+                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-full w-0 h-0"
+                  style={{
+                    borderTop: '8px solid transparent',
+                    borderBottom: '8px solid transparent',
+                    borderLeft: '10px solid rgba(255, 255, 255, 0.95)'
+                  }}
+                ></div>
+                <p className="text-black text-sm md:text-base font-medium whitespace-nowrap">
+                  <i>hi! these are games i&apos;ve worked on! :)</i>
+                </p>
+              </div>
               {/* Headshot Circle */}
               <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden shadow-lg flex-shrink-0">
                 <Image
-                  src="/images/dschoolheadshot.jpg"
+                  src="/images/dschoolheadshot.png"
                   alt="Lucas Wang"
                   fill
                   className="object-cover"
