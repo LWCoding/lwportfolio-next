@@ -36,11 +36,11 @@ export default function NewspaperGameCard({
   coverImage,
   viewCount,
   createdAt,
-  variant = 'white',
-  size = 'medium',
-  isLastInRow = false,
-  isLastRow = false,
-  borderColor = "border-gray-300",
+  variant: _variant = 'white',
+  size: _size = 'medium',
+  isLastInRow: _isLastInRow = false,
+  isLastRow: _isLastRow2 = false,
+  borderColor: _borderColor = "border-gray-300",
   platforms = [],
   onClick,
   fadeOpacity = 1
@@ -218,7 +218,7 @@ export default function NewspaperGameCard({
           {platforms && platforms.length > 0 && (
             <div className="flex items-center gap-1.5 self-center">
               {platforms.includes('windows') && (
-                <img 
+                <Image 
                   src="/images/windows.png" 
                   alt="Windows" 
                   width={20} 
@@ -228,7 +228,7 @@ export default function NewspaperGameCard({
                 />
               )}
               {platforms.includes('apple') && (
-                <img 
+                <Image 
                   src="/images/apple.png" 
                   alt="Apple" 
                   width={20} 
@@ -238,7 +238,7 @@ export default function NewspaperGameCard({
                 />
               )}
               {platforms.includes('html5') && (
-                <img 
+                <Image 
                   src="/images/html5.png" 
                   alt="HTML5" 
                   width={20} 
@@ -248,7 +248,7 @@ export default function NewspaperGameCard({
                 />
               )}
               {platforms.includes('linux') && (
-                <img 
+                <Image 
                   src="/images/linux.png" 
                   alt="Linux" 
                   width={20} 
@@ -258,7 +258,7 @@ export default function NewspaperGameCard({
                 />
               )}
               {platforms.includes('figma') && (
-                <img 
+                <Image 
                   src="/images/figma.png" 
                   alt="Figma" 
                   width={20} 
@@ -381,7 +381,7 @@ export default function NewspaperGameCard({
           {platforms && platforms.length > 0 && (
             <div className="flex items-center gap-1.5 self-center">
               {platforms.includes('windows') && (
-                <img 
+                <Image 
                   src="/images/windows.png" 
                   alt="Windows" 
                   width={20} 
@@ -391,7 +391,7 @@ export default function NewspaperGameCard({
                 />
               )}
               {platforms.includes('apple') && (
-                <img 
+                <Image 
                   src="/images/apple.png" 
                   alt="Apple" 
                   width={20} 
@@ -401,7 +401,7 @@ export default function NewspaperGameCard({
                 />
               )}
               {platforms.includes('html5') && (
-                <img 
+                <Image 
                   src="/images/html5.png" 
                   alt="HTML5" 
                   width={20} 
@@ -411,7 +411,7 @@ export default function NewspaperGameCard({
                 />
               )}
               {platforms.includes('linux') && (
-                <img 
+                <Image 
                   src="/images/linux.png" 
                   alt="Linux" 
                   width={20} 
@@ -421,7 +421,7 @@ export default function NewspaperGameCard({
                 />
               )}
               {platforms.includes('figma') && (
-                <img 
+                <Image 
                   src="/images/figma.png" 
                   alt="Figma" 
                   width={20} 
