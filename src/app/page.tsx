@@ -138,6 +138,29 @@ export default function Home() {
             </video>
             {/* Darker overlay on small devices */}
             <div className="absolute inset-0 bg-black/40 md:bg-transparent z-10"></div>
+            {/* Vignette overlay - darker at edges of entire video */}
+            <div 
+              className="absolute inset-0 z-15 pointer-events-none"
+              style={{
+                background: 'radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.5) 100%)'
+              }}
+            ></div>
+            {/* Text and Headshot - Bottom Right */}
+            <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 z-20 flex items-end gap-3 md:gap-4">
+              {/* Text - Left of headshot */}
+              <p className="text-white text-sm md:text-base font-medium whitespace-nowrap drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                <i>video of games i've worked on</i>
+              </p>
+              {/* Headshot Circle */}
+              <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden shadow-lg flex-shrink-0">
+                <Image
+                  src="/images/dschoolheadshot.jpg"
+                  alt="Lucas Wang"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
           </div>
         </div>
 
