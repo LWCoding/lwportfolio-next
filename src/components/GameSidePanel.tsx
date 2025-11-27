@@ -234,7 +234,7 @@ export default function GameSidePanel({ item, isOpen, onClose }: GameSidePanelPr
                   <span className="text-sm text-gray-600 mr-2">Platforms:</span>
                   <div className="flex items-center gap-2">
                     {(game?.platforms || project?.platforms || []).includes('windows') && (
-                      <img 
+                      <Image 
                         src="/images/windows.png" 
                         alt="Windows" 
                         width={24} 
@@ -243,7 +243,7 @@ export default function GameSidePanel({ item, isOpen, onClose }: GameSidePanelPr
                       />
                     )}
                     {(game?.platforms || project?.platforms || []).includes('apple') && (
-                      <img 
+                      <Image 
                         src="/images/apple.png" 
                         alt="Apple" 
                         width={24} 
@@ -252,7 +252,7 @@ export default function GameSidePanel({ item, isOpen, onClose }: GameSidePanelPr
                       />
                     )}
                     {(game?.platforms || project?.platforms || []).includes('html5') && (
-                      <img 
+                      <Image 
                         src="/images/html5.png" 
                         alt="HTML5" 
                         width={24} 
@@ -261,7 +261,7 @@ export default function GameSidePanel({ item, isOpen, onClose }: GameSidePanelPr
                       />
                     )}
                     {(game?.platforms || project?.platforms || []).includes('linux') && (
-                      <img 
+                      <Image 
                         src="/images/linux.png" 
                         alt="Linux" 
                         width={24} 

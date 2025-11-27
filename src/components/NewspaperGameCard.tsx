@@ -36,11 +36,6 @@ export default function NewspaperGameCard({
   coverImage,
   viewCount,
   createdAt,
-  variant: _variant = 'white',
-  size: _size = 'medium',
-  isLastInRow: _isLastInRow = false,
-  isLastRow: _isLastRow2 = false,
-  borderColor: _borderColor = "border-gray-300",
   platforms = [],
   onClick,
   fadeOpacity = 1

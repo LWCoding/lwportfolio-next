@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
-  const { featuredGames, otherGames, loading } = useGames();
+  const { featuredGames, loading } = useGames();
 
   // Get a few featured projects for preview (first 3)
   const previewProjects = OTHER_PROJECTS_CONFIG.slice(0, 3);
@@ -48,7 +48,7 @@ export default function Home() {
 
               {/* Descriptive Text */}
               <p className="text-base md:text-lg text-black font-medium">
-                i'm a product designer crafting interactive experiences through game development, incentive design, and education.
+                i&apos;m a product designer crafting interactive experiences through game development, incentive design, and education.
               </p>
 
               {/* Tools Row */}

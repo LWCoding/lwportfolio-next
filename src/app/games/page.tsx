@@ -12,7 +12,7 @@ import { calculateNewspaperGridProps } from "@/utils/newspaperGrid";
 import Image from "next/image";
 
 export default function Games() {
-  const { featuredGames, otherGames, loading, error } = useGames();
+  const { featuredGames, loading, error } = useGames();
   const [selectedItem, setSelectedItem] = useState<GameData | null>(null);
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
 
