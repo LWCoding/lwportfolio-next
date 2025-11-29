@@ -196,7 +196,7 @@ export default function Home() {
               <ExperienceCard
                 href="/about"
                 ariaLabel="learn more about my teaching at stanford"
-                imageSrc="/images/teachinggame.jpg"
+                imageSrc="/images/meteaching.jpg"
                 imageAlt="lucas teaching playful coding projects in class"
                 badgeLabel="teaching"
                 badgeSecondary="cs11 & cs42 · stanford"
