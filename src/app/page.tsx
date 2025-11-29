@@ -30,27 +30,42 @@ export default function Home() {
       >
         {/* Hero Section - Left/Right Split */}
         <div 
-          className="flex-1 flex flex-col md:flex-row relative overflow-hidden"
+          className="flex-1 flex flex-col lg:flex-row relative overflow-hidden"
         >
+          {/* Background Video for small and medium screens */}
+          <div className="absolute inset-0 block lg:hidden">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              <source src="/videos/GameShowcase.mp4" type="video/mp4" />
+            </video>
+            {/* Dark overlay to keep background very subdued */}
+            <div className="absolute inset-0 bg-black/70"></div>
+          </div>
+
           {/* Left Side - Text Content */}
-          <div className="w-full md:w-2/5 flex items-center justify-center bg-gray-200 p-8 md:p-12">
+          <div className="relative z-10 w-full lg:w-2/5 flex-1 lg:flex-none flex items-center justify-center bg-transparent lg:bg-gray-200 p-8 md:p-12">
             <div className="flex flex-col items-start text-left max-w-lg w-full space-y-6">
               {/* Main Heading */}
-              <h1 className="text-4xl md:text-6xl font-bold text-black">
+              <h1 className="text-4xl md:text-6xl font-bold text-white lg:text-black">
                 lucas wang!
               </h1>
 
               {/* Descriptive Text */}
-              <p className="text-base md:text-lg text-black font-medium">
+              <p className="text-base md:text-lg text-white lg:text-black font-medium">
                 i&apos;m a product designer crafting interactive experiences through game development, incentive design, and education.
               </p>
 
               {/* Tools Row */}
-              <div className="flex flex-wrap items-center gap-3 md:gap-4 tools-row-wrap">
+              <div className="inline-grid grid-cols-3 gap-3 md:flex md:flex-wrap md:items-center md:gap-4 tools-row-wrap">
                 {tools.map((tool, index) => (
                   <div
                     key={index}
-                    className="group relative w-12 h-12 md:w-14 md:h-14 rounded-full bg-white flex items-center justify-center shadow-md hover:scale-110 transition-transform duration-300 p-2"
+                     className="group relative w-12 h-12 md:w-14 md:h-14 rounded-full bg-white flex items-center justify-center shadow-md hover:scale-110 transition-transform duration-300 p-2"
                   >
                     <Image
                       src={tool.image}
@@ -72,7 +87,7 @@ export default function Home() {
               <div className="flex flex-wrap gap-3">
                 <Link 
                   href="/games"
-                  className="group flex items-center justify-center gap-2 px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer w-full sm:w-auto min-w-[160px]"
+                  className="group flex items-center justify-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer min-w-[160px]"
                   aria-label="View games"
                 >
                   <svg 
@@ -86,7 +101,7 @@ export default function Home() {
                 </Link>
                 <Link 
                   href="/projects"
-                  className="group flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer w-full sm:w-auto min-w-[160px]"
+                  className="group flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer min-w-[160px]"
                   aria-label="View projects"
                 >
                   <span>View Projects</span>
@@ -95,8 +110,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right Side - Video */}
-          <div className="flex-1 relative bg-gray-800">
+          {/* Right Side - Video (only on large screens and up) */}
+          <div className="hidden lg:block flex-1 relative bg-gray-800">
             <video
               autoPlay
               loop
@@ -148,7 +163,7 @@ export default function Home() {
         {/* Bottom Yellow Bar */}
         <div className="w-full bg-yellow-400 py-4 flex-shrink-0">
           <div className="text-center text-black font-semibold">
-            ▼ explore my work ▼
+            ▼ explore what i&apos;m working on ▼
           </div>
         </div>
       </div>
@@ -158,10 +173,22 @@ export default function Home() {
         <div className="space-y-12">
           {/* experience column */}
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-black mb-12">
-              what i&apos;m working on
-            </h2>
             <div className="flex flex-col gap-10 md:gap-8">
+              {/* design & research work */}
+              <ExperienceCard
+                href="/projects"
+                ariaLabel="explore projects from my product design and research work"
+                imageSrc="/images/alwaysbeclosing.png"
+                imageAlt="simulation and product design interface"
+                badgeLabel="product & research"
+                badgeSecondary="simulation & games"
+                badgeClassName="bg-green-600"
+                badgeTextClassName="text-white"
+                title="designing systems for learning & incentives"
+                description="at work and through independent research, i design experiences that people feel motivated to play. i'm working on a customer management software game and projects aimed to bring people together."
+                ringColorClassName="focus:ring-green-500"
+              />
+              
               {/* game development club */}
               <ExperienceCard
                 href="/games"
@@ -175,21 +202,6 @@ export default function Home() {
                 title="leading stanford's game development club"
                 description="as the founder of the club, i've planned and executed many major events with hundreds of participants, including jams, socials, and playtests that help game designers find community."
                 ringColorClassName="focus:ring-yellow-400"
-              />
-
-              {/* design & research work */}
-              <ExperienceCard
-                href="/projects"
-                ariaLabel="explore projects from my product design and research work"
-                imageSrc="/images/alwaysbeclosing.png"
-                imageAlt="simulation and product design interface"
-                badgeLabel="product & research"
-                badgeSecondary="simulation & games"
-                badgeClassName="bg-green-500"
-                badgeTextClassName="text-white"
-                title="designing systems for learning & incentives"
-                description="at work and through independent research, i design experiences that people feel motivated to play. i'm working on a customer management software game and projects aimed to bring people together."
-                ringColorClassName="focus:ring-green-500"
               />
 
               {/* teaching at stanford */}
