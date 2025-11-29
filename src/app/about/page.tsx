@@ -40,9 +40,9 @@ export default function About() {
                   that path eventually led me to stanford, where i now lead the game development club and spend most of my time trying to make the world a happier place through play.
                 </p>
                 <p className="text-base md:text-lg text-black/80">
-                  along the way, i've discovered how much i enjoy teaching. i started off making silly, satire python
+                  along the way, i&apos;ve discovered how much i enjoy teaching. i started off making silly, satire python
                   tutorials, before eventually finding myself teaching for organizations like the applied computing foundation and stanford splash. i now
-                   design and teach official courses at stanford like cs11 and cs42, as well as help teach and grade for intro and graduate-level game design courses like cs106 and cs247g!
+                  design and teach official courses at stanford like cs11 and cs42, as well as help teach and grade for intro and graduate-level game design courses like cs106 and cs247g!
                 </p>
                 <div className="pt-2">
                   <a

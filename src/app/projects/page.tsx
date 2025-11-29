@@ -9,7 +9,6 @@ import Footer from "@/components/Footer";
 import { OTHER_PROJECTS_CONFIG, OtherProject } from "@/data/otherProjects";
 import { useState } from "react";
 import { calculateNewspaperGridProps } from "@/utils/newspaperGrid";
-import Image from "next/image";
 
 export default function Projects() {
   const [selectedItem, setSelectedItem] = useState<OtherProject | null>(null);
