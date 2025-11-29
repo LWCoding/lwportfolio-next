@@ -34,12 +34,12 @@ export default function About() {
                   where i&apos;m coming from
                 </h1>
                 <p className="text-base md:text-lg text-black/80">
-                  i was born in chicago to immigrant parents from malaysia. since i was young, i've been drawn to creativity, having drawn over 200 pages of hand-drawn comics in elementary school alone.</p>
+                  i was born in chicago to immigrant parents from malaysia. since i was young, i&apos;ve been drawn to creativity, having drawn over 200 pages of hand-drawn comics in elementary school alone.</p>
                 <p className="text-base md:text-lg text-black/80">
-                 i went to high school during the COVID-19 pandemic, and, suddenly having an abundance of free time, fell in love with programming as a creative outlet. at a young age, i created a viral scratch game that achieved over 1 million views, motivating me to continue designing games under the alias "LWCoding". i've made 30+ games with many different people since then.
+                 i went to high school during the COVID-19 pandemic, and, suddenly having an abundance of free time, fell in love with programming as a creative outlet. at a young age, i created a viral scratch game that achieved over 1 million views, motivating me to continue designing games under the alias &quot;LWCoding&quot;. i&apos;ve made 30+ games with many different people since then.
                 </p>
                 <p className="text-base md:text-lg text-black/80">
-                  that path eventually led me to stanford, where i now lead the game development club and spend most of my time bettering the world through play. officially, i'm a product designer who loves talking with people, building things collaboratively, and shipping good user experiences.
+                  that path eventually led me to stanford, where i now lead the game development club and spend most of my time bettering the world through play. officially, i&apos;m a product designer who loves talking with people, building things collaboratively, and shipping good user experiences.
                 </p>
                 <p className="text-base md:text-lg text-black/80">
                   along the way, i&apos;ve discovered how much i enjoy teaching. i started off making silly, satire python
