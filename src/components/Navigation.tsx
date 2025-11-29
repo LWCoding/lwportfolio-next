@@ -86,7 +86,7 @@ export default function Navigation() {
               about
             </Link>
             <Link 
-              href="/#contact"
+              href="/contact"
               className="text-sm sm:text-base text-black/70 font-medium underline transition-colors duration-300 hover:text-black hover:font-semibold cursor-pointer whitespace-nowrap"
             >
               contact
@@ -129,7 +129,7 @@ export default function Navigation() {
                 about
               </Link>
               <Link 
-                href="/#contact"
+                href="/contact"
                 onClick={handleLinkClick}
                 className="text-sm sm:text-base text-black/70 font-medium underline transition-colors duration-300 hover:text-black hover:font-semibold cursor-pointer whitespace-nowrap"
               >
