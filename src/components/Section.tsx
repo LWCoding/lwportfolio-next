@@ -28,7 +28,7 @@ export default function Section({
     ? '' 
     : typeof padding === 'string' 
       ? padding 
-      : 'py-20';
+      : 'py-14';
   
   // Only add px-4 if className doesn't explicitly set horizontal padding
   const horizontalPadding = className.includes('px-0') || className.includes('px-') ? '' : 'px-4';

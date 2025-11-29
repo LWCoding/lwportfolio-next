@@ -2,19 +2,13 @@
 
 import Navigation from "@/components/Navigation";
 import Section from "@/components/Section";
-import { useGames } from "@/hooks/useFeaturedGames";
-import { OTHER_PROJECTS_CONFIG } from "@/data/otherProjects";
+import ExperienceCard from "@/components/ExperienceCard";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
-  const { featuredGames, loading } = useGames();
 
-  // Get a few featured projects for preview (first 3)
-  const previewProjects = OTHER_PROJECTS_CONFIG.slice(0, 3);
-  const previewGames = featuredGames.slice(0, 3);
-
-  // Tools I know how to use (extracted from projects and games)
+  // Tools I know how to use
   const tools = [
     { name: 'Figma', image: '/images/figma.png' },
     { name: 'Unity', image: '/images/unity-logo.png' },
@@ -23,7 +17,6 @@ export default function Home() {
     { name: 'C#', image: '/images/csharp-logo.png' },
     { name: 'C++', image: '/images/cplusplus-logo.png' },
   ];
-
 
   return (
     <div className="min-h-screen bg-white flex flex-col pt-[56px]">
@@ -159,92 +152,62 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Projects Preview Section */}
+      {/* Experience + Projects Preview Section */}
       <Section separator={false} container={true} padding={true} className="bg-white">
         <div className="space-y-12">
-          {/* Projects Preview */}
+          {/* experience column */}
           <div>
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-3xl md:text-4xl font-bold text-black">Projects</h2>
-              <Link 
+            <h2 className="text-3xl md:text-4xl font-bold text-black mb-12">
+              what i&apos;m working on
+            </h2>
+            <div className="flex flex-col gap-10 md:gap-8">
+              {/* game development club */}
+              <ExperienceCard
+                href="/games"
+                ariaLabel="explore my experience with games"
+                imageSrc="/images/svgdmeeting.png"
+                imageAlt="stanford game development club meeting"
+                badgeLabel="community & clubs"
+                badgeSecondary="stanford"
+                badgeClassName="bg-yellow-400"
+                badgeTextClassName="text-black"
+                title="leading stanford's game development club"
+                description="as the founder of the club, i've planned and executed many major events with hundreds of participants, including jams, socials, and playtests that help game designers find community."
+                ringColorClassName="focus:ring-yellow-400"
+              />
+
+              {/* design & research work */}
+              <ExperienceCard
                 href="/projects"
-                className="text-blue-600 hover:text-blue-800 font-semibold underline transition-colors"
-              >
-                View All →
-              </Link>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {previewProjects.map((project) => (
-                <Link
-                  key={project.id}
-                  href="/projects"
-                  className="group relative aspect-video rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-                >
-                  {project.coverImage ? (
-                    <Image
-                      src={project.coverImage}
-                      alt={project.title}
-                      fill
-                      className="object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-green-500/20 to-teal-500/20"></div>
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <h3 className="text-white font-bold text-lg mb-1">{project.title}</h3>
-                    <p className="text-white/90 text-sm line-clamp-2">{project.description}</p>
-                  </div>
-                </Link>
-              ))}
+                ariaLabel="explore projects from my product design and research work"
+                imageSrc="/images/alwaysbeclosing.png"
+                imageAlt="simulation and product design interface"
+                badgeLabel="product & research"
+                badgeSecondary="simulation & games"
+                badgeClassName="bg-green-500"
+                badgeTextClassName="text-white"
+                title="designing systems for learning & incentives"
+                description="at work and through independent research, i design experiences that people feel motivated to play. i'm working on a customer management software game and projects aimed to bring people together."
+                ringColorClassName="focus:ring-green-500"
+              />
+
+              {/* teaching at stanford */}
+              <ExperienceCard
+                href="/about"
+                ariaLabel="learn more about my teaching at stanford"
+                imageSrc="/images/teachinggame.jpg"
+                imageAlt="lucas teaching playful coding projects in class"
+                badgeLabel="teaching"
+                badgeSecondary="cs11 & cs42 · stanford"
+                badgeClassName="bg-blue-500"
+                badgeTextClassName="text-white"
+                title="designing & teaching playful cs courses"
+                description="i've taught internationally in South Korea, and currently teach courses to help students build creative projects at Stanford. i love using interactive narratives to make programming feel intuitive, joyful, and collaborative."
+                ringColorClassName="focus:ring-blue-500"
+              />
             </div>
           </div>
 
-          {/* Games Preview */}
-          <div>
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-3xl md:text-4xl font-bold text-black">Games</h2>
-              <Link 
-                href="/games"
-                className="text-blue-600 hover:text-blue-800 font-semibold underline transition-colors"
-              >
-                View All →
-              </Link>
-            </div>
-            {loading ? (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {[1, 2, 3].map((i) => (
-                  <div key={i} className="aspect-video bg-gray-200 rounded-lg animate-pulse"></div>
-                ))}
-              </div>
-            ) : previewGames.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {previewGames.map((game) => (
-                  <Link
-                    key={game.id}
-                    href="/games"
-                    className="group relative aspect-video rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-                  >
-                    {(game.still_cover_url || game.cover_url) ? (
-                      <Image
-                        src={(game.still_cover_url || game.cover_url) as string}
-                        alt={game.title}
-                        fill
-                        className="object-cover"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20"></div>
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                    <div className="absolute bottom-0 left-0 right-0 p-4">
-                      <h3 className="text-white font-bold text-lg mb-1">{game.title}</h3>
-                      <p className="text-white/90 text-sm line-clamp-2">{game.short_text || "An exciting game experience awaits!"}</p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            ) : null}
-          </div>
         </div>
       </Section>
 

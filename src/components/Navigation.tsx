@@ -68,16 +68,16 @@ export default function Navigation() {
               home
             </Link>
             <Link 
-              href="/games"
-              className={getLinkClasses('/games')}
-            >
-              games
-            </Link>
-            <Link 
               href="/projects"
               className={getLinkClasses('/projects')}
             >
               projects
+            </Link>
+            <Link 
+              href="/games"
+              className={getLinkClasses('/games')}
+            >
+              games
             </Link>
             <Link 
               href="/about"
@@ -108,18 +108,18 @@ export default function Navigation() {
                 home
               </Link>
               <Link 
-                href="/games"
-                onClick={handleLinkClick}
-                className={getLinkClasses('/games')}
-              >
-                games
-              </Link>
-              <Link 
                 href="/projects"
                 onClick={handleLinkClick}
                 className={getLinkClasses('/projects')}
               >
                 projects
+              </Link>
+              <Link 
+                href="/games"
+                onClick={handleLinkClick}
+                className={getLinkClasses('/games')}
+              >
+                games
               </Link>
               <Link 
                 href="/about"
