@@ -110,7 +110,7 @@ export default function ContactPage() {
         </section>
 
         {/* right side - image */}
-        <section className="w-full md:w-1/2 relative bg-gray-200">
+        <section className="w-full md:w-1/2 relative bg-gray-200 flex-1 md:h-auto">
           <Image
             src="/images/meinkorea.jpg"
             alt="playful illustration representing creative worlds"
