@@ -13,7 +13,6 @@ interface NewspaperGameCardProps {
   gradientClasses?: string;
   displayText?: string;
   coverImage?: string;
-  viewCount?: number;
   createdAt?: string;
   variant?: 'white' | 'grey';
   size?: 'large' | 'medium' | 'small';
@@ -34,7 +33,6 @@ export default function NewspaperGameCard({
   gradientClasses = "from-primary/20 to-accent/20",
   displayText = "Game Project",
   coverImage,
-  viewCount,
   createdAt,
   platforms = [],
   onClick,
@@ -106,15 +104,6 @@ export default function NewspaperGameCard({
       }
     };
   }, []);
-
-  const formatNumber = (num: number) => {
-    if (num >= 1000000) {
-      return `${(num / 1000000).toFixed(1)}M`;
-    } else if (num >= 1000) {
-      return `${(num / 1000).toFixed(1)}K`;
-    }
-    return num.toString();
-  };
 
   const getYear = (dateString: string) => {
     const date = new Date(dateString);

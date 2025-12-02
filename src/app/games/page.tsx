@@ -8,7 +8,7 @@ import DetailSidePanel from "@/components/DetailSidePanel";
 import VideoBanner from "@/components/VideoBanner";
 import Footer from "@/components/Footer";
 import FeaturedItemCard from "@/components/FeaturedItemCard";
-import { useGames, FEATURED_GAMES_CONFIG, GameData } from "@/hooks/useFeaturedGames";
+import { useGames, GameData } from "@/hooks/useFeaturedGames";
 import { useState } from "react";
 import { calculateNewspaperGridProps } from "@/utils/newspaperGrid";
 import Image from "next/image";
@@ -159,7 +159,6 @@ export default function Games() {
                             gradientClasses={gradientClasses[index % gradientClasses.length]}
                             displayText="Game"
                             coverImage={game.still_cover_url || game.cover_url}
-                            viewCount={game.views_count}
                             createdAt={game.created_at}
                             variant={gridProps.variant}
                             size={size}

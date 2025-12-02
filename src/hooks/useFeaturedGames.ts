@@ -102,7 +102,7 @@ const CACHE_KEY = 'itch-games-cache';
 const CACHE_DURATION = 60 * 60 * 1000; // 1 hour in milliseconds
 
 interface CachedData {
-  data: any;
+  data: { games: GameData[] };
   timestamp: number;
 }
 
