@@ -7,49 +7,49 @@ export const FEATURED_GAMES_CONFIG = [
   { 
     id: 3766251, 
     tags: ["🏆 GMTK 2025: #722/9605", "Unity/C#"], 
-    description: "An arcade game. Use new stylus technology to loop rats before they eat all of your cheese.",
+    description: "an arcade game. use new stylus technology to loop rats before they eat all of your cheese.",
     platforms: ['windows', 'apple', 'linux', 'html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
   },
   { 
     id: 2904867, 
     tags: ["🏆 GMTK 2024: #4266/7557", "Unity/C#"], 
-    description: "An arcade game. Cook food, serve customers, and manage a kitchen that gets larger every night.",
+    description: "an arcade game. cook food, serve customers, and manage a kitchen that gets larger every night.",
     platforms: ['windows', 'apple', 'linux', 'html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
   },
   { 
     id: 1940212, 
     tags: ["🏆 Wonderjam 4: #2/25", "Unity/C#"], 
-    description: "A top-down shooter game. Destroy enemy ships, get XP, and unlock upgrades.",
+    description: "a top-down shooter game. destroy enemy ships, get XP, and unlock upgrades.",
     platforms: ['windows', 'html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
   },
   { 
     id: 2741477, 
     tags: ["Unity/C#"], 
-    description: "A course project for CS247G. Play as a critter exploring a large, unfamiliar, damaged world.",
+    description: "a course project for CS247G. play as a critter exploring a large, unfamiliar, damaged world.",
     platforms: ['windows', 'html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
   },
   {
     id: 2393708,
     tags: ['Unity/C#'],
-    description: "A course project for PHIL26Q. Explore Gibson's Theory of Affordances through puzzles.",
+    description: "a course project for PHIL26Q. explore gibson's theory of affordances through puzzles.",
     platforms: ['windows', 'html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
   },
   { 
     id: 1865877, 
     tags: ["Unity/C#"], 
-    description: "A card-battler RPG named after our team's online initials! Build a deck and fight enemies.",
+    description: "a card-battler RPG named after our team's online initials! build a deck and fight enemies.",
     platforms: ['windows', 'apple', 'linux', 'html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
   },
   { 
     id: 1149440, 
     tags: ["Unity/C#"], 
-    description: "An experimental 3D game. Inspired by Papers Please, screen malicious boxes in a warehouse.",
+    description: "an experimental 3D game. inspired by papers please, screen malicious boxes in a warehouse.",
     platforms: ['windows', 'html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
   },
   {
     id: 2193616,
     tags: ["Unity/C#"],
-    description: "A multiplayer game. Play as a Pokémon and fight other players in a 2D arena.",
+    description: "a multiplayer game. play as a pokémon and fight other players in a 2D arena.",
     platforms: ['html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
   }
 ];

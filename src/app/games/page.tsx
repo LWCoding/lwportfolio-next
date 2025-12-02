@@ -41,9 +41,11 @@ export default function Games() {
               <FeaturedItemCard
                 key={game.id}
                 title={game.title}
-                description={game.short_text || "An exciting game experience awaits!"}
+                description={game.short_text || "an exciting game experience awaits!"}
                 imageSrc={game.still_cover_url || game.cover_url || "/images/scratchproject.png"}
                 imageAlt={`${game.title} cover image`}
+                tags={game.tags}
+                platforms={game.platforms}
                 onClick={() => {
                   setSelectedItem(game);
                   setIsSidePanelOpen(false);
@@ -149,7 +151,7 @@ export default function Games() {
                           )}
                           <NewspaperGameCard
                             title={game.title}
-                            description={game.short_text || "An exciting game experience awaits!"}
+                            description={game.short_text || "an exciting game experience awaits!"}
                             tags={game.tags || []}
                             href={game.url}
                             infoUrl={`/games/${game.id}`}

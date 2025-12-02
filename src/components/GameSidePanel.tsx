@@ -289,7 +289,7 @@ export default function GameSidePanel({ item, isOpen, onClose }: GameSidePanelPr
             <div className="prose prose-lg max-w-none mb-8">
               <h2 className="text-2xl font-bold text-black mb-4">About</h2>
               <p className="text-base md:text-lg text-black leading-relaxed">
-                {game?.short_text || gameConfig?.description || project?.description || "An exciting experience awaits!"}
+                {game?.short_text || gameConfig?.description || project?.description || "an exciting experience awaits!"}
               </p>
             </div>
 

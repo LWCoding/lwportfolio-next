@@ -95,14 +95,14 @@ export default function Home() {
                   >
                     <path d="M8 5v14l11-7z"/>
                   </svg>
-                  <span>Play Games</span>
+                  <span>play games</span>
                 </Link>
                 <Link 
                   href="/projects"
                   className="group flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer min-w-[160px]"
                   aria-label="View projects"
                 >
-                  <span>View Projects</span>
+                  <span>view projects</span>
                 </Link>
               </div>
             </div>

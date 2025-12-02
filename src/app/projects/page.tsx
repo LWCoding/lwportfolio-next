@@ -41,6 +41,8 @@ export default function Projects() {
               description={project.description}
               imageSrc={project.coverImage || "/images/scratchproject.png"}
               imageAlt={`${project.title} cover image`}
+              tags={project.tags}
+              platforms={project.platforms}
               onClick={() => {
                 setSelectedItem(project);
                 setIsSidePanelOpen(false);

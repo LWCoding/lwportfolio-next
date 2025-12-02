@@ -10,6 +10,8 @@ interface FeaturedItemCardProps {
   imageAlt: string;
   href?: string;
   onClick?: () => void;
+  tags?: string[];
+  platforms?: ('windows' | 'apple' | 'html5' | 'linux' | 'figma')[];
 }
 
 export default function FeaturedItemCard({
@@ -19,15 +21,15 @@ export default function FeaturedItemCard({
   imageAlt,
   href,
   onClick,
+  tags = [],
+  platforms = [],
 }: FeaturedItemCardProps) {
   const content = (
     <div
       className="flex flex-col md:flex-row gap-6 md:gap-8 lg:gap-12 items-start md:items-center"
-      style={{ cursor: 'pointer' }}
-      onClick={onClick}
     >
       {/* Image Section - Left Side */}
-      <div className="relative w-full md:w-2/5 bg-gray-200 aspect-[4/3] flex-shrink-0">
+      <div className="relative w-full md:w-2/5 bg-gray-200 aspect-[4/3] flex-shrink-0 rounded overflow-hidden">
         <Image
           src={imageSrc}
           alt={imageAlt}
@@ -38,15 +40,98 @@ export default function FeaturedItemCard({
 
       {/* Content Section - Right Side */}
       <div className="flex-1 flex flex-col gap-3 md:gap-4">
-        {/* Title */}
-        <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black">
-          {title}
-        </h3>
+        {/* Title with Platform Logos */}
+        <div className="flex items-center gap-2 flex-wrap">
+          <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black">
+            {title}
+          </h3>
+          {/* Platform Logos */}
+          {platforms && platforms.length > 0 && (
+            <div className="flex items-center gap-1.5">
+              {platforms.includes('windows') && (
+                <Image 
+                  src="/images/windows.png" 
+                  alt="Windows" 
+                  width={20} 
+                  height={20} 
+                  className="opacity-80"
+                />
+              )}
+              {platforms.includes('apple') && (
+                <Image 
+                  src="/images/apple.png" 
+                  alt="Apple" 
+                  width={20} 
+                  height={20} 
+                  className="opacity-80"
+                />
+              )}
+              {platforms.includes('html5') && (
+                <Image 
+                  src="/images/html5.png" 
+                  alt="HTML5" 
+                  width={20} 
+                  height={20} 
+                  className="opacity-80"
+                />
+              )}
+              {platforms.includes('linux') && (
+                <Image 
+                  src="/images/linux.png" 
+                  alt="Linux" 
+                  width={20} 
+                  height={20} 
+                  className="opacity-80"
+                />
+              )}
+              {platforms.includes('figma') && (
+                <Image 
+                  src="/images/figma.png" 
+                  alt="Figma" 
+                  width={20} 
+                  height={20} 
+                  className="opacity-80"
+                />
+              )}
+            </div>
+          )}
+        </div>
+
+        {/* Tags */}
+        {tags && tags.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {tags.map((tag, index) => (
+              <span
+                key={index}
+                className="bg-gray-200 px-3 py-1 rounded-full text-xs font-medium text-black"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
 
         {/* Description */}
         <p className="text-base md:text-lg text-black/80 leading-relaxed">
           {description}
         </p>
+
+        {/* View the Process Button */}
+        <button
+          onClick={onClick}
+          className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer w-fit mt-2"
+        >
+          <span>view the process</span>
+          <svg 
+            className="w-5 h-5" 
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </button>
       </div>
     </div>
   );
