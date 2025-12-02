@@ -37,7 +37,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     id: 'immersifyvr',
     title: 'ImmersifyVR',
     description: 'a virtual reality exercise application designed to motivate older adults to exercise.',
-    tags: ['App', 'VR', 'Unity/C#'],
+    tags: ['App', 'Virtual Reality', 'Unity/C#'],
     href: 'https://www.immersifyvr.org/',
     coverImage: '/images/immersifyvr.png',
     createdAt: '2024-10-24',

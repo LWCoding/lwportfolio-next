@@ -286,9 +286,9 @@ export default function NewspaperGameCard({
         {/* Hover Content - Description only - Absolutely positioned below title */}
         <div 
           ref={hoverContentRef}
-          className="absolute left-0 top-full w-full px-4 md:px-6 lg:px-8 opacity-100 md:opacity-0 transition-opacity duration-300 delay-75"
+          className="hidden md:block absolute left-0 top-full w-full px-4 md:px-6 lg:px-8 opacity-0 transition-opacity duration-300 delay-75"
           style={{
-            opacity: isDesktop ? (isHovered ? 1 : 0) : 1
+            opacity: isDesktop ? (isHovered ? 1 : 0) : 0
           }}
         >
           <p className="text-sm md:text-base text-white drop-shadow-md">
@@ -449,9 +449,9 @@ export default function NewspaperGameCard({
         {/* Hover Content - Description only - Absolutely positioned below title */}
         <div 
           ref={hoverContentRef}
-          className="absolute left-0 top-full mt-1 w-full px-4 md:px-6 lg:px-8 opacity-100 md:opacity-0 transition-opacity duration-300 delay-75"
+          className="hidden md:block absolute left-0 top-full mt-1 w-full px-4 md:px-6 lg:px-8 opacity-0 transition-opacity duration-300 delay-75"
           style={{
-            opacity: isDesktop ? (isHovered ? 1 : 0) : 1
+            opacity: isDesktop ? (isHovered ? 1 : 0) : 0
           }}
         >
           <p className="text-sm md:text-base text-white drop-shadow-md">
