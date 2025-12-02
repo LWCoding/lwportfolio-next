@@ -19,7 +19,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   {
     id: 'always-be-closing',
     title: 'Always Be Closing',
-    description: 'a simulation of customer management software designed to train salespeople to be more effective in their sales calls. being used to teach STRAMGT351 at stanford.',
+    description: 'a simulation of customer management software designed to train salespeople to be more effective in sales calls. used to teach STRAMGT351 at stanford.',
     tags: ['Simulation', 'Unity/C#'],
     href: 'https://sale-prod.s3.amazonaws.com/Build_Prod/index.html',
     coverImage: '/images/alwaysbeclosing.png',
