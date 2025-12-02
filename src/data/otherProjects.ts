@@ -17,6 +17,17 @@ export interface OtherProject {
 // Configure your other projects here
 export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   {
+    id: 'always-be-closing',
+    title: 'Always Be Closing',
+    description: 'a simulation of customer management software designed to train salespeople to be more effective in their sales calls. being used to teach STRAMGT351 at stanford.',
+    tags: ['Simulation', 'Unity/C#'],
+    href: 'https://sale-prod.s3.amazonaws.com/Build_Prod/index.html',
+    coverImage: '/images/alwaysbeclosing.png',
+    createdAt: '2025-06-15',
+    platforms: ['html5'],
+    detailComponent: 'documentation section in progress'
+  },
+  {
     id: 'serendipi-tea',
     title: 'Serendipi-Tea',
     description: 'a card game and pop-up cafe connecting startup founders together, officially prototyped and tested at the startx accelerator program.',
@@ -26,17 +37,6 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     createdAt: '2025-04-10',
     platforms: ['figma'],
     fadeOpacity: 0.7,
-    detailComponent: 'documentation section in progress'
-  },
-  {
-    id: 'always-be-closing',
-    title: 'Always Be Closing',
-    description: 'a simulation of customer management software designed to train salespeople to be more effective in their sales calls. being used to teach STRAMGT351 at stanford.',
-    tags: ['Simulation', 'Unity/C#'],
-    href: 'https://sale-prod.s3.amazonaws.com/Build_Prod/index.html',
-    coverImage: '/images/alwaysbeclosing.png',
-    createdAt: '2025-06-15',
-    platforms: ['html5'],
     detailComponent: 'documentation section in progress'
   },
   {
