@@ -252,7 +252,7 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
                               key={index}
                               className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[0.7rem] md:text-xs font-medium text-black"
                             >
-                              {tag}
+                              {tag.toLowerCase()}
                             </span>
                           ))}
                         </div>

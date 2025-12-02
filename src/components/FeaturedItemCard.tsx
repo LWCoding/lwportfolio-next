@@ -124,7 +124,7 @@ export default function FeaturedItemCard({
                     key={index}
                     className="bg-gray-200 px-3 py-1 rounded-full text-[0.7rem] md:text-xs font-medium text-black"
                   >
-                    {tag}
+                    {tag.toLowerCase()}
                   </span>
                 ))}
               </div>

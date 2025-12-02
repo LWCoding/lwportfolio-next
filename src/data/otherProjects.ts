@@ -55,8 +55,8 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   },
   {
     id: 'cs11si',
-    title: 'CS11SI Website',
-    description: 'course website for CS11SI at stanford, a course teaching unity\'s XR interaction toolkit.',
+    title: 'CS11SI Course',
+    description: 'original curriculum and website for CS11SI at stanford, a course teaching unity\'s XR interaction toolkit.',
     tags: ['Website', 'Next.js'],
     href: 'https://web.stanford.edu/class/cs11si/',
     coverImage: '/images/cs11si.png',
@@ -65,8 +65,8 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   },
   {
     id: 'cs42si',
-    title: 'CS42SI Website',
-    description: 'course website for CS42SI at stanford, a course teaching unity and game development.',
+    title: 'CS42SI Course',
+    description: 'original curriculum and website for CS42SI at stanford, a course teaching unity and game development.',
     tags: ['Website', 'Next.js'],
     href: 'https://web.stanford.edu/class/cs42si/',
     coverImage: '/images/cs42si.png',
