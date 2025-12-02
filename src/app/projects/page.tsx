@@ -29,7 +29,12 @@ export default function Projects() {
       <Navigation />
 
       {/* Hero Video Banner */}
-      <VideoBanner title="projects" subtitle="some fun things i've designed" />
+      <VideoBanner 
+        title="projects" 
+        subtitle="some fun things i've designed" 
+        height="33vh"
+        minHeight="200px"
+      />
 
       {/* Featured Projects Section */}
       <Section separator={false} container={true} padding={true} className="bg-white">

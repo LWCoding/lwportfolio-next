@@ -31,7 +31,12 @@ export default function Games() {
       <Navigation />
 
       {/* Hero Video Banner */}
-      <VideoBanner title="games" subtitle="take a break, play a game" />
+      <VideoBanner 
+        title="games" 
+        subtitle="take a break, play a game" 
+        height="33vh"
+        minHeight="200px"
+      />
 
       {/* Featured Games Section */}
       {!loading && !error && featuredGames.length > 0 && (

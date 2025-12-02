@@ -4,6 +4,7 @@ interface VideoBannerProps {
   videoSrc?: string;
   className?: string;
   minHeight?: string;
+  height?: string;
   title?: string;
   subtitle?: string;
 }
@@ -12,6 +13,7 @@ export default function VideoBanner({
   videoSrc = "/videos/GameShowcase.mp4",
   className = "",
   minHeight = "400px",
+  height = "50vh",
   title,
   subtitle
 }: VideoBannerProps) {
@@ -19,7 +21,7 @@ export default function VideoBanner({
     <div 
       className={`relative bg-gray-800 overflow-hidden ${className}`}
       style={{ 
-        height: '50vh',
+        height,
         minHeight: minHeight
       }}
     >
