@@ -116,7 +116,7 @@ export default function Games() {
               {/* Newspaper-style Games Layout */}
               <div className="container mx-auto max-w-[1024px] px-4">
                 <h2 className="text-2xl md:text-3xl font-bold text-white mb-10 md:mb-4 text-center">other games</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-0">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-0">
                     {featuredGames.slice(3).map((game, index) => {
                       const gridProps = calculateNewspaperGridProps(index, featuredGames.length - 3);
                       const size: 'large' | 'medium' | 'small' = 'medium';

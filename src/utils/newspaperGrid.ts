@@ -22,35 +22,19 @@ export function calculateNewspaperGridProps(
 ): NewspaperGridItemProps {
   const variants: Array<'white' | 'grey'> = ['white', 'grey'];
   
-  // Determine which row this item is in
-  // First 2 items: row 1 (2 columns)
-  // Items 2+ (index 2+): row 2+ (3 columns each)
+  // For the simplified layout we now always show 2 cards per row on all breakpoints.
+  // That means each card just spans a single grid column.
   const isFirstRow = index < 2;
-  
-  // Calculate if this is the last item in its row
-  let isLastInRow = false;
-  if (isFirstRow) {
-    // First row: last item is at index 1
-    isLastInRow = index === 1;
-  } else {
-    // Subsequent rows: 3 items per row
-    const rowIndex = index - 2; // 0-based row index for rows after first
-    const positionInRow = rowIndex % 3;
-    isLastInRow = positionInRow === 2; // Last position in a 3-item row
-  }
-  
-  // First row: each item spans 3 columns (6/2 = 3)
-  // Subsequent rows: each item spans 2 columns (6/3 = 2)
-  const columnSpan = isFirstRow 
-    ? 'md:col-span-1 lg:col-span-3' 
-    : 'md:col-span-1 lg:col-span-2';
-  
+  const isLastInRow = (index % 2) === 1;
+
+  const columnSpan = 'col-span-1';
+
   const variant = variants[index % variants.length] as 'white' | 'grey';
   
-  // Calculate if this is in the last row
-  const isLastRow = isFirstRow 
-    ? false 
-    : index >= totalItems - 3; // Last 3 items are in the last row
+  // Calculate if this is in the last row (2 items per row)
+  const itemsPerRow = 2;
+  const lastRowStartIndex = Math.floor((totalItems - 1) / itemsPerRow) * itemsPerRow;
+  const isLastRow = index >= lastRowStartIndex;
   
   return {
     isFirstRow,

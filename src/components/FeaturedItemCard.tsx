@@ -26,10 +26,10 @@ export default function FeaturedItemCard({
 }: FeaturedItemCardProps) {
   const content = (
     <div
-      className="flex flex-col md:flex-row gap-6 md:gap-8 lg:gap-12 items-start md:items-center"
+      className="flex flex-col md:flex-row gap-6 md:gap-8 lg:gap-12 items-center md:items-center"
     >
       {/* Image Section - Left Side */}
-      <div className="relative w-full md:w-2/5 bg-gray-200 aspect-[4/3] flex-shrink-0 rounded overflow-hidden">
+      <div className="relative w-full md:w-2/5 bg-gray-200 aspect-[5/2] md:aspect-[4/3] flex-shrink-0 rounded overflow-hidden">
         <Image
           src={imageSrc}
           alt={imageAlt}
@@ -39,9 +39,9 @@ export default function FeaturedItemCard({
       </div>
 
       {/* Content Section - Right Side */}
-      <div className="flex-1 flex flex-col gap-3 md:gap-4">
+      <div className="flex-1 flex flex-col gap-3 md:gap-4 items-center md:items-start text-center md:text-left">
         {/* Title with Platform Logos */}
-        <div className="flex items-center gap-2 flex-wrap">
+        <div className="flex items-center gap-2 flex-wrap justify-center md:justify-start">
           <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black">
             {title}
           </h3>
@@ -99,7 +99,7 @@ export default function FeaturedItemCard({
 
         {/* Tags */}
         {tags && tags.length > 0 && (
-          <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 justify-center md:justify-start">
             {tags.map((tag, index) => (
               <span
                 key={index}
@@ -112,14 +112,14 @@ export default function FeaturedItemCard({
         )}
 
         {/* Description */}
-        <p className="text-base md:text-lg text-black/80 leading-relaxed">
+        <p className="text-base md:text-lg text-black/80 leading-relaxed text-center md:text-left px-4 md:px-0">
           {description}
         </p>
 
         {/* View the Process Button */}
         <button
           onClick={onClick}
-          className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer w-fit mt-2"
+          className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer w-fit mt-2 mx-auto md:mx-0"
         >
           <span>view the process</span>
           <svg 

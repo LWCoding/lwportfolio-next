@@ -209,9 +209,9 @@ export default function NewspaperGameCard({
           <h3 ref={titleRef} className="text-xl md:text-2xl lg:text-3xl font-bold text-white drop-shadow-lg leading-tight">
             {title}
           </h3>
-          {/* Platform Logos */}
+          {/* Platform Logos (desktop/tablet only) */}
           {platforms && platforms.length > 0 && (
-            <div className="flex items-center gap-1.5 self-center">
+            <div className="hidden md:flex items-center gap-1.5 self-center">
               {platforms.includes('windows') && (
                 <Image 
                   src="/images/windows.png" 
@@ -372,9 +372,9 @@ export default function NewspaperGameCard({
           <h3 ref={titleRef} className="text-xl md:text-2xl lg:text-3xl font-bold text-white drop-shadow-lg leading-tight">
             {title}
           </h3>
-          {/* Platform Logos */}
+          {/* Platform Logos (desktop/tablet only) */}
           {platforms && platforms.length > 0 && (
-            <div className="flex items-center gap-1.5 self-center">
+            <div className="hidden md:flex items-center gap-1.5 self-center">
               {platforms.includes('windows') && (
                 <Image 
                   src="/images/windows.png" 
