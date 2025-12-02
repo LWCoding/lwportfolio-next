@@ -60,7 +60,7 @@ export default function Navigation() {
           </button>
 
           {/* Navigation Links - Hidden on mobile, shown on medium+ */}
-          <div className="hidden md:flex items-center justify-center gap-3 sm:gap-6 md:gap-8 flex-1 min-w-0 md:flex-1">
+          <div className="hidden md:flex items-center justify-center gap-3 sm:gap-6 md:gap-6 flex-1 min-w-0 md:flex-1">
             <Link 
               href="/"
               className={getLinkClasses('/')}
