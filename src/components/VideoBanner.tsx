@@ -42,7 +42,7 @@ export default function VideoBanner({
         <div className="absolute inset-0 flex items-center justify-center z-20">
           <div className="bg-black/70 px-8 py-6 rounded-lg backdrop-blur-sm">
             {title && (
-              <h1 className="text-4xl md:text-6xl font-bold text-white text-center mb-4">
+              <h1 className="text-6xl font-bold text-white text-center mb-4">
                 {title}
               </h1>
             )}
