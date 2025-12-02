@@ -235,16 +235,38 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
                         </div>
                       )}
                   </div>
-                  {(game?.created_at || project?.createdAt || tags.length > 0) && (
+                  {(game?.created_at || project?.createdAt || game?.views_count || tags.length > 0) && (
                     <div className="mt-1 flex flex-wrap gap-2 items-center text-sm text-white/90 drop-shadow-md">
+                      {/* Date */}
                       {(game?.created_at || project?.createdAt) && (
                         <span>
                           published {formatCreatedDate(game?.created_at || project?.createdAt || '')}
                         </span>
                       )}
-                      {(game?.created_at || project?.createdAt) && tags.length > 0 && (
+
+                      {/* Divider between date and views */}
+                      {(game?.created_at || project?.createdAt) && game?.views_count && (
                         <span className="text-white/60">|</span>
                       )}
+
+                      {/* Views with dotted underline and tooltip */}
+                      {game?.views_count && (
+                        <span className="relative group cursor-help">
+                          <span className="underline underline-offset-2 decoration-dotted">
+                            {formatNumber(game.views_count)} views
+                          </span>
+                          <span className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-full mt-1 px-2 py-1 rounded bg-black/85 text-[0.7rem] text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-150 z-30">
+                            view count is live-loaded from itch.io
+                          </span>
+                        </span>
+                      )}
+
+                      {/* Divider between views and tags */}
+                      {game?.views_count && tags.length > 0 && (
+                        <span className="text-white/60">|</span>
+                      )}
+
+                      {/* Tags */}
                       {tags.length > 0 && (
                         <div className="flex flex-wrap gap-2">
                           {tags.map((tag, index) => (

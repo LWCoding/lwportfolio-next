@@ -34,10 +34,16 @@ export const FEATURED_GAMES_CONFIG: FeaturedGameConfig[] = [
     platforms: ['windows', 'html5'],
     detailComponent: 'documentation section in progress'
   },
+  {
+    id: 4028688,
+    tags: ["Unity/C#"],
+    description: "play as a kangaroo rat in southern california. find food, avoid predators, and repopulate.",
+    platforms: ['html5'],
+  },
   { 
     id: 2741477, 
     tags: ["Unity/C#"], 
-    description: "a course project for CS247G. play as a critter exploring a large, unfamiliar, damaged world.",
+    description: "play as a critter and explore the mystery of a large, unfamiliar, damaged world.",
     platforms: ['windows', 'html5']
   },
   {

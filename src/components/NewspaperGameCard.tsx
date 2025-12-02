@@ -176,13 +176,7 @@ export default function NewspaperGameCard({
         }} 
       />
 
-      {/* View Count Badge */}
-      {viewCount && (
-        <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-xs z-10">
-          <span className="text-primary font-medium">{formatNumber(viewCount)}</span>
-          <span className="text-gray-600 ml-1">views</span>
-        </div>
-      )}
+      {/* View count intentionally not shown in card; displayed in detail panel instead */}
 
       {/* Gradient Overlay for text readability - extends upward on hover */}
       <div 
@@ -339,13 +333,7 @@ export default function NewspaperGameCard({
         }} 
       />
 
-      {/* View Count Badge */}
-      {viewCount && (
-        <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-xs z-10">
-          <span className="text-primary font-medium">{formatNumber(viewCount)}</span>
-          <span className="text-gray-600 ml-1">views</span>
-        </div>
-      )}
+      {/* View count intentionally not shown in card; displayed in detail panel instead */}
 
       {/* Gradient Overlay for text readability - extends upward on hover */}
       <div 
