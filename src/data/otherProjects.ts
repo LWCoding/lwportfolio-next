@@ -61,16 +61,6 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     platforms: ['figma']
   },
   {
-    id: 'cs11si',
-    title: 'CS11SI Course',
-    description: 'original curriculum and website for CS11SI at stanford, a course teaching unity\'s XR interaction toolkit.',
-    tags: ['Website', 'Next.js'],
-    href: 'https://web.stanford.edu/class/cs11si/',
-    coverImage: '/images/cs11si.png',
-    createdAt: '2025-09-05',
-    platforms: ['html5']
-  },
-  {
     id: 'cs42si',
     title: 'CS42SI Course',
     description: 'original curriculum and website for CS42SI at stanford, a course teaching unity and game development.',
@@ -78,6 +68,16 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     href: 'https://web.stanford.edu/class/cs42si/',
     coverImage: '/images/cs42si.png',
     createdAt: '2025-09-03',
+    platforms: ['html5']
+  },
+  {
+    id: 'cs11si',
+    title: 'CS11SI Course',
+    description: 'original curriculum and website for CS11SI at stanford, a course teaching unity\'s XR interaction toolkit.',
+    tags: ['Website', 'Next.js'],
+    href: 'https://web.stanford.edu/class/cs11si/',
+    coverImage: '/images/cs11si.png',
+    createdAt: '2025-09-05',
     platforms: ['html5']
   },
   {
@@ -98,6 +98,17 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     href: 'https://obscure-courses.vercel.app/',
     coverImage: '/images/obscurecourses.png',
     createdAt: '2024-02-10',
+    platforms: ['html5']
+  },
+  {
+    id: 'malaysian-club-chicago',
+    title: 'Malaysian Club Website',
+    description: 'a website for the malaysian club of chicago, a club that promotes malaysian culture and heritage.',
+    tags: ['Website', 'HTML/CSS/JS'],
+    href: 'https://malaysianclubchicago.com/',
+    coverImage: '/images/mcc-website.png',
+    createdAt: '2021-01-07',
+    fadeOpacity: 0.7,
     platforms: ['html5']
   },
   // Add more projects here...
