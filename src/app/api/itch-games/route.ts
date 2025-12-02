@@ -19,11 +19,12 @@ export async function GET() {
 
   try {
     // Use the my-games endpoint to fetch all your games with view counts
+    // Cache for 1 hour (3600 seconds) to reduce API calls
     const response = await fetch(`https://itch.io/api/1/${apiKey}/my-games`, {
       headers: {
         'Content-Type': 'application/json',
       },
-      cache: 'no-store', // Ensure fresh data
+      next: { revalidate: 3600 }, // Revalidate every hour
     });
 
     if (!response.ok) {
@@ -57,7 +58,12 @@ export async function GET() {
       }
     }
 
-    return NextResponse.json(data);
+    // Add cache headers to the response
+    return NextResponse.json(data, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+      },
+    });
   } catch (error) {
     console.error('Error fetching Itch.io games:', error);
     return NextResponse.json(

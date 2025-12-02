@@ -23,7 +23,7 @@ export default function JourneyRow({
 
   return (
     <div className={`w-full ${bgColor} relative overflow-hidden py-4 md:py-6`}>
-      <div className="container mx-auto max-w-[1200px] px-4 md:px-6">
+      <div className="container mx-auto max-w-[1024px] px-4 md:px-6">
         <div
           className={`relative flex flex-col ${
             isReversed ? "md:flex-row-reverse" : "md:flex-row"

@@ -38,7 +38,7 @@ export default function Section({
   if (container) {
     return (
       <section id={id} className={sectionClasses}>
-        <div className="container mx-auto max-w-[1200px]">
+        <div className="container mx-auto max-w-[1024px]">
           {children}
         </div>
       </section>

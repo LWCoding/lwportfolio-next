@@ -6,7 +6,7 @@ export default function Footer() {
       id="contact"
       className="py-6 px-4 border-t border-black/20 bg-yellow-400 mt-auto scroll-mt-[64px]"
     >
-      <div className="container mx-auto max-w-[1200px] text-center">
+      <div className="container mx-auto max-w-[1024px] text-center">
         <p className="text-black font-bold">
           lucas wang © {new Date().getFullYear()}
         </p>

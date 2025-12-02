@@ -31,7 +31,7 @@ export const FEATURED_GAMES_CONFIG = [
   {
     id: 2393708,
     tags: ['Unity/C#'],
-    description: "A course project for PHIL26Q. Explore Gibson's Theory of Affordances through a series of puzzles.",
+    description: "A course project for PHIL26Q. Explore Gibson's Theory of Affordances through puzzles.",
     platforms: ['windows', 'html5'] as ('windows' | 'apple' | 'html5' | 'linux')[]
   },
   { 
@@ -80,6 +80,14 @@ interface GamesState {
   error?: string;
 }
 
+const CACHE_KEY = 'itch-games-cache';
+const CACHE_DURATION = 60 * 60 * 1000; // 1 hour in milliseconds
+
+interface CachedData {
+  data: any;
+  timestamp: number;
+}
+
 export function useGames() {
   const [gamesState, setGamesState] = useState<GamesState>({
     featuredGames: [],
@@ -91,11 +99,66 @@ export function useGames() {
   useEffect(() => {
     const fetchAllGames = async () => {
       try {
-        setGamesState(prev => ({ ...prev, loading: true }));
+        let hasValidCache = false;
+        
+        // Check localStorage cache first (only available in browser)
+        try {
+          if (typeof window === 'undefined' || !window.localStorage) {
+            throw new Error('localStorage not available');
+          }
+          
+          const cached = localStorage.getItem(CACHE_KEY);
+          if (cached) {
+            const cachedData: CachedData = JSON.parse(cached);
+            const now = Date.now();
+            
+            // Use cached data if it's less than 1 hour old
+            if (now - cachedData.timestamp < CACHE_DURATION) {
+              const data = cachedData.data;
+              
+              if (data.games && Array.isArray(data.games)) {
+                // Process featured games with custom overrides
+                const featuredGames = FEATURED_GAMES_CONFIG.map(config => {
+                  const game = data.games.find((g: GameData) => g.id === config.id);
+                  if (game) {
+                    game.tags = config.tags;
+                    game.short_text = config.description;
+                    game.platforms = config.platforms;
+                  }
+                  return game || null;
+                }).filter((game): game is GameData => game !== null);
 
-        const response = await fetch('/api/itch-games', {
-          cache: 'no-store',
-        });
+                // Get other games (excluding featured ones)
+                const featuredIds = FEATURED_GAMES_CONFIG.map(config => config.id);
+                const otherGames = data.games
+                  .filter((game: GameData) => !featuredIds.includes(game.id))
+                  .filter((game: GameData) => OTHER_GAMES_IDS.length === 0 || OTHER_GAMES_IDS.includes(game.id))
+                  .slice(0, 8);
+                
+                setGamesState({
+                  featuredGames,
+                  otherGames,
+                  loading: false,
+                  error: undefined,
+                });
+                
+                hasValidCache = true;
+                // Still fetch fresh data in the background to update cache
+                // but don't show loading state
+              }
+            }
+          }
+        } catch (e) {
+          // Invalid cache, continue to fetch
+          console.warn('Failed to parse cached games data:', e);
+        }
+
+        // Only show loading if we don't have valid cache
+        if (!hasValidCache) {
+          setGamesState(prev => ({ ...prev, loading: true }));
+        }
+
+        const response = await fetch('/api/itch-games');
 
         if (!response.ok) {
           const errorData = await response.json();
@@ -105,6 +168,20 @@ export function useGames() {
         const data = await response.json();
         
         if (data.games && Array.isArray(data.games)) {
+          // Cache the raw data (only in browser)
+          if (typeof window !== 'undefined' && window.localStorage) {
+            try {
+              const cacheData: CachedData = {
+                data: data,
+                timestamp: Date.now(),
+              };
+              localStorage.setItem(CACHE_KEY, JSON.stringify(cacheData));
+            } catch (e) {
+              // localStorage might be full or unavailable, continue anyway
+              console.warn('Failed to cache games data:', e);
+            }
+          }
+          
           // Process featured games with custom overrides
           const featuredGames = FEATURED_GAMES_CONFIG.map(config => {
             const game = data.games.find((g: GameData) => g.id === config.id);

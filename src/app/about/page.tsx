@@ -26,7 +26,7 @@ export default function About() {
         className="px-0 scroll-mt-[64px]"
       >
         <div className="w-full bg-white py-8 md:py-12">
-          <div className="container mx-auto max-w-[1200px] px-4 md:px-6">
+          <div className="container mx-auto max-w-[1024px] px-4 md:px-6">
             <div className="flex flex-col md:flex-row items-stretch gap-8 md:gap-10">
               {/* story text */}
               <div className="w-full md:w-[55%] space-y-4">

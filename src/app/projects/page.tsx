@@ -6,6 +6,7 @@ import NewspaperGameCard from "@/components/NewspaperGameCard";
 import GameSidePanel from "@/components/GameSidePanel";
 import VideoBanner from "@/components/VideoBanner";
 import Footer from "@/components/Footer";
+import FeaturedItemCard from "@/components/FeaturedItemCard";
 import { OTHER_PROJECTS_CONFIG, OtherProject } from "@/data/otherProjects";
 import { useState } from "react";
 import { calculateNewspaperGridProps } from "@/utils/newspaperGrid";
@@ -29,23 +30,48 @@ export default function Projects() {
       {/* Hero Video Banner */}
       <VideoBanner title="projects" subtitle="some fun things i've designed" />
 
-      {/* Other Projects Section */}
-      <Section id="other-projects" separator={false} container={false} padding={false} className="px-0">
-        <div className="bg-blue-950 flex">
-          {/* Blue Strip with PROJECTS */}
-          <div className="bg-blue-300 flex items-center justify-center w-12 md:w-16 flex-shrink-0">
-            <div className="text-black font-bold text-lg md:text-xl whitespace-nowrap" style={{ transform: 'rotate(-90deg)' }}>
-              PROJECTS
+      {/* Featured Projects Section */}
+      <Section separator={false} container={true} padding={true} className="bg-white">
+        <div className="space-y-8 md:space-y-12">
+          {OTHER_PROJECTS_CONFIG.slice(0, 3).map((project) => (
+            <FeaturedItemCard
+              key={project.id}
+              title={project.title}
+              description={project.description}
+              imageSrc={project.coverImage || "/images/scratchproject.png"}
+              imageAlt={`${project.title} cover image`}
+              onClick={() => {
+                setSelectedItem(project);
+                setIsSidePanelOpen(false);
+                requestAnimationFrame(() => {
+                  requestAnimationFrame(() => {
+                    setIsSidePanelOpen(true);
+                  });
+                });
+              }}
+            />
+          ))}
+        </div>
+      </Section>
+
+      {/* Other Projects Section - Only show if there are more than 3 projects */}
+      {OTHER_PROJECTS_CONFIG.length > 3 && (
+        <Section id="other-projects" separator={false} container={false} padding={false} className="px-0">
+          <div className="bg-blue-950 flex">
+            {/* Blue Strip with PROJECTS */}
+            <div className="bg-blue-300 flex items-center justify-center w-12 md:w-16 flex-shrink-0">
+              <div className="text-black font-bold text-lg md:text-xl whitespace-nowrap" style={{ transform: 'rotate(-90deg)' }}>
+                PROJECTS
+              </div>
             </div>
-          </div>
-          
-          <div className="flex-1">
-            <div className="pt-6 md:pt-8 pb-12 md:pb-16">
-              {/* Newspaper-style Projects Layout */}
-              <div className="container mx-auto max-w-7xl px-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-0">
-                  {OTHER_PROJECTS_CONFIG.map((project, index) => {
-                    const gridProps = calculateNewspaperGridProps(index, OTHER_PROJECTS_CONFIG.length);
+            
+            <div className="flex-1">
+              <div className="pt-6 md:pt-8 pb-12 md:pb-16">
+                {/* Newspaper-style Projects Layout */}
+                <div className="container mx-auto max-w-[1024px] px-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-0">
+                    {OTHER_PROJECTS_CONFIG.slice(3).map((project, index) => {
+                    const gridProps = calculateNewspaperGridProps(index, OTHER_PROJECTS_CONFIG.length - 3);
                     const size: 'large' | 'medium' | 'small' = 'medium';
                     
                     return (
@@ -80,12 +106,13 @@ export default function Projects() {
                       </div>
                     );
                   })}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </Section>
+        </Section>
+      )}
 
       <Footer />
 

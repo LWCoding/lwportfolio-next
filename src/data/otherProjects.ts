@@ -35,9 +35,9 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   },
   {
     id: 'immersifyvr',
-    title: 'ImmersifyVR App',
-    description: 'A VR exercise application designed to motivate older adults to exercise. Includes exercises based on research by the WHO.',
-    tags: ['App', 'Virtual Reality', 'Unity/C#'],
+    title: 'ImmersifyVR',
+    description: 'A virtual reality exercise application designed to motivate older adults to exercise.',
+    tags: ['App', 'VR', 'Unity/C#'],
     href: 'https://www.immersifyvr.org/',
     coverImage: '/images/immersifyvr.png',
     createdAt: '2024-10-24',
@@ -46,7 +46,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   {
     id: 'timesync',
     title: 'Timesync',
-    description: 'A schedule-syncing app designed to help people easily coordinate their schedules with friends and family.',
+    description: 'A schedule-syncing app designed to help people easily coordinate their schedules with friends.',
     tags: ['App', 'Figma'],
     href: 'https://www.figma.com/design/Ng5ndVHBaIS4g86iEHsXzR/TimeSync-App?node-id=42-2988&t=WRYz7MBidzvsda76-1',
     coverImage: '/images/timesync.png',
@@ -56,7 +56,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   {
     id: 'cs11si',
     title: 'CS11SI Website',
-    description: 'Course website for CS11SI at Stanford University, a course teaching Unity\'s XR Interaction Toolkit.',
+    description: 'Course website for CS11SI at Stanford, a course teaching Unity\'s XR Interaction Toolkit.',
     tags: ['Website', 'Next.js'],
     href: 'https://web.stanford.edu/class/cs11si/',
     coverImage: '/images/cs11si.png',
@@ -66,7 +66,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   {
     id: 'cs42si',
     title: 'CS42SI Website',
-    description: 'Course website for CS42SI at Stanford University, a course teaching Unity and introductory game development.',
+    description: 'Course website for CS42SI at Stanford, a course teaching Unity and game development.',
     tags: ['Website', 'Next.js'],
     href: 'https://web.stanford.edu/class/cs42si/',
     coverImage: '/images/cs42si.png',
@@ -75,18 +75,18 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   },
   {
     id: 'planet',
-    title: 'Planet Mobile App',
-    description: 'A mental health application designed to help people more easily connect with pre-existing friends.',
+    title: 'Planet',
+    description: 'A mental health mobile application designed to help people easily connect with pre-existing friends.',
     tags: ['App', 'React Native'],
     href: 'https://hci.stanford.edu/courses/cs147/2024/au/projects/Technology-for-Mental-Health/Planet/',
     coverImage: '/images/planet.png',
     createdAt: '2024-12-09',
-    platforms: ['apple', 'html5']
+    platforms: ['apple', 'figma', 'html5']
   },
   {
     id: 'obscure-courses',
     title: 'Obscure Courses',
-    description: 'A gamified website that allows users to guess the names of obscure courses at Stanford University.',
+    description: 'A gamified website that allows users to guess the names of obscure courses at Stanford.',
     tags: ['Website', 'Svelte'],
     href: 'https://obscure-courses.vercel.app/',
     coverImage: '/images/obscurecourses.png',

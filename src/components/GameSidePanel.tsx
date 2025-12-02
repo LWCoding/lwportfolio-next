@@ -16,15 +16,26 @@ interface GameSidePanelProps {
 }
 
 export default function GameSidePanel({ item, isOpen, onClose }: GameSidePanelProps) {
-  // Prevent body scroll when panel is open
+  // Prevent body scroll when panel is open and compensate for scrollbar width
   useEffect(() => {
     if (isOpen) {
+      // Calculate scrollbar width
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      
+      // Prevent body scroll
       document.body.style.overflow = 'hidden';
+      
+      // Add padding to compensate for scrollbar width to prevent layout shift
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
     } else {
+      // Restore body scroll and remove padding
       document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
     }
     return () => {
+      // Cleanup: restore body scroll and remove padding
       document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
     };
   }, [isOpen]);
 
