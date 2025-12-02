@@ -12,6 +12,7 @@ interface FeaturedItemCardProps {
   onClick?: () => void;
   tags?: string[];
   platforms?: ('windows' | 'apple' | 'html5' | 'linux' | 'figma')[];
+  date?: string;
 }
 
 export default function FeaturedItemCard({
@@ -23,7 +24,13 @@ export default function FeaturedItemCard({
   onClick,
   tags = [],
   platforms = [],
+  date,
 }: FeaturedItemCardProps) {
+  const formattedDate =
+    date && !Number.isNaN(new Date(date).getTime())
+      ? new Date(date).toLocaleDateString("en-US", { month: "short", year: "numeric" })
+      : undefined;
+
   const content = (
     <div
       className="flex flex-col md:flex-row gap-6 md:gap-8 lg:gap-12 items-center md:items-center"
@@ -97,17 +104,31 @@ export default function FeaturedItemCard({
           )}
         </div>
 
-        {/* Tags */}
-        {tags && tags.length > 0 && (
-        <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-            {tags.map((tag, index) => (
-              <span
-                key={index}
-                className="bg-gray-200 px-3 py-1 rounded-full text-xs font-medium text-black"
-              >
-                {tag}
+        {/* Date + Tags */}
+        {(formattedDate || (tags && tags.length > 0)) && (
+          <div className="flex flex-wrap gap-2 items-center justify-center md:justify-start text-xs md:text-sm text-black/80">
+            {formattedDate && (
+              <span className="text-sm md:text-base text-black/80">
+                {formattedDate}
               </span>
-            ))}
+            )}
+            {formattedDate && tags && tags.length > 0 && (
+              <span className="text-black/30">
+                |
+              </span>
+            )}
+            {tags && tags.length > 0 && (
+              <div className="flex flex-wrap gap-2">
+                {tags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="bg-gray-200 px-3 py-1 rounded-full text-[0.7rem] md:text-xs font-medium text-black"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
         )}
 

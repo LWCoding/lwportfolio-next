@@ -51,6 +51,7 @@ export default function Games() {
                 imageAlt={`${game.title} cover image`}
                 tags={game.tags}
                 platforms={game.platforms}
+                date={game.created_at}
                 onClick={() => {
                   setSelectedItem(game);
                   setIsSidePanelOpen(false);
