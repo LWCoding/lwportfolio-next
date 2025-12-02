@@ -32,17 +32,15 @@ export default function Home() {
         <div 
           className="flex-1 flex flex-col lg:flex-row relative overflow-hidden"
         >
-          {/* Background Video for small and medium screens */}
+          {/* Background Image for small and medium screens */}
           <div className="absolute inset-0 block lg:hidden">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            >
-              <source src="/videos/GameShowcase.mp4" type="video/mp4" />
-            </video>
+            <Image
+              src="/images/teachinggame.jpg"
+              alt="Game development showcase background"
+              fill
+              priority
+              className="object-cover"
+            />
             {/* Dark overlay to keep background very subdued */}
             <div className="absolute inset-0 bg-black/70"></div>
           </div>
