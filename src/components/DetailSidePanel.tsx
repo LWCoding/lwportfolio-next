@@ -94,14 +94,14 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
   const project = !isGame ? (item as OtherProject) : null;
 
   const gameConfig = game ? FEATURED_GAMES_CONFIG.find((c) => c.id === game.id) : null;
+  const tags = game?.tags || project?.tags || [];
 
   const formatCreatedDate = (dateString: string) => {
     const date = new Date(dateString);
-    // Force fully lowercase date string to match site-wide lowercase theming
+    // Match featured cards: short month + year, but keep lowercase for site theming
     return date
       .toLocaleDateString('en-US', {
-        month: 'long',
-        day: 'numeric',
+        month: 'short',
         year: 'numeric',
       })
       .toLowerCase();
@@ -166,7 +166,7 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
           {/* Content */}
           <div className="h-full flex flex-col">
             {/* Hero Section with Cover Image */}
-            <div className="relative w-full" style={{ height: '40vh', minHeight: '300px' }}>
+            <div className="relative w-full" style={{ height: '30vh', minHeight: '220px' }}>
               {(game?.still_cover_url || game?.cover_url || project?.coverImage) ? (
                 <Image
                   src={game?.still_cover_url || game?.cover_url || project?.coverImage || ''}
@@ -177,16 +177,87 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
               ) : (
                 <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20" />
               )}
-              <div className="absolute inset-0 bg-black/40" />
+              <div className="absolute inset-0 bg-black/60" />
               <div className="absolute inset-0 flex items-end">
                 <div className="w-full px-6 pb-6 z-10">
-                  <h1 className="text-3xl md:text-4xl font-bold text-white drop-shadow-lg mb-2">
-                    {game?.title || project?.title}
-                  </h1>
-                  {(game?.created_at || project?.createdAt) && (
-                    <p className="text-base text-white/90 drop-shadow-md">
-                      published {formatCreatedDate(game?.created_at || project?.createdAt || '')}
-                    </p>
+                  <div className="flex items-center gap-3 flex-wrap mb-2">
+                    <h1 className="text-3xl md:text-4xl font-bold text-white drop-shadow-lg">
+                      {game?.title || project?.title}
+                    </h1>
+                    {(game?.platforms || project?.platforms) &&
+                      (game?.platforms || project?.platforms || []).length > 0 && (
+                        <div className="flex items-center gap-1.5">
+                          {(game?.platforms || project?.platforms || []).includes('windows') && (
+                            <Image
+                              src="/images/windows.png"
+                              alt="Windows"
+                              width={24}
+                              height={24}
+                              className="opacity-80"
+                            />
+                          )}
+                          {(game?.platforms || project?.platforms || []).includes('apple') && (
+                            <Image
+                              src="/images/apple.png"
+                              alt="Apple"
+                              width={24}
+                              height={24}
+                              className="opacity-80"
+                            />
+                          )}
+                          {(game?.platforms || project?.platforms || []).includes('html5') && (
+                            <Image
+                              src="/images/html5.png"
+                              alt="HTML5"
+                              width={24}
+                              height={24}
+                              className="opacity-80"
+                            />
+                          )}
+                          {(game?.platforms || project?.platforms || []).includes('linux') && (
+                            <Image
+                              src="/images/linux.png"
+                              alt="Linux"
+                              width={24}
+                              height={24}
+                              className="opacity-80"
+                            />
+                          )}
+                          {(game?.platforms || project?.platforms || []).includes('figma') && (
+                            <Image
+                              src="/images/figma.png"
+                              alt="Figma"
+                              width={24}
+                              height={24}
+                              className="opacity-80"
+                            />
+                          )}
+                        </div>
+                      )}
+                  </div>
+                  {(game?.created_at || project?.createdAt || tags.length > 0) && (
+                    <div className="flex flex-wrap gap-2 items-center text-sm text-white/90 drop-shadow-md">
+                      {(game?.created_at || project?.createdAt) && (
+                        <span>
+                          published {formatCreatedDate(game?.created_at || project?.createdAt || '')}
+                        </span>
+                      )}
+                      {(game?.created_at || project?.createdAt) && tags.length > 0 && (
+                        <span className="text-white/60">|</span>
+                      )}
+                      {tags.length > 0 && (
+                        <div className="flex flex-wrap gap-2">
+                          {tags.map((tag, index) => (
+                            <span
+                              key={index}
+                              className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[0.7rem] md:text-xs font-medium text-black"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   )}
                 </div>
               </div>
@@ -194,86 +265,8 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
 
             {/* Content Section */}
             <div className="flex-1 bg-white px-6 py-8 pb-24">
-              {/* Tags */}
-              {((game?.tags || project?.tags) &&
-                (game?.tags || project?.tags || []).length > 0) ||
-              (game?.created_at || project?.createdAt) ? (
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {(game?.tags || project?.tags || []).map((tag, index) => (
-                    <span
-                      key={index}
-                      className="bg-gray-200 px-3 py-1 rounded-full text-sm font-medium text-black"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                  {(game?.created_at || project?.createdAt) && (
-                    <span className="bg-gray-200 px-3 py-1 rounded-full text-sm font-medium text-black">
-                      {new Date(game?.created_at || project?.createdAt || '').getFullYear()}
-                    </span>
-                  )}
-                </div>
-              ) : null}
-
-              {/* Stats */}
-              <div className="flex flex-wrap items-center gap-6 mb-8 pb-8 border-b border-gray-200">
-                {game?.views_count && (
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm text-gray-600 mr-2">Views:</span>
-                    <div className="text-2xl font-bold text-yellow-600">
-                      {formatNumber(game.views_count)}
-                    </div>
-                  </div>
-                )}
-                {(game?.platforms || project?.platforms) &&
-                  (game?.platforms || project?.platforms || []).length > 0 && (
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm text-gray-600 mr-2">platforms:</span>
-                      <div className="flex items-center gap-2">
-                        {(game?.platforms || project?.platforms || []).includes('windows') && (
-                          <Image
-                            src="/images/windows.png"
-                            alt="Windows"
-                            width={24}
-                            height={24}
-                            className="opacity-80"
-                          />
-                        )}
-                        {(game?.platforms || project?.platforms || []).includes('apple') && (
-                          <Image
-                            src="/images/apple.png"
-                            alt="Apple"
-                            width={24}
-                            height={24}
-                            className="opacity-80"
-                          />
-                        )}
-                        {(game?.platforms || project?.platforms || []).includes('html5') && (
-                          <Image
-                            src="/images/html5.png"
-                            alt="HTML5"
-                            width={24}
-                            height={24}
-                            className="opacity-80"
-                          />
-                        )}
-                        {(game?.platforms || project?.platforms || []).includes('linux') && (
-                          <Image
-                            src="/images/linux.png"
-                            alt="Linux"
-                            width={24}
-                            height={24}
-                            className="opacity-80"
-                          />
-                        )}
-                      </div>
-                    </div>
-                  )}
-              </div>
-
               {/* Description */}
               <div className="prose prose-lg max-w-none mb-8">
-                <h2 className="text-2xl font-bold text-black mb-4">About</h2>
                 <p className="text-base md:text-lg text-black leading-relaxed">
                   {game?.short_text ||
                     gameConfig?.description ||
