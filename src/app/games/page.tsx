@@ -52,6 +52,8 @@ export default function Games() {
                 tags={game.tags}
                 platforms={game.platforms}
                 date={game.created_at}
+                href={game.url}
+                secondaryCtaLabel="play game"
                 onClick={() => {
                   setSelectedItem(game);
                   setIsSidePanelOpen(false);

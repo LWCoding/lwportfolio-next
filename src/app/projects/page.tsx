@@ -49,6 +49,8 @@ export default function Projects() {
               tags={project.tags}
               platforms={project.platforms}
               date={project.createdAt}
+              href={project.href}
+              secondaryCtaLabel="view project"
               onClick={() => {
                 setSelectedItem(project);
                 setIsSidePanelOpen(false);

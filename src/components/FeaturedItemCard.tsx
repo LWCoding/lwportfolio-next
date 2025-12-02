@@ -13,6 +13,7 @@ interface FeaturedItemCardProps {
   tags?: string[];
   platforms?: ('windows' | 'apple' | 'html5' | 'linux' | 'figma')[];
   date?: string;
+  secondaryCtaLabel?: string;
 }
 
 export default function FeaturedItemCard({
@@ -25,6 +26,7 @@ export default function FeaturedItemCard({
   tags = [],
   platforms = [],
   date,
+  secondaryCtaLabel,
 }: FeaturedItemCardProps) {
   const formattedDate =
     date && !Number.isNaN(new Date(date).getTime())
@@ -139,33 +141,38 @@ export default function FeaturedItemCard({
           {description}
         </p>
 
-        {/* View the Process Button */}
-        <button
-          onClick={onClick}
-          className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer w-fit mt-2 mx-auto md:mx-0"
-        >
-          <span>view the process</span>
-          <svg 
-            className="w-5 h-5" 
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
+        {/* Actions: view process + direct play/view */}
+        <div className="flex flex-wrap gap-3 mt-2 mx-auto md:mx-0">
+          <button
+            onClick={onClick}
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
           >
-            <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-          </svg>
-        </button>
+            <span>view the process</span>
+          </button>
+
+          {href && (
+            <Link
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+            >
+              <span>{secondaryCtaLabel || 'open link'}</span>
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );
-
-  if (href) {
-    return (
-      <Link href={href} className="block">
-        {content}
-      </Link>
-    );
-  }
 
   return content;
 }
