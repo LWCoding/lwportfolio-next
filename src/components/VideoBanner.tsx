@@ -5,6 +5,7 @@ interface VideoBannerProps {
   className?: string;
   minHeight?: string;
   height?: string;
+  maxHeight?: string;
   title?: string;
   subtitle?: string;
 }
@@ -14,6 +15,8 @@ export default function VideoBanner({
   className = "",
   minHeight = "400px",
   height = "50vh",
+   // Cap banner height so it doesn't overwhelm standard desktop views
+  maxHeight = "400px",
   title,
   subtitle
 }: VideoBannerProps) {
@@ -22,7 +25,8 @@ export default function VideoBanner({
       className={`relative bg-gray-800 overflow-hidden ${className}`}
       style={{ 
         height,
-        minHeight: minHeight
+        minHeight: minHeight,
+        maxHeight: maxHeight
       }}
     >
       <video

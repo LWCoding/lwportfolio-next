@@ -3,7 +3,7 @@
 import Navigation from "@/components/Navigation";
 import Section from "@/components/Section";
 import NewspaperGameCard from "@/components/NewspaperGameCard";
-import GameSidePanel from "@/components/GameSidePanel";
+import DetailSidePanel from "@/components/DetailSidePanel";
 import VideoBanner from "@/components/VideoBanner";
 import Footer from "@/components/Footer";
 import FeaturedItemCard from "@/components/FeaturedItemCard";
@@ -137,8 +137,8 @@ export default function Projects() {
 
       <Footer />
 
-      {/* Game/Project Side Panel */}
-      <GameSidePanel
+      {/* Game/Project Detail Panel */}
+      <DetailSidePanel
         item={selectedItem}
         isOpen={isSidePanelOpen}
         onClose={() => {
