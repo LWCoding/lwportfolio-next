@@ -213,7 +213,7 @@ export default function Home() {
                 badgeClassName="bg-blue-500"
                 badgeTextClassName="text-white"
                 title="designing & teaching playful cs courses"
-                description="i've taught internationally in South Korea, and currently teach courses to help students build creative projects at Stanford. i love using interactive narratives to make programming feel intuitive, joyful, and collaborative."
+                description="i've taught internationally in south korea, and currently teach courses to help students build creative projects at stanford. i love using interactive narratives to make programming feel intuitive, joyful, and collaborative."
                 ringColorClassName="focus:ring-blue-500"
               />
             </div>
