@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 export interface OtherProject {
   id: string;
   title: string;
@@ -8,6 +10,8 @@ export interface OtherProject {
   createdAt?: string;
   platforms?: ('windows' | 'apple' | 'html5' | 'linux' | 'figma')[];
   fadeOpacity?: number; // Controls fade amount: 0-1, where 1 is default (full fade), lower values = less fade
+  // Optional rich detail content rendered inside the detail side panel
+  detailComponent?: ReactNode;
 }
 
 // Configure your other projects here
@@ -21,7 +25,8 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     coverImage: '/images/serendipitea.JPG',
     createdAt: '2025-04-10',
     platforms: ['figma'],
-    fadeOpacity: 0.7
+    fadeOpacity: 0.7,
+    detailComponent: 'documentation section in progress'
   },
   {
     id: 'always-be-closing',
@@ -31,7 +36,8 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     href: 'https://sale-prod.s3.amazonaws.com/Build_Prod/index.html',
     coverImage: '/images/alwaysbeclosing.png',
     createdAt: '2025-06-15',
-    platforms: ['html5']
+    platforms: ['html5'],
+    detailComponent: 'documentation section in progress'
   },
   {
     id: 'immersifyvr',
@@ -41,7 +47,8 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     href: 'https://www.immersifyvr.org/',
     coverImage: '/images/immersifyvr.png',
     createdAt: '2024-10-24',
-    platforms: ['html5']
+    platforms: ['html5'],
+    detailComponent: 'documentation section in progress'
   },
   {
     id: 'timesync',

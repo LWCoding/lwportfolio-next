@@ -28,7 +28,9 @@ export default function FeaturedItemCard({
 }: FeaturedItemCardProps) {
   const formattedDate =
     date && !Number.isNaN(new Date(date).getTime())
-      ? new Date(date).toLocaleDateString("en-US", { month: "short", year: "numeric" })
+      ? new Date(date)
+          .toLocaleDateString("en-US", { month: "short", year: "numeric" })
+          .toLowerCase()
       : undefined;
 
   const content = (

@@ -180,7 +180,7 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
               <div className="absolute inset-0 bg-black/60" />
               <div className="absolute inset-0 flex items-end">
                 <div className="w-full px-6 pb-6 z-10">
-                  <div className="flex items-center gap-3 flex-wrap mb-2">
+                  <div className="flex items-center gap-3 flex-wrap mb-3">
                     <h1 className="text-3xl md:text-4xl font-bold text-white drop-shadow-lg">
                       {game?.title || project?.title}
                     </h1>
@@ -236,7 +236,7 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
                       )}
                   </div>
                   {(game?.created_at || project?.createdAt || tags.length > 0) && (
-                    <div className="flex flex-wrap gap-2 items-center text-sm text-white/90 drop-shadow-md">
+                    <div className="mt-1 flex flex-wrap gap-2 items-center text-sm text-white/90 drop-shadow-md">
                       {(game?.created_at || project?.createdAt) && (
                         <span>
                           published {formatCreatedDate(game?.created_at || project?.createdAt || '')}
@@ -261,31 +261,18 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
                   )}
                 </div>
               </div>
-            </div>
 
-            {/* Content Section */}
-            <div className="flex-1 bg-white px-6 py-8 pb-24">
-              {/* Description */}
-              <div className="prose prose-lg max-w-none mb-8">
-                <p className="text-base md:text-lg text-black leading-relaxed">
-                  {game?.short_text ||
-                    gameConfig?.description ||
-                    project?.description ||
-                    'an exciting experience awaits!'}
-                </p>
-              </div>
-
-              {/* Play/View Button */}
-              <div className="mt-8">
+              {/* Play/View Button - absolute on larger screens only */}
+              <div className="hidden md:block md:absolute md:bottom-4 md:right-4 z-20">
                 <Link
                   href={game?.url || project?.href || '#'}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-green-500 hover:bg-green-600 text-white font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-green-500 hover:bg-green-600 text-white font-semibold text-sm md:text-base rounded-full transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg cursor-pointer"
                 >
                   {game ? (
                     <>
-                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z" />
                       </svg>
                       <span>play on itch.io</span>
@@ -293,7 +280,7 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
                   ) : (
                     <>
                       <svg
-                        className="w-6 h-6"
+                        className="w-4 h-4 md:w-5 md:h-5"
                         fill="none"
                         stroke="currentColor"
                         strokeWidth="2"
@@ -308,11 +295,75 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
               </div>
             </div>
 
-            {/* Large Bottom Close Bar */}
+            {/* Content Section */}
+            <div className="flex-1 bg-white px-6 py-8 pb-24">
+              {/* Description */}
+              <div className="prose prose-lg max-w-none mb-8">
+                <p className="text-base md:text-lg text-black leading-relaxed">
+                  {game?.short_text ||
+                    gameConfig?.description ||
+                    project?.description ||
+                    'an exciting experience awaits!'}
+                </p>
+              </div>
+
+              {/* Optional rich detail content for games/projects */}
+              {(gameConfig?.detailComponent || project?.detailComponent) && (
+                <div className="mt-10 pt-8 border-t border-gray-200 text-base md:text-lg text-black leading-relaxed space-y-4">
+                  {typeof (gameConfig?.detailComponent || project?.detailComponent) === 'string' ? (
+                    <em>{gameConfig?.detailComponent || project?.detailComponent}</em>
+                  ) : (
+                    gameConfig?.detailComponent || project?.detailComponent
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* Mobile action + close stack */}
+            <div className="fixed bottom-0 left-0 right-0 w-full md:hidden">
+              <Link
+                href={game?.url || project?.href || '#'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-4 bg-green-500 hover:bg-green-600 text-white text-base font-semibold tracking-wide shadow-[0_-2px_8px_rgba(0,0,0,0.25)] cursor-pointer"
+              >
+                {game ? (
+                  <>
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                    <span>play on itch.io</span>
+                  </>
+                ) : (
+                  <>
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    <span>view project</span>
+                  </>
+                )}
+              </Link>
+              <button
+                type="button"
+                onClick={onClose}
+                className="w-full py-4 bg-gray-900 text-white text-base font-semibold tracking-wide flex items-center justify-center gap-2 shadow-[0_-4px_12px_rgba(0,0,0,0.25)] cursor-pointer"
+                aria-label="close panel"
+              >
+                <span>close</span>
+              </button>
+            </div>
+
+            {/* Large Bottom Close Bar (desktop) */}
             <button
               type="button"
               onClick={onClose}
-              className="fixed bottom-0 left-0 right-0 w-full py-4 md:py-5 bg-gray-900 text-white text-base md:text-lg font-semibold tracking-wide flex items-center justify-center gap-2 shadow-[0_-4px_12px_rgba(0,0,0,0.25)] cursor-pointer"
+              className="hidden md:flex fixed bottom-0 left-0 right-0 w-full py-5 bg-gray-900 text-white text-base md:text-lg font-semibold tracking-wide items-center justify-center gap-2 shadow-[0_-4px_12px_rgba(0,0,0,0.25)] cursor-pointer"
               aria-label="close panel"
             >
               <span>close</span>
