@@ -6,8 +6,71 @@ import ExperienceCard from "@/components/ExperienceCard";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+
+  // Pre-fetch games data to warm up the cache for faster load on /games page
+  useEffect(() => {
+    // Prefetch the /games route for faster navigation
+    router.prefetch('/games');
+    
+    const prefetchGames = async () => {
+      try {
+        // Check if we already have valid cached data
+        const CACHE_KEY = 'itch-games-cache';
+        const CACHE_DURATION = 60 * 60 * 1000; // 1 hour
+        
+        if (typeof window !== 'undefined' && window.localStorage) {
+          const cached = localStorage.getItem(CACHE_KEY);
+          if (cached) {
+            try {
+              const cachedData = JSON.parse(cached);
+              const now = Date.now();
+              
+              // If cache is still valid, no need to prefetch
+              if (now - cachedData.timestamp < CACHE_DURATION) {
+                return;
+              }
+            } catch (e) {
+              // Invalid cache, continue to fetch
+            }
+          }
+        }
+
+        // Fetch games data in the background
+        const response = await fetch('/api/itch-games');
+        
+        if (response.ok) {
+          const data = await response.json();
+          
+          // Cache the data using the same format as useGames hook
+          if (typeof window !== 'undefined' && window.localStorage) {
+            try {
+              const cacheData = {
+                data: data,
+                timestamp: Date.now(),
+              };
+              localStorage.setItem(CACHE_KEY, JSON.stringify(cacheData));
+            } catch (e) {
+              // localStorage might be full, continue anyway
+              console.warn('Failed to cache games data during prefetch:', e);
+            }
+          }
+        }
+      } catch (error) {
+        // Silently fail - prefetching shouldn't break the page
+        console.warn('Failed to prefetch games data:', error);
+      }
+    };
+
+    // Prefetch after a short delay to not block initial render
+    const timeoutId = setTimeout(prefetchGames, 100);
+    
+    return () => clearTimeout(timeoutId);
+  }, []);
 
   // Tools I know how to use
   const tools = [
