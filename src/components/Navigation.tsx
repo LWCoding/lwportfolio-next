@@ -19,7 +19,7 @@ export default function Navigation() {
 
   // Helper function to get link classes with active state
   const getLinkClasses = (path: string) => {
-    const baseClasses = "text-sm sm:text-base font-medium transition-colors duration-300 cursor-pointer whitespace-nowrap";
+    const baseClasses = "text-xs sm:text-sm font-medium transition-colors duration-300 cursor-pointer whitespace-nowrap";
     const activeClasses = isActive(path)
       ? "text-black font-bold underline decoration-2 underline-offset-4"
       : "text-black/70 underline hover:text-black hover:font-semibold";
@@ -42,7 +42,7 @@ export default function Navigation() {
                   ? 'text-black' 
                   : 'text-black/80 hover:text-black'
               }`}>
-                lucas wang!
+                Lucas Wang
               </h1>
             </Link>
           </div>
@@ -60,36 +60,36 @@ export default function Navigation() {
           </button>
 
           {/* Navigation Links - Hidden on mobile, shown on medium+ */}
-          <div className="hidden md:flex items-center justify-center gap-3 sm:gap-6 md:gap-6 flex-1 min-w-0 md:flex-1">
+          <div className="hidden md:flex items-center justify-center gap-4 sm:gap-6 md:gap-8 flex-1 min-w-0 md:flex-1">
             <Link 
               href="/"
               className={getLinkClasses('/')}
             >
-              home
+              Home
             </Link>
             <Link 
               href="/projects"
               className={getLinkClasses('/projects')}
             >
-              projects
+              Projects
             </Link>
             <Link 
               href="/games"
               className={getLinkClasses('/games')}
             >
-              games
+              Games
             </Link>
             <Link 
               href="/about"
               className={getLinkClasses('/about')}
             >
-              about
+              About
             </Link>
             <Link 
               href="/contact"
-              className="text-sm sm:text-base text-black/70 font-medium underline transition-colors duration-300 hover:text-black hover:font-semibold cursor-pointer whitespace-nowrap"
+              className="text-xs sm:text-sm text-black/70 font-medium underline transition-colors duration-300 hover:text-black hover:font-semibold cursor-pointer whitespace-nowrap"
             >
-              contact
+              Contact
             </Link>
           </div>
 
@@ -105,35 +105,35 @@ export default function Navigation() {
                 onClick={handleLinkClick}
                 className={getLinkClasses('/')}
               >
-                home
+                Home
               </Link>
               <Link 
                 href="/projects"
                 onClick={handleLinkClick}
                 className={getLinkClasses('/projects')}
               >
-                projects
+                Projects
               </Link>
               <Link 
                 href="/games"
                 onClick={handleLinkClick}
                 className={getLinkClasses('/games')}
               >
-                games
+                Games
               </Link>
               <Link 
                 href="/about"
                 onClick={handleLinkClick}
                 className={getLinkClasses('/about')}
               >
-                about
+                About
               </Link>
               <Link 
                 href="/contact"
                 onClick={handleLinkClick}
-                className="text-sm sm:text-base text-black/70 font-medium underline transition-colors duration-300 hover:text-black hover:font-semibold cursor-pointer whitespace-nowrap"
+                className="text-xs sm:text-sm text-black/70 font-medium underline transition-colors duration-300 hover:text-black hover:font-semibold cursor-pointer whitespace-nowrap"
               >
-                contact
+                Contact
               </Link>
             </div>
           </div>

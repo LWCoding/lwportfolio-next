@@ -8,7 +8,7 @@ export default function Footer() {
     >
       <div className="container mx-auto max-w-[1024px] text-center">
         <p className="text-black font-bold">
-          lucas wang © {new Date().getFullYear()}
+          Lucas Wang © {new Date().getFullYear()}
         </p>
         <p className="text-sm text-black font-bold mt-1">
           <a

@@ -32,8 +32,8 @@ export default function Games() {
 
       {/* Hero Video Banner */}
       <VideoBanner 
-        title="games" 
-        subtitle="take a break, play a game" 
+        title="Games" 
+        subtitle="Take a break, play a game!" 
         height="33vh"
         minHeight="200px"
       />
@@ -46,14 +46,14 @@ export default function Games() {
               <FeaturedItemCard
                 key={game.id}
                 title={game.title}
-                description={game.short_text || "an exciting game experience awaits!"}
+                description={game.short_text || "An exciting game experience awaits!"}
                 imageSrc={game.still_cover_url || game.cover_url || "/images/scratchproject.png"}
                 imageAlt={`${game.title} cover image`}
                 tags={game.tags}
                 platforms={game.platforms}
                 date={game.created_at}
                 href={game.url}
-                secondaryCtaLabel="play game"
+                secondaryCtaLabel="Play Game"
                 onClick={() => {
                   setSelectedItem(game);
                   setIsSidePanelOpen(false);
@@ -118,7 +118,7 @@ export default function Games() {
             <div className="pt-6 md:pt-8 pb-6 md:pb-8">
               {/* Newspaper-style Games Layout */}
               <div className="container mx-auto max-w-[1024px] px-4">
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-10 md:mb-4 text-center">other games</h2>
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-10 md:mb-4 text-center">Other Games</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-0">
                     {featuredGames.slice(3).map((game, index) => {
                       const gridProps = calculateNewspaperGridProps(index, featuredGames.length - 3);
@@ -145,14 +145,14 @@ export default function Games() {
                                 />
                                 {/* Text */}
                                 <p className="text-white text-sm font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] whitespace-nowrap">
-                                  click to view more info!
+                                  Click to view more info!
                                 </p>
                               </div>
                             </div>
                           )}
                           <NewspaperGameCard
                             title={game.title}
-                            description={game.short_text || "an exciting game experience awaits!"}
+                            description={game.short_text || "An exciting game experience awaits!"}
                             tags={game.tags || []}
                             href={game.url}
                             infoUrl={`/games/${game.id}`}

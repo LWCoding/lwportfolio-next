@@ -32,7 +32,6 @@ export default function FeaturedItemCard({
     date && !Number.isNaN(new Date(date).getTime())
       ? new Date(date)
           .toLocaleDateString("en-US", { month: "short", year: "numeric" })
-          .toLowerCase()
       : undefined;
 
   const content = (
@@ -128,7 +127,7 @@ export default function FeaturedItemCard({
                     key={index}
                     className="bg-gray-200 px-3 py-1 rounded-full text-[0.7rem] md:text-xs font-medium text-black"
                   >
-                    {tag.toLowerCase()}
+                    {tag}
                   </span>
                 ))}
               </div>
@@ -147,7 +146,7 @@ export default function FeaturedItemCard({
             onClick={onClick}
             className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
           >
-            <span>view the process</span>
+            <span>View the Process</span>
           </button>
 
           {href && (
@@ -157,7 +156,7 @@ export default function FeaturedItemCard({
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
             >
-              <span>{secondaryCtaLabel || 'open link'}</span>
+              <span>{secondaryCtaLabel || 'Open link'}</span>
               <svg
                 className="w-5 h-5"
                 fill="none"

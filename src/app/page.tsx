@@ -113,12 +113,12 @@ export default function Home() {
             <div className="flex flex-col items-start text-left max-w-lg w-full space-y-6">
               {/* Main Heading */}
               <h1 className="text-4xl md:text-6xl font-bold text-white lg:text-black">
-                lucas wang!
+                Lucas Wang
               </h1>
 
               {/* Descriptive Text */}
               <p className="text-base md:text-lg text-white lg:text-black font-medium">
-                i&apos;m a product designer crafting interactive experiences through game development, incentive design, and education.
+                I&apos;m a product designer crafting interactive experiences through game development, incentive design, and education!
               </p>
 
               {/* Tools Row */}
@@ -158,14 +158,14 @@ export default function Home() {
                   >
                     <path d="M8 5v14l11-7z"/>
                   </svg>
-                  <span>play games</span>
+                  <span>Play Games</span>
                 </Link>
                 <Link 
                   href="/projects"
                   className="group flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer min-w-[160px]"
                   aria-label="View projects"
                 >
-                  <span>view projects</span>
+                  <span>View Projects</span>
                 </Link>
               </div>
             </div>
@@ -205,7 +205,7 @@ export default function Home() {
                   }}
                 ></div>
                 <p className="text-black text-sm md:text-base font-medium whitespace-nowrap">
-                  <i>hi! these are games i&apos;ve worked on! :)</i>
+                  <i>Hi! These are games I&apos;ve worked on! :)</i>
                 </p>
               </div>
               {/* Headshot Circle */}
@@ -224,7 +224,7 @@ export default function Home() {
         {/* Bottom Yellow Bar */}
         <div className="w-full bg-yellow-400 py-4 flex-shrink-0">
           <div className="text-center text-black font-semibold">
-            ▼ explore what i&apos;m working on ▼
+            ▼ Explore What I&apos;m Working On ▼
           </div>
         </div>
       </div>
@@ -238,42 +238,42 @@ export default function Home() {
               {/* design & research work */}
               <ExperienceCard
                 href="/projects"
-                ariaLabel="explore projects from my product design and research work"
+                ariaLabel="Explore projects from my product design and research work"
                 imageSrc="/images/alwaysbeclosing.png"
                 imageAlt="simulation and product design interface"
-                badgeLabel="product & research"
+                badgeLabel="Product & Research"
                 badgeClassName="bg-green-600"
                 badgeTextClassName="text-white"
-                title="designing systems for learning & incentives"
-                description="at work and through independent research, i design experiences that people feel motivated to play. i'm working on a customer management software game and projects aimed to bring people together."
+                title="Designing Systems For Learning & Incentives"
+                description="At work and through independent research, I design experiences that people feel motivated to play. I'm working on a customer management software game and projects aimed to bring people together."
                 ringColorClassName="focus:ring-green-500"
               />
               
               {/* game development club */}
               <ExperienceCard
                 href="/games"
-                ariaLabel="explore my experience with games"
+                ariaLabel="Explore my experience with games"
                 imageSrc="/images/svgdmeeting.png"
                 imageAlt="stanford game development club meeting"
-                badgeLabel="community & clubs"
+                badgeLabel="Community & Clubs"
                 badgeClassName="bg-yellow-400"
                 badgeTextClassName="text-black"
-                title="leading stanford's game development club"
-                description="as the founder of the club, i've planned and executed many major events with hundreds of participants, including jams, socials, and playtests that help game designers find community."
+                title="Leading Stanford's Game Development Club"
+                description="As the founder of the club, I've planned and executed many major events with hundreds of participants, including jams, socials, and playtests that help game designers find community."
                 ringColorClassName="focus:ring-yellow-400"
               />
 
               {/* teaching at stanford */}
               <ExperienceCard
                 href="/about"
-                ariaLabel="learn more about my teaching at stanford"
+                ariaLabel="Learn more about my teaching at Stanford"
                 imageSrc="/images/meteaching.jpg"
                 imageAlt="lucas teaching playful coding projects in class"
-                badgeLabel="teaching"
+                badgeLabel="Teaching"
                 badgeClassName="bg-blue-500"
                 badgeTextClassName="text-white"
-                title="designing & teaching playful cs courses"
-                description="i've taught internationally in south korea, and currently teach courses to help students build creative projects at stanford. i love using interactive narratives to make programming feel intuitive, joyful, and collaborative."
+                title="Designing & Teaching Playful CS Courses"
+                description="I've taught internationally in South Korea, and currently teach courses to help students build creative projects at Stanford. I love using interactive narratives to make programming feel intuitive, joyful, and collaborative."
                 ringColorClassName="focus:ring-blue-500"
               />
             </div>

@@ -98,13 +98,12 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
 
   const formatCreatedDate = (dateString: string) => {
     const date = new Date(dateString);
-    // Match featured cards: short month + year, but keep lowercase for site theming
+    // Match featured cards: short month + year
     return date
       .toLocaleDateString('en-US', {
         month: 'short',
         year: 'numeric',
-      })
-      .toLowerCase();
+      });
   };
 
   const formatNumber = (num: number) => {
@@ -240,7 +239,7 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
                       {/* Date */}
                       {(game?.created_at || project?.createdAt) && (
                         <span>
-                          published {formatCreatedDate(game?.created_at || project?.createdAt || '')}
+                          Published {formatCreatedDate(game?.created_at || project?.createdAt || '')}
                         </span>
                       )}
 
@@ -256,7 +255,7 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
                             {formatNumber(game.views_count)} views
                           </span>
                           <span className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-full mt-1 px-2 py-1 rounded bg-black/85 text-[0.7rem] text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-150 z-30">
-                            view count is live-loaded from itch.io
+                            View count is live-loaded from itch.io
                           </span>
                         </span>
                       )}
@@ -274,7 +273,7 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
                               key={index}
                               className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[0.7rem] md:text-xs font-medium text-black"
                             >
-                              {tag.toLowerCase()}
+                              {tag}
                             </span>
                           ))}
                         </div>
@@ -297,7 +296,7 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
                       <svg className="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z" />
                       </svg>
-                      <span>play on itch.io</span>
+                      <span>Play on itch.io</span>
                     </>
                   ) : (
                     <>
@@ -310,7 +309,7 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
                       >
                         <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
-                      <span>view project</span>
+                      <span>View Project</span>
                     </>
                   )}
                 </Link>
@@ -354,7 +353,7 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z" />
                     </svg>
-                    <span>play on itch.io</span>
+                    <span>Play on itch.io</span>
                   </>
                 ) : (
                   <>
@@ -367,7 +366,7 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
                     >
                       <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>
-                    <span>view project</span>
+                    <span>View project</span>
                   </>
                 )}
               </Link>
@@ -375,9 +374,9 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
                 type="button"
                 onClick={onClose}
                 className="w-full py-4 bg-gray-900 text-white text-base font-semibold tracking-wide flex items-center justify-center gap-2 shadow-[0_-4px_12px_rgba(0,0,0,0.25)] cursor-pointer"
-                aria-label="close panel"
+                aria-label="Close panel"
               >
-                <span>close</span>
+                <span>Close</span>
               </button>
             </div>
 
@@ -386,9 +385,9 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
               type="button"
               onClick={onClose}
               className="hidden md:flex fixed bottom-0 left-0 right-0 w-full py-5 bg-gray-900 text-white text-base md:text-lg font-semibold tracking-wide items-center justify-center gap-2 shadow-[0_-4px_12px_rgba(0,0,0,0.25)] cursor-pointer"
-              aria-label="close panel"
+              aria-label="Close panel"
             >
-              <span>close</span>
+              <span>Close</span>
             </button>
           </div>
         </div>

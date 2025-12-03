@@ -16,58 +16,58 @@ export const FEATURED_GAMES_CONFIG: FeaturedGameConfig[] = [
   { 
     id: 3766251, 
     tags: ["🏆 GMTK 2025: #722/9605", "Unity/C#"], 
-    description: "an arcade game. use new stylus technology to loop rats before they eat all of your cheese.",
+    description: "An arcade game. Use new stylus technology to loop rats before they eat all of your cheese.",
     platforms: ['windows', 'apple', 'linux', 'html5'],
     detailComponent: 'documentation section in progress'
   },
   { 
     id: 2904867, 
     tags: ["🏆 GMTK 2024: #4266/7557", "Unity/C#"], 
-    description: "an arcade game. cook food, serve customers, and manage a kitchen that gets larger every night.",
+    description: "An arcade game. Cook food, serve customers, and manage a kitchen that gets larger every night.",
     platforms: ['windows', 'apple', 'linux', 'html5'],
     detailComponent: 'documentation section in progress'
   },
   { 
     id: 1940212, 
     tags: ["🏆 Wonderjam 4: #2/25", "Unity/C#"], 
-    description: "a top-down shooter game. destroy enemy ships, get XP, and unlock upgrades.",
+    description: "A top-down shooter game. Destroy enemy ships, get XP, and unlock upgrades.",
     platforms: ['windows', 'html5'],
     detailComponent: 'documentation section in progress'
   },
   {
     id: 4028688,
     tags: ["Unity/C#"],
-    description: "play as a kangaroo rat in southern california. find food, avoid predators, and repopulate.",
+    description: "Play as a kangaroo rat in Southern California. Find food, avoid predators, and repopulate.",
     platforms: ['html5'],
   },
   { 
     id: 2741477, 
     tags: ["Unity/C#"], 
-    description: "play as a critter and explore the mystery of a large, unfamiliar, damaged world.",
+    description: "Play as a critter and explore the mystery of a large, unfamiliar, damaged world.",
     platforms: ['windows', 'html5']
   },
   {
     id: 2393708,
     tags: ['Unity/C#'],
-    description: "a course project for PHIL26Q. explore gibson's theory of affordances through puzzles.",
+    description: "A course project for PHIL26Q. Explore Gibson's theory of affordances through puzzles.",
     platforms: ['windows', 'html5']
   },
   { 
     id: 1865877, 
     tags: ["Unity/C#"], 
-    description: "a card-battler RPG named after our team's online initials! build a deck and fight enemies.",
+    description: "A card-battler RPG named after our team's online initials! Build a deck and fight enemies.",
     platforms: ['windows', 'apple', 'linux', 'html5']
   },
   { 
     id: 1149440, 
     tags: ["Unity/C#"], 
-    description: "an experimental 3D game. inspired by papers please, screen malicious boxes in a warehouse.",
+    description: "An experimental 3D game. Inspired by Papers Please, screen malicious boxes in a warehouse.",
     platforms: ['windows', 'html5']
   },
   {
     id: 2193616,
     tags: ["Unity/C#"],
-    description: "a multiplayer game. play as a pokémon and fight other players in a 2D arena.",
+    description: "A multiplayer game. Play as a Pokémon and fight other players in a 2D arena.",
     platforms: ['html5']
   }
 ];

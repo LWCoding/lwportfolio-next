@@ -256,7 +256,7 @@ export default function NewspaperGameCard({
               key={index}
               className="bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-medium text-black w-fit whitespace-normal break-words"
             >
-              {tag.toLowerCase()}
+              {tag}
             </span>
           ))}
           {createdAt && (
@@ -413,7 +413,7 @@ export default function NewspaperGameCard({
               key={index}
               className="bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-medium text-black w-fit whitespace-normal break-words"
             >
-              {tag.toLowerCase()}
+              {tag}
             </span>
           ))}
           {createdAt && (

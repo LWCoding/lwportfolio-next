@@ -30,8 +30,8 @@ export default function Projects() {
 
       {/* Hero Video Banner */}
       <VideoBanner 
-        title="projects" 
-        subtitle="some fun things i've designed" 
+        title="Projects" 
+        subtitle="Some fun things I've designed!" 
         height="33vh"
         minHeight="200px"
       />
@@ -50,7 +50,7 @@ export default function Projects() {
               platforms={project.platforms}
               date={project.createdAt}
               href={project.href}
-              secondaryCtaLabel="view project"
+              secondaryCtaLabel="View Project"
               onClick={() => {
                 setSelectedItem(project);
                 setIsSidePanelOpen(false);
@@ -72,7 +72,7 @@ export default function Projects() {
             <div className="pt-6 md:pt-8 pb-6 md:pb-8">
               {/* Newspaper-style Projects Layout */}
               <div className="container mx-auto max-w-[1024px] px-4">
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-10 md:mb-4 text-center">other projects</h2>
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-10 md:mb-4 text-center">Other Projects</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-0">
                     {OTHER_PROJECTS_CONFIG.slice(3).map((project, index) => {
                     const gridProps = calculateNewspaperGridProps(index, OTHER_PROJECTS_CONFIG.length - 3);
@@ -95,7 +95,7 @@ export default function Projects() {
                               />
                               {/* Text */}
                               <p className="text-white text-sm font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] whitespace-nowrap">
-                                click to view more info!
+                                Click to view more info!
                               </p>
                             </div>
                           </div>

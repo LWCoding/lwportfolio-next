@@ -19,7 +19,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   {
     id: 'always-be-closing',
     title: 'Always Be Closing',
-    description: 'a simulation of customer management software designed to train salespeople to be more effective in sales calls. used to teach STRAMGT351 at stanford.',
+    description: 'A simulation of customer management software designed to train salespeople to be more effective in sales calls. Used to teach STRAMGT351 at Stanford.',
     tags: ['Simulation', 'Unity/C#'],
     href: 'https://sale-prod.s3.amazonaws.com/Build_Prod/index.html',
     coverImage: '/images/alwaysbeclosing.png',
@@ -30,7 +30,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   {
     id: 'serendipi-tea',
     title: 'Serendipi-Tea',
-    description: 'a card game and pop-up cafe connecting startup founders together, officially prototyped and tested at the startx accelerator program.',
+    description: 'A card game and pop-up cafe connecting startup founders together, officially prototyped and tested at the StartX accelerator program.',
     tags: ['In-Person', 'Experience'],
     href: 'https://www.figma.com/design/it91COfADt2hqakFp3oiHu/Serendipi-tea-Print-and-Play?node-id=2284-2&t=yr4TKOw8Vh5lL8rz-1',
     coverImage: '/images/serendipitea.JPG',
@@ -42,7 +42,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   {
     id: 'immersifyvr',
     title: 'ImmersifyVR',
-    description: 'a virtual reality exercise application designed to motivate older adults to exercise.',
+    description: 'A virtual reality exercise application designed to motivate older adults to exercise.',
     tags: ['App', 'Virtual Reality', 'Unity/C#'],
     href: 'https://www.immersifyvr.org/',
     coverImage: '/images/immersifyvr.png',
@@ -53,7 +53,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   {
     id: 'timesync',
     title: 'Timesync',
-    description: 'a schedule-syncing app designed to help people easily coordinate their schedules with friends.',
+    description: 'A schedule-syncing app designed to help people easily coordinate their schedules with friends.',
     tags: ['App', 'Figma'],
     href: 'https://www.figma.com/design/Ng5ndVHBaIS4g86iEHsXzR/TimeSync-App?node-id=42-2988&t=WRYz7MBidzvsda76-1',
     coverImage: '/images/timesync.png',
@@ -63,7 +63,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   {
     id: 'cs42si',
     title: 'CS42SI Course',
-    description: 'original curriculum and website for CS42SI at stanford, a course teaching unity and game development.',
+    description: 'Original curriculum and website for CS42SI at Stanford, a course teaching Unity and game development.',
     tags: ['Website', 'Next.js'],
     href: 'https://web.stanford.edu/class/cs42si/',
     coverImage: '/images/cs42si.png',
@@ -73,7 +73,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   {
     id: 'cs11si',
     title: 'CS11SI Course',
-    description: 'original curriculum and website for CS11SI at stanford, a course teaching unity\'s XR interaction toolkit.',
+    description: 'Original curriculum and website for CS11SI at Stanford, a course teaching Unity\'s XR interaction toolkit.',
     tags: ['Website', 'Next.js'],
     href: 'https://web.stanford.edu/class/cs11si/',
     coverImage: '/images/cs11si.png',
@@ -83,7 +83,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   {
     id: 'planet',
     title: 'Planet',
-    description: 'a mental health mobile application designed to help people easily connect with pre-existing friends.',
+    description: 'A mental health mobile application designed to help people easily connect with pre-existing friends.',
     tags: ['App', 'React Native'],
     href: 'https://hci.stanford.edu/courses/cs147/2024/au/projects/Technology-for-Mental-Health/Planet/',
     coverImage: '/images/planet.png',
@@ -93,7 +93,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   {
     id: 'obscure-courses',
     title: 'Obscure Courses',
-    description: 'a gamified website that allows users to guess the names of obscure courses at stanford.',
+    description: 'A gamified website that allows users to guess the names of obscure courses at Stanford.',
     tags: ['Website', 'Svelte'],
     href: 'https://obscure-courses.vercel.app/',
     coverImage: '/images/obscurecourses.png',
@@ -103,7 +103,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   {
     id: 'malaysian-club-chicago',
     title: 'Malaysian Club Website',
-    description: 'a website for the malaysian club of chicago, a club that promotes malaysian culture and heritage.',
+    description: 'A website for the Malaysian Club of Chicago, a club that promotes Malaysian culture and heritage.',
     tags: ['Website', 'HTML/CSS/JS'],
     href: 'https://malaysianclubchicago.com/',
     coverImage: '/images/mcc-website.png',

@@ -51,7 +51,7 @@ export default function VideoBanner({
               </h1>
             )}
             {subtitle && (
-              <p className="text-lg md:text-xl text-white/90 text-center">
+              <p className="text-lg md:text-xl text-white/90 text-center italic">
                 {subtitle}
               </p>
             )}

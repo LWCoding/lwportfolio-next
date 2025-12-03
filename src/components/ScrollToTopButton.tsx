@@ -30,7 +30,7 @@ export default function ScrollToTopButton() {
     <button
       type="button"
       onClick={handleClick}
-      aria-label="back to top"
+      aria-label="Back to top"
       className={`fixed bottom-6 right-6 z-50 flex items-center justify-center w-12 h-12 rounded-full bg-yellow-400 border border-black/20 shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 focus:ring-offset-yellow-300 ${
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}

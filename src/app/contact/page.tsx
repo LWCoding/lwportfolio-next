@@ -15,17 +15,17 @@ export default function ContactPage() {
         <section className="w-full md:w-1/2 flex items-center justify-center bg-gray-200 px-6 md:px-12 py-10">
           <div className="max-w-md w-full space-y-6">
             <h1 className="text-3xl md:text-4xl font-bold text-black">
-              let&apos;s deliberate
+              Let&apos;s Deliberate!
             </h1>
             <p className="text-base md:text-lg text-black/80">
-              i love chatting about games, interactive learning, and product design. if you have
+              I love chatting about games, interactive learning, and product design. If you have
               a project, collaboration, or just want to say hi, feel free to reach out.
             </p>
 
             <div className="space-y-3">
               <div>
                 <p className="text-xs font-semibold tracking-wide text-black/60">
-                  email
+                  Email
                 </p>
                 <a
                   href="mailto:lswang05@stanford.edu"
@@ -37,7 +37,7 @@ export default function ContactPage() {
 
               <div>
                 <p className="text-xs font-semibold tracking-wide text-black/60 mt-2">
-                  links
+                  Links
                 </p>
                 <div className="flex items-center gap-3 mt-2">
                   <a
@@ -45,7 +45,7 @@ export default function ContactPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-10 h-10 bg-white rounded-full transition-all duration-300 hover:scale-110 flex items-center justify-center cursor-pointer shadow-sm"
-                    aria-label="visit my linkedin profile"
+                    aria-label="Visit my LinkedIn profile"
                   >
                     <Image
                       src="/images/linkedin.png"
@@ -61,7 +61,7 @@ export default function ContactPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-10 h-10 bg-white rounded-full transition-all duration-300 hover:scale-110 flex items-center justify-center cursor-pointer shadow-sm"
-                    aria-label="visit my github profile"
+                    aria-label="Visit my GitHub profile"
                   >
                     <Image
                       src="/images/github.png"
@@ -77,7 +77,7 @@ export default function ContactPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-10 h-10 bg-white rounded-full transition-all duration-300 hover:scale-110 flex items-center justify-center cursor-pointer shadow-sm"
-                    aria-label="visit my itch.io profile"
+                    aria-label="Visit my itch.io profile"
                   >
                     <Image
                       src="/images/itchio.png"
@@ -93,7 +93,7 @@ export default function ContactPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-10 h-10 bg-white rounded-full transition-all duration-300 hover:scale-110 flex items-center justify-center cursor-pointer shadow-sm"
-                    aria-label="visit my scratch profile"
+                    aria-label="Visit my Scratch profile"
                   >
                     <Image
                       src="/images/scratch.svg"
