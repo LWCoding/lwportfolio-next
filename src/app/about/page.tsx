@@ -48,7 +48,7 @@ export default function About() {
                 </p>
                 <div className="pt-2">
                   <a
-                    href="https://drive.google.com/file/d/1VlwnYKvIjUNp4Y-UyaHcm0GvJMjVGUUf/view?usp=sharing"
+                    href="https://drive.google.com/file/d/1bhDVCsNctAiE20Tlae4XgHOV9VD2KVeh/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-yellow-400 text-black font-semibold text-sm md:text-base shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer"
