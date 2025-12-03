@@ -2,19 +2,14 @@
 
 import Navigation from "@/components/Navigation";
 import Section from "@/components/Section";
-import ExperienceCard from "@/components/ExperienceCard";
 import Footer from "@/components/Footer";
-import DetailSidePanel from "@/components/DetailSidePanel";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import type { OtherProject } from "@/data/otherProjects";
 
 export default function Home() {
   const router = useRouter();
-  const [selectedExperience, setSelectedExperience] = useState<OtherProject | null>(null);
-  const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
 
   // Pre-fetch games data to warm up the cache for faster load on /games page
   useEffect(() => {
@@ -84,156 +79,51 @@ export default function Home() {
     { name: 'React', image: '/images/react-logo.png' },
     { name: 'C#', image: '/images/csharp-logo.png' },
     { name: 'C++', image: '/images/cplusplus-logo.png' },
+    { name: 'Cursor', image: '/images/cursor.png' },
+    { name: 'HTML5', image: '/images/html5.png' },
   ];
 
-  const experienceHighlights: {
-    id: string;
-    card: {
-      href: string;
-      ariaLabel: string;
-      imageSrc: string;
-      imageAlt: string;
-      badgeLabel: string;
-      badgeClassName: string;
-      badgeTextClassName?: string;
-      title: string;
-      description: string;
-      ringColorClassName: string;
-    };
-    panel: OtherProject;
-  }[] = [
+  const leadershipAchievements = [
     {
-      id: "experience-product-research",
-      card: {
-        href: "/projects",
-        ariaLabel: "Explore projects from my product design and research work",
-        imageSrc: "/images/alwaysbeclosing.png",
-        imageAlt: "simulation and product design interface",
-        badgeLabel: "Product & Research",
-        badgeClassName: "bg-green-600",
-        badgeTextClassName: "text-white",
-        title: "Designing Systems For Learning & Incentives",
-        description:
-          "At work and through independent research, I design experiences that people feel motivated to play. I'm working on a customer management software game and projects aimed to bring people together.",
-        ringColorClassName: "focus:ring-green-500",
-      },
-      panel: {
-        id: "product-research",
-        title: "Designing Systems For Learning & Incentives",
-        description:
-          "Simulation, service design, and curriculum experiments that test how incentives influence learning outcomes.",
-        tags: ["Product Design", "Unity/C#", "Research"],
-        href: "/projects",
-        coverImage: "/images/alwaysbeclosing.png",
-        createdAt: "2024-11-01",
-        platforms: ["html5"],
-        detailComponent: (
-          <div className="space-y-4">
-            <p>
-              I build prototypes that feel like playful experiments—often combining data systems, narrative design, and live facilitation.
-            </p>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>Designed a customer-management simulation that shipped with STRAMGT 351.</li>
-              <li>Run longitudinal studies that measure how incentives change collaboration.</li>
-              <li>Partner with cross-disciplinary teams to translate research findings into product specs.</li>
-            </ul>
-          </div>
-        ),
-      },
+      id: "leadership-svgd",
+      title: "Founder & President, Stanford Game Development (SVGD)",
+      period: "2022 — Present",
+      location: "Stanford University",
+      description:
+        "I started and lead Stanford's game development club to make it easier for students to find collaborators, showcase work, and learn in the open.",
+      highlights: [
+        "Plan and run jams, socials, and showcase events with hundreds of participants each quarter.",
+        "Build onboarding pathways so newcomers can ship a playable prototype in under a week.",
+        "Coordinate mentorship and critique sessions pairing student teams with industry guests.",
+      ],
     },
     {
-      id: "experience-community-clubs",
-      card: {
-        href: "/games",
-        ariaLabel: "Explore my experience with games",
-        imageSrc: "/images/svgdmeeting.png",
-        imageAlt: "stanford game development club meeting",
-        badgeLabel: "Community & Clubs",
-        badgeClassName: "bg-yellow-400",
-        badgeTextClassName: "text-black",
-        title: "Leading Stanford's Game Development Club",
-        description:
-          "As the founder of the club, I've planned and executed many major events with hundreds of participants, including jams, socials, and playtests that help game designers find community.",
-        ringColorClassName: "focus:ring-yellow-400",
-      },
-      panel: {
-        id: "community-builder",
-        title: "Leading Stanford's Game Development Club",
-        description:
-          "Programming that makes it easier for students to find collaborators, showcase work, and learn in the open.",
-        tags: ["Community Design", "Event Production", "Facilitation"],
-        href: "/games",
-        coverImage: "/images/svgdmeeting.png",
-        createdAt: "2024-05-01",
-        detailComponent: (
-          <div className="space-y-4">
-            <p>
-              I coordinate jam series, mentorship programs, and showcase events for hundreds of members every quarter.
-            </p>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>Build onboarding kits so newcomers can ship a playable prototype in under a week.</li>
-              <li>Host hybrid critiques pairing industry mentors with student teams.</li>
-              <li>Co-author documentation so future organizers can remix each event format.</li>
-            </ul>
-          </div>
-        ),
-      },
+      id: "leadership-teaching",
+      title: "Course Designer & Teaching Staff for Playful CS Courses",
+      period: "2021 — Present",
+      location: "Stanford & International Programs",
+      description:
+        "I design and teach courses that use interactive narratives and prototyping to make programming intuitive, joyful, and collaborative.",
+      highlights: [
+        "Develop curricula that blend storytelling, rapid prototyping, and core CS concepts.",
+        "Teach workshops and courses in South Korea and Silicon Valley focused on creative coding.",
+        "Mentor teaching teams on how to run project-based critiques with both kindness and rigor.",
+      ],
     },
     {
-      id: "experience-teaching",
-      card: {
-        href: "/about",
-        ariaLabel: "Learn more about my teaching at Stanford",
-        imageSrc: "/images/meteaching.jpg",
-        imageAlt: "lucas teaching playful coding projects in class",
-        badgeLabel: "Teaching",
-        badgeClassName: "bg-blue-500",
-        badgeTextClassName: "text-white",
-        title: "Designing & Teaching Playful CS Courses",
-        description:
-          "I've taught internationally in South Korea, and currently teach courses to help students build creative projects at Stanford. I love using interactive narratives to make programming feel intuitive, joyful, and collaborative.",
-        ringColorClassName: "focus:ring-blue-500",
-      },
-      panel: {
-        id: "teaching",
-        title: "Designing & Teaching Playful CS Courses",
-        description:
-          "Course design and facilitation work that brings storytelling, prototyping, and code together.",
-        tags: ["Curriculum", "Pedagogy", "Game Design"],
-        href: "/about",
-        coverImage: "/images/meteaching.jpg",
-        createdAt: "2024-01-15",
-        platforms: ["html5"],
-        detailComponent: (
-          <div className="space-y-4">
-            <p>
-              Each course mixes narrative framing with hands-on building so students connect theory to practice.
-            </p>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>Designed playful CS workshops taught in Seoul, Busan, and Silicon Valley.</li>
-              <li>Developed interactive notebooks that scaffold Unity and web development fundamentals.</li>
-              <li>Mentor teaching teams on how to run project-based critiques with kindness and rigor.</li>
-            </ul>
-          </div>
-        ),
-      },
+      id: "leadership-product-research",
+      title: "Product & Research Work on Incentive-Driven Learning",
+      period: "Ongoing",
+      location: "Industry & Independent Research",
+      description:
+        "I prototype systems that explore how incentives and game-like structures influence learning, collaboration, and behavior.",
+      highlights: [
+        "Design simulation-style tools, including a customer-management game used in STRAMGT 351.",
+        "Run longitudinal experiments that measure how different incentive structures shape group dynamics.",
+        "Translate research findings into product specs and service blueprints for partners.",
+      ],
     },
   ];
-
-  const openExperiencePanel = (panelItem: OtherProject) => {
-    setSelectedExperience(panelItem);
-    setIsSidePanelOpen(false);
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        setIsSidePanelOpen(true);
-      });
-    });
-  };
-
-  const handleClosePanel = () => {
-    setIsSidePanelOpen(false);
-    setTimeout(() => setSelectedExperience(null), 200);
-  };
 
   return (
     <div className="min-h-screen bg-white flex flex-col pt-[56px]">
@@ -275,7 +165,7 @@ export default function Home() {
               </p>
 
               {/* Tools Row */}
-              <div className="inline-grid grid-cols-3 gap-3 md:flex md:flex-wrap md:items-center md:gap-4 tools-row-wrap">
+              <div className="inline-grid grid-cols-4 gap-3 md:gap-4">
                 {tools.map((tool, index) => (
                   <div
                     key={index}
@@ -382,35 +272,56 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Experience + Projects Preview Section */}
+      {/* Leadership & Achievements Section */}
       <Section separator={false} container={true} padding={true} className="bg-white">
-        <div className="space-y-12">
-          {/* experience column */}
-          <div>
-            <div className="flex flex-col gap-10 md:gap-8">
-              {/* design & research work */}
-              {experienceHighlights.map(({ id, card, panel }) => (
-                <ExperienceCard
-                  key={id}
-                  {...card}
-                  onClick={(event) => {
-                    event.preventDefault();
-                    openExperiencePanel(panel);
-                  }}
-                />
-              ))}
-            </div>
+        <div className="space-y-8 md:space-y-10">
+          <div className="max-w-3xl">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+              Leadership &amp; Achievements
+            </h2>
+            <p className="mt-2 text-sm md:text-base text-gray-700">
+              A few of the roles and projects that shape how I design, teach, and build communities
+              around games and creative technology.
+            </p>
           </div>
 
+          <div className="grid gap-6 md:gap-8 md:grid-cols-2">
+            {leadershipAchievements.map((item) => (
+              <article
+                key={item.id}
+                className="flex flex-col h-full rounded-2xl border border-gray-200 bg-white shadow-sm px-5 py-5 md:px-6 md:py-6"
+              >
+                <header className="flex flex-col gap-1 mb-3">
+                  <h3 className="text-lg md:text-xl font-semibold text-gray-900">
+                    {item.title}
+                  </h3>
+                  <div className="flex flex-wrap items-center gap-2 text-xs md:text-sm text-gray-600">
+                    <span className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 font-medium">
+                      {item.period}
+                    </span>
+                    <span className="text-gray-400">•</span>
+                    <span>{item.location}</span>
+                  </div>
+                </header>
+
+                <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                  {item.description}
+                </p>
+
+                {item.highlights && item.highlights.length > 0 && (
+                  <ul className="mt-3 md:mt-4 space-y-1.5 text-sm md:text-sm text-gray-700 list-disc pl-5">
+                    {item.highlights.map((point, index) => (
+                      <li key={index}>{point}</li>
+                    ))}
+                  </ul>
+                )}
+              </article>
+            ))}
+          </div>
         </div>
       </Section>
 
       <Footer />
-      <DetailSidePanel
-        item={selectedExperience}
-        isOpen={isSidePanelOpen}
-        onClose={handleClosePanel}
-      />
     </div>
   );
 }
