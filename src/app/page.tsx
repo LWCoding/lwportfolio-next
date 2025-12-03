@@ -156,7 +156,7 @@ export default function Home() {
             <div className="flex flex-col items-start text-left max-w-lg w-full space-y-6">
               {/* Main Heading */}
               <h1 className="text-6xl font-bold text-white lg:text-black">
-                Lucas Wang
+                lucas wang!
               </h1>
 
               {/* Descriptive Text */}
