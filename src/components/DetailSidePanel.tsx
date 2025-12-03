@@ -202,7 +202,7 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
                               alt="Apple"
                               width={24}
                               height={24}
-                              className="opacity-80"
+                              className="opacity-80 brightness-0 invert"
                             />
                           )}
                           {(game?.platforms || project?.platforms || []).includes('html5') && (

@@ -7,7 +7,6 @@ type ExperienceCardProps = {
   imageSrc: string;
   imageAlt: string;
   badgeLabel: string;
-  badgeSecondary: string;
   badgeClassName: string;
   badgeTextClassName?: string;
   title: string;
@@ -21,7 +20,6 @@ export default function ExperienceCard({
   imageSrc,
   imageAlt,
   badgeLabel,
-  badgeSecondary,
   badgeClassName,
   badgeTextClassName = "",
   title,
@@ -49,9 +47,6 @@ export default function ExperienceCard({
               className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold tracking-wide ${badgeClassName} ${badgeTextClassName}`}
             >
               {badgeLabel}
-            </span>
-            <span className="text-xs font-semibold tracking-wide text-black/60">
-              {badgeSecondary}
             </span>
           </div>
           <h3 className="text-xl md:text-2xl font-bold text-black">
