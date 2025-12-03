@@ -51,6 +51,7 @@ export default function Projects() {
               date={project.createdAt}
               href={project.href}
               secondaryCtaLabel="View Project"
+              githubUrl={project.githubUrl}
               onClick={() => {
                 setSelectedItem(project);
                 setIsSidePanelOpen(false);

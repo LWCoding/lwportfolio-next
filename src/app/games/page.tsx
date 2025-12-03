@@ -8,7 +8,7 @@ import DetailSidePanel from "@/components/DetailSidePanel";
 import VideoBanner from "@/components/VideoBanner";
 import Footer from "@/components/Footer";
 import FeaturedItemCard from "@/components/FeaturedItemCard";
-import { useGames, GameData } from "@/hooks/useFeaturedGames";
+import { useGames, GameData, FEATURED_GAMES_CONFIG } from "@/hooks/useFeaturedGames";
 import { useState } from "react";
 import { calculateNewspaperGridProps } from "@/utils/newspaperGrid";
 import Image from "next/image";
@@ -54,6 +54,7 @@ export default function Games() {
                 date={game.created_at}
                 href={game.url}
                 secondaryCtaLabel="Play Game"
+                githubUrl={FEATURED_GAMES_CONFIG.find((cfg) => cfg.id === game.id)?.githubUrl || game.githubUrl}
                 onClick={() => {
                   setSelectedItem(game);
                   setIsSidePanelOpen(false);

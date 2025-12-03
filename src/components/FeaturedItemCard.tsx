@@ -14,6 +14,7 @@ interface FeaturedItemCardProps {
   platforms?: ('windows' | 'apple' | 'html5' | 'linux' | 'figma')[];
   date?: string;
   secondaryCtaLabel?: string;
+  githubUrl?: string;
 }
 
 export default function FeaturedItemCard({
@@ -27,6 +28,7 @@ export default function FeaturedItemCard({
   platforms = [],
   date,
   secondaryCtaLabel,
+  githubUrl,
 }: FeaturedItemCardProps) {
   const formattedDate =
     date && !Number.isNaN(new Date(date).getTime())
@@ -140,8 +142,8 @@ export default function FeaturedItemCard({
           {description}
         </p>
 
-        {/* Actions: view process + direct play/view */}
-        <div className="flex flex-wrap gap-3 mt-2 mx-auto md:mx-0">
+        {/* Actions: view process + direct play/view + optional GitHub */}
+        <div className="flex flex-wrap items-center gap-3 mt-2 mx-auto md:mx-0">
           <button
             onClick={onClick}
             className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
@@ -167,6 +169,24 @@ export default function FeaturedItemCard({
                 <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
             </Link>
+          )}
+
+          {githubUrl && (
+            <a
+              href={githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-3 py-3 bg-white rounded-full shadow-lg hover:scale-105 transition-transform cursor-pointer ml-2"
+              aria-label="View source on GitHub"
+            >
+              <Image
+                src="/images/github.png"
+                alt="GitHub"
+                width={24}
+                height={24}
+                className="w-6 h-6 object-contain"
+              />
+            </a>
           )}
         </div>
       </div>

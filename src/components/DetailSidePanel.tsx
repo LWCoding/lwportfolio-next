@@ -95,6 +95,7 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
 
   const gameConfig = game ? FEATURED_GAMES_CONFIG.find((c) => c.id === game.id) : null;
   const tags = game?.tags || project?.tags || [];
+  const githubUrl = project?.githubUrl || game?.githubUrl || gameConfig?.githubUrl;
 
   const formatCreatedDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -233,6 +234,23 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
                           )}
                         </div>
                       )}
+                    {githubUrl && (
+                      <a
+                        href={githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="ml-auto w-10 h-10 rounded-full bg-white/95 flex items-center justify-center shadow-md hover:scale-105 transition-transform cursor-pointer"
+                        aria-label="View source on GitHub"
+                      >
+                        <Image
+                          src="/images/github.png"
+                          alt="GitHub"
+                          width={24}
+                          height={24}
+                          className="w-6 h-6 object-contain"
+                        />
+                      </a>
+                    )}
                   </div>
                   {(game?.created_at || project?.createdAt || game?.views_count || tags.length > 0) && (
                     <div className="mt-1 flex flex-wrap gap-2 items-center text-sm text-white/90 drop-shadow-md">
@@ -289,7 +307,7 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
                   href={game?.url || project?.href || '#'}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-green-500 hover:bg-green-600 text-white font-semibold text-sm md:text-base rounded-full transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-1 mb-1 bg-green-500 hover:bg-green-600 text-white font-semibold text-sm md:text-base rounded-full transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg cursor-pointer"
                 >
                   {game ? (
                     <>

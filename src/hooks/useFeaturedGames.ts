@@ -7,6 +7,8 @@ export interface FeaturedGameConfig {
   tags: string[];
   description: string;
   platforms: ('windows' | 'apple' | 'html5' | 'linux')[];
+  // Optional GitHub repository link for this game
+  githubUrl?: string;
   // Optional rich detail content rendered inside the detail side panel
   detailComponent?: ReactNode;
 }
@@ -18,21 +20,24 @@ export const FEATURED_GAMES_CONFIG: FeaturedGameConfig[] = [
     tags: ["🏆 GMTK 2025: #722/9605", "Unity/C#"], 
     description: "An arcade game. Use new stylus technology to loop rats before they eat all of your cheese.",
     platforms: ['windows', 'apple', 'linux', 'html5'],
-    detailComponent: 'documentation section in progress'
+    detailComponent: 'documentation section in progress',
+    githubUrl: 'https://github.com/LWCoding/aw-rats'
   },
   { 
     id: 2904867, 
     tags: ["🏆 GMTK 2024: #4266/7557", "Unity/C#"], 
     description: "An arcade game. Cook food, serve customers, and manage a kitchen that gets larger every night.",
     platforms: ['windows', 'apple', 'linux', 'html5'],
-    detailComponent: 'documentation section in progress'
+    detailComponent: 'documentation section in progress',
+    githubUrl: 'https://github.com/LWCoding/kitchen-nightmare'
   },
   { 
     id: 1940212, 
     tags: ["🏆 Wonderjam 4: #2/25", "Unity/C#"], 
     description: "A top-down shooter game. Destroy enemy ships, get XP, and unlock upgrades.",
     platforms: ['windows', 'html5'],
-    detailComponent: 'documentation section in progress'
+    detailComponent: 'documentation section in progress',
+    githubUrl: 'https://github.com/LWCoding/attack-on-atliz'
   },
   {
     id: 4028688,
@@ -89,6 +94,8 @@ export interface GameData {
   created_at?: string;
   classification?: string;
   platforms?: ('windows' | 'apple' | 'html5' | 'linux')[];
+  // Optional GitHub repository link if available
+  githubUrl?: string;
 }
 
 interface GamesState {

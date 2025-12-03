@@ -10,6 +10,8 @@ export interface OtherProject {
   createdAt?: string;
   platforms?: ('windows' | 'apple' | 'html5' | 'linux' | 'figma')[];
   fadeOpacity?: number; // Controls fade amount: 0-1, where 1 is default (full fade), lower values = less fade
+  // Optional GitHub repository link for this project
+  githubUrl?: string;
   // Optional rich detail content rendered inside the detail side panel
   detailComponent?: ReactNode;
 }
@@ -25,7 +27,8 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     coverImage: '/images/alwaysbeclosing.png',
     createdAt: '2025-06-15',
     platforms: ['html5'],
-    detailComponent: 'documentation section in progress'
+    detailComponent: 'documentation section in progress',
+    githubUrl: 'https://github.com/banasse/ABCSALE'
   },
   {
     id: 'serendipi-tea',
@@ -48,7 +51,8 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     coverImage: '/images/immersifyvr.png',
     createdAt: '2024-10-24',
     platforms: ['html5'],
-    detailComponent: 'documentation section in progress'
+    detailComponent: 'documentation section in progress',
+    githubUrl: 'https://github.com/JLee-003/ImmersifyVR'
   },
   {
     id: 'timesync',
