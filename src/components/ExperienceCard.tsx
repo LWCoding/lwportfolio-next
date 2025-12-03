@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { MouseEvent } from "react";
 
 type ExperienceCardProps = {
   href: string;
@@ -11,6 +12,7 @@ type ExperienceCardProps = {
   title: string;
   description: string;
   ringColorClassName: string;
+  onClick?: (event: MouseEvent<HTMLDivElement>) => void;
 };
 
 export default function ExperienceCard({
@@ -21,9 +23,13 @@ export default function ExperienceCard({
   badgeTextClassName = "",
   title,
   description,
+  onClick,
 }: ExperienceCardProps) {
   return (
-    <div className="bg-white rounded-2xl shadow-md border border-black/5 overflow-hidden">
+    <div
+      className="bg-white rounded-2xl shadow-md border border-black/5 overflow-hidden"
+      onClick={onClick}
+    >
       <div className="flex flex-col md:flex-row min-h-[220px] md:min-h-[280px]">
         <div className="relative w-full md:w-1/3 bg-gray-200 aspect-[4/3] max-h-60 md:max-h-none md:aspect-auto md:h-auto">
           <Image

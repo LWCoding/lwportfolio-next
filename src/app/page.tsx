@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import DetailSidePanel from "@/components/DetailSidePanel";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import { useRouter } from "next/navigation";
 import type { OtherProject } from "@/data/otherProjects";
 
@@ -38,7 +38,7 @@ export default function Home() {
               if (now - cachedData.timestamp < CACHE_DURATION) {
                 return;
               }
-            } catch (e) {
+            } catch {
               // Invalid cache, continue to fetch
             }
           }
@@ -74,7 +74,7 @@ export default function Home() {
     const timeoutId = setTimeout(prefetchGames, 100);
     
     return () => clearTimeout(timeoutId);
-  }, []);
+  }, [router]);
 
   // Tools I know how to use
   const tools = [
@@ -393,7 +393,7 @@ export default function Home() {
                 <ExperienceCard
                   key={id}
                   {...card}
-                  onClick={(event) => {
+                  onClick={(event: MouseEvent<HTMLDivElement>) => {
                     event.preventDefault();
                     openExperiencePanel(panel);
                   }}
