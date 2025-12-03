@@ -31,6 +31,18 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     githubUrl: 'https://github.com/banasse/ABCSALE'
   },
   {
+    id: 'immersifyvr',
+    title: 'ImmersifyVR',
+    description: 'A virtual reality exercise application designed to motivate older adults to exercise.',
+    tags: ['Virtual Reality', 'Unity/C#'],
+    href: 'https://www.immersifyvr.org/',
+    coverImage: '/images/immersifyvr.png',
+    createdAt: '2024-10-24',
+    platforms: ['html5'],
+    detailComponent: 'documentation section in progress',
+    githubUrl: 'https://github.com/JLee-003/ImmersifyVR'
+  },
+  {
     id: 'serendipi-tea',
     title: 'Serendipi-Tea',
     description: 'A card game and pop-up cafe connecting startup founders together, officially prototyped and tested at the StartX accelerator program.',
@@ -41,18 +53,6 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     platforms: ['figma'],
     fadeOpacity: 0.7,
     detailComponent: 'documentation section in progress'
-  },
-  {
-    id: 'immersifyvr',
-    title: 'ImmersifyVR',
-    description: 'A virtual reality exercise application designed to motivate older adults to exercise.',
-    tags: ['App', 'Virtual Reality', 'Unity/C#'],
-    href: 'https://www.immersifyvr.org/',
-    coverImage: '/images/immersifyvr.png',
-    createdAt: '2024-10-24',
-    platforms: ['html5'],
-    detailComponent: 'documentation section in progress',
-    githubUrl: 'https://github.com/JLee-003/ImmersifyVR'
   },
   {
     id: 'timesync',
