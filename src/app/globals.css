@@ -94,10 +94,3 @@ html {
 .split-game-card-wrapper > div > div:first-child {
   border-radius: 1rem 0 0 1rem !important;
 }
-
-/* Tools row wrapping at medium screens up to 1300px */
-@media (min-width: 768px) and (max-width: 1300px) {
-  .tools-row-wrap {
-    max-width: calc(3 * 3.5rem + 2 * 1rem);
-  }
-}

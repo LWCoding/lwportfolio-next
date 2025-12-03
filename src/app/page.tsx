@@ -80,6 +80,8 @@ export default function Home() {
     { name: 'React', image: '/images/react-logo.png' },
     { name: 'C#', image: '/images/csharp-logo.png' },
     { name: 'C++', image: '/images/cplusplus-logo.png' },
+    { name: 'HTML5', image: '/images/html5.png' },
+    { name: 'Cursor', image: '/images/cursor.png' },
   ];
 
   const experienceHighlights = [
@@ -172,11 +174,11 @@ export default function Home() {
 
               {/* Descriptive Text */}
               <p className="text-base md:text-lg text-white lg:text-black font-medium">
-                I&apos;m a product designer crafting interactive experiences through game development, incentive design, and education!
+                I&apos;m a UI/UX designer crafting interactive experiences through game development, incentive design, and education!
               </p>
 
               {/* Tools Row */}
-              <div className="inline-grid grid-cols-3 gap-3 md:flex md:flex-wrap md:items-center md:gap-4 tools-row-wrap">
+              <div className="grid grid-cols-4 gap-3 md:gap-4 items-center justify-items-center tools-row-wrap">
                 {tools.map((tool, index) => (
                   <div
                     key={index}
