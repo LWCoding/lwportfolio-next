@@ -93,10 +93,11 @@ export default function Home() {
         badgeLabel: "Product & Research",
         badgeClassName: "bg-green-600",
         badgeTextClassName: "text-white",
-        title: "Designing Systems For Learning & Incentives",
+        title: "Designing Interactive Systems",
         description:
-          "At work and through independent research, I design experiences that people feel motivated to play. I'm working on a customer management software game and projects aimed to bring people together.",
+          "I love designing and aligning systems to solve real-world problems. At work and through independent research, I design experiences that people feel motivated to play. Examples include a customer management software game and in-person escape rooms that bring people together.",
         ringColorClassName: "focus:ring-green-500",
+        subButtonLabel: "View Projects",
       },
     },
     {
@@ -106,13 +107,14 @@ export default function Home() {
         ariaLabel: "Explore my experience with games",
         imageSrc: "/images/svgdmeeting.png",
         imageAlt: "stanford game development club meeting",
-        badgeLabel: "Community & Clubs",
+        badgeLabel: "Game Development",
         badgeClassName: "bg-yellow-400",
         badgeTextClassName: "text-black",
-        title: "Leading Stanford's Game Development Club",
+        title: "Promoting Game Design at Stanford",
         description:
-          "As the founder of the club, I've planned and executed many major events with hundreds of participants, including jams, socials, and playtests that help game designers find community.",
+          "Stanford students don't play enough games, let alone make them. As the founder of our game development club, I've hosted tens of events with hundreds of participants, including jams, socials, and playtests that help game designers find community. I also make lots of games!",
         ringColorClassName: "focus:ring-yellow-400",
+        subButtonLabel: "View Games",
       },
     },
     {
@@ -125,10 +127,11 @@ export default function Home() {
         badgeLabel: "Teaching",
         badgeClassName: "bg-blue-500",
         badgeTextClassName: "text-white",
-        title: "Designing & Teaching Playful CS Courses",
+        title: "Teaching Playful CS Courses",
         description:
-          "I've taught internationally in South Korea, and currently teach courses to help students build creative projects at Stanford. I love using interactive narratives to make programming feel intuitive, joyful, and collaborative.",
+          "More than I love making things, I especially love teaching others how to make things! Outside of lecturing for CS11SI, CS42SI, CS106A/B, and CS247G as an *undergraduate* at Stanford, I've taught game design internationally in South Korea. I love using interactive narratives to make programming feel intuitive, joyful, and collaborative.",
         ringColorClassName: "focus:ring-blue-500",
+        subButtonLabel: "View About Me",
       },
     },
   ];
