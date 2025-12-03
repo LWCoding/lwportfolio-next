@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { MouseEvent } from "react";
 
 type ExperienceCardProps = {
   href: string;
@@ -12,6 +13,7 @@ type ExperienceCardProps = {
   title: string;
   description: string;
   ringColorClassName: string;
+  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
 };
 
 export default function ExperienceCard({
@@ -25,12 +27,14 @@ export default function ExperienceCard({
   title,
   description,
   ringColorClassName,
+  onClick,
 }: ExperienceCardProps) {
   return (
     <Link
       href={href}
       className={`group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-black/5 overflow-hidden cursor-pointer focus:outline-none focus:ring-2 ${ringColorClassName} focus:ring-offset-2 focus:ring-offset-white`}
       aria-label={ariaLabel}
+      onClick={onClick}
     >
       <div className="flex flex-col md:flex-row min-h-[220px] md:min-h-[280px]">
         <div className="relative w-full md:w-1/3 bg-gray-200 aspect-[4/3] max-h-60 md:max-h-none md:aspect-auto md:h-auto">

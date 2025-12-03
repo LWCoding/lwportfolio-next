@@ -99,39 +99,39 @@ export default function Navigation() {
               isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
             }`}
           >
-            <div className="flex flex-col py-4 px-4 space-y-4">
+            <div className="flex flex-col text-center">
               <Link 
                 href="/"
                 onClick={handleLinkClick}
-                className={getLinkClasses('/')}
+                className={`${getLinkClasses('/')} py-4 px-4 bg-yellow-400`}
               >
                 Home
               </Link>
               <Link 
                 href="/projects"
                 onClick={handleLinkClick}
-                className={getLinkClasses('/projects')}
+                className={`${getLinkClasses('/projects')} py-4 px-4 bg-yellow-400`}
               >
                 Projects
               </Link>
               <Link 
                 href="/games"
                 onClick={handleLinkClick}
-                className={getLinkClasses('/games')}
+                className={`${getLinkClasses('/games')} py-4 px-4 bg-yellow-400`}
               >
                 Games
               </Link>
               <Link 
                 href="/about"
                 onClick={handleLinkClick}
-                className={getLinkClasses('/about')}
+                className={`${getLinkClasses('/about')} py-4 px-4 bg-yellow-400`}
               >
                 About
               </Link>
               <Link 
                 href="/contact"
                 onClick={handleLinkClick}
-                className="text-xs sm:text-sm text-black/70 font-medium underline transition-colors duration-300 hover:text-black hover:font-semibold cursor-pointer whitespace-nowrap"
+                className="text-xs sm:text-sm text-black/70 font-medium underline transition-colors duration-300 hover:text-black hover:font-semibold cursor-pointer whitespace-nowrap py-4 px-4 bg-yellow-400"
               >
                 Contact
               </Link>
