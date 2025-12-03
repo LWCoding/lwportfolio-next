@@ -44,14 +44,15 @@ export default function About() {
                 <p className="text-base md:text-lg text-black/80">
                   Along the way, I&apos;ve discovered how much I enjoy teaching. I started off making silly, satire Python
                   tutorials, before eventually finding myself teaching for organizations like the Applied Computing Foundation and Stanford Splash. I now
-                  design and teach official courses at Stanford like CS11 and CS42, as well as help teach and grade for intro and graduate-level game design courses like CS106 and CS247G!
+                  teach official courses at Stanford like CS11SI and CS42SI, as well as assist with other intro and graduate-level game design courses like CS106A/B and CS247G!
                 </p>
                 <div className="pt-2">
                   <a
                     href="https://drive.google.com/file/d/1bhDVCsNctAiE20Tlae4XgHOV9VD2KVeh/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-yellow-400 text-black font-semibold text-sm md:text-base shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+                    aria-label="View my resume"
                   >
                     View my resume
                   </a>
