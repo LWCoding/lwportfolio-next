@@ -178,6 +178,26 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
                 <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20" />
               )}
               <div className="absolute inset-0 bg-black/60" />
+              
+              {/* Back Button - top left */}
+              <button
+                onClick={onClose}
+                className="absolute top-4 left-4 z-20 w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center hover:bg-black/80 transition-all duration-200 cursor-pointer shadow-lg"
+                aria-label="Close panel"
+              >
+                <svg
+                  className="w-6 h-6 text-white"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              
               <div className="absolute inset-0 flex items-end">
                 <div className="w-full px-6 pb-6 z-10">
                   <div className="flex items-center gap-3 flex-wrap mb-3">
