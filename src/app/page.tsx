@@ -2,7 +2,6 @@
 
 import Navigation from "@/components/Navigation";
 import Section from "@/components/Section";
-import ExperienceCard from "@/components/ExperienceCard";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
@@ -139,17 +138,19 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-white flex flex-col pt-[56px]">
+    <div className="min-h-screen bg-white flex flex-col pt-[56px] relative">
       <Navigation />
 
-      {/* Hero Section Container - Takes up 100vh minus navbar */}
+      {/* Hero Section - Fixed Static Container */}
       <div 
-        className="flex flex-col"
-        style={{ height: 'calc(100vh - 56px)' }}
+        className="fixed top-[56px] left-0 right-0 z-0"
+        style={{ 
+          height: 'calc(100vh - 56px - 64px)',
+        }}
       >
         {/* Hero Section - Left/Right Split */}
         <div 
-          className="flex-1 flex flex-col lg:flex-row relative overflow-hidden"
+          className="h-full flex flex-col lg:flex-row relative overflow-hidden"
         >
           {/* Background Image for small and medium screens */}
           <div className="absolute inset-0 block lg:hidden">
@@ -276,35 +277,70 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Bottom Yellow Bar */}
-        <div className="w-full bg-yellow-400 py-4 flex-shrink-0">
+      {/* Spacer to push content - positioned so yellow bar appears at bottom of viewport */}
+      <div style={{ height: 'calc(100vh - 56px - 64px)' }} className="relative z-20" />
+
+      {/* Content Section - Scrolls over hero */}
+      <div className="relative z-20 bg-white">
+        {/* Yellow Bar - visible at bottom of viewport */}
+        <div className="w-full bg-yellow-400 py-4">
           <div className="text-center text-black font-semibold">
             ▼ Explore What I&apos;m Working On ▼
           </div>
         </div>
+        {/* Experience Overview Section */}
+        <Section separator={false} container={true} padding={true} className="bg-white">
+        <div className="space-y-16 md:space-y-20">
+          {experienceHighlights.map(({ id, card }, index) => {
+            const isEven = index % 2 === 0;
+            return (
+              <div
+                key={id}
+                className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 md:gap-12`}
+              >
+                {/* Image */}
+                <div className="relative w-full md:w-1/2 aspect-[4/3] md:aspect-[3/2]">
+                  <Image
+                    src={card.imageSrc}
+                    alt={card.imageAlt}
+                    fill
+                    className="object-cover rounded-lg"
+                  />
+                </div>
+                
+                {/* Text Content */}
+                <div className="w-full md:w-1/2 space-y-4">
+                  <h3 className="text-3xl md:text-4xl font-bold text-black">
+                    {card.title}
+                  </h3>
+                  <p className="text-base md:text-lg text-black/80 leading-relaxed">
+                    {card.description}
+                  </p>
+                  {card.subButtonLabel && (
+                    <div className="pt-2">
+                      <Link
+                        href={card.href}
+                        aria-label={card.ariaLabel}
+                        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+                      >
+                        <span>{card.subButtonLabel}</span>
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        </Section>
       </div>
 
-      {/* Experience + Projects Preview Section */}
-      <Section separator={false} container={true} padding={true} className="bg-white">
-        <div className="space-y-12">
-          {/* experience column */}
-          <div>
-            <div className="flex flex-col gap-10 md:gap-8">
-              {/* design & research work */}
-              {experienceHighlights.map(({ id, card }) => (
-                <ExperienceCard
-                  key={id}
-                  {...card}
-                />
-              ))}
-            </div>
-          </div>
-
-        </div>
-      </Section>
-
-      <Footer />
+      {/* Footer - Higher z-index to appear above content */}
+      <div className="relative z-30">
+        <Footer />
+      </div>
     </div>
   );
 }

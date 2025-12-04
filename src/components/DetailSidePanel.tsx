@@ -47,7 +47,7 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
       <>
         {/* Backdrop */}
         <div
-          className={`fixed inset-0 bg-black/60 z-[60] transition-opacity duration-300 ${
+          className={`fixed inset-0 bg-black/60 z-[40] transition-opacity duration-300 ${
             isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
           onClick={onClose}
@@ -55,7 +55,7 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
         />
         {/* Wrapper container for panel and arrow - moves together */}
         <div
-          className={`fixed inset-0 h-full z-[70] transition-transform duration-200 ease-out ${
+          className={`fixed inset-0 h-full z-[45] transition-transform duration-200 ease-out ${
             isOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
@@ -120,7 +120,7 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
     <>
       {/* Backdrop - darkens the webpage */}
       <div
-        className={`fixed inset-0 bg-black/60 z-[60] transition-opacity duration-300 ${
+        className={`fixed inset-0 bg-black/60 z-[40] transition-opacity duration-300 ${
           isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
         onClick={onClose}
@@ -129,7 +129,7 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
 
       {/* Wrapper container for panel and arrow - moves together */}
       <div
-        className={`fixed inset-0 h-full z-[70] transition-transform duration-200 ease-out ${
+        className={`fixed inset-0 h-full z-[45] transition-transform duration-200 ease-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -164,7 +164,7 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
           }}
         >
           {/* Content */}
-          <div className="h-full flex flex-col">
+          <div className="h-full flex flex-col pt-16">
             {/* Hero Section with Cover Image */}
             <div className="relative w-full" style={{ height: '30vh', minHeight: '220px' }}>
               {(game?.still_cover_url || game?.cover_url || project?.coverImage) ? (
