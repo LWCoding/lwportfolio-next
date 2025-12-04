@@ -164,7 +164,7 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
           }}
         >
           {/* Content */}
-          <div className="h-full flex flex-col pt-16">
+          <div className="h-full flex flex-col sm:pt-12 md:pt-16">
             {/* Hero Section with Cover Image */}
             <div className="relative w-full" style={{ height: '30vh', minHeight: '220px' }}>
               {(game?.still_cover_url || game?.cover_url || project?.coverImage) ? (
