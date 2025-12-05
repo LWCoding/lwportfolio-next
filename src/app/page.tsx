@@ -96,7 +96,7 @@ export default function Home() {
         badgeTextClassName: "text-white",
         title: "Designing Interactive Systems",
         description:
-          "I love aligning systems to solve real-world problems. At work and through independent research, I design experiences that people feel motivated to play. Examples include a customer management software game and in-person escape rooms that bring people together.",
+          "I align systems to solve real-world problems. If you're going to make a game, why not make it solve a problem, too? At work and through independent research, I design user-centered experiences like virtual reality products for the elderly and multiplayer games to bring people together. ",
         ringColorClassName: "focus:ring-green-500",
         subButtonLabel: "View Projects",
       },
@@ -130,7 +130,7 @@ export default function Home() {
         badgeTextClassName: "text-white",
         title: "Teaching Playful CS Courses",
         description:
-          "More than I love making things, I especially love teaching others how to make things! Outside of lecturing for CS11SI, CS42SI, CS106A/B, and CS247G as an *undergraduate* at Stanford, I've taught game design internationally in South Korea. I love using interactive narratives to make programming feel intuitive, joyful, and collaborative.",
+          "More than I love making things, I love teaching others how to make things! Outside of lecturing for CS11SI, CS42SI, CS106A/B, and CS247G as an *undergraduate* at Stanford, I've taught game design internationally in South Korea. I love using interactive narratives to make programming intuitive, joyful, and collaborative.",
         ringColorClassName: "focus:ring-blue-500",
         subButtonLabel: "View About Me",
       },
