@@ -36,9 +36,6 @@ export default function Projects() {
       {/* Featured Projects Section */}
       <div id="for-work">
         <Section separator={false} container={true} padding={true} className="pt-8 md:pt-12 pb-4 md:pb-6">
-          <div className="bg-blue-100 py-3 md:py-4 px-4 md:px-6 mb-6 md:mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-blue-800 text-center">My Work and Research:</h2>
-          </div>
           <div className="space-y-4 md:space-y-6">
           {OTHER_PROJECTS_CONFIG.slice(0, 3).map((project) => (
             <WorkItemCard
@@ -72,7 +69,7 @@ export default function Projects() {
               onClick={() => setShowOtherProjects(!showOtherProjects)}
               className="px-3 py-1.5 text-sm text-black/80 hover:text-black underline transition-colors duration-200 cursor-pointer"
             >
-              {showOtherProjects ? 'Show Less Projects' : 'Show More Projects'}
+              {showOtherProjects ? 'Show Less Work' : 'Show More Work'}
             </button>
           </div>
         )}
@@ -121,9 +118,6 @@ export default function Projects() {
       {/* Featured Games Section */}
       <div id="for-fun">
         <Section separator={false} container={true} padding={true} className="pt-4 md:pt-6">
-          <div className="bg-green-100 py-3 md:py-4 px-4 md:px-6 mb-6 md:mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-green-800 text-center">Games I Make For Fun:</h2>
-          </div>
           {/* Featured Games Section */}
           {!loading && !error && featuredGames.length > 0 && (
             <div className="space-y-4 md:space-y-6">
