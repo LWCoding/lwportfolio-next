@@ -173,7 +173,7 @@ export default function Home() {
                 <span className="block text-base md:text-lg font-medium text-white lg:text-black">
                   Hey there! I&apos;m
                 </span>
-                <span className="block text-6xl font-bold">
+                <span className="block text-5xl xl:text-6xl font-bold">
                   lucas wang,
                 </span>
               </h1>
@@ -258,7 +258,7 @@ export default function Home() {
                   }}
                 ></div>
                 <p className="text-black text-sm md:text-base font-medium whitespace-nowrap">
-                  <i>Hi! These are games I&apos;ve worked on! :)</i>
+                  <i>Welcome! Most of my work is digital and playable here!</i>
                 </p>
               </div>
               {/* Headshot Circle */}
