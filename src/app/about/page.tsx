@@ -15,6 +15,8 @@ export default function About() {
       <VideoBanner
         title="About"
         subtitle="My story so far..."
+        height="33vh"
+        minHeight="200px"
       />
 
       {/* about story section */}
