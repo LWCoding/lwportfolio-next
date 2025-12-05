@@ -7,7 +7,7 @@ import NewspaperGameCard from "@/components/NewspaperGameCard";
 import DetailSidePanel from "@/components/DetailSidePanel";
 import VideoBanner from "@/components/VideoBanner";
 import Footer from "@/components/Footer";
-import FeaturedItemCard from "@/components/FeaturedItemCard";
+import WorkItemCard from "@/components/WorkItemCard";
 import { useGames, GameData, FEATURED_GAMES_CONFIG } from "@/hooks/useFeaturedGames";
 import { useState } from "react";
 import { calculateNewspaperGridProps } from "@/utils/newspaperGrid";
@@ -43,7 +43,7 @@ export default function Games() {
         <Section separator={false} container={true} padding={true} className="bg-white">
           <div className="space-y-8 md:space-y-12">
             {featuredGames.slice(0, 3).map((game) => (
-              <FeaturedItemCard
+              <WorkItemCard
                 key={game.id}
                 title={game.title}
                 description={game.short_text || "An exciting game experience awaits!"}

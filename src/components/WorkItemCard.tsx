@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-interface FeaturedItemCardProps {
+interface WorkItemCardProps {
   title: string;
   description: string;
   imageSrc: string;
@@ -17,7 +17,7 @@ interface FeaturedItemCardProps {
   githubUrl?: string;
 }
 
-export default function FeaturedItemCard({
+export default function WorkItemCard({
   title,
   description,
   imageSrc,
@@ -29,7 +29,7 @@ export default function FeaturedItemCard({
   date,
   secondaryCtaLabel,
   githubUrl,
-}: FeaturedItemCardProps) {
+}: WorkItemCardProps) {
   const formattedDate =
     date && !Number.isNaN(new Date(date).getTime())
       ? new Date(date)
@@ -195,4 +195,3 @@ export default function FeaturedItemCard({
 
   return content;
 }
-

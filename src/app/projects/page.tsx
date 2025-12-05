@@ -6,7 +6,7 @@ import NewspaperGameCard from "@/components/NewspaperGameCard";
 import DetailSidePanel from "@/components/DetailSidePanel";
 import VideoBanner from "@/components/VideoBanner";
 import Footer from "@/components/Footer";
-import FeaturedItemCard from "@/components/FeaturedItemCard";
+import WorkItemCard from "@/components/WorkItemCard";
 import { OTHER_PROJECTS_CONFIG, OtherProject } from "@/data/otherProjects";
 import { useState } from "react";
 import { calculateNewspaperGridProps } from "@/utils/newspaperGrid";
@@ -40,7 +40,7 @@ export default function Projects() {
       <Section separator={false} container={true} padding={true} className="bg-white">
         <div className="space-y-8 md:space-y-12">
           {OTHER_PROJECTS_CONFIG.slice(0, 3).map((project) => (
-            <FeaturedItemCard
+            <WorkItemCard
               key={project.id}
               title={project.title}
               description={project.description}
