@@ -49,10 +49,10 @@ export default function WorkItemCard({
       </div>
 
       {/* Content Section - Right Side */}
-      <div className="flex-1 flex flex-col gap-3 md:gap-4 items-center md:items-start text-center md:text-left">
+      <div className="flex-1 flex flex-col gap-3 md:gap-2 lg:gap-4 items-center md:items-start text-center md:text-left">
         {/* Title with Platform Logos */}
         <div className="flex items-center gap-2 flex-wrap justify-center md:justify-start">
-          <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black">
+          <h3 className="text-2xl md:text-2xl lg:text-4xl font-bold text-black">
             {title}
           </h3>
           {/* Platform Logos */}
@@ -111,7 +111,7 @@ export default function WorkItemCard({
         {(formattedDate || (tags && tags.length > 0)) && (
           <div className="flex flex-wrap gap-2 items-center justify-center md:justify-start text-xs md:text-sm text-black/80">
             {formattedDate && (
-              <span className="text-sm md:text-base text-black/80">
+              <span className="text-sm md:text-sm lg:text-base text-black/80">
                 {formattedDate}
               </span>
             )}
@@ -128,9 +128,9 @@ export default function WorkItemCard({
                   const isForFun = tag === "For Fun";
                   const tagClassName = isFirstTag && (isForWork || isForFun)
                     ? isForFun
-                      ? "bg-yellow-400 text-black px-3 py-1 rounded-full text-[0.7rem] md:text-xs font-medium"
-                      : "bg-gray-700 text-white px-3 py-1 rounded-full text-[0.7rem] md:text-xs font-medium"
-                    : "bg-gray-200 px-3 py-1 rounded-full text-[0.7rem] md:text-xs font-medium text-black";
+                      ? "bg-yellow-400 text-black px-3 py-1 rounded-full text-[0.7rem] md:text-[0.7rem] lg:text-xs font-medium"
+                      : "bg-gray-700 text-white px-3 py-1 rounded-full text-[0.7rem] md:text-[0.7rem] lg:text-xs font-medium"
+                    : "bg-gray-200 px-3 py-1 rounded-full text-[0.7rem] md:text-[0.7rem] lg:text-xs font-medium text-black";
                   
                   return (
                     <span key={index} className={tagClassName}>
@@ -144,15 +144,15 @@ export default function WorkItemCard({
         )}
 
         {/* Description */}
-        <p className="text-base md:text-lg text-black/80 leading-relaxed text-center md:text-left px-4 md:px-0">
+        <p className="text-base md:text-base lg:text-lg text-black/80 leading-relaxed text-center md:text-left px-4 md:px-0">
           {description}
         </p>
 
         {/* Actions: view process + direct play/view + optional GitHub */}
-        <div className="flex flex-wrap items-center gap-3 mt-2 mx-auto md:mx-0">
+        <div className="flex flex-wrap items-center gap-3 md:gap-2 lg:gap-3 mt-2 md:mt-1 lg:mt-2 mx-auto md:mx-0">
           <button
             onClick={onClick}
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 md:px-4 md:py-2 lg:px-6 lg:py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
           >
             <span>View the Process</span>
           </button>
@@ -162,7 +162,7 @@ export default function WorkItemCard({
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 md:px-4 md:py-2 lg:px-6 lg:py-3 bg-green-500 hover:bg-green-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
             >
               <span>{secondaryCtaLabel || 'Open link'}</span>
               <svg
@@ -182,7 +182,7 @@ export default function WorkItemCard({
               href={githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-3 py-3 bg-white rounded-full shadow-lg hover:scale-105 transition-transform cursor-pointer ml-2"
+              className="hidden md:inline-flex items-center justify-center px-3 py-3 md:px-2.5 md:py-2.5 lg:px-3 lg:py-3 bg-white rounded-full shadow-lg hover:scale-105 transition-transform cursor-pointer ml-2"
               aria-label="View source on GitHub"
             >
               <Image

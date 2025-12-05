@@ -36,7 +36,7 @@ export default function Projects() {
       {/* Featured Projects Section */}
       <div id="for-work">
         <Section separator={false} container={true} padding={true} className="pt-8 md:pt-12 pb-4 md:pb-6">
-          <div className="space-y-4 md:space-y-6">
+          <div className="space-y-8 md:space-y-6">
           {OTHER_PROJECTS_CONFIG.slice(0, 3).map((project) => (
             <WorkItemCard
               key={project.id}
@@ -84,7 +84,7 @@ export default function Projects() {
                 : 'max-h-0 opacity-0 mt-0'
             }`}
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-6">
               {OTHER_PROJECTS_CONFIG.slice(3).map((project) => (
                 <GalleryCard
                   key={project.id}
@@ -120,7 +120,7 @@ export default function Projects() {
         <Section separator={false} container={true} padding={true} className="pt-4 md:pt-6">
           {/* Featured Games Section */}
           {!loading && !error && featuredGames.length > 0 && (
-            <div className="space-y-4 md:space-y-6">
+            <div className="space-y-8 md:space-y-6">
               {featuredGames.slice(0, 3).map((game) => (
                 <WorkItemCard
                   key={game.id}
@@ -207,7 +207,7 @@ export default function Projects() {
                 : 'max-h-0 opacity-0 mt-0'
             }`}
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-6">
               {featuredGames.slice(3).map((game) => (
                 <GalleryCard
                   key={game.id}

@@ -49,10 +49,10 @@ export default function GalleryCard({
       </div>
 
       {/* Content Section - Bottom */}
-      <div className="flex flex-col gap-2 md:gap-3 p-4 pt-6 md:pt-8 justify-center">
+      <div className="flex flex-col gap-2 md:gap-1.5 lg:gap-3 p-4 pt-6 md:pt-6 lg:pt-8 justify-center">
         {/* Title with Platform Logos */}
         <div className="flex items-center gap-2 flex-wrap">
-          <h3 className="text-lg md:text-xl font-bold text-black">
+          <h3 className="text-lg md:text-base lg:text-xl font-bold text-black">
             {title}
           </h3>
           {/* Platform Logos */}
@@ -109,9 +109,9 @@ export default function GalleryCard({
 
         {/* Date + Tags */}
         {(formattedDate || (tags && tags.length > 0)) && (
-          <div className="flex flex-wrap gap-2 items-center text-xs md:text-sm text-black/80">
+          <div className="flex flex-wrap gap-2 items-center text-xs md:text-xs lg:text-sm text-black/80">
             {formattedDate && (
-              <span className="text-xs md:text-sm text-black/80">
+              <span className="text-xs md:text-xs lg:text-sm text-black/80">
                 {formattedDate}
               </span>
             )}
@@ -128,9 +128,9 @@ export default function GalleryCard({
                   const isForFun = tag === "For Fun";
                   const tagClassName = isFirstTag && (isForWork || isForFun)
                     ? isForFun
-                      ? "bg-yellow-400 text-black px-2 py-1 rounded-full text-[0.65rem] md:text-xs font-medium"
-                      : "bg-gray-700 text-white px-2 py-1 rounded-full text-[0.65rem] md:text-xs font-medium"
-                    : "bg-gray-200 px-2 py-1 rounded-full text-[0.65rem] md:text-xs font-medium text-black";
+                      ? "bg-yellow-400 text-black px-2 py-1 rounded-full text-[0.65rem] md:text-[0.65rem] lg:text-xs font-medium"
+                      : "bg-gray-700 text-white px-2 py-1 rounded-full text-[0.65rem] md:text-[0.65rem] lg:text-xs font-medium"
+                    : "bg-gray-200 px-2 py-1 rounded-full text-[0.65rem] md:text-[0.65rem] lg:text-xs font-medium text-black";
                   
                   return (
                     <span key={index} className={tagClassName}>
@@ -144,15 +144,15 @@ export default function GalleryCard({
         )}
 
         {/* Description */}
-        <p className="text-xs md:text-sm text-black/80 leading-relaxed line-clamp-3">
+        <p className="text-xs md:text-xs lg:text-sm text-black/80 leading-relaxed line-clamp-3">
           {description}
         </p>
 
         {/* Actions */}
-        <div className="flex flex-wrap items-center gap-2 mt-auto">
+        <div className="flex flex-wrap items-center gap-2 md:gap-1.5 lg:gap-2 mt-auto">
           <button
             onClick={onClick}
-            className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 bg-blue-500 hover:bg-blue-600 text-white font-bold text-xs rounded-full transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg cursor-pointer"
+            className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 md:px-3 md:py-2 lg:px-4 lg:py-2.5 bg-blue-500 hover:bg-blue-600 text-white font-bold text-xs rounded-full transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg cursor-pointer"
           >
             <span>View Process</span>
           </button>
@@ -162,7 +162,7 @@ export default function GalleryCard({
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 bg-green-600 hover:bg-green-700 text-white font-bold text-xs rounded-full transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg cursor-pointer"
+              className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 md:px-3 md:py-2 lg:px-4 lg:py-2.5 bg-green-600 hover:bg-green-700 text-white font-bold text-xs rounded-full transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg cursor-pointer"
             >
               <span>{secondaryCtaLabel || 'Open'}</span>
               <svg
@@ -182,7 +182,7 @@ export default function GalleryCard({
               href={githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-2.5 py-2.5 bg-white rounded-full shadow-md hover:scale-105 transition-transform cursor-pointer ml-auto"
+              className="hidden md:inline-flex items-center justify-center px-2.5 py-2.5 md:px-2 md:py-2 lg:px-2.5 lg:py-2.5 bg-white rounded-full shadow-md hover:scale-105 transition-transform cursor-pointer ml-auto"
               aria-label="View source on GitHub"
             >
               <Image
