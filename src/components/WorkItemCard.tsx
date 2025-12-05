@@ -51,7 +51,7 @@ export default function WorkItemCard({
       </div>
 
       {/* Content Section - Right Side */}
-      <div className="flex-1 flex flex-col gap-3 md:gap-4 items-center md:items-start text-center md:text-left">
+      <div className="flex-1 flex flex-col gap-3 md:gap-4 items-center md:items-start text-center md:text-left bg-white rounded-lg p-4 md:p-6">
         {/* Title with Platform Logos */}
         <div className="flex items-center gap-2 flex-wrap justify-center md:justify-start">
           <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black">
@@ -195,3 +195,4 @@ export default function WorkItemCard({
 
   return content;
 }
+
