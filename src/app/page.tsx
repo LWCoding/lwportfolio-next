@@ -94,6 +94,7 @@ export default function Home() {
         badgeLabel: "Product & Research",
         badgeClassName: "bg-green-600",
         badgeTextClassName: "text-white",
+        prefixText: "My work is mission-first and user-centered. I'm",
         title: "Designing Interactive Systems",
         description:
           "I align systems to solve real-world problems. If you're going to make a game, why not make it solve a problem, too? At work and through independent research, I design user-centered experiences like virtual reality products for the elderly and multiplayer games to bring people together. ",
@@ -111,6 +112,7 @@ export default function Home() {
         badgeLabel: "Game Development",
         badgeClassName: "bg-yellow-400",
         badgeTextClassName: "text-black",
+        prefixText: "I also find strong community important. I love",
         title: "Promoting Game Design at Stanford",
         description:
           "Stanford students don't play enough games, let alone make them. As the founder of our game development club, I've hosted tens of events with hundreds of participants, including jams, socials, and playtests that help game designers find community. I also make lots of games!",
@@ -128,6 +130,7 @@ export default function Home() {
         badgeLabel: "Teaching",
         badgeClassName: "bg-blue-500",
         badgeTextClassName: "text-white",
+        prefixText: "Did I mention, I also love teaching others? I'm also",
         title: "Teaching Playful CS Courses",
         description:
           "More than I love making things, I love teaching others how to make things! Outside of lecturing for CS11SI, CS42SI, CS106A/B, and CS247G as an *undergraduate* at Stanford, I've taught game design internationally in South Korea. I love using interactive narratives to make programming intuitive, joyful, and collaborative.",
@@ -283,7 +286,7 @@ export default function Home() {
         {/* Yellow Bar - visible at bottom of viewport */}
         <div className="w-full bg-yellow-400 py-4">
           <div className="text-center text-black font-semibold">
-            ▼ Explore What I&apos;m Working On ▼
+            ▼ Explore What I&apos;m Doing ▼
           </div>
         </div>
         {/* Experience Overview Section */}
@@ -308,9 +311,16 @@ export default function Home() {
                 
                 {/* Text Content */}
                 <div className="w-full md:w-1/2 space-y-4">
-                  <h3 className="text-3xl md:text-4xl font-bold text-black">
-                    {card.title}
-                  </h3>
+                  <div className="space-y-1">
+                    {card.prefixText && (
+                      <span className="block text-base md:text-lg font-medium text-black/70">
+                        {card.prefixText}
+                      </span>
+                    )}
+                    <h3 className="text-3xl md:text-4xl font-bold text-black">
+                      {card.title}
+                    </h3>
+                  </div>
                   <p className="text-base md:text-lg text-black/80 leading-relaxed">
                     {card.description}
                   </p>
