@@ -96,7 +96,7 @@ export default function Home() {
         badgeTextClassName: "text-white",
         title: "Designing Interactive Systems",
         description:
-          "I love designing and aligning systems to solve real-world problems. At work and through independent research, I design experiences that people feel motivated to play. Examples include a customer management software game and in-person escape rooms that bring people together.",
+          "I love aligning systems to solve real-world problems. At work and through independent research, I design experiences that people feel motivated to play. Examples include a customer management software game and in-person escape rooms that bring people together.",
         ringColorClassName: "focus:ring-green-500",
         subButtonLabel: "View Projects",
       },
@@ -169,13 +169,18 @@ export default function Home() {
           <div className="relative z-30 w-full lg:w-2/5 flex-1 lg:flex-none flex items-center justify-center bg-transparent lg:bg-gray-200 p-8 md:p-12">
             <div className="flex flex-col items-start text-left max-w-lg w-full space-y-6">
               {/* Main Heading */}
-              <h1 className="text-6xl font-bold text-white lg:text-black">
-                Lucas Wang
+              <h1 className="text-6xl font-bold text-white lg:text-black leading-tight space-y-1">
+                <span className="block text-base md:text-lg font-medium text-white lg:text-black">
+                  Hey there! Thanks for visiting. I&apos;m
+                </span>
+                <span className="block text-6xl font-bold">
+                  lucas wang,
+                </span>
               </h1>
 
               {/* Descriptive Text */}
               <p className="text-base md:text-lg text-white lg:text-black font-medium">
-                I&apos;m a UI/UX designer crafting interactive experiences through game development, incentive design, and education!
+                a UI/UX designer crafting interactive experiences through game development, incentive design, and education!
               </p>
 
               {/* Tools Row */}

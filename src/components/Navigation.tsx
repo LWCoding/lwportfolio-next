@@ -42,7 +42,7 @@ export default function Navigation() {
                   ? 'text-black' 
                   : 'text-black/80 hover:text-black'
               }`}>
-                lucas wang!
+                lucas wang
               </h1>
             </Link>
           </div>
