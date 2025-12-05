@@ -177,7 +177,7 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
               ) : (
                 <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20" />
               )}
-              <div className="absolute inset-0 bg-black/60" />
+              <div className="absolute inset-0 bg-black/75" />
               
               {/* Back Button - top left */}
               <button
