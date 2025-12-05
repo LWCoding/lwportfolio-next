@@ -13,7 +13,8 @@ export default function Footer() {
         <p className="text-sm text-black font-bold mt-1">
           <a
             href="mailto:lswang05@stanford.edu"
-            className="hover:text-gray-800 transition-colors"
+            className="underline hover:text-gray-800 hover:no-underline transition-colors cursor-pointer"
+            aria-label="Send email to lswang05@stanford.edu"
           >
             lswang05@stanford.edu
           </a>
