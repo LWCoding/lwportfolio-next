@@ -112,7 +112,7 @@ export default function Home() {
         badgeLabel: "Game Development",
         badgeClassName: "bg-yellow-400",
         badgeTextClassName: "text-black",
-        prefixText: "I also find strong community important. I love",
+        prefixText: "I also find strong community important. I'm",
         title: "Promoting Game Design at Stanford",
         description:
           "Stanford students don't play enough games, let alone make them. As the founder of our game development club, I've hosted tens of events with hundreds of participants, including jams, socials, and playtests that help game designers find community. I also make lots of games!",
@@ -130,7 +130,7 @@ export default function Home() {
         badgeLabel: "Teaching",
         badgeClassName: "bg-blue-500",
         badgeTextClassName: "text-white",
-        prefixText: "Did I mention, I also love teaching others? I'm also",
+        prefixText: "Did I mention, I also love teaching? I'm also",
         title: "Teaching Playful CS Courses",
         description:
           "More than I love making things, I love teaching others how to make things! Outside of lecturing for CS11SI, CS42SI, CS106A/B, and CS247G as an *undergraduate* at Stanford, I've taught game design internationally in South Korea. I love using interactive narratives to make programming intuitive, joyful, and collaborative.",
