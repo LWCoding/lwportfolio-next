@@ -55,16 +55,6 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     detailComponent: 'documentation section in progress'
   },
   {
-    id: 'timesync',
-    title: 'Timesync',
-    description: 'A schedule-syncing app designed to help people easily coordinate their schedules with friends.',
-    tags: ['App', 'Figma'],
-    href: 'https://www.figma.com/design/Ng5ndVHBaIS4g86iEHsXzR/TimeSync-App?node-id=42-2988&t=WRYz7MBidzvsda76-1',
-    coverImage: '/images/timesync.png',
-    createdAt: '2025-04-10',
-    platforms: ['figma']
-  },
-  {
     id: 'cs42si',
     title: 'CS42SI Course',
     description: 'Original curriculum and website for CS42SI at Stanford, a course teaching Unity and game development.',
@@ -83,6 +73,16 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     coverImage: '/images/cs11si.png',
     createdAt: '2025-09-05',
     platforms: ['html5']
+  },
+  {
+    id: 'timesync',
+    title: 'Timesync',
+    description: 'A schedule-syncing app designed to help people easily coordinate their schedules with friends.',
+    tags: ['App', 'Figma'],
+    href: 'https://www.figma.com/design/Ng5ndVHBaIS4g86iEHsXzR/TimeSync-App?node-id=42-2988&t=WRYz7MBidzvsda76-1',
+    coverImage: '/images/timesync.png',
+    createdAt: '2025-04-10',
+    platforms: ['figma']
   },
   {
     id: 'planet',

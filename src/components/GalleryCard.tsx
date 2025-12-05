@@ -127,7 +127,9 @@ export default function GalleryCard({
                   const isForWork = tag === "For Work";
                   const isForFun = tag === "For Fun";
                   const tagClassName = isFirstTag && (isForWork || isForFun)
-                    ? "bg-gray-700 text-white px-2 py-1 rounded-full text-[0.65rem] md:text-xs font-medium"
+                    ? isForFun
+                      ? "bg-yellow-400 text-black px-2 py-1 rounded-full text-[0.65rem] md:text-xs font-medium"
+                      : "bg-gray-700 text-white px-2 py-1 rounded-full text-[0.65rem] md:text-xs font-medium"
                     : "bg-gray-200 px-2 py-1 rounded-full text-[0.65rem] md:text-xs font-medium text-black";
                   
                   return (
@@ -150,7 +152,7 @@ export default function GalleryCard({
         <div className="flex flex-wrap items-center gap-2 mt-auto">
           <button
             onClick={onClick}
-            className="inline-flex items-center justify-center gap-1.5 px-4 py-1.5 bg-blue-500 hover:bg-blue-600 text-white font-bold text-xs rounded-full transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg cursor-pointer"
+            className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 bg-blue-500 hover:bg-blue-600 text-white font-bold text-xs rounded-full transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg cursor-pointer"
           >
             <span>View Process</span>
           </button>
@@ -160,7 +162,7 @@ export default function GalleryCard({
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-1.5 px-4 py-1.5 bg-green-600 hover:bg-green-700 text-white font-bold text-xs rounded-full transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg cursor-pointer"
+              className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 bg-green-600 hover:bg-green-700 text-white font-bold text-xs rounded-full transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg cursor-pointer"
             >
               <span>{secondaryCtaLabel || 'Open'}</span>
               <svg
