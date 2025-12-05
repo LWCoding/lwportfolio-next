@@ -233,26 +233,17 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right Side - Video (only on large screens and up) */}
+          {/* Right Side - Image (only on large screens and up) */}
           <div className="hidden lg:block flex-1 relative bg-gray-800">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover"
-            >
-              <source src="/videos/GameShowcase.mp4" type="video/mp4" />
-            </video>
-            {/* Darker overlay on small devices */}
-            <div className="absolute inset-0 bg-black/40 md:bg-transparent z-10"></div>
-            {/* Vignette overlay - darker at edges of entire video */}
-            <div 
-              className="absolute inset-0 z-15 pointer-events-none"
-              style={{
-                background: 'radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.5) 100%)'
-              }}
-            ></div>
+            <Image
+              src="/images/teachinggame.jpg"
+              alt="Game development showcase background"
+              fill
+              priority
+              className="object-cover"
+            />
+            {/* Dark overlay to keep background very subdued */}
+            <div className="absolute inset-0 bg-black/20"></div>
             {/* Text and Headshot - Bottom Right */}
             <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 z-20 flex items-center gap-3 md:gap-4">
               {/* Dialogue Box - Left of headshot */}
