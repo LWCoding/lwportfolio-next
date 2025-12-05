@@ -254,23 +254,6 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
                           )}
                         </div>
                       )}
-                    {githubUrl && (
-                      <a
-                        href={githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="ml-auto w-10 h-10 rounded-full bg-white/95 flex items-center justify-center shadow-md hover:scale-105 transition-transform cursor-pointer"
-                        aria-label="View source on GitHub"
-                      >
-                        <Image
-                          src="/images/github.png"
-                          alt="GitHub"
-                          width={24}
-                          height={24}
-                          className="w-6 h-6 object-contain"
-                        />
-                      </a>
-                    )}
                   </div>
                   {(game?.created_at || project?.createdAt || game?.views_count || tags.length > 0) && (
                     <div className="mt-1 flex flex-wrap gap-2 items-center text-sm text-white/90 drop-shadow-md">
@@ -283,6 +266,11 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
 
                       {/* Divider between date and views */}
                       {(game?.created_at || project?.createdAt) && game?.views_count && (
+                        <span className="text-white/60">|</span>
+                      )}
+
+                      {/* Divider between date and tags (when no views) */}
+                      {(game?.created_at || project?.createdAt) && !game?.views_count && tags.length > 0 && (
                         <span className="text-white/60">|</span>
                       )}
 
@@ -321,13 +309,51 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
                 </div>
               </div>
 
-              {/* Play/View Button - absolute on larger screens only */}
-              <div className="hidden md:block md:absolute md:bottom-4 md:right-4 z-20">
+              {/* GitHub Button - visible on mobile, positioned at bottom right of image */}
+              {githubUrl && (
+                <div className="md:hidden absolute bottom-4 right-4 z-20">
+                  <a
+                    href={githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 rounded-full bg-white/95 flex items-center justify-center shadow-lg hover:scale-105 transition-transform cursor-pointer"
+                    aria-label="View source on GitHub"
+                  >
+                    <Image
+                      src="/images/github.png"
+                      alt="GitHub"
+                      width={24}
+                      height={24}
+                      className="w-6 h-6 object-contain"
+                    />
+                  </a>
+                </div>
+              )}
+
+              {/* Action Buttons - absolute on larger screens only */}
+              <div className="hidden md:flex md:absolute md:bottom-4 md:right-4 z-20 items-center gap-3">
+                {githubUrl && (
+                  <a
+                    href={githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 rounded-full bg-white/95 flex items-center justify-center shadow-lg hover:scale-105 transition-transform cursor-pointer"
+                    aria-label="View source on GitHub"
+                  >
+                    <Image
+                      src="/images/github.png"
+                      alt="GitHub"
+                      width={24}
+                      height={24}
+                      className="w-6 h-6 object-contain"
+                    />
+                  </a>
+                )}
                 <Link
                   href={game?.url || project?.href || '#'}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-4 py-1 mb-1 bg-green-500 hover:bg-green-600 text-white font-semibold text-sm md:text-base rounded-full transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
                 >
                   {game ? (
                     <>
@@ -347,7 +373,7 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
                       >
                         <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
-                      <span>View Project</span>
+                      <span>Open Project</span>
                     </>
                   )}
                 </Link>
@@ -384,7 +410,7 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
                 href={game?.url || project?.href || '#'}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 px-4 py-4 bg-green-500 hover:bg-green-600 text-white text-base font-semibold tracking-wide shadow-[0_-2px_8px_rgba(0,0,0,0.25)] cursor-pointer"
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-4 bg-green-600 hover:bg-green-600 text-white text-base font-semibold tracking-wide shadow-[0_-2px_8px_rgba(0,0,0,0.25)] cursor-pointer"
               >
                 {game ? (
                   <>
@@ -404,7 +430,7 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
                     >
                       <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>
-                    <span>View project</span>
+                    <span>Open Project</span>
                   </>
                 )}
               </Link>

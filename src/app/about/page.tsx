@@ -52,9 +52,9 @@ export default function About() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
-                    aria-label="View my resume"
+                    aria-label="View my Resume"
                   >
-                    View my resume
+                    View my Resume
                   </a>
                 </div>
               </div>

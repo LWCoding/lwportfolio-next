@@ -11,10 +11,10 @@ import { useRouter } from "next/navigation";
 export default function Home() {
   const router = useRouter();
 
-  // Pre-fetch games data to warm up the cache for faster load on /games page
+  // Pre-fetch games data to warm up the cache for faster load on /work page
   useEffect(() => {
-    // Prefetch the /games route for faster navigation
-    router.prefetch('/games');
+    // Prefetch the /work route for faster navigation
+    router.prefetch('/work');
     
     const prefetchGames = async () => {
       try {
@@ -87,7 +87,7 @@ export default function Home() {
     {
       id: "experience-product-research",
       card: {
-        href: "/projects",
+        href: "/work",
         ariaLabel: "Explore projects from my product design and research work",
         imageSrc: "/images/alwaysbeclosing.png",
         imageAlt: "simulation and product design interface",
@@ -104,7 +104,7 @@ export default function Home() {
     {
       id: "experience-community-clubs",
       card: {
-        href: "/games",
+        href: "/work",
         ariaLabel: "Explore my experience with games",
         imageSrc: "/images/svgdmeeting.png",
         imageAlt: "stanford game development club meeting",
@@ -209,9 +209,16 @@ export default function Home() {
               {/* CTA Buttons */}
               <div className="flex flex-wrap gap-3">
                 <Link 
-                  href="/games"
-                  className="group flex items-center justify-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer min-w-[160px]"
-                  aria-label="View games"
+                  href="/about"
+                  className="group flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer w-[160px]"
+                  aria-label="About me"
+                >
+                  <span>About Me</span>
+                </Link>
+                <Link 
+                  href="/work"
+                  className="group flex items-center justify-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer w-[160px]"
+                  aria-label="View projects"
                 >
                   <svg 
                     className="w-5 h-5 transition-transform group-hover:scale-110" 
@@ -220,14 +227,7 @@ export default function Home() {
                   >
                     <path d="M8 5v14l11-7z"/>
                   </svg>
-                  <span>Play Games</span>
-                </Link>
-                <Link 
-                  href="/projects"
-                  className="group flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer min-w-[160px]"
-                  aria-label="View projects"
-                >
-                  <span>View Projects</span>
+                  <span>View Work</span>
                 </Link>
               </div>
             </div>
@@ -328,7 +328,11 @@ export default function Home() {
                       <Link
                         href={card.href}
                         aria-label={card.ariaLabel}
-                        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+                        className={`inline-flex items-center justify-center gap-2 px-6 py-3 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer ${
+                          card.href === '/work' 
+                            ? 'bg-green-600 hover:bg-green-600' 
+                            : 'bg-blue-500 hover:bg-blue-600'
+                        }`}
                       >
                         <span>{card.subButtonLabel}</span>
                       </Link>
