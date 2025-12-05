@@ -11,10 +11,10 @@ import { useRouter } from "next/navigation";
 export default function Home() {
   const router = useRouter();
 
-  // Pre-fetch games data to warm up the cache for faster load on /work page
+  // Pre-fetch games data to warm up the cache for faster load on /projects page
   useEffect(() => {
-    // Prefetch the /work route for faster navigation
-    router.prefetch('/work');
+    // Prefetch the /projects route for faster navigation
+    router.prefetch('/projects');
     
     const prefetchGames = async () => {
       try {
@@ -87,7 +87,7 @@ export default function Home() {
     {
       id: "experience-product-research",
       card: {
-        href: "/work",
+        href: "/projects",
         ariaLabel: "Explore projects from my product design and research work",
         imageSrc: "/images/alwaysbeclosing.png",
         imageAlt: "simulation and product design interface",
@@ -105,7 +105,7 @@ export default function Home() {
     {
       id: "experience-community-clubs",
       card: {
-        href: "/work",
+        href: "/projects",
         ariaLabel: "Explore my experience with games",
         imageSrc: "/images/svgdmeeting.png",
         imageAlt: "stanford game development club meeting",
@@ -213,15 +213,15 @@ export default function Home() {
               <div className="flex flex-wrap gap-3">
                 <Link 
                   href="/about"
-                  className="group flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer w-[160px]"
+                  className="group flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
                   aria-label="About me"
                 >
                   <span>About Me</span>
                 </Link>
                 <Link 
-                  href="/work"
-                  className="group flex items-center justify-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer w-[160px]"
-                  aria-label="View projects"
+                  href="/projects"
+                  className="group flex items-center justify-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+                  aria-label="View work"
                 >
                   <svg 
                     className="w-5 h-5 transition-transform group-hover:scale-110" 
@@ -230,7 +230,7 @@ export default function Home() {
                   >
                     <path d="M8 5v14l11-7z"/>
                   </svg>
-                  <span>View Work</span>
+                  <span>View Projects</span>
                 </Link>
               </div>
             </div>
@@ -330,7 +330,7 @@ export default function Home() {
                         href={card.href}
                         aria-label={card.ariaLabel}
                         className={`inline-flex items-center justify-center gap-2 px-6 py-3 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer ${
-                          card.href === '/work' 
+                          card.href === '/projects' 
                             ? 'bg-green-600 hover:bg-green-600' 
                             : 'bg-blue-500 hover:bg-blue-600'
                         }`}

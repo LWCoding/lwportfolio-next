@@ -38,10 +38,10 @@ export default function WorkItemCard({
 
   const content = (
     <div
-      className="flex flex-col md:flex-row gap-6 md:gap-8 lg:gap-12 items-center md:items-center"
+      className="flex flex-col md:flex-row gap-0 items-stretch bg-white rounded-lg overflow-hidden"
     >
       {/* Image Section - Left Side */}
-      <div className="relative w-full md:w-2/5 bg-gray-200 aspect-[5/2] md:aspect-[4/3] flex-shrink-0 rounded overflow-hidden">
+      <div className="relative w-full md:w-1/3 bg-gray-200 flex-shrink-0 aspect-[3/1] md:aspect-[5/3]">
         <Image
           src={imageSrc}
           alt={imageAlt}
@@ -51,10 +51,10 @@ export default function WorkItemCard({
       </div>
 
       {/* Content Section - Right Side */}
-      <div className="flex-1 flex flex-col gap-3 md:gap-4 items-center md:items-start text-center md:text-left bg-white rounded-lg p-4 md:p-6">
+      <div className="flex-1 flex flex-col gap-2 md:gap-3 items-center md:items-start justify-center text-center md:text-left py-3 md:py-4 px-3 md:px-4 md:ml-4 min-h-0">
         {/* Title with Platform Logos */}
         <div className="flex items-center gap-2 flex-wrap justify-center md:justify-start">
-          <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black">
+          <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-black">
             {title}
           </h3>
           {/* Platform Logos */}
@@ -124,29 +124,35 @@ export default function WorkItemCard({
             )}
             {tags && tags.length > 0 && (
               <div className="flex flex-wrap gap-2">
-                {tags.map((tag, index) => (
-                  <span
-                    key={index}
-                    className="bg-gray-200 px-3 py-1 rounded-full text-[0.7rem] md:text-xs font-medium text-black"
-                  >
-                    {tag}
-                  </span>
-                ))}
+                {tags.map((tag, index) => {
+                  const isFirstTag = index === 0;
+                  const isForWork = tag === "For Work";
+                  const isForFun = tag === "For Fun";
+                  const tagClassName = isFirstTag && (isForWork || isForFun)
+                    ? "bg-gray-700 text-white px-3 py-1 rounded-full text-[0.7rem] md:text-xs font-medium"
+                    : "bg-gray-200 px-3 py-1 rounded-full text-[0.7rem] md:text-xs font-medium text-black";
+                  
+                  return (
+                    <span key={index} className={tagClassName}>
+                      {tag}
+                    </span>
+                  );
+                })}
               </div>
             )}
           </div>
         )}
 
         {/* Description */}
-        <p className="text-base md:text-lg text-black/80 leading-relaxed text-center md:text-left px-4 md:px-0">
+        <p className="text-sm md:text-base text-black/80 leading-relaxed text-center md:text-left px-4 md:px-0">
           {description}
         </p>
 
         {/* Actions: view process + direct play/view + optional GitHub */}
-        <div className="flex flex-wrap items-center gap-3 mt-2 mx-auto md:mx-0">
+        <div className="flex flex-wrap items-center gap-2 mt-1 mx-auto md:mx-0">
           <button
             onClick={onClick}
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white font-bold text-sm rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
           >
             <span>View the Process</span>
           </button>
@@ -156,7 +162,7 @@ export default function WorkItemCard({
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2 bg-green-600 hover:bg-green-600 text-white font-bold text-sm rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
             >
               <span>{secondaryCtaLabel || 'Open link'}</span>
               <svg

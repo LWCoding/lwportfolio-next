@@ -68,10 +68,10 @@ export default function Navigation() {
               home
             </Link>
             <Link 
-              href="/work"
-              className={getLinkClasses('/work')}
+              href="/projects"
+              className={getLinkClasses('/projects')}
             >
-              work
+              projects
             </Link>
             <Link 
               href="/about"
@@ -102,11 +102,11 @@ export default function Navigation() {
                 home
               </Link>
               <Link 
-                href="/work"
+                href="/projects"
                 onClick={handleLinkClick}
-                className={`${getLinkClasses('/work')} py-4 px-4 bg-yellow-400`}
+                className={`${getLinkClasses('/projects')} py-4 px-4 bg-yellow-400`}
               >
-                work
+                projects
               </Link>
               <Link 
                 href="/about"

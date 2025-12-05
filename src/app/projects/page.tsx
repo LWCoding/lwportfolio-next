@@ -2,27 +2,24 @@
 
 import Navigation from "@/components/Navigation";
 import Section from "@/components/Section";
-import NewspaperGameCard from "@/components/NewspaperGameCard";
+import Button from "@/components/Button";
 import DetailSidePanel from "@/components/DetailSidePanel";
 import VideoBanner from "@/components/VideoBanner";
 import Footer from "@/components/Footer";
 import WorkItemCard from "@/components/WorkItemCard";
+import GalleryCard from "@/components/GalleryCard";
+import { useGames, GameData, FEATURED_GAMES_CONFIG } from "@/hooks/useFeaturedGames";
 import { OTHER_PROJECTS_CONFIG, OtherProject } from "@/data/otherProjects";
 import { useState } from "react";
-import { calculateNewspaperGridProps } from "@/utils/newspaperGrid";
-import Image from "next/image";
+
+type SelectedItem = GameData | OtherProject | null;
 
 export default function Projects() {
-  const [selectedItem, setSelectedItem] = useState<OtherProject | null>(null);
+  const { featuredGames, loading, error } = useGames();
+  const [selectedItem, setSelectedItem] = useState<SelectedItem>(null);
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
-
-  // Simple gradient classes for variety
-  const gradientClasses = [
-    "from-red-500/20 to-orange-500/20",
-    "from-blue-500/20 to-purple-500/20", 
-    "from-green-500/20 to-teal-500/20",
-    "from-purple-500/20 to-pink-500/20",
-  ];
+  const [showOtherProjects, setShowOtherProjects] = useState(false);
+  const [showOtherGames, setShowOtherGames] = useState(false);
 
   return (
     <div className="min-h-screen bg-white flex flex-col pt-[56px]">
@@ -31,14 +28,15 @@ export default function Projects() {
       {/* Hero Video Banner */}
       <VideoBanner 
         title="Projects" 
-        subtitle="Some fun things I've designed!" 
+        subtitle="My projects, categorized into work and fun!"
         height="33vh"
         minHeight="200px"
       />
 
       {/* Featured Projects Section */}
-      <Section separator={false} container={true} padding={true} className="bg-white">
-        <div className="space-y-8 md:space-y-12">
+      <div id="for-work">
+        <Section separator={true} container={true} padding={true} className="pt-8 md:pt-12">
+          <div className="space-y-4 md:space-y-6">
           {OTHER_PROJECTS_CONFIG.slice(0, 3).map((project) => (
             <WorkItemCard
               key={project.id}
@@ -46,7 +44,7 @@ export default function Projects() {
               description={project.description}
               imageSrc={project.coverImage || "/images/scratchproject.png"}
               imageAlt={`${project.title} cover image`}
-              tags={project.tags}
+              tags={["For Work", ...(project.tags || [])]}
               platforms={project.platforms}
               date={project.createdAt}
               href={project.href}
@@ -64,79 +62,168 @@ export default function Projects() {
             />
           ))}
         </div>
-      </Section>
+        {/* Show More Button for Projects */}
+        {OTHER_PROJECTS_CONFIG.length > 3 && (
+          <div className="flex justify-center mt-4 md:mt-6">
+            <button
+              onClick={() => setShowOtherProjects(!showOtherProjects)}
+              className="px-3 py-1.5 text-sm text-black/80 hover:text-black underline transition-colors duration-200 cursor-pointer"
+            >
+              {showOtherProjects ? 'Show Less' : 'Show More'}
+            </button>
+          </div>
+        )}
 
-      {/* Other Projects Section - Only show if there are more than 3 projects */}
-      {OTHER_PROJECTS_CONFIG.length > 3 && (
-        <Section id="other-projects" separator={false} container={false} padding={false} className="px-0">
-          <div className="bg-blue-950">
-            <div className="pt-6 md:pt-8 pb-6 md:pb-8">
-              {/* Newspaper-style Projects Layout */}
-              <div className="container mx-auto max-w-[1024px] px-4">
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-10 md:mb-4 text-center">Other Projects</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-0">
-                    {OTHER_PROJECTS_CONFIG.slice(3).map((project, index) => {
-                    const gridProps = calculateNewspaperGridProps(index, OTHER_PROJECTS_CONFIG.length - 3);
-                    const size: 'large' | 'medium' | 'small' = 'medium';
-                    const isFirstCard = index === 0;
-                    
-                    return (
-                      <div key={project.id} className={`${gridProps.columnSpan} p-2 md:p-3 ${isFirstCard ? 'relative' : ''}`} style={{ aspectRatio: '3/2' }}>
-                        {/* Development Process Callout - Positioned above first card - Mobile only */}
-                        {isFirstCard && (
-                          <div className="md:hidden absolute -top-10 left-6 z-10 pointer-events-none" style={{ maxWidth: 'calc(100vw - 4rem)', minWidth: 'max-content' }}>
-                            <div className="flex items-center gap-3">
-                              {/* Curved Arrow pointing down to first card */}
-                              <Image 
-                                src="/images/curvedarrow.png"
-                                alt=""
-                                width={40}
-                                height={40}
-                                className="w-8 h-8 flex-shrink-0 mt-8"
-                              />
-                              {/* Text */}
-                              <p className="text-white text-sm font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] whitespace-nowrap">
-                                Click to view more info!
-                              </p>
-                            </div>
-                          </div>
-                        )}
-                        <NewspaperGameCard
-                          title={project.title}
-                          description={project.description}
-                          tags={project.tags}
-                          href={project.href}
-                          gradientClasses={gradientClasses[index % gradientClasses.length]}
-                          displayText="Project"
-                          coverImage={project.coverImage}
-                          createdAt={project.createdAt}
-                          variant={gridProps.variant}
-                          size={size}
-                          isLastInRow={gridProps.isLastInRow}
-                          isLastRow={gridProps.isLastRow}
-                          platforms={project.platforms}
-                          fadeOpacity={project.fadeOpacity}
-                          onClick={() => {
-                            // First set the project, then trigger the open animation
-                            setSelectedItem(project);
-                            setIsSidePanelOpen(false);
-                            // Use requestAnimationFrame to ensure the panel renders in closed state first
-                            requestAnimationFrame(() => {
-                              requestAnimationFrame(() => {
-                                setIsSidePanelOpen(true);
-                              });
-                            });
-                          }}
-                        />
-                      </div>
-                    );
-                  })}
-                  </div>
-                </div>
-              </div>
+        {/* Other Projects Section - Only show if there are more than 3 projects and showOtherProjects is true */}
+        {OTHER_PROJECTS_CONFIG.length > 3 && showOtherProjects && (
+          <div id="other-projects" className="mt-8 md:mt-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+              {OTHER_PROJECTS_CONFIG.slice(3).map((project) => (
+                <GalleryCard
+                  key={project.id}
+                  title={project.title}
+                  description={project.description}
+                  imageSrc={project.coverImage || "/images/scratchproject.png"}
+                  imageAlt={`${project.title} cover image`}
+                  tags={["For Work", ...(project.tags || [])]}
+                  platforms={project.platforms}
+                  date={project.createdAt}
+                  href={project.href}
+                  secondaryCtaLabel="View Project"
+                  githubUrl={project.githubUrl}
+                  onClick={() => {
+                    setSelectedItem(project);
+                    setIsSidePanelOpen(false);
+                    requestAnimationFrame(() => {
+                      requestAnimationFrame(() => {
+                        setIsSidePanelOpen(true);
+                      });
+                    });
+                  }}
+                />
+              ))}
             </div>
+          </div>
+        )}
         </Section>
-      )}
+      </div>
+
+      {/* Featured Games Section */}
+      <div id="for-fun">
+        <Section separator={true} container={true} padding={true} className="pt-8 md:pt-12">
+          {/* Featured Games Section */}
+          {!loading && !error && featuredGames.length > 0 && (
+            <div className="space-y-4 md:space-y-6">
+              {featuredGames.slice(0, 3).map((game) => (
+                <WorkItemCard
+                  key={game.id}
+                  title={game.title}
+                  description={game.short_text || "An exciting game experience awaits!"}
+                  imageSrc={game.still_cover_url || game.cover_url || "/images/scratchproject.png"}
+                  imageAlt={`${game.title} cover image`}
+                  tags={["For Fun", ...(game.tags || [])]}
+                  platforms={game.platforms}
+                  date={game.created_at}
+                  href={game.url}
+                  secondaryCtaLabel="Play Game"
+                  githubUrl={FEATURED_GAMES_CONFIG.find((cfg) => cfg.id === game.id)?.githubUrl || game.githubUrl}
+                  onClick={() => {
+                    setSelectedItem(game);
+                    setIsSidePanelOpen(false);
+                    requestAnimationFrame(() => {
+                      requestAnimationFrame(() => {
+                        setIsSidePanelOpen(true);
+                      });
+                    });
+                  }}
+                />
+              ))}
+            </div>
+          )}
+
+          {/* Error State */}
+          {error && (
+            <div className="text-center py-12">
+              <p className="text-black mb-4">
+                Oops! Couldn&apos;t load games from Itch.io right now.
+              </p>
+              <p className="text-sm text-black/80 mb-4">
+                Error: {error}
+              </p>
+              <Button 
+                href="https://lwcoding.itch.io/" 
+                variant="outline" 
+                className="mt-4"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View on Itch.io →
+              </Button>
+            </div>
+          )}
+
+          {/* Empty State */}
+          {!loading && !error && featuredGames.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-black mb-4">
+                No games found in your Itch.io account.
+              </p>
+              <Button 
+                href="https://lwcoding.itch.io/" 
+                variant="outline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View on Itch.io →
+              </Button>
+            </div>
+          )}
+
+        {/* Show More Button for Games */}
+        {!loading && !error && featuredGames.length > 3 && (
+          <div className="flex justify-center mt-4 md:mt-6">
+            <button
+              onClick={() => setShowOtherGames(!showOtherGames)}
+              className="px-3 py-1.5 text-sm text-black/80 hover:text-black underline transition-colors duration-200 cursor-pointer"
+            >
+              {showOtherGames ? 'Show Less' : 'Show More'}
+            </button>
+          </div>
+        )}
+
+        {/* Other Games Section - Only show if there are more than 3 games and showOtherGames is true */}
+        {!loading && !error && featuredGames.length > 3 && showOtherGames && (
+          <div className="mt-8 md:mt-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+              {featuredGames.slice(3).map((game) => (
+                <GalleryCard
+                  key={game.id}
+                  title={game.title}
+                  description={game.short_text || "An exciting game experience awaits!"}
+                  imageSrc={game.still_cover_url || game.cover_url || "/images/scratchproject.png"}
+                  imageAlt={`${game.title} cover image`}
+                  tags={["For Fun", ...(game.tags || [])]}
+                  platforms={game.platforms}
+                  date={game.created_at}
+                  href={game.url}
+                  secondaryCtaLabel="Play Game"
+                  githubUrl={FEATURED_GAMES_CONFIG.find((cfg) => cfg.id === game.id)?.githubUrl || game.githubUrl}
+                  onClick={() => {
+                    setSelectedItem(game);
+                    setIsSidePanelOpen(false);
+                    requestAnimationFrame(() => {
+                      requestAnimationFrame(() => {
+                        setIsSidePanelOpen(true);
+                      });
+                    });
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+        </Section>
+      </div>
 
       <Footer />
 
@@ -153,4 +240,3 @@ export default function Projects() {
     </div>
   );
 }
-
