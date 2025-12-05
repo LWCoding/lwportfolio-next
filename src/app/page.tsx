@@ -166,7 +166,7 @@ export default function Home() {
           </div>
 
           {/* Left Side - Text Content */}
-          <div className="relative z-10 w-full lg:w-2/5 flex-1 lg:flex-none flex items-center justify-center bg-transparent lg:bg-gray-200 p-8 md:p-12">
+          <div className="relative z-30 w-full lg:w-2/5 flex-1 lg:flex-none flex items-center justify-center bg-transparent lg:bg-gray-200 p-8 md:p-12">
             <div className="flex flex-col items-start text-left max-w-lg w-full space-y-6">
               {/* Main Heading */}
               <h1 className="text-6xl font-bold text-white lg:text-black">
@@ -280,7 +280,7 @@ export default function Home() {
       </div>
 
       {/* Spacer to push content - positioned so yellow bar appears at bottom of viewport */}
-      <div style={{ height: 'calc(100vh - 56px - 64px)' }} className="relative z-20" />
+      <div style={{ height: 'calc(100vh - 56px - 64px)' }} className="relative z-20 pointer-events-none" />
 
       {/* Content Section - Scrolls over hero */}
       <div className="relative z-20 bg-white">
