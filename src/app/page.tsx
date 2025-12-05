@@ -171,7 +171,7 @@ export default function Home() {
               {/* Main Heading */}
               <h1 className="text-6xl font-bold text-white lg:text-black leading-tight space-y-1">
                 <span className="block text-base md:text-lg font-medium text-white lg:text-black">
-                  Hey there! Thanks for visiting. I&apos;m
+                  Hey there! I&apos;m
                 </span>
                 <span className="block text-6xl font-bold">
                   lucas wang,
