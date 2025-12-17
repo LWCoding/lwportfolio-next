@@ -152,7 +152,7 @@ export default function GalleryCard({
         <div className="flex flex-wrap items-center gap-2 md:gap-1.5 lg:gap-2 mt-auto">
           <button
             onClick={onClick}
-            className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 md:px-3 md:py-2 lg:px-4 lg:py-2.5 bg-blue-500 hover:bg-blue-600 text-white font-bold text-xs rounded-full transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg cursor-pointer"
+            className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 md:px-3 md:py-2 lg:px-4 lg:py-2.5 bg-blue-500 hover:bg-blue-600 text-white font-bold text-xs rounded-full transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg cursor-pointer"
           >
             <span>View Process</span>
           </button>
@@ -162,7 +162,7 @@ export default function GalleryCard({
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 md:px-3 md:py-2 lg:px-4 lg:py-2.5 bg-green-600 hover:bg-green-700 text-white font-bold text-xs rounded-full transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg cursor-pointer"
+              className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 md:px-3 md:py-2 lg:px-4 lg:py-2.5 bg-green-600 hover:bg-green-700 text-white font-bold text-xs rounded-full transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg cursor-pointer"
             >
               <span>{secondaryCtaLabel || 'Open'}</span>
               <svg

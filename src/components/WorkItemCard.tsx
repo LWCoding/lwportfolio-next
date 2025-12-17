@@ -152,7 +152,7 @@ export default function WorkItemCard({
         <div className="flex flex-wrap items-center gap-3 md:gap-2 lg:gap-3 mt-2 md:mt-1 lg:mt-2 mx-auto md:mx-0">
           <button
             onClick={onClick}
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 md:px-4 md:py-2 lg:px-6 lg:py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 px-3 py-3 md:px-4 md:py-2 lg:px-6 lg:py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-sm md:text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
           >
             <span>View the Process</span>
           </button>
@@ -162,7 +162,7 @@ export default function WorkItemCard({
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 md:px-4 md:py-2 lg:px-6 lg:py-3 bg-green-500 hover:bg-green-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 px-3 py-3 md:px-4 md:py-2 lg:px-6 lg:py-3 bg-green-500 hover:bg-green-600 text-white font-bold text-sm md:text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
             >
               <span>{secondaryCtaLabel || 'Open link'}</span>
               <svg
