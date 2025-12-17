@@ -204,49 +204,76 @@ export default function DetailSidePanel({ item, isOpen, onClose }: DetailSidePan
                     <h1 className="text-3xl md:text-4xl font-bold text-white drop-shadow-lg">
                       {game?.title || project?.title}
                     </h1>
-                    {(game?.platforms || project?.platforms) &&
-                      (game?.platforms || project?.platforms || []).length > 0 && (
+                    {(game?.tools || project?.tools) &&
+                      (game?.tools || project?.tools || []).length > 0 && (
                         <div className="flex items-center gap-1.5">
-                          {(game?.platforms || project?.platforms || []).includes('windows') && (
+                          {(game?.tools || project?.tools || []).includes('unity') && (
                             <Image
-                              src="/images/windows.png"
-                              alt="Windows"
-                              width={24}
-                              height={24}
-                              className="opacity-80"
-                            />
-                          )}
-                          {(game?.platforms || project?.platforms || []).includes('apple') && (
-                            <Image
-                              src="/images/apple.png"
-                              alt="Apple"
+                              src="/images/unity-logo.png"
+                              alt="Unity"
                               width={24}
                               height={24}
                               className="opacity-80 brightness-0 invert"
                             />
                           )}
-                          {(game?.platforms || project?.platforms || []).includes('html5') && (
+                          {(game?.tools || project?.tools || []).includes('csharp') && (
                             <Image
-                              src="/images/html5.png"
-                              alt="HTML5"
+                              src="/images/csharp-logo.png"
+                              alt="C#"
                               width={24}
                               height={24}
-                              className="opacity-80"
+                              className="opacity-80 brightness-0 invert"
                             />
                           )}
-                          {(game?.platforms || project?.platforms || []).includes('linux') && (
+                          {(game?.tools || project?.tools || []).includes('react') && (
                             <Image
-                              src="/images/linux.png"
-                              alt="Linux"
+                              src="/images/react-logo.png"
+                              alt="React"
                               width={24}
                               height={24}
-                              className="opacity-80"
+                              className="opacity-80 brightness-0 invert"
                             />
                           )}
-                          {(game?.platforms || project?.platforms || []).includes('figma') && (
+                          {(game?.tools || project?.tools || []).includes('nextjs') && (
+                            <Image
+                              src="/images/react-logo.png"
+                              alt="Next.js"
+                              width={24}
+                              height={24}
+                              className="opacity-80 brightness-0 invert"
+                            />
+                          )}
+                          {(game?.tools || project?.tools || []).includes('figma') && (
                             <Image
                               src="/images/figma.png"
                               alt="Figma"
+                              width={24}
+                              height={24}
+                              className="opacity-80"
+                            />
+                          )}
+                          {(game?.tools || project?.tools || []).includes('python') && (
+                            <Image
+                              src="/images/python-logo.png"
+                              alt="Python"
+                              width={24}
+                              height={24}
+                              className="opacity-80 brightness-0 invert"
+                            />
+                          )}
+                          {(game?.tools || project?.tools || []).includes('cplusplus') && (
+                            <Image
+                              src="/images/cplusplus-logo.png"
+                              alt="C++"
+                              width={24}
+                              height={24}
+                              className="opacity-80 brightness-0 invert"
+                            />
+                          )}
+                          {(game?.tools || project?.tools || []).includes('html') && (
+                            <Image
+                              src="/images/html5.png"
+                              alt="HTML/CSS/JS"
                               width={24}
                               height={24}
                               className="opacity-80"

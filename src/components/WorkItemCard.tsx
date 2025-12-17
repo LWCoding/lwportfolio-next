@@ -11,7 +11,7 @@ interface WorkItemCardProps {
   href?: string;
   onClick?: () => void;
   tags?: string[];
-  platforms?: ('windows' | 'apple' | 'html5' | 'linux' | 'figma')[];
+  tools?: ('unity' | 'csharp' | 'react' | 'figma' | 'python' | 'cplusplus' | 'nextjs' | 'html')[];
   date?: string;
   secondaryCtaLabel?: string;
   githubUrl?: string;
@@ -25,7 +25,7 @@ export default function WorkItemCard({
   href,
   onClick,
   tags = [],
-  platforms = [],
+  tools = [],
   date,
   secondaryCtaLabel,
   githubUrl,
@@ -50,56 +50,83 @@ export default function WorkItemCard({
 
       {/* Content Section - Right Side */}
       <div className="flex-1 flex flex-col gap-3 md:gap-2 lg:gap-4 items-center md:items-start text-center md:text-left">
-        {/* Title with Platform Logos */}
+        {/* Title with Tool Logos */}
         <div className="flex items-center gap-2 flex-wrap justify-center md:justify-start">
           <h3 className="text-2xl md:text-2xl lg:text-4xl font-bold text-black">
             {title}
           </h3>
-          {/* Platform Logos */}
-          {platforms && platforms.length > 0 && (
-            <div className="flex items-center gap-1.5">
-              {platforms.includes('windows') && (
+          {/* Tool Logos */}
+          {tools && tools.length > 0 && (
+            <div className="flex items-center gap-2 ml-2">
+              {tools.includes('unity') && (
                 <Image 
-                  src="/images/windows.png" 
-                  alt="Windows" 
-                  width={20} 
-                  height={20} 
+                  src="/images/unity-logo.png" 
+                  alt="Unity" 
+                  width={24} 
+                  height={24} 
                   className="opacity-80"
                 />
               )}
-              {platforms.includes('apple') && (
+              {tools.includes('csharp') && (
                 <Image 
-                  src="/images/apple.png" 
-                  alt="Apple" 
-                  width={20} 
-                  height={20} 
+                  src="/images/csharp-logo.png" 
+                  alt="C#" 
+                  width={24} 
+                  height={24} 
                   className="opacity-80"
                 />
               )}
-              {platforms.includes('html5') && (
+              {tools.includes('react') && (
                 <Image 
-                  src="/images/html5.png" 
-                  alt="HTML5" 
-                  width={20} 
-                  height={20} 
+                  src="/images/react-logo.png" 
+                  alt="React" 
+                  width={24} 
+                  height={24} 
                   className="opacity-80"
                 />
               )}
-              {platforms.includes('linux') && (
+              {tools.includes('nextjs') && (
                 <Image 
-                  src="/images/linux.png" 
-                  alt="Linux" 
-                  width={20} 
-                  height={20} 
+                  src="/images/react-logo.png" 
+                  alt="Next.js" 
+                  width={24} 
+                  height={24} 
                   className="opacity-80"
                 />
               )}
-              {platforms.includes('figma') && (
+              {tools.includes('figma') && (
                 <Image 
                   src="/images/figma.png" 
                   alt="Figma" 
-                  width={20} 
-                  height={20} 
+                  width={24} 
+                  height={24} 
+                  className="opacity-80"
+                />
+              )}
+              {tools.includes('python') && (
+                <Image 
+                  src="/images/python-logo.png" 
+                  alt="Python" 
+                  width={24} 
+                  height={24} 
+                  className="opacity-80"
+                />
+              )}
+              {tools.includes('cplusplus') && (
+                <Image 
+                  src="/images/cplusplus-logo.png" 
+                  alt="C++" 
+                  width={24} 
+                  height={24} 
+                  className="opacity-80"
+                />
+              )}
+              {tools.includes('html') && (
+                <Image 
+                  src="/images/html5.png" 
+                  alt="HTML/CSS/JS" 
+                  width={24} 
+                  height={24} 
                   className="opacity-80"
                 />
               )}

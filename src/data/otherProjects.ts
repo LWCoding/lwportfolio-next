@@ -8,7 +8,7 @@ export interface OtherProject {
   href: string;
   coverImage?: string;
   createdAt?: string;
-  platforms?: ('windows' | 'apple' | 'html5' | 'linux' | 'figma')[];
+  tools?: ('unity' | 'csharp' | 'react' | 'figma' | 'python' | 'cplusplus' | 'nextjs' | 'html')[];
   fadeOpacity?: number; // Controls fade amount: 0-1, where 1 is default (full fade), lower values = less fade
   // Optional GitHub repository link for this project
   githubUrl?: string;
@@ -26,7 +26,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     href: 'https://sale-prod.s3.amazonaws.com/Build_Prod/index.html',
     coverImage: '/images/alwaysbeclosing.png',
     createdAt: '2025-06-15',
-    platforms: ['html5'],
+    tools: ['figma', 'html', 'unity', 'csharp'],
     detailComponent: 'documentation section in progress',
     githubUrl: 'https://github.com/banasse/ABCSALE'
   },
@@ -38,7 +38,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     href: 'https://www.immersifyvr.org/',
     coverImage: '/images/immersifyvr.png',
     createdAt: '2024-10-24',
-    platforms: ['html5'],
+    tools: ['figma', 'unity', 'csharp'],
     detailComponent: 'documentation section in progress',
     githubUrl: 'https://github.com/JLee-003/ImmersifyVR'
   },
@@ -50,7 +50,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     href: 'https://www.figma.com/design/it91COfADt2hqakFp3oiHu/Serendipi-tea-Print-and-Play?node-id=2284-2&t=yr4TKOw8Vh5lL8rz-1',
     coverImage: '/images/serendipitea.JPG',
     createdAt: '2025-04-10',
-    platforms: ['figma'],
+    tools: ['figma'],
     fadeOpacity: 0.7,
     detailComponent: 'documentation section in progress'
   },
@@ -62,7 +62,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     href: 'https://web.stanford.edu/class/cs42si/',
     coverImage: '/images/cs42si.png',
     createdAt: '2025-09-03',
-    platforms: ['html5']
+    tools: ['html', 'react']
   },
   {
     id: 'cs11si',
@@ -72,7 +72,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     href: 'https://web.stanford.edu/class/cs11si/',
     coverImage: '/images/cs11si.png',
     createdAt: '2025-09-05',
-    platforms: ['html5']
+    tools: ['html', 'react']
   },
   {
     id: 'timesync',
@@ -82,7 +82,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     href: 'https://www.figma.com/design/Ng5ndVHBaIS4g86iEHsXzR/TimeSync-App?node-id=42-2988&t=WRYz7MBidzvsda76-1',
     coverImage: '/images/timesync.png',
     createdAt: '2025-04-10',
-    platforms: ['figma']
+    tools: ['figma']
   },
   {
     id: 'planet',
@@ -92,7 +92,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     href: 'https://hci.stanford.edu/courses/cs147/2024/au/projects/Technology-for-Mental-Health/Planet/',
     coverImage: '/images/planet.png',
     createdAt: '2024-12-09',
-    platforms: ['apple', 'figma', 'html5']
+    tools: ['html', 'react', 'figma']
   },
   {
     id: 'obscure-courses',
@@ -102,7 +102,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     href: 'https://obscure-courses.vercel.app/',
     coverImage: '/images/obscurecourses.png',
     createdAt: '2024-02-10',
-    platforms: ['html5']
+    tools: ['html']
   },
   {
     id: 'malaysian-club-chicago',
@@ -113,7 +113,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     coverImage: '/images/mcc-website.png',
     createdAt: '2021-01-07',
     fadeOpacity: 0.7,
-    platforms: ['html5']
+    tools: ['html']
   },
   // Add more projects here...
 ];

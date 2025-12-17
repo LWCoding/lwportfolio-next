@@ -11,7 +11,7 @@ interface GalleryCardProps {
   href?: string;
   onClick?: () => void;
   tags?: string[];
-  platforms?: ('windows' | 'apple' | 'html5' | 'linux' | 'figma')[];
+  tools?: ('unity' | 'csharp' | 'react' | 'figma' | 'python' | 'cplusplus' | 'nextjs' | 'svelte' | 'html')[];
   date?: string;
   secondaryCtaLabel?: string;
   githubUrl?: string;
@@ -25,7 +25,7 @@ export default function GalleryCard({
   href,
   onClick,
   tags = [],
-  platforms = [],
+  tools = [],
   date,
   secondaryCtaLabel,
   githubUrl,
@@ -50,56 +50,83 @@ export default function GalleryCard({
 
       {/* Content Section - Bottom */}
       <div className="flex flex-col gap-2 md:gap-1.5 lg:gap-3 p-4 pt-6 md:pt-6 lg:pt-8 justify-center">
-        {/* Title with Platform Logos */}
+        {/* Title with Tool Logos */}
         <div className="flex items-center gap-2 flex-wrap">
           <h3 className="text-lg md:text-base lg:text-xl font-bold text-black">
             {title}
           </h3>
-          {/* Platform Logos */}
-          {platforms && platforms.length > 0 && (
-            <div className="flex items-center gap-1.5">
-              {platforms.includes('windows') && (
+          {/* Tool Logos */}
+          {tools && tools.length > 0 && (
+            <div className="flex items-center gap-2 ml-2">
+              {tools.includes('unity') && (
                 <Image 
-                  src="/images/windows.png" 
-                  alt="Windows" 
-                  width={18} 
-                  height={18} 
+                  src="/images/unity-logo.png" 
+                  alt="Unity" 
+                  width={22} 
+                  height={22} 
                   className="opacity-80"
                 />
               )}
-              {platforms.includes('apple') && (
+              {tools.includes('csharp') && (
                 <Image 
-                  src="/images/apple.png" 
-                  alt="Apple" 
-                  width={18} 
-                  height={18} 
+                  src="/images/csharp-logo.png" 
+                  alt="C#" 
+                  width={22} 
+                  height={22} 
                   className="opacity-80"
                 />
               )}
-              {platforms.includes('html5') && (
+              {tools.includes('react') && (
                 <Image 
-                  src="/images/html5.png" 
-                  alt="HTML5" 
-                  width={18} 
-                  height={18} 
+                  src="/images/react-logo.png" 
+                  alt="React" 
+                  width={22} 
+                  height={22} 
                   className="opacity-80"
                 />
               )}
-              {platforms.includes('linux') && (
+              {tools.includes('nextjs') && (
                 <Image 
-                  src="/images/linux.png" 
-                  alt="Linux" 
-                  width={18} 
-                  height={18} 
+                  src="/images/react-logo.png" 
+                  alt="Next.js" 
+                  width={22} 
+                  height={22} 
                   className="opacity-80"
                 />
               )}
-              {platforms.includes('figma') && (
+              {tools.includes('figma') && (
                 <Image 
                   src="/images/figma.png" 
                   alt="Figma" 
-                  width={18} 
-                  height={18} 
+                  width={22} 
+                  height={22} 
+                  className="opacity-80"
+                />
+              )}
+              {tools.includes('python') && (
+                <Image 
+                  src="/images/python-logo.png" 
+                  alt="Python" 
+                  width={22} 
+                  height={22} 
+                  className="opacity-80"
+                />
+              )}
+              {tools.includes('cplusplus') && (
+                <Image 
+                  src="/images/cplusplus-logo.png" 
+                  alt="C++" 
+                  width={22} 
+                  height={22} 
+                  className="opacity-80"
+                />
+              )}
+              {tools.includes('html') && (
+                <Image 
+                  src="/images/html5.png" 
+                  alt="HTML/CSS/JS" 
+                  width={22} 
+                  height={22} 
                   className="opacity-80"
                 />
               )}

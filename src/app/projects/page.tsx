@@ -45,7 +45,7 @@ export default function Projects() {
               imageSrc={project.coverImage || "/images/scratchproject.png"}
               imageAlt={`${project.title} cover image`}
               tags={["For Work", ...(project.tags || [])]}
-              platforms={project.platforms}
+              tools={project.tools}
               date={project.createdAt}
               href={project.href}
               secondaryCtaLabel="View Project"
@@ -93,7 +93,7 @@ export default function Projects() {
                   imageSrc={project.coverImage || "/images/scratchproject.png"}
                   imageAlt={`${project.title} cover image`}
                   tags={["For Work", ...(project.tags || [])]}
-                  platforms={project.platforms}
+                  tools={project.tools}
                   date={project.createdAt}
                   href={project.href}
                   secondaryCtaLabel="View Project"
@@ -129,7 +129,7 @@ export default function Projects() {
                   imageSrc={game.still_cover_url || game.cover_url || "/images/scratchproject.png"}
                   imageAlt={`${game.title} cover image`}
                   tags={["For Fun", ...(game.tags || [])]}
-                  platforms={game.platforms}
+                  tools={game.tools}
                   date={game.created_at}
                   href={game.url}
                   secondaryCtaLabel="Play Game"
@@ -216,7 +216,7 @@ export default function Projects() {
                   imageSrc={game.still_cover_url || game.cover_url || "/images/scratchproject.png"}
                   imageAlt={`${game.title} cover image`}
                   tags={["For Fun", ...(game.tags || [])]}
-                  platforms={game.platforms}
+                  tools={game.tools}
                   date={game.created_at}
                   href={game.url}
                   secondaryCtaLabel="Play Game"
