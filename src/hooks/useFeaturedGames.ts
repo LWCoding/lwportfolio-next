@@ -17,7 +17,7 @@ export interface FeaturedGameConfig {
 export const FEATURED_GAMES_CONFIG: FeaturedGameConfig[] = [
   { 
     id: 3766251, 
-    tags: ["🏆 GMTK 2025: #722/9605", "Unity/C#"], 
+    tags: ["🏆 GMTK 2025: #722/9605"], 
     description: "An arcade game. Use new stylus technology to loop rats before they eat all of your cheese.",
     tools: ['unity', 'csharp'],
     detailComponent: 'documentation section in progress',
@@ -25,7 +25,7 @@ export const FEATURED_GAMES_CONFIG: FeaturedGameConfig[] = [
   },
   { 
     id: 2904867, 
-    tags: ["🏆 GMTK 2024: #4266/7557", "Unity/C#"], 
+    tags: ["🏆 GMTK 2024: #4266/7557"], 
     description: "An arcade game. Cook food, serve customers, and manage a kitchen that gets larger every night.",
     tools: ['unity', 'csharp'],
     detailComponent: 'documentation section in progress',
@@ -33,7 +33,7 @@ export const FEATURED_GAMES_CONFIG: FeaturedGameConfig[] = [
   },
   { 
     id: 1940212, 
-    tags: ["🏆 Wonderjam 4: #2/25", "Unity/C#"], 
+    tags: ["🏆 Wonderjam 4: #2/25"], 
     description: "A top-down shooter game. Destroy enemy ships, get XP, and unlock upgrades.",
     tools: ['unity', 'csharp'],
     detailComponent: 'documentation section in progress',
@@ -41,13 +41,13 @@ export const FEATURED_GAMES_CONFIG: FeaturedGameConfig[] = [
   },
   {
     id: 4028688,
-    tags: ["Unity/C#"],
+    tags: [],
     description: "Play as a kangaroo rat in Southern California. Find food, avoid predators, and repopulate.",
     tools: ['unity', 'csharp'],
   },
   { 
     id: 2741477, 
-    tags: ["Unity/C#"], 
+    tags: [], 
     description: "Play as a critter and explore the mystery of a large, unfamiliar, damaged world.",
     tools: ['unity', 'csharp']
   },
@@ -59,19 +59,19 @@ export const FEATURED_GAMES_CONFIG: FeaturedGameConfig[] = [
   },
   { 
     id: 1865877, 
-    tags: ["Unity/C#"], 
+    tags: [], 
     description: "A card-battler RPG named after our team's online initials! Build a deck and fight enemies.",
     tools: ['unity', 'csharp']
   },
   { 
     id: 1149440, 
-    tags: ["Unity/C#"], 
+    tags: [], 
     description: "An experimental 3D game. Inspired by Papers Please, screen malicious boxes in a warehouse.",
     tools: ['unity', 'csharp']
   },
   {
     id: 2193616,
-    tags: ["Unity/C#"],
+    tags: [],
     description: "A multiplayer game. Play as a Pokémon and fight other players in a 2D arena.",
     tools: ['unity', 'csharp']
   }

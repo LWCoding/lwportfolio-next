@@ -19,10 +19,19 @@ export default function Navigation() {
 
   // Helper function to get link classes with active state
   const getLinkClasses = (path: string) => {
-    const baseClasses = "text-sm sm:text-base font-medium transition-colors duration-300 cursor-pointer whitespace-nowrap";
+    const baseClasses = "text-sm sm:text-base font-medium transition-all duration-300 cursor-pointer whitespace-nowrap px-3 py-1.5 rounded-full relative overflow-hidden";
     const activeClasses = isActive(path)
-      ? "text-black font-bold underline decoration-2 underline-offset-4"
-      : "text-black/70 underline hover:text-black hover:font-semibold";
+      ? "text-white bg-black shadow-lg font-bold"
+      : "text-black bg-yellow-400 hover:bg-white hover:text-black hover:shadow-md hover:font-semibold active:scale-95";
+    return `${baseClasses} ${activeClasses}`;
+  };
+
+  // Helper function for mobile link classes with darker yellow active state
+  const getMobileLinkClasses = (path: string) => {
+    const baseClasses = "text-sm sm:text-base font-medium transition-all duration-300 cursor-pointer whitespace-nowrap px-3 py-1.5 relative overflow-hidden";
+    const activeClasses = isActive(path)
+      ? "text-black/80 bg-yellow-500 shadow-md font-bold"
+      : "text-black/80 bg-yellow-400 hover:bg-white hover:text-black hover:shadow-md hover:font-semibold active:scale-95 rounded-full";
     return `${baseClasses} ${activeClasses}`;
   };
 
@@ -32,7 +41,7 @@ export default function Navigation() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 w-full bg-yellow-400 z-50 border-b-2 border-black/20">
-      <div className="container mx-auto px-3 sm:px-4 py-3">
+      <div className="mx-auto px-3 sm:px-4 py-3">
         <div className="flex items-center justify-between gap-2 sm:gap-4">
           {/* Name - Left */}
           <div className="flex-shrink-0">
@@ -60,7 +69,7 @@ export default function Navigation() {
           </button>
 
           {/* Navigation Links - Hidden on mobile, shown on medium+ */}
-          <div className="hidden md:flex items-center justify-center gap-3 sm:gap-5 md:gap-6 flex-1 min-w-0 md:flex-1">
+          <div className="hidden md:flex items-center justify-center gap-3 lg:gap-5 flex-1 min-w-0">
             <Link 
               href="/"
               className={getLinkClasses('/')}
@@ -81,7 +90,7 @@ export default function Navigation() {
             </Link>
             <Link 
               href="/contact"
-              className="text-sm sm:text-base text-black/70 font-medium underline transition-colors duration-300 hover:text-black hover:font-semibold cursor-pointer whitespace-nowrap"
+              className={getLinkClasses('/contact')}
             >
               contact
             </Link>
@@ -97,28 +106,28 @@ export default function Navigation() {
               <Link 
                 href="/"
                 onClick={handleLinkClick}
-                className={`${getLinkClasses('/')} py-4 px-4 bg-yellow-400`}
+                className={`${getMobileLinkClasses('/')} py-4 px-4 bg-yellow-400`}
               >
                 home
               </Link>
               <Link 
                 href="/projects"
                 onClick={handleLinkClick}
-                className={`${getLinkClasses('/projects')} py-4 px-4 bg-yellow-400`}
+                className={`${getMobileLinkClasses('/projects')} py-4 px-4 bg-yellow-400`}
               >
                 projects
               </Link>
               <Link 
                 href="/about"
                 onClick={handleLinkClick}
-                className={`${getLinkClasses('/about')} py-4 px-4 bg-yellow-400`}
+                className={`${getMobileLinkClasses('/about')} py-4 px-4 bg-yellow-400`}
               >
                 about
               </Link>
               <Link 
                 href="/contact"
                 onClick={handleLinkClick}
-                className="text-sm sm:text-base text-black/70 font-medium underline transition-colors duration-300 hover:text-black hover:font-semibold cursor-pointer whitespace-nowrap py-4 px-4 bg-yellow-400"
+                className={`${getMobileLinkClasses('/contact')} py-4 px-4 bg-yellow-400`}
               >
                 contact
               </Link>

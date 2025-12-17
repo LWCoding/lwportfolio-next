@@ -219,7 +219,7 @@ export default function GalleryCard({
         )}
 
         {/* Description */}
-        <p className="text-xs md:text-xs lg:text-sm text-black/80 leading-relaxed line-clamp-3">
+        <p className="text-sm py-1 text-black/80 leading-relaxed line-clamp-3">
           {description}
         </p>
 
