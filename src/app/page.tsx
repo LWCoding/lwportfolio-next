@@ -329,12 +329,21 @@ export default function Home() {
                       <Link
                         href={card.href}
                         aria-label={card.ariaLabel}
-                        className={`inline-flex items-center justify-center gap-2 px-6 py-3 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer ${
+                        className={`group inline-flex items-center justify-center gap-2 px-6 py-3 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer ${
                           card.href === '/projects' 
                             ? 'bg-green-600 hover:bg-green-600' 
                             : 'bg-blue-500 hover:bg-blue-600'
                         }`}
                       >
+                        {card.href === '/projects' && (
+                          <svg 
+                            className="w-5 h-5 transition-transform group-hover:scale-110" 
+                            fill="currentColor" 
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M8 5v14l11-7z"/>
+                          </svg>
+                        )}
                         <span>{card.subButtonLabel}</span>
                       </Link>
                     </div>
