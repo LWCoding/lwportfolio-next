@@ -59,76 +59,124 @@ export default function GalleryCard({
           {tools && tools.length > 0 && (
             <div className="flex items-center gap-2 ml-2">
               {tools.includes('unity') && (
-                <Image 
-                  src="/images/unity-logo.png" 
-                  alt="Unity" 
-                  width={22} 
-                  height={22} 
-                  className="opacity-80"
-                />
+                <div className="group relative">
+                  <Image 
+                    src="/images/unity-logo.png" 
+                    alt="Unity" 
+                    width={22} 
+                    height={22} 
+                    className="opacity-80"
+                  />
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-black text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
+                    Unity
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black"></div>
+                  </div>
+                </div>
               )}
               {tools.includes('csharp') && (
-                <Image 
-                  src="/images/csharp-logo.png" 
-                  alt="C#" 
-                  width={22} 
-                  height={22} 
-                  className="opacity-80"
-                />
+                <div className="group relative">
+                  <Image 
+                    src="/images/csharp-logo.png" 
+                    alt="C#" 
+                    width={22} 
+                    height={22} 
+                    className="opacity-80"
+                  />
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-black text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
+                    C#
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black"></div>
+                  </div>
+                </div>
               )}
               {tools.includes('react') && (
-                <Image 
-                  src="/images/react-logo.png" 
-                  alt="React" 
-                  width={22} 
-                  height={22} 
-                  className="opacity-80"
-                />
+                <div className="group relative">
+                  <Image 
+                    src="/images/react-logo.png" 
+                    alt="React" 
+                    width={22} 
+                    height={22} 
+                    className="opacity-80"
+                  />
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-black text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
+                    React
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black"></div>
+                  </div>
+                </div>
               )}
               {tools.includes('nextjs') && (
-                <Image 
-                  src="/images/react-logo.png" 
-                  alt="Next.js" 
-                  width={22} 
-                  height={22} 
-                  className="opacity-80"
-                />
+                <div className="group relative">
+                  <Image 
+                    src="/images/react-logo.png" 
+                    alt="Next.js" 
+                    width={22} 
+                    height={22} 
+                    className="opacity-80"
+                  />
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-black text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
+                    Next.js
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black"></div>
+                  </div>
+                </div>
               )}
               {tools.includes('figma') && (
-                <Image 
-                  src="/images/figma.png" 
-                  alt="Figma" 
-                  width={22} 
-                  height={22} 
-                  className="opacity-80"
-                />
+                <div className="group relative">
+                  <Image 
+                    src="/images/figma.png" 
+                    alt="Figma" 
+                    width={22} 
+                    height={22} 
+                    className="opacity-80"
+                  />
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-black text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
+                    Figma
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black"></div>
+                  </div>
+                </div>
               )}
               {tools.includes('python') && (
-                <Image 
-                  src="/images/python-logo.png" 
-                  alt="Python" 
-                  width={22} 
-                  height={22} 
-                  className="opacity-80"
-                />
+                <div className="group relative">
+                  <Image 
+                    src="/images/python-logo.png" 
+                    alt="Python" 
+                    width={22} 
+                    height={22} 
+                    className="opacity-80"
+                  />
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-black text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
+                    Python
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black"></div>
+                  </div>
+                </div>
               )}
               {tools.includes('cplusplus') && (
-                <Image 
-                  src="/images/cplusplus-logo.png" 
-                  alt="C++" 
-                  width={22} 
-                  height={22} 
-                  className="opacity-80"
-                />
+                <div className="group relative">
+                  <Image 
+                    src="/images/cplusplus-logo.png" 
+                    alt="C++" 
+                    width={22} 
+                    height={22} 
+                    className="opacity-80"
+                  />
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-black text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
+                    C++
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black"></div>
+                  </div>
+                </div>
               )}
               {tools.includes('html') && (
-                <Image 
-                  src="/images/html5.png" 
-                  alt="HTML/CSS/JS" 
-                  width={22} 
-                  height={22} 
-                  className="opacity-80"
-                />
+                <div className="group relative">
+                  <Image 
+                    src="/images/html5.png" 
+                    alt="HTML/CSS/JS" 
+                    width={22} 
+                    height={22} 
+                    className="opacity-80"
+                  />
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-black text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
+                    HTML/CSS/JS
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black"></div>
+                  </div>
+                </div>
               )}
             </div>
           )}
