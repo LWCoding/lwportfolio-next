@@ -9,7 +9,7 @@ interface GalleryCardProps {
   imageSrc: string;
   imageAlt: string;
   href?: string;
-  onClick?: () => void;
+  processUrl?: string;
   tags?: string[];
   tools?: ('unity' | 'csharp' | 'react' | 'figma' | 'python' | 'cplusplus' | 'nextjs' | 'svelte' | 'html')[];
   date?: string;
@@ -23,7 +23,7 @@ export default function GalleryCard({
   imageSrc,
   imageAlt,
   href,
-  onClick,
+  processUrl,
   tags = [],
   tools = [],
   date,
@@ -225,12 +225,14 @@ export default function GalleryCard({
 
         {/* Actions */}
         <div className="flex flex-wrap items-center gap-2 md:gap-1.5 lg:gap-2 mt-auto">
-          <button
-            onClick={onClick}
-            className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 md:px-3 md:py-2 lg:px-4 lg:py-2.5 bg-blue-500 hover:bg-blue-600 text-white font-bold text-xs rounded-full transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg cursor-pointer"
-          >
-            <span>View Process</span>
-          </button>
+          {processUrl && (
+            <Link
+              href={processUrl}
+              className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 md:px-3 md:py-2 lg:px-4 lg:py-2.5 bg-blue-500 hover:bg-blue-600 text-white font-bold text-xs rounded-full transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg cursor-pointer"
+            >
+              <span>View Process</span>
+            </Link>
+          )}
 
           {href && (
             <Link

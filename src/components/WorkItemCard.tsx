@@ -9,7 +9,7 @@ interface WorkItemCardProps {
   imageSrc: string;
   imageAlt: string;
   href?: string;
-  onClick?: () => void;
+  processUrl?: string;
   tags?: string[];
   tools?: ('unity' | 'csharp' | 'react' | 'figma' | 'python' | 'cplusplus' | 'nextjs' | 'html')[];
   date?: string;
@@ -23,7 +23,7 @@ export default function WorkItemCard({
   imageSrc,
   imageAlt,
   href,
-  onClick,
+  processUrl,
   tags = [],
   tools = [],
   date,
@@ -225,12 +225,14 @@ export default function WorkItemCard({
 
         {/* Actions: view process + direct play/view + optional GitHub */}
         <div className="flex flex-wrap items-center gap-3 md:gap-2 lg:gap-3 mt-2 md:mt-1 lg:mt-2 mx-auto md:mx-0">
-          <button
-            onClick={onClick}
-            className="inline-flex items-center justify-center gap-2 px-3 py-3 md:px-4 md:py-2 lg:px-6 lg:py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-sm md:text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
-          >
-            <span>View the Process</span>
-          </button>
+          {processUrl && (
+            <Link
+              href={processUrl}
+              className="inline-flex items-center justify-center gap-2 px-3 py-3 md:px-4 md:py-2 lg:px-6 lg:py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-sm md:text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+            >
+              <span>View the Process</span>
+            </Link>
+          )}
 
           {href && (
             <Link

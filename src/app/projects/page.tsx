@@ -3,21 +3,16 @@
 import Navigation from "@/components/Navigation";
 import Section from "@/components/Section";
 import Button from "@/components/Button";
-import DetailSidePanel from "@/components/DetailSidePanel";
 import VideoBanner from "@/components/VideoBanner";
 import Footer from "@/components/Footer";
 import WorkItemCard from "@/components/WorkItemCard";
 import GalleryCard from "@/components/GalleryCard";
-import { useGames, GameData, FEATURED_GAMES_CONFIG } from "@/hooks/useFeaturedGames";
-import { OTHER_PROJECTS_CONFIG, OtherProject } from "@/data/otherProjects";
+import { useGames, FEATURED_GAMES_CONFIG } from "@/hooks/useFeaturedGames";
+import { OTHER_PROJECTS_CONFIG } from "@/data/otherProjects";
 import { useState } from "react";
-
-type SelectedItem = GameData | OtherProject | null;
 
 export default function Projects() {
   const { featuredGames, loading, error } = useGames();
-  const [selectedItem, setSelectedItem] = useState<SelectedItem>(null);
-  const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
   const [showOtherProjects, setShowOtherProjects] = useState(false);
   const [showOtherGames, setShowOtherGames] = useState(false);
 
@@ -50,15 +45,7 @@ export default function Projects() {
               href={project.href}
               secondaryCtaLabel="View Project"
               githubUrl={project.githubUrl}
-              onClick={() => {
-                setSelectedItem(project);
-                setIsSidePanelOpen(false);
-                requestAnimationFrame(() => {
-                  requestAnimationFrame(() => {
-                    setIsSidePanelOpen(true);
-                  });
-                });
-              }}
+              processUrl={`/projects/${project.id}`}
             />
           ))}
         </div>
@@ -98,15 +85,7 @@ export default function Projects() {
                   href={project.href}
                   secondaryCtaLabel="View Project"
                   githubUrl={project.githubUrl}
-                  onClick={() => {
-                    setSelectedItem(project);
-                    setIsSidePanelOpen(false);
-                    requestAnimationFrame(() => {
-                      requestAnimationFrame(() => {
-                        setIsSidePanelOpen(true);
-                      });
-                    });
-                  }}
+                  processUrl={`/projects/${project.id}`}
                 />
               ))}
             </div>
@@ -134,15 +113,7 @@ export default function Projects() {
                   href={game.url}
                   secondaryCtaLabel="Play Game"
                   githubUrl={FEATURED_GAMES_CONFIG.find((cfg) => cfg.id === game.id)?.githubUrl || game.githubUrl}
-                  onClick={() => {
-                    setSelectedItem(game);
-                    setIsSidePanelOpen(false);
-                    requestAnimationFrame(() => {
-                      requestAnimationFrame(() => {
-                        setIsSidePanelOpen(true);
-                      });
-                    });
-                  }}
+                  processUrl={`/projects/games/${game.id}`}
                 />
               ))}
             </div>
@@ -221,15 +192,7 @@ export default function Projects() {
                   href={game.url}
                   secondaryCtaLabel="Play Game"
                   githubUrl={FEATURED_GAMES_CONFIG.find((cfg) => cfg.id === game.id)?.githubUrl || game.githubUrl}
-                  onClick={() => {
-                    setSelectedItem(game);
-                    setIsSidePanelOpen(false);
-                    requestAnimationFrame(() => {
-                      requestAnimationFrame(() => {
-                        setIsSidePanelOpen(true);
-                      });
-                    });
-                  }}
+                  processUrl={`/projects/games/${game.id}`}
                 />
               ))}
             </div>
@@ -239,17 +202,6 @@ export default function Projects() {
       </div>
 
       <Footer />
-
-      {/* Game/Project Detail Panel */}
-      <DetailSidePanel
-        item={selectedItem}
-        isOpen={isSidePanelOpen}
-        onClose={() => {
-          setIsSidePanelOpen(false);
-          // Delay clearing selected item to allow animation to complete
-          setTimeout(() => setSelectedItem(null), 200);
-        }}
-      />
     </div>
   );
 }
