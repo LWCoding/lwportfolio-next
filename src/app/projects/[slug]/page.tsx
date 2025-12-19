@@ -415,6 +415,27 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             )}
           </div>
         )}
+
+        {/* Back to All Projects Link */}
+        <div className="mt-12 pt-8 border-t border-gray-200">
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200"
+          >
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path d="M15 19l-7-7 7-7" />
+            </svg>
+            <span>Back to All Projects</span>
+          </Link>
+        </div>
       </div>
 
       {/* Mobile action button */}
