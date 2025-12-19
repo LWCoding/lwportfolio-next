@@ -54,7 +54,7 @@ export default function Projects() {
           <div className="flex justify-center mt-4 md:mt-6">
             <button
               onClick={() => setShowOtherProjects(!showOtherProjects)}
-              className="px-3 py-1.5 text-sm text-black/80 hover:text-black underline transition-colors duration-200 cursor-pointer"
+              className="px-4 py-2 text-base md:text-lg text-blue-600 hover:text-blue-700 font-bold underline transition-colors duration-200 cursor-pointer"
             >
               {showOtherProjects ? 'Show Less Work' : 'Show More Work'}
             </button>
@@ -162,7 +162,7 @@ export default function Projects() {
           <div className="flex justify-center mt-4 md:mt-6">
             <button
               onClick={() => setShowOtherGames(!showOtherGames)}
-              className="px-3 py-1.5 text-sm text-black/80 hover:text-black underline transition-colors duration-200 cursor-pointer"
+              className="px-4 py-2 text-base md:text-lg text-blue-600 hover:text-blue-700 font-bold underline transition-colors duration-200 cursor-pointer"
             >
               {showOtherGames ? 'Show Less Games' : 'Show More Games'}
             </button>
