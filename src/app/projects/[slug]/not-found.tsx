@@ -10,10 +10,10 @@ export default function NotFound() {
       <div className="flex-1 flex items-center justify-center px-6">
         <div className="text-center max-w-md">
           <h1 className="text-4xl md:text-5xl font-bold text-black mb-4">
-            Project Not Found
+            Not Found
           </h1>
           <p className="text-lg text-black/80 mb-8">
-            Sorry, we couldn&apos;t find the project you&apos;re looking for.
+            Sorry, we couldn&apos;t find what you&apos;re looking for.
           </p>
           <Link
             href="/projects"

@@ -113,7 +113,7 @@ export default function Projects() {
                   href={game.url}
                   secondaryCtaLabel="Play Game"
                   githubUrl={FEATURED_GAMES_CONFIG.find((cfg) => cfg.id === game.id)?.githubUrl || game.githubUrl}
-                  processUrl={`/projects/games/${game.id}`}
+                  processUrl={`/projects/${game.id}`}
                 />
               ))}
             </div>
@@ -192,7 +192,7 @@ export default function Projects() {
                   href={game.url}
                   secondaryCtaLabel="Play Game"
                   githubUrl={FEATURED_GAMES_CONFIG.find((cfg) => cfg.id === game.id)?.githubUrl || game.githubUrl}
-                  processUrl={`/projects/games/${game.id}`}
+                  processUrl={`/projects/${game.id}`}
                 />
               ))}
             </div>
