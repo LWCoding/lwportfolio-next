@@ -112,6 +112,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const externalLink = isGame ? game!.url : project!.href;
   const externalLinkLabel = isGame ? 'Play on itch.io' : 'Open Project';
   const detailComponent = isGame ? gameConfig?.detailComponent : project!.detailComponent;
+  const displayType = isGame ? (gameConfig?.displayType || 'none') : (project!.displayType || 'none');
 
   return (
     <div className="min-h-screen bg-white flex flex-col pt-[56px]">
@@ -380,14 +381,40 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
       {/* Content Section */}
       <div className="flex-1 bg-white px-6 py-8 pb-24 max-w-4xl mx-auto w-full">
-        {/* Monitor Display */}
-        {coverImage && (
+        {/* Display based on type */}
+        {coverImage && displayType === 'monitor' && (
           <div className="mb-12">
             <MonitorVideo 
               src={coverImage}
               type="image"
               objectFit="cover"
             />
+          </div>
+        )}
+        
+        {coverImage && displayType === 'plain' && (
+          <div className="mb-12 relative w-full max-w-4xl mx-auto">
+            <Image
+              src={coverImage}
+              alt={title}
+              width={1200}
+              height={675}
+              className="w-full h-auto rounded-lg shadow-lg"
+            />
+          </div>
+        )}
+        
+        {coverImage && displayType === 'mobile' && (
+          <div className="mb-12 flex justify-center">
+            <div className="relative w-full max-w-sm mx-auto">
+              <Image
+                src={coverImage}
+                alt={title}
+                width={375}
+                height={812}
+                className="w-full h-auto rounded-3xl shadow-2xl border-8 border-gray-800"
+              />
+            </div>
           </div>
         )}
 

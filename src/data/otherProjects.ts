@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
 
+export type DisplayType = 'monitor' | 'plain' | 'mobile' | 'none';
+
 export interface OtherProject {
   id: string;
   title: string;
@@ -14,6 +16,8 @@ export interface OtherProject {
   githubUrl?: string;
   // Optional rich detail content rendered inside the detail side panel
   detailComponent?: ReactNode;
+  // Display type for the project detail page: 'monitor' (default), 'plain', 'mobile', or 'none'
+  displayType?: DisplayType;
 }
 
 // Configure your other projects here
@@ -28,7 +32,8 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     createdAt: '2025-06-15',
     tools: ['figma', 'html', 'unity', 'csharp'],
     detailComponent: 'documentation section in progress',
-    githubUrl: 'https://github.com/banasse/ABCSALE'
+    githubUrl: 'https://github.com/banasse/ABCSALE',
+    displayType: 'monitor'
   },
   {
     id: 'immersifyvr',
@@ -40,7 +45,8 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     createdAt: '2024-10-24',
     tools: ['figma', 'unity', 'csharp'],
     detailComponent: 'documentation section in progress',
-    githubUrl: 'https://github.com/JLee-003/ImmersifyVR'
+    githubUrl: 'https://github.com/JLee-003/ImmersifyVR',
+    displayType: 'plain'
   },
   {
     id: 'serendipi-tea',
@@ -52,7 +58,8 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     createdAt: '2025-04-10',
     tools: ['figma'],
     fadeOpacity: 0.7,
-    detailComponent: 'documentation section in progress'
+    detailComponent: 'documentation section in progress',
+    displayType: 'plain'
   },
   {
     id: 'cs42si',
@@ -62,7 +69,8 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     href: 'https://web.stanford.edu/class/cs42si/',
     coverImage: '/images/cs42si.png',
     createdAt: '2025-09-03',
-    tools: ['html', 'react']
+    tools: ['html', 'react'],
+    displayType: 'monitor'
   },
   {
     id: 'cs11si',
@@ -72,7 +80,8 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     href: 'https://web.stanford.edu/class/cs11si/',
     coverImage: '/images/cs11si.png',
     createdAt: '2025-09-05',
-    tools: ['html', 'react']
+    tools: ['html', 'react'],
+    displayType: 'monitor'
   },
   {
     id: 'timesync',
@@ -82,7 +91,8 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     href: 'https://www.figma.com/design/Ng5ndVHBaIS4g86iEHsXzR/TimeSync-App?node-id=42-2988&t=WRYz7MBidzvsda76-1',
     coverImage: '/images/timesync.png',
     createdAt: '2025-04-10',
-    tools: ['figma']
+    tools: ['figma'],
+    displayType: 'mobile'
   },
   {
     id: 'planet',
@@ -92,7 +102,8 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     href: 'https://hci.stanford.edu/courses/cs147/2024/au/projects/Technology-for-Mental-Health/Planet/',
     coverImage: '/images/planet.png',
     createdAt: '2024-12-09',
-    tools: ['html', 'react', 'figma']
+    tools: ['html', 'react', 'figma'],
+    displayType: 'mobile'
   },
   {
     id: 'obscure-courses',
@@ -102,7 +113,8 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     href: 'https://obscure-courses.vercel.app/',
     coverImage: '/images/obscurecourses.png',
     createdAt: '2024-02-10',
-    tools: ['html']
+    tools: ['html'],
+    displayType: 'monitor'
   },
   {
     id: 'malaysian-club-chicago',
@@ -113,7 +125,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     coverImage: '/images/mcc-website.png',
     createdAt: '2021-01-07',
     fadeOpacity: 0.7,
-    tools: ['html']
+    tools: ['html'],
+    displayType: 'monitor'
   },
-  // Add more projects here...
 ];
