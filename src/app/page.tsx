@@ -97,7 +97,7 @@ export default function Home() {
         prefixText: "My work is mission-first and user-centered. I'm",
         title: "Designing Interactive Systems",
         description:
-          "I align systems to solve real-world problems. If you're going to make a game, why not make it solve a problem, too? At work and through independent research, I design user-centered experiences like virtual reality products for the elderly and multiplayer games to bring people together. ",
+          "If you're going to make a game, why not make it solve a problem, too? At work and through independent research, I design user-centered experiences like virtual reality products for the elderly and multiplayer games to bring people together. ",
         ringColorClassName: "focus:ring-green-500",
         subButtonLabel: "View Projects",
       },
@@ -133,7 +133,7 @@ export default function Home() {
         prefixText: "Did I mention, I also love teaching? I'm also",
         title: "Teaching Playful CS Courses",
         description:
-          "More than I love making things, I love teaching others how to make things! Outside of lecturing for CS11SI, CS42SI, CS106A/B, and CS247G as an *undergraduate* at Stanford, I've taught game design internationally in South Korea. I love using interactive narratives to make programming intuitive, joyful, and collaborative.",
+          "Outside of lecturing for CS11SI, CS42SI, CS106A/B, and CS247G as an *undergraduate* at Stanford, I've taught game design internationally in South Korea. I love using interactive narratives to make programming intuitive, joyful, and collaborative.",
         ringColorClassName: "focus:ring-blue-500",
         subButtonLabel: "View About Me",
       },
