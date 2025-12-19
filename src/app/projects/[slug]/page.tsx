@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import MonitorVideo from '@/components/MonitorVideo';
 import { OTHER_PROJECTS_CONFIG } from '@/data/otherProjects';
 import { FEATURED_GAMES_CONFIG } from '@/data/featuredGames';
 import { notFound } from 'next/navigation';
@@ -117,7 +118,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <Navigation />
 
       {/* Hero Section with Cover Image */}
-      <div className="relative w-full" style={{ height: '30vh', minHeight: '220px' }}>
+      <div className="relative w-full" style={{ height: '25vh', minHeight: '220px' }}>
         {coverImage ? (
           <Image
             src={coverImage}
@@ -129,25 +130,6 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20" />
         )}
         <div className="absolute inset-0 bg-black/75" />
-        
-        {/* Back Button */}
-        <Link
-          href="/projects"
-          className="absolute top-4 left-4 z-20 w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center hover:bg-black/80 transition-all duration-200 cursor-pointer shadow-lg"
-          aria-label="Back to projects"
-        >
-          <svg
-            className="w-6 h-6 text-white"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path d="M15 19l-7-7 7-7" />
-          </svg>
-        </Link>
         
         <div className="absolute inset-0 flex items-end">
           <div className="w-full px-6 pb-6 z-10 max-w-4xl mx-auto">
@@ -398,6 +380,17 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
       {/* Content Section */}
       <div className="flex-1 bg-white px-6 py-8 pb-24 max-w-4xl mx-auto w-full">
+        {/* Monitor Display */}
+        {coverImage && (
+          <div className="mb-12">
+            <MonitorVideo 
+              src={coverImage}
+              type="image"
+              objectFit="cover"
+            />
+          </div>
+        )}
+
         {/* Description */}
         <div className="prose prose-lg max-w-none mb-8">
           <p className="text-base md:text-lg text-black leading-relaxed">
@@ -405,9 +398,30 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </p>
         </div>
 
+        {/* Back to All Projects Link - Top */}
+        <div className="mt-8">
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200"
+          >
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path d="M15 19l-7-7 7-7" />
+            </svg>
+            <span>Back to All Projects</span>
+          </Link>
+        </div>
+
         {/* Optional rich detail content */}
         {detailComponent && (
-          <div className="mt-10 pt-8 border-t border-gray-200 text-base md:text-lg text-black leading-relaxed space-y-4">
+          <div className="mt-8 pt-8 border-t border-gray-200 text-base md:text-lg text-black leading-relaxed space-y-4">
             {typeof detailComponent === 'string' ? (
               <em>{detailComponent}</em>
             ) : (
@@ -416,8 +430,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </div>
         )}
 
-        {/* Back to All Projects Link */}
-        <div className="mt-12 pt-8 border-t border-gray-200">
+        {/* Back to All Projects Link - Bottom */}
+        <div className="mt-8 pt-8 border-t border-gray-200">
           <Link
             href="/projects"
             className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200"
