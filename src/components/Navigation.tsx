@@ -42,9 +42,9 @@ export default function Navigation() {
   return (
     <nav className="fixed top-0 left-0 right-0 w-full bg-yellow-400 z-50 border-b-2 border-black/20">
       <div className="mx-auto px-3 sm:px-4 py-3">
-        <div className="flex items-center justify-between gap-2 sm:gap-4">
+        <div className="flex items-center justify-between gap-2 sm:gap-4 lg:relative">
           {/* Name - Left */}
-          <div className="flex-shrink-0">
+          <div className="mr-4 flex-shrink-0">
             <Link href="/" className="cursor-pointer">
               <h1 className={`text-lg sm:text-xl font-bold whitespace-nowrap transition-colors ${
                 isActive('/') 
@@ -69,7 +69,7 @@ export default function Navigation() {
           </button>
 
           {/* Navigation Links - Hidden on mobile, shown on medium+ */}
-          <div className="hidden md:flex items-center justify-center gap-3 lg:gap-5 flex-1 min-w-0">
+          <div className="hidden md:flex items-center justify-center gap-3 lg:gap-5 flex-1 min-w-0 lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2">
             <Link 
               href="/"
               className={getLinkClasses('/')}
