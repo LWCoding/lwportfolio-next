@@ -71,7 +71,7 @@ export default function Projects() {
                 : 'max-h-0 opacity-0 mt-0'
             }`}
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-x-6 md:gap-y-10 lg:gap-x-6 lg:gap-y-12">
               {OTHER_PROJECTS_CONFIG.slice(3).map((project) => (
                 <GalleryCard
                   key={project.id}
@@ -178,7 +178,7 @@ export default function Projects() {
                 : 'max-h-0 opacity-0 mt-0'
             }`}
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-x-6 md:gap-y-10 lg:gap-x-6 lg:gap-y-12">
               {featuredGames.slice(3).map((game) => (
                 <GalleryCard
                   key={game.id}

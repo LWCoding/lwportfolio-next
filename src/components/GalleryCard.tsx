@@ -37,9 +37,9 @@ export default function GalleryCard({
       : undefined;
 
   return (
-    <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+    <div>
       {/* Image Section - Top */}
-      <div className="relative w-full aspect-[4/3] bg-gray-200">
+      <div className="relative w-full aspect-[5/2] lg:aspect-[4/3] bg-gray-200 rounded overflow-hidden">
         <Image
           src={imageSrc}
           alt={imageAlt}
@@ -49,10 +49,10 @@ export default function GalleryCard({
       </div>
 
       {/* Content Section - Bottom */}
-      <div className="flex flex-col gap-2 md:gap-1.5 lg:gap-3 p-4 pt-6 md:pt-6 lg:pt-8 justify-center">
+      <div className="flex flex-col gap-2 md:gap-1.5 lg:gap-3 pt-4 md:pt-4 lg:pt-5 items-center text-center">
         {/* Title with Tool Logos */}
-        <div className="flex items-center gap-2 flex-wrap">
-          <h3 className="text-lg md:text-base lg:text-xl font-bold text-black">
+        <div className="flex items-center justify-center gap-2 flex-wrap">
+          <h3 className="text-xl md:text-lg lg:text-2xl font-bold text-black">
             {title}
           </h3>
           {/* Tool Logos */}
@@ -224,11 +224,11 @@ export default function GalleryCard({
         </p>
 
         {/* Actions */}
-        <div className="flex flex-wrap items-center gap-2 md:gap-1.5 lg:gap-2 mt-auto">
+        <div className="flex flex-wrap items-center justify-center gap-2 md:gap-1.5 lg:gap-2 mt-auto">
           {processUrl && (
             <Link
               href={processUrl}
-              className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 md:px-3 md:py-2 lg:px-4 lg:py-2.5 bg-blue-500 hover:bg-blue-600 text-white font-bold text-xs rounded-full transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg cursor-pointer"
+              className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 md:px-4 md:py-2.5 lg:px-5 lg:py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-sm rounded-full transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg cursor-pointer"
             >
               <span>View Process</span>
             </Link>
@@ -239,7 +239,7 @@ export default function GalleryCard({
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 md:px-3 md:py-2 lg:px-4 lg:py-2.5 bg-green-600 hover:bg-green-700 text-white font-bold text-xs rounded-full transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg cursor-pointer"
+              className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 md:px-4 md:py-2.5 lg:px-5 lg:py-3 bg-green-600 hover:bg-green-700 text-white font-bold text-sm rounded-full transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg cursor-pointer"
             >
               <span>{secondaryCtaLabel || 'Open'}</span>
               <svg
