@@ -380,7 +380,29 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       </div>
 
       {/* Content Section */}
-      <div className="flex-1 bg-white px-6 py-8 pb-24 max-w-4xl mx-auto w-full">
+      <div className="flex-1 bg-white px-6 pb-24 max-w-4xl mx-auto w-full">
+
+        {/* Back to All Projects Link - Top */}
+        <div className="my-8">
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200"
+          >
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path d="M15 19l-7-7 7-7" />
+            </svg>
+            <span>Back to All Projects</span>
+          </Link>
+        </div>
+
         {/* Display based on type */}
         {coverImage && displayType === 'monitor' && (
           <div className="mb-12">
@@ -406,14 +428,40 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         
         {coverImage && displayType === 'mobile' && (
           <div className="mb-12 flex justify-center">
-            <div className="relative w-full max-w-sm mx-auto">
-              <Image
-                src={coverImage}
-                alt={title}
-                width={375}
-                height={812}
-                className="w-full h-auto rounded-3xl shadow-2xl border-8 border-gray-800"
-              />
+            <div className="relative w-full max-w-[300px] mx-auto">
+              {/* Aspect ratio container based on iPhone SVG viewBox (146x299) */}
+              <div className="relative w-full" style={{ paddingBottom: `${(299/146) * 100}%` }}>
+                {/* Content image - positioned within the phone screen area */}
+                <div className="absolute inset-0">
+                  <div 
+                    className="absolute"
+                    style={{
+                      top: '3%',
+                      left: '6%',
+                      width: '87%',
+                      height: '95%',
+                    }}
+                  >
+                    <Image
+                      src={coverImage}
+                      alt={title}
+                      fill
+                      className="rounded-[2.5%]"
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </div>
+                </div>
+
+                {/* iPhone Frame - overlaid on top */}
+                <Image
+                  src="/iphone.svg"
+                  alt="iPhone frame"
+                  fill
+                  className="relative z-10 pointer-events-none"
+                  style={{ objectFit: 'contain' }}
+                  priority
+                />
+              </div>
             </div>
           </div>
         )}
@@ -425,26 +473,6 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </p>
         </div>
 
-        {/* Back to All Projects Link - Top */}
-        <div className="mt-8">
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200"
-          >
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path d="M15 19l-7-7 7-7" />
-            </svg>
-            <span>Back to All Projects</span>
-          </Link>
-        </div>
 
         {/* Optional rich detail content */}
         {detailComponent && (
