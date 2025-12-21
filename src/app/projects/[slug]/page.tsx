@@ -140,7 +140,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <div className="w-full px-4 sm:px-6 md:px-12 lg:px-16 z-10 max-w-7xl mx-auto overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-8 lg:gap-12 items-center">
               {/* Left Column - Content */}
-              <div className="space-y-3 md:space-y-6 w-full text-center md:text-left">
+              <div className="space-y-2 md:space-y-4 w-full text-center md:text-left">
                 <div className="flex items-center justify-center md:justify-start gap-2 md:gap-3 flex-wrap">
                   <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-lg break-words">
                     {title}
@@ -310,7 +310,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                 )}
                 
                 {/* Description */}
-                <p className="text-sm sm:text-base md:text-lg text-white/90 drop-shadow-md leading-relaxed break-words px-6 md:px-0">
+                <p className="text-sm sm:text-base md:text-md lg:text-lg text-white/90 drop-shadow-md leading-relaxed break-words px-6 md:px-0">
                   {description}
                 </p>
 
