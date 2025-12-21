@@ -13,6 +13,8 @@ export interface FeaturedGameConfig {
   detailComponent?: ReactNode;
   // Display type for the project detail page: 'monitor' (default), 'plain', 'mobile', or 'none'
   displayType?: DisplayType;
+  // Optional image to display in the mobile/desktop/plain frame, defaults to coverImage if not provided
+  displayImage?: string;
 }
 
 // Featured games with their custom tags and descriptions in display order

@@ -78,30 +78,30 @@ export default function MonitorVideo({
           <div className="absolute inset-0">
             {isVideo ? (
               <>
-                <video
-                  ref={videoRef}
+            <video
+              ref={videoRef}
                   className="absolute"
-                  style={{
+              style={{
                     ...contentStyle,
                     objectFit,
-                  }}
-                  autoPlay={autoPlay}
-                  loop={loop}
-                  muted={muted}
-                  playsInline
+              }}
+              autoPlay={autoPlay}
+              loop={loop}
+              muted={muted}
+              playsInline
                   onLoadedData={() => setIsLoaded(true)}
-                >
+            >
                   <source src={src} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+              Your browser does not support the video tag.
+            </video>
 
                 {/* Loading State for Video */}
                 {!isLoaded && (
-                  <div 
-                    className="absolute bg-gray-100 flex items-center justify-center"
+              <div 
+                className="absolute bg-gray-100 flex items-center justify-center"
                     style={contentStyle}
-                  >
-                    <div className="text-gray-400">Loading video...</div>
+              >
+                <div className="text-gray-400">Loading video...</div>
                   </div>
                 )}
               </>

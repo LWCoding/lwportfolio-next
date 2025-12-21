@@ -105,6 +105,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const coverImage = isGame 
     ? (game!.still_cover_url || game!.cover_url)
     : project!.coverImage;
+  // Display image for frames, defaults to coverImage if not provided
+  const displayImage = isGame
+    ? (gameConfig?.displayImage || coverImage)
+    : (project!.displayImage || coverImage);
   const tools = isGame ? game!.tools : project!.tools;
   const tags = isGame ? game!.tags : project!.tags;
   const createdAt = isGame ? game!.created_at : project!.createdAt;
@@ -119,7 +123,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <Navigation />
 
       {/* Hero Section with Cover Image */}
-      <div className="relative w-full" style={{ height: '25vh', minHeight: '220px' }}>
+      <div className="relative w-full overflow-hidden">
         {coverImage ? (
           <Image
             src={coverImage}
@@ -130,16 +134,19 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20" />
         )}
-        <div className="absolute inset-0 bg-black/75" />
+        <div className="absolute inset-0 bg-yellow-950/95" />
         
-        <div className="absolute inset-0 flex items-end">
-          <div className="w-full px-6 pb-6 z-10 max-w-4xl mx-auto">
-            <div className="flex items-center gap-3 flex-wrap mb-3">
-              <h1 className="text-3xl md:text-4xl font-bold text-white drop-shadow-lg">
-                {title}
-              </h1>
+        <div className="relative flex items-start lg:items-center py-16 md:py-12 lg:py-16">
+          <div className="w-full px-4 sm:px-6 md:px-12 lg:px-16 z-10 max-w-7xl mx-auto overflow-hidden">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-8 lg:gap-12 items-center">
+              {/* Left Column - Content */}
+              <div className="space-y-3 md:space-y-6 w-full text-center md:text-left">
+                <div className="flex items-center justify-center md:justify-start gap-2 md:gap-3 flex-wrap">
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-lg break-words">
+                    {title}
+                  </h1>
               {tools && tools.length > 0 && (
-                <div className="flex items-center gap-2">
+                <div className="flex items-center justify-center md:justify-start gap-2">
                   {tools.includes('unity') && (
                     <div className="group relative">
                       <Image
@@ -262,118 +269,159 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                   )}
                 </div>
               )}
-            </div>
-            {(createdAt || (isGame && game!.views_count) || (tags && tags.length > 0)) && (
-              <div className="mt-1 flex flex-wrap gap-2 items-center text-sm text-white/90 drop-shadow-md">
-                {createdAt && (
-                  <span>Published {formatCreatedDate(createdAt)}</span>
-                )}
-                {createdAt && isGame && game!.views_count && (
-                  <span className="text-white/60">|</span>
-                )}
-                {createdAt && !isGame && tags && tags.length > 0 && (
-                  <span className="text-white/60">|</span>
-                )}
-                {isGame && game!.views_count && (
-                  <span className="relative group cursor-help">
-                    <span className="underline underline-offset-2 decoration-dotted">
-                      {formatNumber(game!.views_count)} views
-                    </span>
-                    <span className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-full mt-1 px-2 py-1 rounded bg-black/85 text-[0.7rem] text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-150 z-30">
-                      View count is live-loaded from itch.io
-                    </span>
-                  </span>
-                )}
-                {isGame && game!.views_count && tags && tags.length > 0 && (
-                  <span className="text-white/60">|</span>
-                )}
-                {tags && tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2">
-                    {tags.map((tag, index) => (
-                      <span
-                        key={index}
-                        className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[0.7rem] md:text-xs font-medium text-black"
-                      >
-                        {tag}
+                </div>
+                {(createdAt || (isGame && game!.views_count) || (tags && tags.length > 0)) && (
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 items-center justify-center md:justify-start text-xs sm:text-sm text-white/90 drop-shadow-md">
+                    {createdAt && (
+                      <span>Published {formatCreatedDate(createdAt)}</span>
+                    )}
+                    {createdAt && isGame && game!.views_count && (
+                      <span className="text-white/60">|</span>
+                    )}
+                    {createdAt && !isGame && tags && tags.length > 0 && (
+                      <span className="text-white/60">|</span>
+                    )}
+                    {isGame && game!.views_count && (
+                      <span className="relative group cursor-help">
+                        <span className="underline underline-offset-2 decoration-dotted">
+                          {formatNumber(game!.views_count)} views
+                        </span>
+                        <span className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-full mt-1 px-2 py-1 rounded bg-black/85 text-[0.7rem] text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-150 z-30">
+                          View count is live-loaded from itch.io
+                        </span>
                       </span>
-                    ))}
+                    )}
+                    {isGame && game!.views_count && tags && tags.length > 0 && (
+                      <span className="text-white/60">|</span>
+                    )}
+                    {tags && tags.length > 0 && (
+                      <div className="flex flex-wrap gap-2">
+                        {tags.map((tag, index) => (
+                          <span
+                            key={index}
+                            className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[0.7rem] md:text-xs font-medium text-black"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
+                
+                {/* Description */}
+                <p className="text-sm sm:text-base md:text-lg text-white/90 drop-shadow-md leading-relaxed break-words px-6 md:px-0">
+                  {description}
+                </p>
+
+                {/* Action Buttons */}
+                <div className="flex items-center justify-center md:justify-start gap-2 md:gap-3 flex-wrap mb-4 md:mb-0">
+                  {githubUrl && (
+                    <a
+                      href={githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 rounded-full bg-white/95 flex items-center justify-center shadow-lg hover:scale-105 transition-transform cursor-pointer"
+                      aria-label="View source on GitHub"
+                    >
+                      <Image
+                        src="/images/github.png"
+                        alt="GitHub"
+                        width={24}
+                        height={24}
+                        className="w-6 h-6 object-contain"
+                      />
+                    </a>
+                  )}
+                  <Link
+                    href={externalLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3 bg-green-600 hover:bg-green-700 text-white font-bold text-sm sm:text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+                  >
+                    {isGame ? (
+                      <>
+                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                        <span>{externalLinkLabel}</span>
+                      </>
+                    ) : (
+                      <>
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                        <span>{externalLinkLabel}</span>
+                      </>
+                    )}
+                  </Link>
+                </div>
+              </div>
+
+              {/* Right Column - Display */}
+              <div className="flex justify-center md:justify-end w-full overflow-hidden">
+                {displayImage && displayType === 'monitor' && (
+                  <div className="w-full max-w-[70vw] sm:max-w-[80vw] md:max-w-md mx-auto md:mx-0">
+                    <MonitorVideo 
+                      src={displayImage}
+                      type="image"
+                      objectFit="cover"
+                    />
+                  </div>
+                )}
+                
+                {displayImage && displayType === 'plain' && (
+                  <div className="relative w-full max-w-[70vw] sm:max-w-[80vw] md:max-w-2xl mx-auto md:mx-0">
+                    <Image
+                      src={displayImage}
+                      alt={title}
+                      width={1200}
+                      height={675}
+                      className="w-full h-auto max-h-[200px] sm:max-h-[300px] md:max-h-[500px] rounded-lg shadow-2xl object-contain"
+                    />
+                  </div>
+                )}
+                
+                {displayImage && displayType === 'mobile' && (
+                  <div className="relative w-full max-w-[180px] sm:max-w-[220px] md:max-w-[280px] mx-auto md:mx-0">
+                    <div className="relative w-full" style={{ paddingBottom: `${(299/146) * 100}%` }}>
+                      <div className="absolute inset-0">
+                        <div 
+                          className="absolute"
+                          style={{
+                            top: '3%',
+                            left: '6%',
+                            width: '87%',
+                            height: '95%',
+                          }}
+                        >
+                          <Image
+                            src={displayImage}
+                            alt={title}
+                            fill
+                            className="rounded-[2.5%]"
+                            style={{ objectFit: 'cover' }}
+                          />
+                        </div>
+                      </div>
+                      <Image
+                        src="/iphone.svg"
+                        alt="iPhone frame"
+                        fill
+                        className="relative z-10 pointer-events-none"
+                        style={{ objectFit: 'contain' }}
+                        priority
+                      />
+                    </div>
                   </div>
                 )}
               </div>
-            )}
-          </div>
-        </div>
-
-        {/* GitHub Button - visible on mobile */}
-        {githubUrl && (
-          <div className="md:hidden absolute bottom-4 right-4 z-20">
-            <a
-              href={githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 rounded-full bg-white/95 flex items-center justify-center shadow-lg hover:scale-105 transition-transform cursor-pointer"
-              aria-label="View source on GitHub"
-            >
-              <Image
-                src="/images/github.png"
-                alt="GitHub"
-                width={24}
-                height={24}
-                className="w-6 h-6 object-contain"
-              />
-            </a>
-          </div>
-        )}
-
-        {/* Action Buttons - desktop */}
-        <div className="hidden md:block absolute inset-x-0 bottom-4 z-20">
-          <div className="max-w-4xl mx-auto px-6 flex justify-end">
-            <div className="flex items-center gap-3">
-              {githubUrl && (
-                <a
-                  href={githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-full bg-white/95 flex items-center justify-center shadow-lg hover:scale-105 transition-transform cursor-pointer"
-                  aria-label="View source on GitHub"
-                >
-                  <Image
-                    src="/images/github.png"
-                    alt="GitHub"
-                    width={24}
-                    height={24}
-                    className="w-6 h-6 object-contain"
-                  />
-                </a>
-              )}
-              <Link
-                href={externalLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
-              >
-                {isGame ? (
-                  <>
-                    <svg className="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                    <span>{externalLinkLabel}</span>
-                  </>
-                ) : (
-                  <>
-                    <svg
-                      className="w-4 h-4 md:w-5 md:h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                    <span>{externalLinkLabel}</span>
-                  </>
-                )}
-              </Link>
             </div>
           </div>
         </div>
@@ -401,76 +449,6 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             </svg>
             <span>Back to All Projects</span>
           </Link>
-        </div>
-
-        {/* Display based on type */}
-        {coverImage && displayType === 'monitor' && (
-          <div className="mb-12">
-            <MonitorVideo 
-              src={coverImage}
-              type="image"
-              objectFit="cover"
-            />
-          </div>
-        )}
-        
-        {coverImage && displayType === 'plain' && (
-          <div className="mb-12 relative w-full max-w-4xl mx-auto">
-            <Image
-              src={coverImage}
-              alt={title}
-              width={1200}
-              height={675}
-              className="w-full h-auto rounded-lg shadow-lg"
-            />
-          </div>
-        )}
-        
-        {coverImage && displayType === 'mobile' && (
-          <div className="mb-12 flex justify-center">
-            <div className="relative w-full max-w-[300px] mx-auto">
-              {/* Aspect ratio container based on iPhone SVG viewBox (146x299) */}
-              <div className="relative w-full" style={{ paddingBottom: `${(299/146) * 100}%` }}>
-                {/* Content image - positioned within the phone screen area */}
-                <div className="absolute inset-0">
-                  <div 
-                    className="absolute"
-                    style={{
-                      top: '3%',
-                      left: '6%',
-                      width: '87%',
-                      height: '95%',
-                    }}
-                  >
-                    <Image
-                      src={coverImage}
-                      alt={title}
-                      fill
-                      className="rounded-[2.5%]"
-                      style={{ objectFit: 'cover' }}
-                    />
-                  </div>
-                </div>
-
-                {/* iPhone Frame - overlaid on top */}
-                <Image
-                  src="/iphone.svg"
-                  alt="iPhone frame"
-                  fill
-                  className="relative z-10 pointer-events-none"
-                  style={{ objectFit: 'contain' }}
-                  priority
-                />
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Description */}
-        <div className="prose prose-lg max-w-none mb-8">
-          <p className="text-base md:text-lg text-black leading-relaxed">
-            {description}
-          </p>
         </div>
 
 
@@ -505,38 +483,6 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             <span>Back to All Projects</span>
           </Link>
         </div>
-      </div>
-
-      {/* Mobile action button */}
-      <div className="fixed bottom-0 left-0 right-0 w-full md:hidden">
-        <Link
-          href={externalLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full inline-flex items-center justify-center gap-2 px-4 py-4 bg-green-600 hover:bg-green-600 text-white text-base font-semibold tracking-wide shadow-[0_-2px_8px_rgba(0,0,0,0.25)] cursor-pointer"
-        >
-          {isGame ? (
-            <>
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-              <span>{externalLinkLabel}</span>
-            </>
-          ) : (
-            <>
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-              <span>{externalLinkLabel}</span>
-            </>
-          )}
-        </Link>
       </div>
 
       <Footer />
