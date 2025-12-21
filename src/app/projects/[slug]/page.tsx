@@ -140,7 +140,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <div className="w-full px-4 sm:px-6 md:px-12 lg:px-16 z-10 max-w-7xl mx-auto overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-8 lg:gap-12 items-center">
               {/* Left Column - Content */}
-              <div className="space-y-2 md:space-y-4 w-full text-center md:text-left">
+              <div className="space-y-3 md:space-y-4 w-full text-center md:text-left">
                 <div className="flex items-center justify-center md:justify-start gap-2 md:gap-3 flex-wrap">
                   <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-lg break-words">
                     {title}
@@ -321,7 +321,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                       href={githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-12 h-12 rounded-full bg-white/95 flex items-center justify-center shadow-lg hover:scale-105 transition-transform cursor-pointer"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/95 flex items-center justify-center shadow-lg hover:scale-105 transition-transform cursor-pointer"
                       aria-label="View source on GitHub"
                     >
                       <Image
@@ -329,7 +329,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                         alt="GitHub"
                         width={24}
                         height={24}
-                        className="w-6 h-6 object-contain"
+                        className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
                       />
                     </a>
                   )}
