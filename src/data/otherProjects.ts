@@ -51,7 +51,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     coverImage: '/images/immersifyvr.png',
     createdAt: '2024-10-24',
     tools: ['figma', 'unity', 'csharp'],
-    detailComponent: React.createElement(ImmersifyVRDocumentation),
+    // detailComponent: React.createElement(ImmersifyVRDocumentation),
     githubUrl: 'https://github.com/JLee-003/ImmersifyVR',
     displayType: 'plain'
   },
