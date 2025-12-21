@@ -145,131 +145,131 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                   <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-lg break-words">
                     {title}
                   </h1>
-              {tools && tools.length > 0 && (
-                <div className="flex items-center justify-center md:justify-start gap-2">
-                  {tools.includes('unity') && (
-                    <div className="group relative">
-                      <Image
-                        src="/images/unity-logo.png"
-                        alt="Unity"
-                        width={28}
-                        height={28}
-                        className="drop-shadow-lg brightness-0 invert"
-                      />
-                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-white text-black text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 shadow-lg">
-                        Unity
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
-                      </div>
-                    </div>
-                  )}
-                  {tools.includes('csharp') && (
-                    <div className="group relative">
-                      <Image
-                        src="/images/csharp-logo.png"
-                        alt="C#"
-                        width={28}
-                        height={28}
-                        className="drop-shadow-lg"
-                      />
-                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-white text-black text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 shadow-lg">
-                        C#
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
-                      </div>
-                    </div>
-                  )}
-                  {tools.includes('react') && (
-                    <div className="group relative">
-                      <Image
-                        src="/images/react-logo.png"
-                        alt="React"
-                        width={28}
-                        height={28}
-                        className="drop-shadow-lg"
-                      />
-                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-white text-black text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 shadow-lg">
-                        React
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
-                      </div>
-                    </div>
-                  )}
-                  {tools.includes('nextjs') && (
-                    <div className="group relative">
-                      <Image
-                        src="/images/react-logo.png"
-                        alt="Next.js"
-                        width={28}
-                        height={28}
-                        className="drop-shadow-lg"
-                      />
-                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-white text-black text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 shadow-lg">
-                        Next.js
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
-                      </div>
-                    </div>
-                  )}
-                  {tools.includes('figma') && (
-                    <div className="group relative">
-                      <Image
-                        src="/images/figma.png"
-                        alt="Figma"
-                        width={28}
-                        height={28}
-                        className="drop-shadow-lg"
-                      />
-                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-white text-black text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 shadow-lg">
-                        Figma
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
-                      </div>
-                    </div>
-                  )}
-                  {tools.includes('python') && (
-                    <div className="group relative">
-                      <Image
-                        src="/images/python-logo.png"
-                        alt="Python"
-                        width={28}
-                        height={28}
-                        className="drop-shadow-lg"
-                      />
-                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-white text-black text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 shadow-lg">
-                        Python
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
-                      </div>
-                    </div>
-                  )}
-                  {tools.includes('cplusplus') && (
-                    <div className="group relative">
-                      <Image
-                        src="/images/cplusplus-logo.png"
-                        alt="C++"
-                        width={28}
-                        height={28}
-                        className="drop-shadow-lg"
-                      />
-                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-white text-black text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 shadow-lg">
-                        C++
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
-                      </div>
-                    </div>
-                  )}
-                  {tools.includes('html') && (
-                    <div className="group relative">
-                      <Image
-                        src="/images/html5.png"
-                        alt="HTML/CSS/JS"
-                        width={28}
-                        height={28}
-                        className="drop-shadow-lg"
-                      />
-                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-white text-black text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 shadow-lg">
-                        HTML/CSS/JS
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
-                      </div>
-                    </div>
-                  )}
                 </div>
-              )}
-                </div>
+                {tools && tools.length > 0 && (
+                  <div className="flex items-center justify-center md:justify-start gap-2">
+                    {tools.includes('unity') && (
+                      <div className="group relative">
+                        <Image
+                          src="/images/unity-logo.png"
+                          alt="Unity"
+                          width={28}
+                          height={28}
+                          className="drop-shadow-lg brightness-0 invert"
+                        />
+                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-white text-black text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 shadow-lg">
+                          Unity
+                          <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
+                        </div>
+                      </div>
+                    )}
+                    {tools.includes('csharp') && (
+                      <div className="group relative">
+                        <Image
+                          src="/images/csharp-logo.png"
+                          alt="C#"
+                          width={28}
+                          height={28}
+                          className="drop-shadow-lg"
+                        />
+                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-white text-black text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 shadow-lg">
+                          C#
+                          <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
+                        </div>
+                      </div>
+                    )}
+                    {tools.includes('react') && (
+                      <div className="group relative">
+                        <Image
+                          src="/images/react-logo.png"
+                          alt="React"
+                          width={28}
+                          height={28}
+                          className="drop-shadow-lg"
+                        />
+                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-white text-black text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 shadow-lg">
+                          React
+                          <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
+                        </div>
+                      </div>
+                    )}
+                    {tools.includes('nextjs') && (
+                      <div className="group relative">
+                        <Image
+                          src="/images/react-logo.png"
+                          alt="Next.js"
+                          width={28}
+                          height={28}
+                          className="drop-shadow-lg"
+                        />
+                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-white text-black text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 shadow-lg">
+                          Next.js
+                          <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
+                        </div>
+                      </div>
+                    )}
+                    {tools.includes('figma') && (
+                      <div className="group relative">
+                        <Image
+                          src="/images/figma.png"
+                          alt="Figma"
+                          width={28}
+                          height={28}
+                          className="drop-shadow-lg"
+                        />
+                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-white text-black text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 shadow-lg">
+                          Figma
+                          <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
+                        </div>
+                      </div>
+                    )}
+                    {tools.includes('python') && (
+                      <div className="group relative">
+                        <Image
+                          src="/images/python-logo.png"
+                          alt="Python"
+                          width={28}
+                          height={28}
+                          className="drop-shadow-lg"
+                        />
+                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-white text-black text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 shadow-lg">
+                          Python
+                          <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
+                        </div>
+                      </div>
+                    )}
+                    {tools.includes('cplusplus') && (
+                      <div className="group relative">
+                        <Image
+                          src="/images/cplusplus-logo.png"
+                          alt="C++"
+                          width={28}
+                          height={28}
+                          className="drop-shadow-lg"
+                        />
+                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-white text-black text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 shadow-lg">
+                          C++
+                          <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
+                        </div>
+                      </div>
+                    )}
+                    {tools.includes('html') && (
+                      <div className="group relative">
+                        <Image
+                          src="/images/html5.png"
+                          alt="HTML/CSS/JS"
+                          width={28}
+                          height={28}
+                          className="drop-shadow-lg"
+                        />
+                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-white text-black text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 shadow-lg">
+                          HTML/CSS/JS
+                          <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
                 {(createdAt || (isGame && game!.views_count) || (tags && tags.length > 0)) && (
                   <div className="flex flex-wrap gap-1.5 sm:gap-2 items-center justify-center md:justify-start text-xs sm:text-sm text-white/90 drop-shadow-md">
                     {createdAt && (
