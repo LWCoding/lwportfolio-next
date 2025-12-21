@@ -212,13 +212,6 @@ export default function Home() {
               {/* CTA Buttons */}
               <div className="flex flex-wrap gap-3">
                 <Link 
-                  href="/about"
-                  className="group flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
-                  aria-label="About me"
-                >
-                  <span>About Me</span>
-                </Link>
-                <Link 
                   href="/projects"
                   className="group flex items-center justify-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
                   aria-label="View work"
@@ -231,6 +224,13 @@ export default function Home() {
                     <path d="M8 5v14l11-7z"/>
                   </svg>
                   <span>View Projects</span>
+                </Link>
+                <Link 
+                  href="/about"
+                  className="group flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+                  aria-label="About me"
+                >
+                  <span>About Me</span>
                 </Link>
               </div>
             </div>
