@@ -49,7 +49,7 @@ export default function GalleryCard({
       </div>
 
       {/* Content Section - Bottom */}
-      <div className="flex flex-col gap-2 md:gap-1.5 lg:gap-3 pt-4 md:pt-4 lg:pt-5 items-center text-center">
+      <div className="flex flex-col gap-2 pt-4 md:pt-4 lg:pt-5 items-center text-center">
         {/* Title with Tool Logos */}
         <div className="flex items-center justify-center gap-2 flex-wrap">
           <h3 className="text-xl md:text-lg lg:text-2xl font-bold text-black">
@@ -219,7 +219,7 @@ export default function GalleryCard({
         )}
 
         {/* Description */}
-        <p className="text-sm py-1 text-black/80 leading-relaxed line-clamp-3">
+        <p className="text-md py-1 text-black/80 leading-relaxed line-clamp-3">
           {description}
         </p>
 
