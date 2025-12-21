@@ -5,11 +5,29 @@ import Section from "@/components/Section";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
   const router = useRouter();
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  // Track scroll progress for overlay darkening effect
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroHeight = window.innerHeight - 56 - 64; // viewport height minus nav and footer
+      const scrollY = window.scrollY;
+      
+      // Calculate progress from 0 to 1, where 1 is fully scrolled past hero
+      const progress = Math.min(scrollY / heroHeight, 1);
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial call to set initial state
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Pre-fetch games data to warm up the cache for faster load on /projects page
   useEffect(() => {
@@ -151,6 +169,14 @@ export default function Home() {
           height: 'calc(100vh - 56px - 64px)',
         }}
       >
+        {/* Progressive Darkening Overlay */}
+        <div 
+          className="absolute inset-0 z-40 pointer-events-none transition-opacity duration-300"
+          style={{
+            backgroundColor: `rgba(0, 0, 0, ${Math.pow(scrollProgress, 1.3) * 0.8})`, // Darkens faster with acceleration curve
+          }}
+        />
+        
         {/* Hero Section - Left/Right Split */}
         <div 
           className="h-full flex flex-col lg:flex-row relative overflow-hidden"
