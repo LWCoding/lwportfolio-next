@@ -68,6 +68,7 @@ export default function About() {
                   alt="Lucas in Chicago"
                   fill
                   className="object-cover"
+                  priority
                 />
               </div>
             </div>

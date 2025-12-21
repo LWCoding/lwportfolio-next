@@ -132,6 +132,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             alt={title}
             fill
             className="object-cover"
+            priority
           />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20" />
@@ -386,6 +387,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                       width={1200}
                       height={675}
                       className="w-full h-auto max-h-[200px] sm:max-h-[300px] md:max-h-[500px] rounded-lg shadow-2xl object-contain"
+                      priority
                     />
                   </div>
                 )}
@@ -409,6 +411,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                             fill
                             className="rounded-[2.5%]"
                             style={{ objectFit: 'cover' }}
+                            priority
                           />
                         </div>
                       </div>

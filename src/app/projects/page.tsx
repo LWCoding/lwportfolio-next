@@ -32,7 +32,7 @@ export default function Projects() {
       <div id="for-work">
         <Section separator={false} container={true} padding={true} className="pt-8 md:pt-12 pb-4 md:pb-6">
           <div className="space-y-8 md:space-y-6">
-          {OTHER_PROJECTS_CONFIG.slice(0, 3).map((project) => (
+          {OTHER_PROJECTS_CONFIG.slice(0, 3).map((project, index) => (
             <WorkItemCard
               key={project.id}
               title={project.title}
@@ -45,7 +45,8 @@ export default function Projects() {
               href={project.href}
               secondaryCtaLabel={project.type ? `View ${project.type}` : "View Project"}
               githubUrl={project.githubUrl}
-              processUrl={`/projects/${project.id}`}
+              processUrl={project.detailComponent ? `/projects/${project.id}` : undefined}
+              priority={index === 0}
             />
           ))}
         </div>
@@ -85,7 +86,7 @@ export default function Projects() {
                   href={project.href}
                   secondaryCtaLabel={project.type ? `View ${project.type}` : "View Project"}
                   githubUrl={project.githubUrl}
-                  processUrl={`/projects/${project.id}`}
+                  processUrl={project.detailComponent ? `/projects/${project.id}` : undefined}
                 />
               ))}
             </div>
@@ -100,22 +101,26 @@ export default function Projects() {
           {/* Featured Games Section */}
           {!loading && !error && featuredGames.length > 0 && (
             <div className="space-y-8 md:space-y-6">
-              {featuredGames.slice(0, 3).map((game) => (
-                <WorkItemCard
-                  key={game.id}
-                  title={game.title}
-                  description={game.short_text || "An exciting game experience awaits!"}
-                  imageSrc={game.still_cover_url || game.cover_url || "/images/scratchproject.png"}
-                  imageAlt={`${game.title} cover image`}
-                  tags={["For Fun", ...(game.tags || [])]}
-                  tools={game.tools}
-                  date={game.created_at}
-                  href={game.url}
-                  secondaryCtaLabel="Play Game"
-                  githubUrl={FEATURED_GAMES_CONFIG.find((cfg) => cfg.id === game.id)?.githubUrl || game.githubUrl}
-                  processUrl={`/projects/${game.id}`}
-                />
-              ))}
+              {featuredGames.slice(0, 3).map((game, index) => {
+                const gameConfig = FEATURED_GAMES_CONFIG.find((cfg) => cfg.id === game.id);
+                return (
+                  <WorkItemCard
+                    key={game.id}
+                    title={game.title}
+                    description={game.short_text || "An exciting game experience awaits!"}
+                    imageSrc={game.still_cover_url || game.cover_url || "/images/scratchproject.png"}
+                    imageAlt={`${game.title} cover image`}
+                    tags={["For Fun", ...(game.tags || [])]}
+                    tools={game.tools}
+                    date={game.created_at}
+                    href={game.url}
+                    secondaryCtaLabel="Play Game"
+                    githubUrl={gameConfig?.githubUrl || game.githubUrl}
+                    processUrl={gameConfig?.detailComponent ? `/projects/${game.id}` : undefined}
+                    priority={index === 0 && OTHER_PROJECTS_CONFIG.length === 0}
+                  />
+                );
+              })}
             </div>
           )}
 
@@ -179,22 +184,25 @@ export default function Projects() {
             }`}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-x-6 md:gap-y-10 lg:gap-x-6 lg:gap-y-12">
-              {featuredGames.slice(3).map((game) => (
-                <GalleryCard
-                  key={game.id}
-                  title={game.title}
-                  description={game.short_text || "An exciting game experience awaits!"}
-                  imageSrc={game.still_cover_url || game.cover_url || "/images/scratchproject.png"}
-                  imageAlt={`${game.title} cover image`}
-                  tags={["For Fun", ...(game.tags || [])]}
-                  tools={game.tools}
-                  date={game.created_at}
-                  href={game.url}
-                  secondaryCtaLabel="Play Game"
-                  githubUrl={FEATURED_GAMES_CONFIG.find((cfg) => cfg.id === game.id)?.githubUrl || game.githubUrl}
-                  processUrl={`/projects/${game.id}`}
-                />
-              ))}
+              {featuredGames.slice(3).map((game) => {
+                const gameConfig = FEATURED_GAMES_CONFIG.find((cfg) => cfg.id === game.id);
+                return (
+                  <GalleryCard
+                    key={game.id}
+                    title={game.title}
+                    description={game.short_text || "An exciting game experience awaits!"}
+                    imageSrc={game.still_cover_url || game.cover_url || "/images/scratchproject.png"}
+                    imageAlt={`${game.title} cover image`}
+                    tags={["For Fun", ...(game.tags || [])]}
+                    tools={game.tools}
+                    date={game.created_at}
+                    href={game.url}
+                    secondaryCtaLabel="Play Game"
+                    githubUrl={gameConfig?.githubUrl || game.githubUrl}
+                    processUrl={gameConfig?.detailComponent ? `/projects/${game.id}` : undefined}
+                  />
+                );
+              })}
             </div>
           </div>
         )}

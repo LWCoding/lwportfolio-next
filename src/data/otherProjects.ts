@@ -1,4 +1,6 @@
 import type { ReactNode } from 'react';
+import React from 'react';
+import ImmersifyVRDocumentation from '@/components/documentation/ImmersifyVRDocumentation';
 
 export type DisplayType = 'monitor' | 'plain' | 'mobile' | 'none';
 
@@ -36,7 +38,6 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     coverImage: '/images/alwaysbeclosing.png',
     createdAt: '2025-06-15',
     tools: ['figma', 'html', 'unity', 'csharp'],
-    detailComponent: 'documentation section in progress',
     githubUrl: 'https://github.com/banasse/ABCSALE',
     displayType: 'monitor'
   },
@@ -50,7 +51,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     coverImage: '/images/immersifyvr.png',
     createdAt: '2024-10-24',
     tools: ['figma', 'unity', 'csharp'],
-    detailComponent: 'documentation section in progress',
+    detailComponent: React.createElement(ImmersifyVRDocumentation),
     githubUrl: 'https://github.com/JLee-003/ImmersifyVR',
     displayType: 'plain'
   },
@@ -77,7 +78,6 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     createdAt: '2025-04-10',
     tools: ['figma'],
     fadeOpacity: 0.7,
-    detailComponent: 'documentation section in progress',
     displayType: 'plain'
   },
   {

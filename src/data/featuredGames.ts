@@ -24,7 +24,6 @@ export const FEATURED_GAMES_CONFIG: FeaturedGameConfig[] = [
     tags: ["🏆 GMTK 2025: #722/9605"], 
     description: "An arcade game. Use new stylus technology to loop rats before they eat all of your cheese.",
     tools: ['unity', 'csharp'],
-    detailComponent: 'documentation section in progress',
     githubUrl: 'https://github.com/LWCoding/aw-rats',
     displayType: 'monitor'
   },
@@ -33,7 +32,6 @@ export const FEATURED_GAMES_CONFIG: FeaturedGameConfig[] = [
     tags: ["🏆 GMTK 2024: #4266/7557"], 
     description: "An arcade game. Cook food, serve customers, and manage a kitchen that gets larger every night.",
     tools: ['unity', 'csharp'],
-    detailComponent: 'documentation section in progress',
     githubUrl: 'https://github.com/LWCoding/kitchen-nightmare',
     displayType: 'monitor'
   },
@@ -42,7 +40,6 @@ export const FEATURED_GAMES_CONFIG: FeaturedGameConfig[] = [
     tags: ["🏆 Wonderjam 4: #2/25"], 
     description: "A top-down shooter game. Destroy enemy ships, get XP, and unlock upgrades.",
     tools: ['unity', 'csharp'],
-    detailComponent: 'documentation section in progress',
     githubUrl: 'https://github.com/LWCoding/attack-on-atliz',
     displayType: 'monitor'
   },

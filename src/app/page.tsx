@@ -271,6 +271,7 @@ export default function Home() {
                   alt="Lucas Wang"
                   fill
                   className="object-cover"
+                  priority
                 />
               </div>
             </div>

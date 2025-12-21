@@ -15,6 +15,7 @@ interface WorkItemCardProps {
   date?: string;
   secondaryCtaLabel?: string;
   githubUrl?: string;
+  priority?: boolean;
 }
 
 export default function WorkItemCard({
@@ -29,6 +30,7 @@ export default function WorkItemCard({
   date,
   secondaryCtaLabel,
   githubUrl,
+  priority = false,
 }: WorkItemCardProps) {
   const formattedDate =
     date && !Number.isNaN(new Date(date).getTime())
@@ -45,6 +47,7 @@ export default function WorkItemCard({
           alt={imageAlt}
           fill
           className="object-cover"
+          priority={priority}
         />
       </div>
 
