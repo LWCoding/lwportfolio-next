@@ -51,6 +51,17 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     displayType: 'plain'
   },
   {
+    id: 'cs42si',
+    title: 'CS42SI Course',
+    description: 'Original curriculum and website for CS42SI at Stanford, a course teaching Unity and game development.',
+    tags: ['Website', 'Next.js'],
+    href: 'https://web.stanford.edu/class/cs42si/',
+    coverImage: '/images/cs42si_fa2025.png',
+    createdAt: '2025-09-03',
+    tools: ['html', 'react'],
+    displayType: 'monitor'
+  },
+  {
     id: 'serendipi-tea',
     title: 'Serendipi-Tea',
     description: 'A card game and pop-up cafe connecting startup founders together, officially prototyped and tested at the StartX accelerator program.',
@@ -62,17 +73,6 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     fadeOpacity: 0.7,
     detailComponent: 'documentation section in progress',
     displayType: 'plain'
-  },
-  {
-    id: 'cs42si',
-    title: 'CS42SI Course',
-    description: 'Original curriculum and website for CS42SI at Stanford, a course teaching Unity and game development.',
-    tags: ['Website', 'Next.js'],
-    href: 'https://web.stanford.edu/class/cs42si/',
-    coverImage: '/images/cs42si.png',
-    createdAt: '2025-09-03',
-    tools: ['html', 'react'],
-    displayType: 'monitor'
   },
   {
     id: 'cs11si',
