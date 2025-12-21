@@ -114,7 +114,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const createdAt = isGame ? game!.created_at : project!.createdAt;
   const githubUrl = isGame ? (game!.githubUrl || gameConfig?.githubUrl) : project!.githubUrl;
   const externalLink = isGame ? game!.url : project!.href;
-  const externalLinkLabel = isGame ? 'Play on itch.io' : 'Open Project';
+  const externalLinkLabel = isGame 
+    ? 'Play on itch.io' 
+    : (project!.type ? `View ${project!.type}` : 'Open Project');
   const detailComponent = isGame ? gameConfig?.detailComponent : project!.detailComponent;
   const displayType = isGame ? (gameConfig?.displayType || 'none') : (project!.displayType || 'none');
 

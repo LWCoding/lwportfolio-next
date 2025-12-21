@@ -43,7 +43,7 @@ export default function Projects() {
               tools={project.tools}
               date={project.createdAt}
               href={project.href}
-              secondaryCtaLabel="View Project"
+              secondaryCtaLabel={project.type ? `View ${project.type}` : "View Project"}
               githubUrl={project.githubUrl}
               processUrl={`/projects/${project.id}`}
             />
@@ -83,7 +83,7 @@ export default function Projects() {
                   tools={project.tools}
                   date={project.createdAt}
                   href={project.href}
-                  secondaryCtaLabel="View Project"
+                  secondaryCtaLabel={project.type ? `View ${project.type}` : "View Project"}
                   githubUrl={project.githubUrl}
                   processUrl={`/projects/${project.id}`}
                 />
