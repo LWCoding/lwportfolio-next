@@ -370,8 +370,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               {/* Right Column - Display */}
               <div className="flex justify-center md:justify-end w-full overflow-hidden">
                 {displayImage && displayType === 'monitor' && (
-                  <div className="w-full max-w-[70vw] sm:max-w-[80vw] md:max-w-md mx-auto md:mx-0">
-                    <MonitorVideo 
+                  <div className="w-full max-w-[100vw] sm:max-w-[95vw] md:max-w-3xl lg:max-w-4xl mx-auto md:mx-0">
+                    <MonitorVideo
                       src={displayImage}
                       type="auto"
                       objectFit="cover"
