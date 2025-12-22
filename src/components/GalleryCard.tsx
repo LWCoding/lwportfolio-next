@@ -61,7 +61,7 @@ export default function GalleryCard({
               {tools.includes('unity') && (
                 <div className="group relative">
                   <Image 
-                    src="/images/icons/unity-logo.png" 
+                    src="/images/icons/unity.png" 
                     alt="Unity" 
                     width={22} 
                     height={22} 

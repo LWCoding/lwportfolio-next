@@ -64,7 +64,7 @@ export default function WorkItemCard({
               {tools.includes('unity') && (
                 <div className="group relative">
                   <Image 
-                    src="/images/icons/unity-logo.png"
+                    src="/images/icons/unity.png"
                     alt="Unity" 
                     width={24} 
                     height={24} 
