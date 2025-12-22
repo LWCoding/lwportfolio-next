@@ -154,7 +154,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     {tools.includes('unity') && (
                       <div className="group relative">
                         <Image
-                          src="/images/unity-logo.png"
+                          src="/images/icons/unity.png"
                           alt="Unity"
                           width={28}
                           height={28}
@@ -184,7 +184,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     {tools.includes('react') && (
                       <div className="group relative">
                         <Image
-                          src="/images/react-logo.png"
+                          src="/images/icons/react-logo.png"
                           alt="React"
                           width={28}
                           height={28}
@@ -199,7 +199,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     {tools.includes('nextjs') && (
                       <div className="group relative">
                         <Image
-                          src="/images/react-logo.png"
+                          src="/images/icons/react-logo.png"
                           alt="Next.js"
                           width={28}
                           height={28}
@@ -214,7 +214,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     {tools.includes('figma') && (
                       <div className="group relative">
                         <Image
-                          src="/images/figma.png"
+                          src="/images/icons/figma.png"
                           alt="Figma"
                           width={28}
                           height={28}
@@ -229,7 +229,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     {tools.includes('python') && (
                       <div className="group relative">
                         <Image
-                          src="/images/python-logo.png"
+                          src="/images/icons/python-logo.png"
                           alt="Python"
                           width={28}
                           height={28}
@@ -244,7 +244,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     {tools.includes('cplusplus') && (
                       <div className="group relative">
                         <Image
-                          src="/images/cplusplus-logo.png"
+                          src="/images/icons/cplusplus-logo.png"
                           alt="C++"
                           width={28}
                           height={28}
@@ -259,7 +259,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     {tools.includes('html') && (
                       <div className="group relative">
                         <Image
-                          src="/images/html5.png"
+                          src="/images/icons/html5.png"
                           alt="HTML/CSS/JS"
                           width={28}
                           height={28}
@@ -356,7 +356,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                       aria-label="View source on GitHub"
                     >
                       <Image
-                        src="/images/github.png"
+                        src="/images/icons/github.png"
                         alt="GitHub"
                         width={24}
                         height={24}

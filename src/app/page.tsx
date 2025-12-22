@@ -91,14 +91,14 @@ export default function Home() {
 
   // Tools I know how to use
   const tools = [
-    { name: 'Figma', image: '/images/figma.png' },
-    { name: 'Unity', image: '/images/unity-logo.png' },
-    { name: 'Python', image: '/images/python-logo.png' },
-    { name: 'React', image: '/images/react-logo.png' },
+    { name: 'Figma', image: '/images/icons/figma.png' },
+    { name: 'Unity', image: '/images/icons/unity.png' },
+    { name: 'Python', image: '/images/icons/python-logo.png' },
+    { name: 'React', image: '/images/icons/react-logo.png' },
     { name: 'C#', image: '/images/csharp-logo.png' },
-    { name: 'C++', image: '/images/cplusplus-logo.png' },
-    { name: 'HTML5', image: '/images/html5.png' },
-    { name: 'Cursor', image: '/images/cursor.png' },
+    { name: 'C++', image: '/images/icons/cplusplus-logo.png' },
+    { name: 'HTML5', image: '/images/icons/html5.png' },
+    { name: 'Cursor', image: '/images/icons/cursor.png' },
   ];
 
   const experienceHighlights = [

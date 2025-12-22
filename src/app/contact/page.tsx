@@ -48,7 +48,7 @@ export default function ContactPage() {
                     aria-label="Visit my LinkedIn profile"
                   >
                     <Image
-                      src="/images/linkedin.png"
+                      src="/images/icons/linkedin.png"
                       alt="linkedin"
                       width={32}
                       height={32}
@@ -64,7 +64,7 @@ export default function ContactPage() {
                     aria-label="Visit my GitHub profile"
                   >
                     <Image
-                      src="/images/github.png"
+                      src="/images/icons/github.png"
                       alt="github"
                       width={32}
                       height={32}
@@ -80,7 +80,7 @@ export default function ContactPage() {
                     aria-label="Visit my itch.io profile"
                   >
                     <Image
-                      src="/images/itchio.png"
+                      src="/images/icons/itchio.png"
                       alt="itch.io"
                       width={32}
                       height={32}
@@ -96,7 +96,7 @@ export default function ContactPage() {
                     aria-label="Visit my Scratch profile"
                   >
                     <Image
-                      src="/images/scratch.svg"
+                      src="/images/icons/scratch.svg"
                       alt="scratch"
                       width={32}
                       height={32}
