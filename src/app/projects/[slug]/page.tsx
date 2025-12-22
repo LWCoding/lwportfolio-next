@@ -373,7 +373,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                   <div className="w-full max-w-[70vw] sm:max-w-[80vw] md:max-w-md mx-auto md:mx-0">
                     <MonitorVideo 
                       src={displayImage}
-                      type="image"
+                      type="auto"
                       objectFit="cover"
                     />
                   </div>

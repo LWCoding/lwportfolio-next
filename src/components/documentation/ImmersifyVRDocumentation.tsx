@@ -63,7 +63,7 @@ export default function ImmersifyVRDocumentation() {
             controls
             preload="metadata"
           >
-            <source src="/videos/GameShowcase.mp4" type="video/mp4" />
+            <source src="/videos/immersifyvr_preview.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>

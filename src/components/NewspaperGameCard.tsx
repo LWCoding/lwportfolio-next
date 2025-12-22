@@ -217,7 +217,7 @@ export default function NewspaperGameCard({
               )}
               {platforms.includes('html5') && (
                 <Image 
-                  src="/images/html5.png" 
+                  src="/images/icons/html5.png" 
                   alt="HTML5" 
                   width={20} 
                   height={20} 
@@ -237,7 +237,7 @@ export default function NewspaperGameCard({
               )}
               {platforms.includes('figma') && (
                 <Image 
-                  src="/images/figma.png" 
+                  src="/images/icons/figma.png" 
                   alt="Figma" 
                   width={20} 
                   height={20} 
@@ -374,7 +374,7 @@ export default function NewspaperGameCard({
               )}
               {platforms.includes('html5') && (
                 <Image 
-                  src="/images/html5.png" 
+                  src="/images/icons/html5.png"
                   alt="HTML5" 
                   width={20} 
                   height={20} 
@@ -394,7 +394,7 @@ export default function NewspaperGameCard({
               )}
               {platforms.includes('figma') && (
                 <Image 
-                  src="/images/figma.png" 
+                  src="/images/icons/figma.png" 
                   alt="Figma" 
                   width={20} 
                   height={20} 

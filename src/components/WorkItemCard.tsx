@@ -64,7 +64,7 @@ export default function WorkItemCard({
               {tools.includes('unity') && (
                 <div className="group relative">
                   <Image 
-                    src="/images/unity-logo.png" 
+                    src="/images/icons/unity-logo.png"
                     alt="Unity" 
                     width={24} 
                     height={24} 
@@ -94,7 +94,7 @@ export default function WorkItemCard({
               {tools.includes('react') && (
                 <div className="group relative">
                   <Image 
-                    src="/images/react-logo.png" 
+                    src="/images/icons/react-logo.png" 
                     alt="React" 
                     width={24} 
                     height={24} 
@@ -109,7 +109,7 @@ export default function WorkItemCard({
               {tools.includes('nextjs') && (
                 <div className="group relative">
                   <Image 
-                    src="/images/react-logo.png" 
+                    src="/images/icons/react-logo.png" 
                     alt="Next.js" 
                     width={24} 
                     height={24} 
@@ -124,7 +124,7 @@ export default function WorkItemCard({
               {tools.includes('figma') && (
                 <div className="group relative">
                   <Image 
-                    src="/images/figma.png" 
+                    src="/images/icons/figma.png"
                     alt="Figma" 
                     width={24} 
                     height={24} 
@@ -169,7 +169,7 @@ export default function WorkItemCard({
               {tools.includes('html') && (
                 <div className="group relative">
                   <Image 
-                    src="/images/html5.png" 
+                    src="/images/icons/html5.png" 
                     alt="HTML/CSS/JS" 
                     width={24} 
                     height={24} 
@@ -266,7 +266,7 @@ export default function WorkItemCard({
               aria-label="View source on GitHub"
             >
               <Image
-                src="/images/github.png"
+                src="/images/icons/github.png"
                 alt="GitHub"
                 width={24}
                 height={24}

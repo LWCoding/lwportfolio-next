@@ -57,7 +57,8 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     tools: ['figma', 'unity', 'csharp'],
     detailComponent: React.createElement(ImmersifyVRDocumentation),
     githubUrl: 'https://github.com/JLee-003/ImmersifyVR',
-    displayType: 'plain'
+    displayType: 'monitor',
+    displayImage: '/videos/immersifyvr_preview.mp4'
   },
   {
     id: 'cs42si',
