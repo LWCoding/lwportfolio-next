@@ -319,23 +319,6 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
                 {/* Action Buttons */}
                 <div className="flex items-center justify-center md:justify-start gap-2 md:gap-3 flex-wrap mb-4 md:mb-0">
-                  {githubUrl && (
-                    <a
-                      href={githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/95 flex items-center justify-center shadow-lg hover:scale-105 transition-transform cursor-pointer"
-                      aria-label="View source on GitHub"
-                    >
-                      <Image
-                        src="/images/github.png"
-                        alt="GitHub"
-                        width={24}
-                        height={24}
-                        className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
-                      />
-                    </a>
-                  )}
                   <Link
                     href={externalLink}
                     target="_blank"
@@ -364,6 +347,23 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                       </>
                     )}
                   </Link>
+                  {githubUrl && (
+                    <a
+                      href={githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/95 flex items-center justify-center shadow-lg hover:scale-105 transition-transform cursor-pointer"
+                      aria-label="View source on GitHub"
+                    >
+                      <Image
+                        src="/images/github.png"
+                        alt="GitHub"
+                        width={24}
+                        height={24}
+                        className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
+                      />
+                    </a>
+                  )}
                 </div>
               </div>
 
