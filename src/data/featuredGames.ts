@@ -1,4 +1,8 @@
 import type { ReactNode } from 'react';
+import React from 'react';
+import StayinAlivePlaceholder from '@/components/documentation/StayinAlivePlaceholder';
+import AwRatsPlaceholder from '@/components/documentation/AwRatsPlaceholder';
+import AttackOnAtlizPlaceholder from '@/components/documentation/AttackOnAtlizPlaceholder';
 
 export type DisplayType = 'monitor' | 'plain' | 'mobile' | 'none';
 
@@ -19,21 +23,22 @@ export interface FeaturedGameConfig {
 
 // Featured games with their custom tags and descriptions in display order
 export const FEATURED_GAMES_CONFIG: FeaturedGameConfig[] = [
+  {
+    id: 4028688,
+    tags: [],
+    description: "Play as a kangaroo rat in Southern California. Find food, avoid predators, and repopulate.",
+    tools: ['unity', 'csharp'],
+    displayType: 'monitor',
+    detailComponent: React.createElement(StayinAlivePlaceholder)
+  },
   { 
     id: 3766251, 
     tags: ["🏆 GMTK 2025: #722/9605"], 
     description: "An arcade game. Use new stylus technology to loop rats before they eat all of your cheese.",
     tools: ['unity', 'csharp'],
     githubUrl: 'https://github.com/LWCoding/aw-rats',
-    displayType: 'monitor'
-  },
-  { 
-    id: 2904867, 
-    tags: ["🏆 GMTK 2024: #4266/7557"], 
-    description: "An arcade game. Cook food, serve customers, and manage a kitchen that gets larger every night.",
-    tools: ['unity', 'csharp'],
-    githubUrl: 'https://github.com/LWCoding/kitchen-nightmare',
-    displayType: 'monitor'
+    displayType: 'monitor',
+    detailComponent: React.createElement(AwRatsPlaceholder)
   },
   { 
     id: 1940212, 
@@ -41,13 +46,15 @@ export const FEATURED_GAMES_CONFIG: FeaturedGameConfig[] = [
     description: "A top-down shooter game. Destroy enemy ships, get XP, and unlock upgrades.",
     tools: ['unity', 'csharp'],
     githubUrl: 'https://github.com/LWCoding/attack-on-atliz',
-    displayType: 'monitor'
+    displayType: 'monitor',
+    detailComponent: React.createElement(AttackOnAtlizPlaceholder)
   },
-  {
-    id: 4028688,
-    tags: [],
-    description: "Play as a kangaroo rat in Southern California. Find food, avoid predators, and repopulate.",
+  { 
+    id: 2904867, 
+    tags: ["🏆 GMTK 2024: #4266/7557"], 
+    description: "An arcade game. Cook food, serve customers, and manage a kitchen that gets larger every night.",
     tools: ['unity', 'csharp'],
+    githubUrl: 'https://github.com/LWCoding/kitchen-nightmare',
     displayType: 'monitor'
   },
   { 
