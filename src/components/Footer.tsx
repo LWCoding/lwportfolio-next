@@ -30,7 +30,7 @@ export default function Footer() {
             aria-label="Visit my LinkedIn profile"
           >
             <Image
-              src="/images/linkedin.png"
+              src="/images/icons/linkedin.png"
               alt="LinkedIn"
               width={32}
               height={32}
@@ -45,7 +45,7 @@ export default function Footer() {
             aria-label="Visit my GitHub profile"
           >
             <Image
-              src="/images/github.png"
+              src="/images/icons/github.png"
               alt="GitHub"
               width={32}
               height={32}
@@ -60,7 +60,7 @@ export default function Footer() {
             aria-label="Visit my Itch.io profile"
           >
             <Image
-              src="/images/itchio.png"
+              src="/images/icons/itchio.png"
               alt="Itch.io"
               width={32}
               height={32}
@@ -75,7 +75,7 @@ export default function Footer() {
             aria-label="Visit my Scratch profile"
           >
             <Image
-              src="/images/scratch.svg"
+              src="/images/icons/scratch.svg"
               alt="Scratch"
               width={32}
               height={32}

@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react';
 import React from 'react';
 import ImmersifyVRDocumentation from '@/components/documentation/ImmersifyVRDocumentation';
+import AlwaysBeClosingPlaceholder from '@/components/documentation/AlwaysBeClosingPlaceholder';
+import CS42SIDocumentation from '@/components/documentation/CS42SIDocumentation';
 
 export type DisplayType = 'monitor' | 'plain' | 'mobile' | 'none';
 
@@ -39,7 +41,9 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     createdAt: '2025-06-15',
     tools: ['figma', 'html', 'unity', 'csharp'],
     githubUrl: 'https://github.com/banasse/ABCSALE',
-    displayType: 'monitor'
+    displayType: 'monitor',
+    displayImage: '/images/abc_preview.png',
+    detailComponent: React.createElement(AlwaysBeClosingPlaceholder)
   },
   {
     id: 'immersifyvr',
@@ -65,7 +69,9 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     coverImage: '/images/cs42si_fa2025.png',
     createdAt: '2025-09-03',
     tools: ['html', 'react'],
-    displayType: 'monitor'
+    displayType: 'monitor',
+    displayImage: '/images/cs42si.png',
+    detailComponent: React.createElement(CS42SIDocumentation)
   },
   {
     id: 'serendipi-tea',

@@ -140,11 +140,12 @@ export default function Navigation() {
               href="https://www.linkedin.com/in/lucas-wang-3160b720a/"
               target="_blank"
               rel="noopener noreferrer"
+              title="LinkedIn"
               className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-white rounded-full transition-all duration-300 hover:scale-110 flex items-center justify-center cursor-pointer shadow-sm"
               aria-label="Visit my LinkedIn profile"
             >
               <Image 
-                src="/images/linkedin.png" 
+                src="/images/icons/linkedin.png" 
                 alt="LinkedIn" 
                 width={32}
                 height={32}
@@ -155,11 +156,12 @@ export default function Navigation() {
               href="https://github.com/LWCoding"
               target="_blank"
               rel="noopener noreferrer"
+              title="GitHub"
               className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-white rounded-full transition-all duration-300 hover:scale-110 flex items-center justify-center cursor-pointer shadow-sm"
               aria-label="Visit my GitHub profile"
             >
               <Image 
-                src="/images/github.png" 
+                src="/images/icons/github.png" 
                 alt="GitHub" 
                 width={32}
                 height={32}
@@ -170,11 +172,12 @@ export default function Navigation() {
               href="https://lwcoding.itch.io/"
               target="_blank"
               rel="noopener noreferrer"
+              title="Itch.io"
               className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-white rounded-full transition-all duration-300 hover:scale-110 flex items-center justify-center cursor-pointer shadow-sm"
               aria-label="Visit my Itch.io profile"
             >
               <Image 
-                src="/images/itchio.png" 
+                src="/images/icons/itchio.png" 
                 alt="Itch.io" 
                 width={32}
                 height={32}
@@ -185,11 +188,12 @@ export default function Navigation() {
               href="https://scratch.mit.edu/users/LWCoding/"
               target="_blank"
               rel="noopener noreferrer"
+              title="Scratch"
               className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-white rounded-full transition-all duration-300 hover:scale-110 flex items-center justify-center cursor-pointer shadow-sm"
               aria-label="Visit my Scratch profile"
             >
               <Image 
-                src="/images/scratch.svg" 
+                src="/images/icons/scratch.svg" 
                 alt="Scratch" 
                 width={32}
                 height={32}
