@@ -42,7 +42,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     tools: ['figma', 'html', 'unity', 'csharp'],
     githubUrl: 'https://github.com/banasse/ABCSALE',
     displayType: 'monitor',
-    displayImage: '/images/abc_preview.png',
+    displayImage: '/images/abc-preview.png',
     detailComponent: React.createElement(AlwaysBeClosingPlaceholder)
   },
   {
@@ -67,7 +67,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     tags: ['Website', 'Next.js'],
     href: 'https://web.stanford.edu/class/cs42si/',
     type: 'Website',
-    coverImage: '/images/cs42si_fa2025.png',
+    coverImage: '/images/cs42si-fa2025.png',
     createdAt: '2025-09-03',
     tools: ['html', 'react'],
     displayType: 'monitor',

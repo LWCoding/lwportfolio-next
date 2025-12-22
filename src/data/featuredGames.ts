@@ -29,7 +29,8 @@ export const FEATURED_GAMES_CONFIG: FeaturedGameConfig[] = [
     description: "Play as a kangaroo rat in Southern California. Find food, avoid predators, and repopulate.",
     tools: ['unity', 'csharp'],
     displayType: 'monitor',
-    detailComponent: React.createElement(StayinAlivePlaceholder)
+    detailComponent: React.createElement(StayinAlivePlaceholder),
+    displayImage: '/images/stayinalive-preview.png'
   },
   { 
     id: 3766251, 
@@ -38,7 +39,8 @@ export const FEATURED_GAMES_CONFIG: FeaturedGameConfig[] = [
     tools: ['unity', 'csharp'],
     githubUrl: 'https://github.com/LWCoding/aw-rats',
     displayType: 'monitor',
-    detailComponent: React.createElement(AwRatsPlaceholder)
+    detailComponent: React.createElement(AwRatsPlaceholder),
+    displayImage: '/images/awrats-preview.png'
   },
   { 
     id: 1940212, 
@@ -47,7 +49,8 @@ export const FEATURED_GAMES_CONFIG: FeaturedGameConfig[] = [
     tools: ['unity', 'csharp'],
     githubUrl: 'https://github.com/LWCoding/attack-on-atliz',
     displayType: 'monitor',
-    detailComponent: React.createElement(AttackOnAtlizPlaceholder)
+    detailComponent: React.createElement(AttackOnAtlizPlaceholder),
+    displayImage: '/images/attackonatliz-preview.png'
   },
   { 
     id: 2904867, 
