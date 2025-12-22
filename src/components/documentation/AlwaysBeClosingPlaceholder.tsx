@@ -13,7 +13,7 @@ export default function AlwaysBeClosingPlaceholder() {
 
       <div className="relative w-full max-w-3xl aspect-video rounded-lg overflow-hidden shadow-lg bg-gray-100">
         <Image
-          src="/images/abc_preview.png"
+          src="/images/abc-preview.png"
           alt="Always Be Closing preview"
           fill
           className="object-cover"
