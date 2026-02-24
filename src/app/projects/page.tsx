@@ -45,8 +45,9 @@ export default function Projects() {
               href={project.href}
               secondaryCtaLabel={project.type ? `View ${project.type}` : "View Project"}
               githubUrl={project.githubUrl}
-              processUrl={project.detailComponent ? `/projects/${project.id}` : undefined}
+              processUrl={(project.detailComponent || project.displayType) ? `/projects/${project.id}` : undefined}
               priority={index === 0}
+              showExternalCta={false}
             />
           ))}
         </div>
@@ -86,7 +87,6 @@ export default function Projects() {
                   href={project.href}
                   secondaryCtaLabel={project.type ? `View ${project.type}` : "View Project"}
                   githubUrl={project.githubUrl}
-                  processUrl={project.detailComponent ? `/projects/${project.id}` : undefined}
                 />
               ))}
             </div>
@@ -199,7 +199,6 @@ export default function Projects() {
                     href={game.url}
                     secondaryCtaLabel="Play Game"
                     githubUrl={gameConfig?.githubUrl || game.githubUrl}
-                    processUrl={gameConfig?.detailComponent ? `/projects/${game.id}` : undefined}
                   />
                 );
               })}

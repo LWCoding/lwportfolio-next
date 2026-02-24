@@ -15,6 +15,8 @@ interface GalleryCardProps {
   date?: string;
   secondaryCtaLabel?: string;
   githubUrl?: string;
+  /** When false, hides the external link (View Project / Play Game) button. Default true. */
+  showExternalCta?: boolean;
 }
 
 export default function GalleryCard({
@@ -29,6 +31,7 @@ export default function GalleryCard({
   date,
   secondaryCtaLabel,
   githubUrl,
+  showExternalCta = true,
 }: GalleryCardProps) {
   const formattedDate =
     date && !Number.isNaN(new Date(date).getTime())
@@ -234,7 +237,7 @@ export default function GalleryCard({
             </Link>
           )}
 
-          {href && (
+          {showExternalCta && href && (
             <Link
               href={href}
               target="_blank"

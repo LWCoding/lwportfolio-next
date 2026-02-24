@@ -16,6 +16,8 @@ interface WorkItemCardProps {
   secondaryCtaLabel?: string;
   githubUrl?: string;
   priority?: boolean;
+  /** When false, hides the external link (View Project / Play Game) button. Default true. */
+  showExternalCta?: boolean;
 }
 
 export default function WorkItemCard({
@@ -31,6 +33,7 @@ export default function WorkItemCard({
   secondaryCtaLabel,
   githubUrl,
   priority = false,
+  showExternalCta = true,
 }: WorkItemCardProps) {
   const formattedDate =
     date && !Number.isNaN(new Date(date).getTime())
@@ -237,7 +240,7 @@ export default function WorkItemCard({
             </Link>
           )}
 
-          {href && (
+          {showExternalCta && href && (
             <Link
               href={href}
               target="_blank"
