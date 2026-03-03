@@ -32,7 +32,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   {
     id: 'always-be-closing',
     title: 'Always Be Closing',
-    description: 'A simulation of customer management software designed to train salespeople to be more effective in sales calls. Used to teach STRAMGT351 at Stanford.',
+    description: 'A software simulation designed for Stanford University to train salespeople to be more effective in sales calls. Used to teach STRAMGT351, a sales management course.',
     tags: ['Simulation'],
     type: 'Project',
     coverImage: '/images/alwaysbeclosing.png',
@@ -45,7 +45,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   {
     id: 'immersifyvr',
     title: 'ImmersifyVR',
-    description: 'A virtual reality exercise application designed to motivate older adults to exercise.',
+    description: 'A grant-funded virtual reality exercise application designed to motivate older adults to exercise. Deployed and tested in several retirement homes across California.',
     tags: ['Virtual Reality'],
     href: 'https://www.immersifyvr.org/',
     type: 'Website',
@@ -59,7 +59,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   {
     id: 'cs42si',
     title: 'CS42SI Course',
-    description: 'Original curriculum and website for CS42SI at Stanford, a course teaching Unity and game development.',
+    description: 'Original curriculum for CS42SI, a game design course I teach at Stanford University. Came out of my passion to create more game development opportunities at Stanford.',
     tags: ['Website', 'Next.js'],
     href: 'https://web.stanford.edu/class/cs42si/',
     type: 'Website',
