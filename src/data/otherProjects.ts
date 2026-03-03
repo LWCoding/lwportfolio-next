@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import React from 'react';
 import ImmersifyVRDocumentation from '@/components/documentation/ImmersifyVRDocumentation';
+import AlwaysBeClosingDocumentation from '@/components/documentation/AlwaysBeClosingDocumentation';
 
 export type DisplayType = 'monitor' | 'plain' | 'mobile' | 'none';
 
@@ -9,7 +10,7 @@ export interface OtherProject {
   title: string;
   description: string;
   tags: string[];
-  href: string;
+  href?: string;
   coverImage?: string;
   createdAt?: string;
   tools?: ('unity' | 'csharp' | 'react' | 'figma' | 'python' | 'cplusplus' | 'nextjs' | 'html')[];
@@ -33,13 +34,13 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     title: 'Always Be Closing',
     description: 'A simulation of customer management software designed to train salespeople to be more effective in sales calls. Used to teach STRAMGT351 at Stanford.',
     tags: ['Simulation'],
-    href: 'https://sale-prod.s3.amazonaws.com/Build_Prod/index.html',
     type: 'Project',
     coverImage: '/images/alwaysbeclosing.png',
     createdAt: '2025-06-15',
     tools: ['figma', 'html', 'unity', 'csharp'],
     githubUrl: 'https://github.com/banasse/ABCSALE',
-    displayType: 'monitor'
+    displayType: 'monitor',
+    detailComponent: React.createElement(AlwaysBeClosingDocumentation),
   },
   {
     id: 'immersifyvr',
@@ -51,7 +52,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     coverImage: '/images/immersifyvr.png',
     createdAt: '2024-10-24',
     tools: ['figma', 'unity', 'csharp'],
-    // detailComponent: React.createElement(ImmersifyVRDocumentation),
+    detailComponent: React.createElement(ImmersifyVRDocumentation),
     githubUrl: 'https://github.com/JLee-003/ImmersifyVR',
     displayType: 'plain'
   },

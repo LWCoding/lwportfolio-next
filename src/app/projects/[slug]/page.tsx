@@ -113,7 +113,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const tags = isGame ? game!.tags : project!.tags;
   const createdAt = isGame ? game!.created_at : project!.createdAt;
   const githubUrl = isGame ? (game!.githubUrl || gameConfig?.githubUrl) : project!.githubUrl;
-  const externalLink = isGame ? game!.url : project!.href;
+  const externalLink = (isGame ? game!.url : project!.href) || '';
+  const hasExternalLink = externalLink.trim().length > 0;
   const externalLinkLabel = isGame 
     ? 'Play on itch.io' 
     : (project!.type ? `View ${project!.type}` : 'Open Project');
@@ -336,34 +337,36 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                       />
                     </a>
                   )}
-                  <Link
-                    href={externalLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3 bg-green-600 hover:bg-green-700 text-white font-bold text-sm sm:text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
-                  >
-                    {isGame ? (
-                      <>
-                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
-                        <span>{externalLinkLabel}</span>
-                      </>
-                    ) : (
-                      <>
-                        <svg
-                          className="w-5 h-5"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
-                        <span>{externalLinkLabel}</span>
-                      </>
-                    )}
-                  </Link>
+                  {hasExternalLink && (
+                    <Link
+                      href={externalLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3 bg-green-600 hover:bg-green-700 text-white font-bold text-sm sm:text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+                    >
+                      {isGame ? (
+                        <>
+                          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                          <span>{externalLinkLabel}</span>
+                        </>
+                      ) : (
+                        <>
+                          <svg
+                            className="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                          <span>{externalLinkLabel}</span>
+                        </>
+                      )}
+                    </Link>
+                  )}
                 </div>
               </div>
 

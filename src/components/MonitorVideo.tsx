@@ -116,7 +116,7 @@ export default function MonitorVideo({
                   fill
                   className="object-contain"
                   style={{ objectFit }}
-                  onLoadingComplete={() => setIsLoaded(true)}
+                  onLoad={() => setIsLoaded(true)}
                 />
               </div>
             )}
