@@ -19,15 +19,15 @@ export default function ImmersifyVRDocumentation() {
       <div className="flex flex-col items-center max-w-2xl mx-auto">
         <div className="relative w-full rounded-xl overflow-hidden border border-slate-200/80">
           <Image
-            src="/images/immersifyvr.png"
-            alt="ImmersifyVR — VR exercise experience"
+            src="/images/chateaubobvisit.JPG"
+            alt="ImmersifyVR — Team with senior playtester at Chateau Cupertino"
             width={800}
             height={450}
             className="w-full h-auto block"
           />
         </div>
         <p className="text-sm text-black/70 text-center mt-3">
-          ImmersifyVR VR exercise interface
+          ImmersifyVR team with senior playtester at Chateau Cupertino
         </p>
       </div>
 
@@ -43,14 +43,14 @@ export default function ImmersifyVRDocumentation() {
           <div className="relative w-full rounded-xl overflow-hidden border border-slate-200/80">
             <Image
               src="/images/immersifyvr.png"
-              alt="ImmersifyVR product and mission — placeholder"
+              alt="Preview of ImmersifyVR swimming scene"
               width={1024}
               height={768}
               className="w-full h-auto block"
             />
           </div>
           <p className="text-sm text-black/70 text-center mt-3">
-            Product and mission — placeholder
+            Preview of ImmersifyVR swimming scene
           </p>
         </div>
       </section>
@@ -66,15 +66,15 @@ export default function ImmersifyVRDocumentation() {
         <div className="max-w-3xl mx-auto mt-6">
           <div className="relative w-full rounded-xl overflow-hidden border border-slate-200/80">
             <Image
-              src="/images/immersifyvr.png"
-              alt="Playtesting with older adults — placeholder"
+              src="/images/chateaulucasattentive.JPG"
+              alt="Lucas post-interviewing with a senior playtester at Chateau Cupertino"
               width={1200}
               height={600}
               className="w-full h-auto block"
             />
           </div>
           <p className="text-sm text-black/70 text-center mt-3">
-            Playtesting with older adults — placeholder
+            Post-interviewing with a senior playtester at Chateau Cupertino
           </p>
         </div>
       </section>
@@ -90,15 +90,15 @@ export default function ImmersifyVRDocumentation() {
         <div className="max-w-3xl mx-auto mt-6">
           <div className="relative w-full rounded-xl overflow-hidden border border-slate-200/80">
             <Image
-              src="/images/immersifyvr.png"
-              alt="B2B website and public presence — placeholder"
+              src="/images/immersifyvrwebsite.png"
+              alt="immersifyvr.org website preview"
               width={1200}
               height={600}
               className="w-full h-auto block"
             />
           </div>
           <p className="text-sm text-black/70 text-center mt-3">
-            immersifyvr.org — placeholder
+            immersifyvr.org website preview
           </p>
         </div>
       </section>

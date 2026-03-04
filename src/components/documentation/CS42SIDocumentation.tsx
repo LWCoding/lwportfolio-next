@@ -22,14 +22,14 @@ export default function CS42SIDocumentation() {
         <div className="relative w-full rounded-xl overflow-hidden border border-slate-200/80">
           <Image
             src="/images/cs42si_fa2025.png"
-            alt="CS42SI course homepage — overview"
+            alt="CS42SI end-of-quarter showcase, Fall 2025"
             width={800}
             height={450}
             className="w-full h-auto block"
           />
         </div>
         <p className="text-sm text-black/70 text-center mt-3">
-          CS42SI: Designing Games for Learning — course homepage (placeholder)
+          CS42SI end-of-quarter showcase, Fall 2025
         </p>
       </div>
 
@@ -47,15 +47,15 @@ export default function CS42SIDocumentation() {
         <div className="max-w-2xl mx-auto mt-6">
           <div className="relative w-full rounded-xl overflow-hidden border border-slate-200/80">
             <Image
-              src="/images/cs42si_fa2025.png"
-              alt="CS42SI course structure — placeholder"
+              src="/images/cs42sistairproblem.png"
+              alt="CS42SI lecture slide example (stair problem)"
               width={1024}
               height={768}
               className="w-full h-auto block"
             />
           </div>
           <p className="text-sm text-black/70 text-center mt-3">
-            Course structure and weekly rhythm — placeholder
+            Lecture slide example (stair problem)
           </p>
         </div>
       </section>
@@ -73,15 +73,15 @@ export default function CS42SIDocumentation() {
         <div className="max-w-3xl mx-auto mt-6">
           <div className="relative w-full rounded-xl overflow-hidden border border-slate-200/80">
             <Image
-              src="/images/cs42si_fa2025.png"
-              alt="CS42SI student projects and playtesting — placeholder"
+              src="/images/cs42siplaytesting.jpg"
+              alt="CS42SI student projects and playtesting"
               width={1200}
               height={600}
               className="w-full h-auto block"
             />
           </div>
           <p className="text-sm text-black/70 text-center mt-3">
-            Student projects and in-class playtesting — placeholder
+            Student projects and in-class playtesting
           </p>
         </div>
       </section>
@@ -106,15 +106,15 @@ export default function CS42SIDocumentation() {
         <div className="max-w-3xl mx-auto mt-6">
           <div className="relative w-full rounded-xl overflow-hidden border border-slate-200/80">
             <Image
-              src="/images/cs42si_fa2025.png"
-              alt="CS42SI curriculum and website — placeholder"
+              src="/images/cs42siwebsite.png"
+              alt="CS42SI public-facing course website and curriculum"
               width={1200}
               height={600}
               className="w-full h-auto block"
             />
           </div>
           <p className="text-sm text-black/70 text-center mt-3">
-            Public-facing course website and curriculum — placeholder
+            Public-facing course website and curriculum
           </p>
         </div>
       </section>
