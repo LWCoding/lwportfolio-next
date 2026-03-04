@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import React from 'react';
 import ImmersifyVRDocumentation from '@/components/documentation/ImmersifyVRDocumentation';
 import AlwaysBeClosingDocumentation from '@/components/documentation/AlwaysBeClosingDocumentation';
+import CS42SIDocumentation from '@/components/documentation/CS42SIDocumentation';
 
 export type DisplayType = 'monitor' | 'plain' | 'mobile' | 'none';
 
@@ -66,7 +67,8 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     coverImage: '/images/cs42si_fa2025.png',
     createdAt: '2025-09-03',
     tools: ['html', 'react'],
-    displayType: 'monitor'
+    displayType: 'monitor',
+    detailComponent: React.createElement(CS42SIDocumentation),
   },
   {
     id: 'serendipi-tea',
