@@ -183,11 +183,18 @@ export default function Home() {
 
               {/* Descriptive Text */}
               <p className="text-base md:text-lg text-white lg:text-black font-medium">
-                a UI/UX designer crafting interactive experiences through game development, incentive design, and education!
+                a designer with a background in computer science designing systems through human-computer interaction and AI. I've deployed projects played by hundreds of thousands of people under the alias "LWCoding"!
               </p>
 
+              {/* Basic demographics / education */}
+              <div className="w-full -mt-2 mb-8">
+                <p className="text-sm md:text-base text-white lg:text-black font-medium">
+                  B.S. Design • 4.015 GPA • Stanford ’27
+                </p>
+              </div>
+
               {/* Tools Row */}
-              <div className="grid grid-cols-4 gap-3 md:gap-4 items-center justify-items-center tools-row-wrap">
+              <div className="grid grid-cols-4 gap-3 md:gap-4 items-center justify-items-center tools-row-wrap -mt-3">
                 {tools.map((tool, index) => (
                   <div
                     key={index}
