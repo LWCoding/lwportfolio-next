@@ -3,6 +3,9 @@
 import Navigation from "@/components/Navigation";
 import Section from "@/components/Section";
 import Footer from "@/components/Footer";
+import HomeShowcaseCards, {
+  type HomeShowcaseCardItem,
+} from "@/components/HomeShowcaseCards";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -83,9 +86,55 @@ export default function Home() {
     { name: 'Cursor', image: '/images/cursor.png' },
   ];
 
-  const experienceHighlights = [
+  const experienceHighlights: {
+    id: string;
+    showcaseCards: HomeShowcaseCardItem[];
+    card: {
+      href: string;
+      ariaLabel: string;
+      imageSrc: string;
+      imageAlt: string;
+      badgeLabel: string;
+      badgeClassName: string;
+      badgeTextClassName: string;
+      prefixText: string;
+      title: string;
+      description: string;
+      ringColorClassName: string;
+      subButtonLabel: string;
+    };
+  }[] = [
     {
       id: "experience-product-research",
+      showcaseCards: [
+        {
+          title: "Always Be Closing",
+          description:
+            "A sales simulation for Stanford students learning to close real deals.",
+          pill: "For Work",
+          href: "/projects/always-be-closing",
+          imageSrc: "/images/alwaysbeclosing.png",
+          imageAlt: "Always Be Closing — product simulation interface",
+        },
+        {
+          title: "ImmersifyVR",
+          description:
+            "VR exercise experiences designed with older adults in mind.",
+          pill: "For Work",
+          href: "/projects/immersifyvr",
+          imageSrc: "/images/immersifyvr.png",
+          imageAlt: "ImmersifyVR virtual reality exercise product",
+        },
+        {
+          title: "Planet",
+          description:
+            "A mental health app that helps you connect with friends you already have.",
+          pill: "For Work",
+          href: "/projects/planet",
+          imageSrc: "/images/planet.png",
+          imageAlt: "Planet mental health app project",
+        },
+      ],
       card: {
         href: "/projects",
         ariaLabel: "Explore projects from my product design and research work",
@@ -104,6 +153,38 @@ export default function Home() {
     },
     {
       id: "experience-community-clubs",
+      showcaseCards: [
+        {
+          title: "Aw, Rats",
+          description:
+            "GMTK 2025 — loop rats with a stylus before they steal your cheese.",
+          pill: "For Fun",
+          href: "/projects/3766251",
+          imageSrc:
+            "https://img.itch.zone/aW1hZ2UvMzc2NjI1MS8yMjQ5MDkzNy5wbmc=/original/0wOyqM.png",
+          imageAlt: "Aw, Rats game cover art",
+        },
+        {
+          title: "Kitchen Nightmares",
+          description:
+            "GMTK 2024 — cook, serve, and rearrange a kitchen that grows every night.",
+          pill: "For Fun",
+          href: "/projects/2904867",
+          imageSrc:
+            "https://img.itch.zone/aW1hZ2UvMjkwNDg2Ny8xNzQxNjgwNi5wbmc=/original/LTw9Sl.png",
+          imageAlt: "Kitchen Nightmare game cover art",
+        },
+        {
+          title: "Attack on Atliz",
+          description:
+            "A top-down space shooter where every kill powers your next upgrade.",
+          pill: "For Fun",
+          href: "/projects/1940212",
+          imageSrc:
+            "https://img.itch.zone/aW1hZ2UvMTk0MDIxMi8xMTU3Nzk0OC5wbmc=/original/wjcDW0.png",
+          imageAlt: "Attack on Atliz game cover art",
+        },
+      ],
       card: {
         href: "/projects",
         ariaLabel: "Explore my experience with games",
@@ -122,6 +203,26 @@ export default function Home() {
     },
     {
       id: "experience-teaching",
+      showcaseCards: [
+        {
+          title: "CS42SI course",
+          description:
+            "From Player to Maker — my intro game design studio at Stanford.",
+          pill: "For Work",
+          href: "/projects/cs42si",
+          imageSrc: "/images/cs42si_fa2025.png",
+          imageAlt: "CS42SI From Player to Maker course materials",
+        },
+        {
+          title: "CS11SI course",
+          description:
+            "Unity’s XR Interaction Toolkit, taught as a hands-on Stanford course.",
+          pill: "For Work",
+          href: "/projects/cs11si",
+          imageSrc: "/images/cs11si.png",
+          imageAlt: "CS11SI Unity XR course website",
+        },
+      ],
       card: {
         href: "/about",
         ariaLabel: "Learn more about my teaching at Stanford",
@@ -300,63 +401,65 @@ export default function Home() {
         {/* Experience Overview Section */}
         <Section separator={false} container={true} padding={true} className="bg-white">
         <div className="space-y-16 md:space-y-20">
-          {experienceHighlights.map(({ id, card }, index) => {
+          {experienceHighlights.map(({ id, card, showcaseCards }, index) => {
             const isEven = index % 2 === 0;
             return (
-              <div
-                key={id}
-                className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 md:gap-12`}
-              >
-                {/* Image */}
-                <div className="relative w-full md:w-1/2 aspect-[4/3] md:aspect-[3/2]">
-                  <Image
-                    src={card.imageSrc}
-                    alt={card.imageAlt}
-                    fill
-                    className="object-cover rounded-lg"
-                  />
-                </div>
-                
-                {/* Text Content */}
-                <div className="w-full md:w-1/2 space-y-4">
-                  <div className="space-y-1">
-                    {card.prefixText && (
-                      <span className="block text-base md:text-lg font-medium text-black/70">
-                        {card.prefixText}
-                      </span>
-                    )}
-                    <h3 className="text-3xl md:text-4xl font-bold text-black">
-                      {card.title}
-                    </h3>
+              <div key={id} className="w-full space-y-0">
+                <div
+                  className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 md:gap-12`}
+                >
+                  {/* Image */}
+                  <div className="relative w-full md:w-1/2 aspect-[4/3] md:aspect-[3/2]">
+                    <Image
+                      src={card.imageSrc}
+                      alt={card.imageAlt}
+                      fill
+                      className="object-cover rounded-lg"
+                    />
                   </div>
-                  <p className="text-base md:text-lg text-black/80 leading-relaxed">
-                    {card.description}
-                  </p>
-                  {card.subButtonLabel && (
-                    <div className="pt-2">
-                      <Link
-                        href={card.href}
-                        aria-label={card.ariaLabel}
-                        className={`group inline-flex items-center justify-center gap-2 px-6 py-3 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer ${
-                          card.href === '/projects' 
-                            ? 'bg-green-600 hover:bg-green-600' 
-                            : 'bg-blue-500 hover:bg-blue-600'
-                        }`}
-                      >
-                        {card.href === '/projects' && (
-                          <svg 
-                            className="w-5 h-5 transition-transform group-hover:scale-110" 
-                            fill="currentColor" 
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M8 5v14l11-7z"/>
-                          </svg>
-                        )}
-                        <span>{card.subButtonLabel}</span>
-                      </Link>
+
+                  {/* Text Content */}
+                  <div className="w-full md:w-1/2 space-y-4">
+                    <div className="space-y-1">
+                      {card.prefixText && (
+                        <span className="block text-base md:text-lg font-medium text-black/70">
+                          {card.prefixText}
+                        </span>
+                      )}
+                      <h3 className="text-3xl md:text-4xl font-bold text-black">
+                        {card.title}
+                      </h3>
                     </div>
-                  )}
+                    <p className="text-base md:text-lg text-black/80 leading-relaxed">
+                      {card.description}
+                    </p>
+                    {card.subButtonLabel && (
+                      <div className="pt-2">
+                        <Link
+                          href={card.href}
+                          aria-label={card.ariaLabel}
+                          className={`group inline-flex items-center justify-center gap-2 px-6 py-3 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer ${
+                            card.href === '/projects'
+                              ? 'bg-green-600 hover:bg-green-600'
+                              : 'bg-blue-500 hover:bg-blue-600'
+                          }`}
+                        >
+                          {card.href === '/projects' && (
+                            <svg
+                              className="w-5 h-5 transition-transform group-hover:scale-110"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M8 5v14l11-7z" />
+                            </svg>
+                          )}
+                          <span>{card.subButtonLabel}</span>
+                        </Link>
+                      </div>
+                    )}
+                  </div>
                 </div>
+                <HomeShowcaseCards cards={showcaseCards} />
               </div>
             );
           })}
