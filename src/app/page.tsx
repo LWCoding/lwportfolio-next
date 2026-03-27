@@ -274,7 +274,7 @@ export default function Home() {
           {/* Background Image for small and medium screens */}
           <div className="absolute inset-0 block lg:hidden">
             <Image
-              src="/images/teachinggame.jpg"
+              src="/images/cs377g-playtest.png"
               alt="Game development showcase background"
               fill
               priority
@@ -362,14 +362,14 @@ export default function Home() {
           {/* Right Side - Image (only on large screens and up) */}
           <div className="hidden lg:block flex-1 relative bg-gray-800">
             <Image
-              src="/images/teachinggame.jpg"
+              src="/images/cs377g-playtest.png"
               alt="Game development showcase background"
               fill
               priority
               className="object-cover"
             />
             {/* Dark overlay to keep background very subdued */}
-            <div className="absolute inset-0 bg-black/20"></div>
+            <div className="absolute inset-0 bg-black/15"></div>
             {/* Text and Headshot - Bottom Right */}
             <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 z-20 flex items-center gap-3 md:gap-4">
               {/* Dialogue Box - Left of headshot */}
