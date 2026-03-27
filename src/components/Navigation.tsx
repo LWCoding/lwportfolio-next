@@ -41,7 +41,7 @@ export default function Navigation() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 w-full bg-yellow-400 z-50 border-b-2 border-black/20">
-      <div className="mx-auto px-3 sm:px-4 py-3">
+      <div className="mx-auto w-full max-w-[1280px] px-4 py-3">
         <div className="flex items-center justify-between gap-2 sm:gap-4 lg:relative">
           {/* Name - Left */}
           <div className="mr-4 flex-shrink-0">
