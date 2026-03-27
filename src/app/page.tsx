@@ -267,26 +267,23 @@ export default function Home() {
           height: 'calc(100vh - 56px - 64px)',
         }}
       >
-        {/* Hero Section - Left/Right Split */}
-        <div 
-          className="h-full flex flex-col lg:flex-row relative overflow-hidden"
-        >
-          {/* Background Image for small and medium screens */}
-          <div className="absolute inset-0 block lg:hidden">
-            <Image
-              src="/images/cs377g-playtest.png"
-              alt="Game development showcase background"
-              fill
-              priority
-              className="object-cover"
-            />
-            {/* Dark overlay to keep background very subdued */}
-            <div className="absolute inset-0 bg-black/70"></div>
-          </div>
+        {/* Full-bleed mobile background (behind constrained hero content) */}
+        <div className="absolute inset-0 z-0 block lg:hidden">
+          <Image
+            src="/images/cs377g-playtest.png"
+            alt="Game development showcase background"
+            fill
+            priority
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-black/70" />
+        </div>
 
-          {/* Left Side - Text Content */}
-          <div className="relative z-30 w-full lg:w-2/5 flex-1 lg:flex-none flex items-center justify-center bg-transparent lg:bg-gray-200 p-8 md:p-12">
-            <div className="flex flex-col items-start text-left max-w-lg w-full space-y-6">
+        {/* Hero: full-viewport split — gray to the left edge, image to the right edge; text aligns with Section inner column */}
+        <div className="relative z-10 flex h-full w-full flex-col overflow-hidden lg:flex-row">
+          {/* Left Side - Text Content (pulls toward the split on wide viewports) */}
+          <div className="relative z-30 flex w-full flex-1 flex-col items-center justify-center bg-transparent p-8 md:p-12 lg:w-2/5 lg:flex-none lg:items-end lg:justify-center lg:bg-gray-200 lg:py-12 lg:pl-[calc(1rem+((100vw-2rem)-min(1280px,100vw-2rem))/2)] lg:pr-6 xl:pr-8">
+            <div className="flex w-full max-w-lg flex-col items-start space-y-6 text-left">
               {/* Main Heading */}
               <h1 className="text-6xl font-bold text-white lg:text-black leading-tight space-y-1">
                 <span className="block text-base md:text-lg font-medium text-white lg:text-black">
@@ -359,8 +356,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right Side - Image (only on large screens and up) */}
-          <div className="hidden lg:block flex-1 relative bg-gray-800">
+          {/* Right Side - Image (full remaining viewport width on lg+) */}
+          <div className="relative hidden min-h-0 min-w-0 flex-1 bg-gray-800 lg:block">
             <Image
               src="/images/cs377g-playtest.png"
               alt="Game development showcase background"
@@ -370,33 +367,29 @@ export default function Home() {
             />
             {/* Dark overlay to keep background very subdued */}
             <div className="absolute inset-0 bg-black/15"></div>
-            {/* Text and Headshot - Bottom Right */}
-            <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 z-20 flex items-center gap-3 md:gap-4">
-              {/* Dialogue Box - Left of headshot */}
-              <div className="relative bg-white/95 rounded-lg px-3 py-2 md:px-4 md:py-2.5 shadow-lg mr-2 md:mr-3">
-                {/* Speech bubble tail pointing right */}
-                <div 
-                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-full w-0 h-0"
-                  style={{
-                    borderTop: '8px solid transparent',
-                    borderBottom: '8px solid transparent',
-                    borderLeft: '10px solid rgba(255, 255, 255, 0.95)'
-                  }}
-                ></div>
-                <p className="text-black text-sm md:text-base font-medium whitespace-nowrap">
-                  <i>Welcome! Most of my work is digital and playable here!</i>
-                </p>
-              </div>
-              {/* Headshot Circle */}
-              <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden shadow-lg flex-shrink-0">
-                <Image
-                  src="/images/dschoolheadshot.png"
-                  alt="Lucas Wang"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
+          </div>
+        </div>
+
+        {/* Headshot + quote — aligned with page content column (same as Section) */}
+        <div className="pointer-events-none absolute bottom-4 left-0 right-0 z-20 hidden px-4 md:bottom-6 lg:block">
+          <div className="mx-auto flex w-full max-w-[1280px] items-center justify-end gap-3 md:gap-4 pointer-events-auto">
+            <div className="relative mr-2 bg-white/95 px-3 py-2 shadow-lg md:mr-3 md:px-4 md:py-2.5 rounded-lg">
+              <div
+                className="absolute right-0 top-1/2 h-0 w-0 translate-x-full -translate-y-1/2 border-y-[8px] border-l-[10px] border-y-transparent border-l-[rgba(255,255,255,0.95)]"
+                aria-hidden
+              />
+              <p className="text-sm font-medium whitespace-nowrap text-black md:text-base">
+                <i>Welcome! Most of my work is digital and playable here!</i>
+              </p>
+            </div>
+            <div className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-full shadow-lg md:h-20 md:w-20">
+              <Image
+                src="/images/dschoolheadshot.png"
+                alt="Lucas Wang"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
           </div>
         </div>
