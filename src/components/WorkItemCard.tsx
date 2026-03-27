@@ -204,10 +204,9 @@ export default function WorkItemCard({
             {tags && tags.length > 0 && (
               <div className="flex flex-wrap gap-2">
                 {tags.map((tag, index) => {
-                  const isFirstTag = index === 0;
                   const isForWork = tag === "For Work";
                   const isForFun = tag === "For Fun";
-                  const tagClassName = isFirstTag && (isForWork || isForFun)
+                  const tagClassName = (isForWork || isForFun)
                     ? isForFun
                       ? "bg-yellow-400 text-black px-3 py-1 rounded-full text-[0.7rem] md:text-[0.7rem] lg:text-xs font-medium"
                       : "bg-gray-700 text-white px-3 py-1 rounded-full text-[0.7rem] md:text-[0.7rem] lg:text-xs font-medium"

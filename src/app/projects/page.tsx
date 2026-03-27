@@ -39,7 +39,7 @@ export default function Projects() {
               description={project.description}
               imageSrc={project.coverImage || "/images/scratchproject.png"}
               imageAlt={`${project.title} cover image`}
-              tags={["For Work", ...(project.tags || [])]}
+              tags={[...(project.listingPills ?? ["For Work"]), ...(project.tags || [])]}
               tools={project.tools}
               date={project.createdAt}
               href={project.href}
@@ -81,7 +81,7 @@ export default function Projects() {
                   description={project.description}
                   imageSrc={project.coverImage || "/images/scratchproject.png"}
                   imageAlt={`${project.title} cover image`}
-                  tags={["For Work", ...(project.tags || [])]}
+                  tags={[...(project.listingPills ?? ["For Work"]), ...(project.tags || [])]}
                   tools={project.tools}
                   date={project.createdAt}
                   href={project.href}

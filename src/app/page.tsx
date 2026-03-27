@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import HomeShowcaseCards, {
   type HomeShowcaseCardItem,
 } from "@/components/HomeShowcaseCards";
+import { getListingPillsForProject } from "@/data/projectListingPills";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -111,7 +112,7 @@ export default function Home() {
           title: "Always Be Closing",
           description:
             "A sales simulation for Stanford students learning to close real deals.",
-          pill: "For Work",
+          pills: ["For Work"],
           href: "/projects/always-be-closing",
           imageSrc: "/images/alwaysbeclosing.png",
           imageAlt: "Always Be Closing — product simulation interface",
@@ -119,8 +120,8 @@ export default function Home() {
         {
           title: "ImmersifyVR",
           description:
-            "VR exercise experiences designed with older adults in mind.",
-          pill: "For Work",
+            "VR exercise experiences designed with older adults in mind, playtested with senior homes across California.",
+          pills: ["For Work"],
           href: "/projects/immersifyvr",
           imageSrc: "/images/immersifyvr.png",
           imageAlt: "ImmersifyVR virtual reality exercise product",
@@ -129,7 +130,7 @@ export default function Home() {
           title: "Planet",
           description:
             "A mental health app that helps you connect with friends you already have.",
-          pill: "For Work",
+          pills: ["For Work"],
           href: "/projects/planet",
           imageSrc: "/images/planet.png",
           imageAlt: "Planet mental health app project",
@@ -158,7 +159,7 @@ export default function Home() {
           title: "Aw, Rats",
           description:
             "GMTK 2025 — loop rats with a stylus before they steal your cheese.",
-          pill: "For Fun",
+          pills: ["For Fun"],
           href: "/projects/3766251",
           imageSrc:
             "https://img.itch.zone/aW1hZ2UvMzc2NjI1MS8yMjQ5MDkzNy5wbmc=/original/0wOyqM.png",
@@ -168,7 +169,7 @@ export default function Home() {
           title: "Kitchen Nightmares",
           description:
             "GMTK 2024 — cook, serve, and rearrange a kitchen that grows every night.",
-          pill: "For Fun",
+          pills: ["For Fun"],
           href: "/projects/2904867",
           imageSrc:
             "https://img.itch.zone/aW1hZ2UvMjkwNDg2Ny8xNzQxNjgwNi5wbmc=/original/LTw9Sl.png",
@@ -178,7 +179,7 @@ export default function Home() {
           title: "Attack on Atliz",
           description:
             "A top-down space shooter where every kill powers your next upgrade.",
-          pill: "For Fun",
+          pills: ["For Fun"],
           href: "/projects/1940212",
           imageSrc:
             "https://img.itch.zone/aW1hZ2UvMTk0MDIxMi8xMTU3Nzk0OC5wbmc=/original/wjcDW0.png",
@@ -208,7 +209,7 @@ export default function Home() {
           title: "CS42SI course",
           description:
             "From Player to Maker — my intro game design studio at Stanford.",
-          pill: "For Work",
+          pills: getListingPillsForProject("cs42si"),
           href: "/projects/cs42si",
           imageSrc: "/images/cs42si_fa2025.png",
           imageAlt: "CS42SI From Player to Maker course materials",
@@ -217,7 +218,7 @@ export default function Home() {
           title: "CS11SI course",
           description:
             "Unity’s XR Interaction Toolkit, taught as a hands-on Stanford course.",
-          pill: "For Work",
+          pills: getListingPillsForProject("cs11si"),
           href: "/projects/cs11si",
           imageSrc: "/images/cs11si.png",
           imageAlt: "CS11SI Unity XR course website",

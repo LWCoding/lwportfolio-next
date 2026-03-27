@@ -3,14 +3,20 @@ import React from 'react';
 import ImmersifyVRDocumentation from '@/components/documentation/ImmersifyVRDocumentation';
 import AlwaysBeClosingDocumentation from '@/components/documentation/AlwaysBeClosingDocumentation';
 import CS42SIDocumentation from '@/components/documentation/CS42SIDocumentation';
+import type { ListingPill } from './projectListingPills';
+import { getListingPillsForProject } from './projectListingPills';
 
 export type DisplayType = 'monitor' | 'plain' | 'mobile' | 'none';
+
+export type { ListingPill } from './projectListingPills';
 
 export interface OtherProject {
   id: string;
   title: string;
   description: string;
   tags: string[];
+  /** Prepended to tags on the projects page (e.g. both “For Work” and “For Fun” for CS courses). */
+  listingPills?: ListingPill[];
   href?: string;
   coverImage?: string;
   createdAt?: string;
@@ -61,6 +67,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     id: 'cs42si',
     title: 'CS42SI Course',
     description: 'Original curriculum for CS42SI, a game design course I teach at Stanford University. Came out of my passion to create more game development opportunities at Stanford.',
+    listingPills: getListingPillsForProject('cs42si'),
     tags: ['Website', 'Next.js'],
     href: 'https://web.stanford.edu/class/cs42si/',
     type: 'Website',
@@ -87,6 +94,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     id: 'cs11si',
     title: 'CS11SI Course',
     description: 'Original curriculum and website for CS11SI at Stanford, a course teaching Unity\'s XR interaction toolkit.',
+    listingPills: getListingPillsForProject('cs11si'),
     tags: ['Website', 'Next.js'],
     type: 'Website',
     href: 'https://web.stanford.edu/class/cs11si/',

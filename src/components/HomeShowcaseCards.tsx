@@ -8,14 +8,20 @@ export type ShowcasePill = "For Work" | "For Fun";
 export type HomeShowcaseCardItem = {
   title: string;
   description: string;
-  pill: ShowcasePill;
+  pills: ShowcasePill[];
   href: string;
   imageSrc: string;
   imageAlt: string;
 };
 
-function PillBadge({ pill }: { pill: ShowcasePill }) {
+function PillBadge({ pill, onDark }: { pill: ShowcasePill; onDark?: boolean }) {
   const isFun = pill === "For Fun";
+  if (onDark) {
+    const className = isFun
+      ? "bg-yellow-400 text-black px-3 py-1 rounded-full text-[0.7rem] sm:text-xs font-medium shadow-sm"
+      : "rounded-full border border-white/35 bg-white/15 px-3 py-1 text-[0.7rem] font-medium text-white sm:text-xs";
+    return <span className={className}>{pill}</span>;
+  }
   const className = isFun
     ? "bg-yellow-400 text-black px-3 py-1 rounded-full text-[0.7rem] sm:text-xs font-medium shadow-sm"
     : "bg-gray-700 text-white px-3 py-1 rounded-full text-[0.7rem] sm:text-xs font-medium shadow-sm";
@@ -25,7 +31,7 @@ function PillBadge({ pill }: { pill: ShowcasePill }) {
 function ShowcaseCard({
   title,
   description,
-  pill,
+  pills,
   href,
   imageSrc,
   imageAlt,
@@ -36,7 +42,7 @@ function ShowcaseCard({
       className="group relative block h-full min-h-0 w-full min-w-0 overflow-hidden rounded-xl shadow-sm ring-1 ring-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30 focus-visible:ring-offset-2"
       aria-label={`Open project: ${title}`}
     >
-      <div className="relative aspect-[4/3] w-full min-h-[140px] sm:min-h-[148px]">
+      <div className="relative aspect-[4/3] w-full min-h-[120px] overflow-hidden sm:min-h-[128px]">
         <Image
           src={imageSrc}
           alt={imageAlt}
@@ -45,17 +51,22 @@ function ShowcaseCard({
           sizes="(max-width: 768px) 100vw, 33vw"
         />
         <div
-          className="absolute inset-0 bg-black/50 transition-colors duration-300 group-hover:bg-black/65"
+          className="pointer-events-none absolute inset-0 z-[1] bg-black/20 transition-all duration-500 ease-out group-hover:bg-black/5 group-hover:scale-[1.04]"
           aria-hidden
         />
-        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-3 py-4 text-center sm:px-4 md:px-5">
-          <h4 className="max-w-full text-xl font-bold leading-tight text-white drop-shadow-md sm:text-2xl md:text-[1.65rem]">
-            {title}
-          </h4>
-          <div className="mt-2.5 flex justify-center">
-            <PillBadge pill={pill} />
+
+        <div className="absolute inset-x-0 bottom-0 z-10 rounded-b-xl bg-gray-900/90 px-3 py-3 sm:px-4 sm:py-3.5">
+          <div className="flex flex-wrap items-start justify-between gap-x-3 gap-y-2">
+            <h4 className="min-w-0 flex-1 text-left text-base font-bold leading-snug text-white sm:text-lg md:text-xl">
+              {title}
+            </h4>
+            <div className="flex shrink-0 flex-wrap items-center justify-end gap-1.5 sm:gap-2">
+              {pills.map((pill, index) => (
+                <PillBadge key={`${pill}-${index}`} pill={pill} onDark />
+              ))}
+            </div>
           </div>
-          <p className="mt-2.5 max-w-[95%] text-xs leading-snug text-white/90 drop-shadow-md sm:text-sm md:max-w-[90%]">
+          <p className="mt-2 text-left text-xs leading-snug text-white sm:text-sm">
             {description}
           </p>
         </div>
