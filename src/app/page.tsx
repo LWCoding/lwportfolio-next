@@ -296,7 +296,7 @@ export default function Home() {
 
               {/* Descriptive Text */}
               <p className="text-base md:text-lg text-white lg:text-black font-medium">
-                a designer with a background in computer science designing systems through human-computer interaction and AI. I've deployed projects played by hundreds of thousands of people under the alias "LWCoding"!
+                a designer with a background in computer science designing systems thinking about human-computer interaction and AI. I've deployed projects played by 900K+ people under the alias "LWCoding"!
               </p>
 
               {/* Basic demographics / education */}
