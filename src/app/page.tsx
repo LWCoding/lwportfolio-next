@@ -103,6 +103,8 @@ export default function Home() {
       description: string;
       ringColorClassName: string;
       subButtonLabel: string;
+      /** Shown as underlined link below showcase cards; uses same href as the section CTA. */
+      viewAllLabel: string;
     };
   }[] = [
     {
@@ -137,7 +139,8 @@ export default function Home() {
         },
       ],
       card: {
-        href: "/projects",
+        href: "/projects#for-work",
+        viewAllLabel: "View All Projects",
         ariaLabel: "Explore projects from my product design and research work",
         imageSrc: "/images/alwaysbeclosing.png",
         imageAlt: "simulation and product design interface",
@@ -187,7 +190,8 @@ export default function Home() {
         },
       ],
       card: {
-        href: "/projects",
+        href: "/projects#for-fun",
+        viewAllLabel: "View All Games",
         ariaLabel: "Explore my experience with games",
         imageSrc: "/images/svgdmeeting.png",
         imageAlt: "stanford game development club meeting",
@@ -206,7 +210,7 @@ export default function Home() {
       id: "experience-teaching",
       showcaseCards: [
         {
-          title: "CS42SI course",
+          title: "CS42SI Course",
           description:
             "From Player to Maker — my intro game design studio at Stanford.",
           pills: getListingPillsForProject("cs42si"),
@@ -215,7 +219,7 @@ export default function Home() {
           imageAlt: "CS42SI From Player to Maker course materials",
         },
         {
-          title: "CS11SI course",
+          title: "CS11SI Course",
           description:
             "Unity’s XR Interaction Toolkit, taught as a hands-on Stanford course.",
           pills: getListingPillsForProject("cs11si"),
@@ -223,9 +227,19 @@ export default function Home() {
           imageSrc: "/images/cs11si.png",
           imageAlt: "CS11SI Unity XR course website",
         },
+        {
+          title: "CS247G Course (SL)",
+          description:
+            "Grading and curriculum for ~100 students in a graduate-level game design Stanford course.",
+          pills: getListingPillsForProject("cs247g-course-sl"),
+          href: "/projects/cs247g-course-sl",
+          imageSrc: "/images/cs247g-syllabus.png",
+          imageAlt: "CS247G graduate game design course",
+        },
       ],
       card: {
         href: "/about",
+        viewAllLabel: "View All Teaching",
         ariaLabel: "Learn more about my teaching at Stanford",
         imageSrc: "/images/meteaching.jpg",
         imageAlt: "lucas teaching playful coding projects in class",
@@ -404,6 +418,7 @@ export default function Home() {
         <div className="space-y-16 md:space-y-20">
           {experienceHighlights.map(({ id, card, showcaseCards }, index) => {
             const isEven = index % 2 === 0;
+            const isProjectsPageLink = card.href.startsWith("/projects");
             return (
               <div key={id} className="w-full space-y-0">
                 <div
@@ -440,12 +455,12 @@ export default function Home() {
                           href={card.href}
                           aria-label={card.ariaLabel}
                           className={`group inline-flex items-center justify-center gap-2 px-6 py-3 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer ${
-                            card.href === '/projects'
+                            isProjectsPageLink
                               ? 'bg-green-600 hover:bg-green-600'
                               : 'bg-blue-500 hover:bg-blue-600'
                           }`}
                         >
-                          {card.href === '/projects' && (
+                          {isProjectsPageLink && (
                             <svg
                               className="w-5 h-5 transition-transform group-hover:scale-110"
                               fill="currentColor"
@@ -461,6 +476,33 @@ export default function Home() {
                   </div>
                 </div>
                 <HomeShowcaseCards cards={showcaseCards} />
+                <div className="mt-4 flex justify-center">
+                  <Link
+                    href={card.href}
+                    aria-label={card.ariaLabel}
+                    className={`inline-flex items-center gap-1.5 text-base font-semibold underline underline-offset-2 transition-colors ${
+                      isProjectsPageLink
+                        ? 'text-green-700 hover:text-green-800'
+                        : 'text-blue-600 hover:text-blue-700'
+                    }`}
+                  >
+                    <span>{card.viewAllLabel}</span>
+                    <svg
+                      className="h-4 w-4 shrink-0 translate-y-px"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      viewBox="0 0 24 24"
+                      aria-hidden
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                      />
+                    </svg>
+                  </Link>
+                </div>
               </div>
             );
           })}

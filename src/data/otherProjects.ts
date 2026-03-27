@@ -68,7 +68,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     title: 'CS42SI Course',
     description: 'Original curriculum for CS42SI, a game design course I teach at Stanford University. Came out of my passion to create more game development opportunities at Stanford.',
     listingPills: getListingPillsForProject('cs42si'),
-    tags: ['Website', 'Next.js'],
+    tags: ['Website', 'Teaching'],
     href: 'https://web.stanford.edu/class/cs42si/',
     type: 'Website',
     coverImage: '/images/cs42si_fa2025.png',
@@ -95,7 +95,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     title: 'CS11SI Course',
     description: 'Original curriculum and website for CS11SI at Stanford, a course teaching Unity\'s XR interaction toolkit.',
     listingPills: getListingPillsForProject('cs11si'),
-    tags: ['Website', 'Next.js'],
+    tags: ['Website', 'Teaching'],
     type: 'Website',
     href: 'https://web.stanford.edu/class/cs11si/',
     coverImage: '/images/cs11si.png',
@@ -128,6 +128,28 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     displayType: 'mobile'
   },
   {
+    id: 'cs144-mini-internet',
+    title: 'CS144 Mini-Internet',
+    description:
+      'Designed and implemented a mini-Internet in C++, using IP, UDP, and TCP on a class-wide simulated subnet.',
+    tags: ['Systems', 'Networking'],
+    type: 'Project',
+    coverImage: '/images/cs144-internet.png',
+    createdAt: '2024-11-20',
+    tools: ['cplusplus'],
+  },
+  {
+    id: 'cs148-graphics-engine',
+    title: 'CS148 Graphics Engine',
+    description:
+      'Designed a custom ray tracer, handling diffuse/specular BRDFs, reflections, Fresnel, and transmission.',
+    tags: ['Graphics', 'Rendering'],
+    type: 'Project',
+    coverImage: '/images/cs148-graphics.png',
+    createdAt: '2024-06-01',
+    tools: ['cplusplus'],
+  },
+  {
     id: 'obscure-courses',
     title: 'Obscure Courses',
     description: 'A gamified website that allows users to guess the names of obscure courses at Stanford.',
@@ -151,5 +173,17 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     fadeOpacity: 0.7,
     tools: ['html'],
     displayType: 'monitor'
+  },
+  {
+    id: 'cs247g-course-sl',
+    title: 'CS247G Course',
+    description:
+      'Handled grading and curriculum help for a graduate-level course supporting ~100 students at Stanford.',
+    listingPills: getListingPillsForProject('cs247g-course-sl'),
+    tags: ['Teaching'],
+    type: 'Course',
+    coverImage: '/images/cs247g-syllabus.png',
+    createdAt: '2025-01-15',
+    tools: ['unity'],
   },
 ];

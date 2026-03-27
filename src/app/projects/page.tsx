@@ -87,6 +87,7 @@ export default function Projects() {
                   href={project.href}
                   secondaryCtaLabel={project.type ? `View ${project.type}` : "View Project"}
                   githubUrl={project.githubUrl}
+                  processUrl={(project.detailComponent || project.displayType) ? `/projects/${project.id}` : undefined}
                 />
               ))}
             </div>

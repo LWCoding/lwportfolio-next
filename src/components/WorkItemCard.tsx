@@ -41,6 +41,8 @@ export default function WorkItemCard({
           .toLocaleDateString("en-US", { month: "short", year: "numeric" })
       : undefined;
 
+  const hasExternalHref = Boolean(href?.trim());
+
   const content = (
     <div className="flex flex-col md:flex-row gap-6 md:gap-8 lg:gap-12 items-center md:items-center">
       {/* Image Section - Left Side */}
@@ -239,9 +241,9 @@ export default function WorkItemCard({
             </Link>
           )}
 
-          {showExternalCta && href && (
+          {showExternalCta && hasExternalHref && (
             <Link
-              href={href}
+              href={href!}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-3 py-3 md:px-4 md:py-2 lg:px-6 lg:py-3 bg-green-600 hover:bg-green-700 text-white font-bold text-sm md:text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
@@ -253,6 +255,28 @@ export default function WorkItemCard({
                 stroke="currentColor"
                 strokeWidth="2"
                 viewBox="0 0 24 24"
+                aria-hidden
+              >
+                <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </Link>
+          )}
+
+          {!hasExternalHref && !processUrl && (
+            <Link
+              href="/contact"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-3 py-3 md:px-4 md:py-2 lg:px-6 lg:py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-sm md:text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+            >
+              <span>Contact Me for Details</span>
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                aria-hidden
               >
                 <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>

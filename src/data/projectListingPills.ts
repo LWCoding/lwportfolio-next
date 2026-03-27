@@ -10,6 +10,7 @@ export function getListingPillsForProject(projectId: string): ListingPill[] {
   switch (projectId) {
     case "cs42si":
     case "cs11si":
+    case "cs247g-course-sl":
       return COURSE_LISTING_PILLS;
     default:
       return DEFAULT_LISTING;
