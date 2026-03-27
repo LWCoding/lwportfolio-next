@@ -131,7 +131,7 @@ export default function Home() {
         {
           title: "Planet",
           description:
-            "A mental health app that helps you connect with friends you already have.",
+            "A mental health app that helps you strengthen connections with friends you might not know well.",
           pills: ["For Work"],
           href: "/projects/planet",
           imageSrc: "/images/planet.png",
@@ -161,7 +161,7 @@ export default function Home() {
         {
           title: "Aw, Rats",
           description:
-            "GMTK 2025 — loop rats with a stylus before they steal your cheese.",
+            "GMTK 2025 submission, top 10%. Loop rats with a stylus before they steal your cheese.",
           pills: ["For Fun"],
           href: "/projects/3766251",
           imageSrc:
@@ -171,7 +171,7 @@ export default function Home() {
         {
           title: "Kitchen Nightmares",
           description:
-            "GMTK 2024 — cook, serve, and rearrange a kitchen that grows every night.",
+            "GMTK 2024 submission. Cook, serve, and rearrange a kitchen that grows every night.",
           pills: ["For Fun"],
           href: "/projects/2904867",
           imageSrc:
@@ -212,7 +212,7 @@ export default function Home() {
         {
           title: "CS42SI Course",
           description:
-            "From Player to Maker — my intro game design studio at Stanford.",
+            "An intro game design course I founded and teach at Stanford, covering the 2D Unity engine.",
           pills: getListingPillsForProject("cs42si"),
           href: "/projects/cs42si",
           imageSrc: "/images/cs42si_fa2025.png",
@@ -221,7 +221,7 @@ export default function Home() {
         {
           title: "CS11SI Course",
           description:
-            "Unity’s XR Interaction Toolkit, taught as a hands-on Stanford course.",
+            "An intro course I actively teach at Stanford, covering Unity's XR Interaction Toolkit.",
           pills: getListingPillsForProject("cs11si"),
           href: "/projects/cs11si",
           imageSrc: "/images/cs11si.png",
