@@ -135,8 +135,7 @@ export default function Home() {
       showcaseCards: [
         {
           title: "Always Be Closing",
-          description:
-            "A sales simulation for Stanford students learning to close real deals.",
+          description: "Be a salesperson and close simulated deals.",
           pills: ["For Work"],
           href: "/projects/always-be-closing",
           imageSrc: "/images/alwaysbeclosing.png",
@@ -144,8 +143,7 @@ export default function Home() {
         },
         {
           title: "ImmersifyVR",
-          description:
-            "VR exercise experiences designed with older adults in mind, playtested with senior homes across California.",
+          description: "VR fitness built for older adults.",
           pills: ["For Work"],
           href: "/projects/immersifyvr",
           imageSrc: "/images/immersifyvr.png",
@@ -153,8 +151,7 @@ export default function Home() {
         },
         {
           title: "Planet",
-          description:
-            "A mental health app that helps you strengthen connections with friends you might not know well.",
+          description: "Strengthen connections with your friends.",
           pills: ["For Work"],
           href: "/projects/planet",
           imageSrc: "/images/planet.png",
@@ -162,7 +159,7 @@ export default function Home() {
         },
       ],
       card: {
-        href: "/projects#for-work",
+        href: "/projects#projects",
         viewAllLabel: "View All Projects",
         ariaLabel: "Explore projects from my product design and research work",
         imageSrc: "/images/alwaysbeclosing.png",
@@ -183,8 +180,7 @@ export default function Home() {
       showcaseCards: [
         {
           title: "Aw, Rats",
-          description:
-            "GMTK 2025 submission, top 10%. Loop rats with a stylus before they steal your cheese.",
+          description: "GMTK 2025: Loop rats, protect the cheese.",
           pills: ["For Fun"],
           href: "/projects/3766251",
           imageSrc:
@@ -193,8 +189,7 @@ export default function Home() {
         },
         {
           title: "Kitchen Nightmares",
-          description:
-            "GMTK 2024 submission. Cook, serve, and rearrange a kitchen that grows every night.",
+          description: "GMTK 2024: Manage a kitchen that keeps growing.",
           pills: ["For Fun"],
           href: "/projects/2904867",
           imageSrc:
@@ -203,8 +198,7 @@ export default function Home() {
         },
         {
           title: "Attack on Atliz",
-          description:
-            "A top-down space shooter where every kill powers your next upgrade.",
+          description: "Wonderjam 4: Every kill buys your next power spike.",
           pills: ["For Fun"],
           href: "/projects/1940212",
           imageSrc:
@@ -213,7 +207,7 @@ export default function Home() {
         },
       ],
       card: {
-        href: "/projects#for-fun",
+        href: "/projects#games",
         viewAllLabel: "View All Games",
         ariaLabel: "Explore my experience with games",
         imageSrc: "/images/svgdmeeting.png",
@@ -234,8 +228,7 @@ export default function Home() {
       showcaseCards: [
         {
           title: "CS42SI Course",
-          description:
-            "An intro game design course I founded and teach at Stanford, covering the 2D Unity engine.",
+          description: "Teaching 2D Unity at Stanford. I founded the course!",
           pills: getListingPillsForProject("cs42si"),
           href: "/projects/cs42si",
           imageSrc: "/images/cs42si_fa2025.png",
@@ -243,8 +236,7 @@ export default function Home() {
         },
         {
           title: "CS11SI Course",
-          description:
-            "An intro course I actively teach at Stanford, covering Unity's XR Interaction Toolkit.",
+          description: "Teaching XR with 3D Unity at Stanford.",
           pills: getListingPillsForProject("cs11si"),
           href: "/projects/cs11si",
           imageSrc: "/images/cs11si.png",
@@ -252,8 +244,7 @@ export default function Home() {
         },
         {
           title: "CS247G Course (SL)",
-          description:
-            "Grading and curriculum for ~100 students in a graduate-level game design Stanford course.",
+          description: "Teaching graduate-level game design at Stanford.",
           pills: getListingPillsForProject("cs247g-course-sl"),
           href: "/projects/cs247g-course-sl",
           imageSrc: "/images/cs247g-syllabus.png",
@@ -261,9 +252,9 @@ export default function Home() {
         },
       ],
       card: {
-        href: "/about",
+        href: "/projects#teaching",
         viewAllLabel: "View All Teaching",
-        ariaLabel: "Learn more about my teaching at Stanford",
+        ariaLabel: "Explore my teaching and course projects",
         imageSrc: "/images/meteaching.jpg",
         imageAlt: "lucas teaching playful coding projects in class",
         badgeLabel: "Teaching",
@@ -274,7 +265,7 @@ export default function Home() {
         description:
           "Outside of lecturing for CS11SI, CS42SI, CS106A/B, and CS247G as an *undergraduate* at Stanford, I've taught game design internationally in South Korea. I love using interactive narratives to make programming intuitive, joyful, and collaborative.",
         ringColorClassName: "focus:ring-blue-500",
-        subButtonLabel: "View About Me",
+        subButtonLabel: "View Teaching",
       },
     },
   ];
