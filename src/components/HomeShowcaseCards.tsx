@@ -44,35 +44,47 @@ function ShowcaseCard({
       className="group relative block h-full min-h-0 w-full min-w-0 overflow-hidden rounded-xl shadow-sm ring-1 ring-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30 focus-visible:ring-offset-2"
       aria-label={`Open project: ${title} (opens in new tab)`}
     >
-      <div className="relative aspect-[4/3] w-full min-h-[120px] overflow-hidden sm:min-h-[128px]">
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-          fill
-          className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-          sizes="(max-width: 768px) 100vw, 33vw"
-        />
-        <div
-          className="pointer-events-none absolute inset-0 z-[1] bg-black/20 transition-all duration-500 ease-out group-hover:bg-black/5 group-hover:scale-[1.04]"
-          aria-hidden
-        />
+      <div className="flex aspect-[4/3] w-full min-h-[120px] flex-col overflow-hidden sm:min-h-[128px]">
+        {/* Image area: flex-1 height = full card minus bottom panel; hover label centers here */}
+        <div className="relative min-h-0 flex-1 overflow-hidden rounded-t-xl">
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            fill
+            className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+          <div
+            className="pointer-events-none absolute inset-0 z-[1] bg-black/20 transition-all duration-500 ease-out group-hover:bg-black/60 group-hover:scale-[1.04]"
+            aria-hidden
+          />
 
-        <div
-          className="pointer-events-none absolute right-2 top-2 z-[11] flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-gray-900 shadow-md ring-1 ring-black/10 sm:right-3 sm:top-3 sm:h-9 sm:w-9"
-          aria-hidden
-        >
-          <svg
-            className="h-4 w-4 sm:h-5 sm:w-5"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
+          <div
+            className="pointer-events-none absolute inset-0 z-[6] flex items-center justify-center px-4"
+            aria-hidden
           >
-            <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-          </svg>
+            <span className="text-center text-lg font-bold tracking-wide text-white opacity-0 shadow-black/40 drop-shadow-md transition-all duration-300 ease-out translate-y-1 group-hover:translate-y-0 group-hover:opacity-100 sm:text-xl md:text-2xl">
+              View Project
+            </span>
+          </div>
+
+          <div
+            className="pointer-events-none absolute right-2 top-2 z-[11] flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-gray-900 shadow-md ring-1 ring-black/10 sm:right-3 sm:top-3 sm:h-9 sm:w-9"
+            aria-hidden
+          >
+            <svg
+              className="h-4 w-4 sm:h-5 sm:w-5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </div>
         </div>
 
-        <div className="absolute inset-x-0 bottom-0 z-10 rounded-b-xl bg-gray-900/90 px-3 py-3 sm:px-4 sm:py-3.5">
+        <div className="relative z-10 shrink-0 rounded-b-xl bg-gray-900/90 px-3 py-3 sm:px-4 sm:py-3.5">
           <div className="flex flex-wrap items-start justify-between gap-x-3 gap-y-2">
             <h4 className="min-w-0 flex-1 text-left text-base font-bold leading-snug text-white sm:text-lg md:text-xl">
               {title}
