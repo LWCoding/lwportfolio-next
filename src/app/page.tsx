@@ -17,7 +17,7 @@ import { useRouter } from "next/navigation";
  */
 function ExperienceWaveDivider() {
   return (
-    <div className="-my-1 bg-white md:-my-1.5" aria-hidden>
+    <div className="bg-white py-6" aria-hidden>
       <div className="mx-auto w-full max-w-[1280px] px-4">
         <svg
           viewBox="0 0 1200 34"
@@ -431,7 +431,8 @@ export default function Home() {
         </div>
         {/* Experience overview — white sections; yellow-400 waves only between the three */}
         <div className="bg-white">
-          {experienceHighlights.map(({ id, card, showcaseCards }, index) => {
+          {experienceHighlights.map(
+            ({ id, card, showcaseCards }, index) => {
             const isEven = index % 2 === 0;
             const isProjectsPageLink = card.href.startsWith("/projects");
             return (
@@ -470,7 +471,7 @@ export default function Home() {
                           {card.description}
                         </p>
                         {card.subButtonLabel && (
-                          <div className="pt-2">
+                          <div className="flex justify-center pt-2 md:justify-start">
                             <Link
                               href={card.href}
                               aria-label={card.ariaLabel}
@@ -495,7 +496,9 @@ export default function Home() {
                         )}
                       </div>
                     </div>
-                    <HomeShowcaseCards cards={showcaseCards} />
+                    <div className="mx-auto mt-10 w-full max-w-6xl md:mt-6">
+                      <HomeShowcaseCards cards={showcaseCards} />
+                    </div>
                     <div className="mt-4 flex justify-center">
                       <Link
                         href={card.href}
