@@ -1,7 +1,6 @@
 "use client";
 
 import Navigation from "@/components/Navigation";
-import Section from "@/components/Section";
 import Footer from "@/components/Footer";
 import HomeShowcaseCards, {
   type HomeShowcaseCardItem,
@@ -11,6 +10,30 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+
+/**
+ * Thin gray wave between experience blocks (same cubic rhythm: 200→600→1000).
+ * Stronger vertical swings than before while keeping a slim ribbon (parallel edges).
+ */
+function ExperienceWaveDivider() {
+  return (
+    <div className="-my-1 bg-white md:-my-1.5" aria-hidden>
+      <div className="mx-auto w-full max-w-[1280px] px-4">
+        <svg
+          viewBox="0 0 1200 34"
+          className="block h-4 w-full text-gray-300 md:h-5"
+          preserveAspectRatio="none"
+          role="presentation"
+        >
+          <path
+            fill="currentColor"
+            d="M0,17 C20,17 40,9 72,9 C232,1 400,25 600,8 C800,0 968,29 1128,11 C1162,8 1190,16 1200,21 C1194,24 1176,27 1128,27 C968,31 800,17 600,27 C400,32 232,22 72,23 C40,24 22,22 0,17 Z"
+          />
+        </svg>
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
   const router = useRouter();
@@ -406,101 +429,109 @@ export default function Home() {
             ▼ Explore What I&apos;m Doing ▼
           </div>
         </div>
-        {/* Experience Overview Section */}
-        <Section separator={false} container={true} padding={true} className="bg-white">
-        <div className="space-y-16 md:space-y-20">
+        {/* Experience overview — white sections; yellow-400 waves only between the three */}
+        <div className="bg-white">
           {experienceHighlights.map(({ id, card, showcaseCards }, index) => {
             const isEven = index % 2 === 0;
             const isProjectsPageLink = card.href.startsWith("/projects");
             return (
-              <div key={id} className="w-full space-y-0">
-                <div
-                  className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 md:gap-12`}
+              <div key={id} className="w-full">
+                <section
+                  aria-labelledby={`${id}-heading`}
+                  className="bg-white"
                 >
-                  {/* Image */}
-                  <div className="relative w-full md:w-1/2 aspect-[4/3] md:aspect-[3/2]">
-                    <Image
-                      src={card.imageSrc}
-                      alt={card.imageAlt}
-                      fill
-                      className="object-cover rounded-lg"
-                    />
-                  </div>
-
-                  {/* Text Content */}
-                  <div className="w-full md:w-1/2 space-y-4">
-                    <div className="space-y-1">
-                      {card.prefixText && (
-                        <span className="block text-base md:text-lg font-medium text-black/70">
-                          {card.prefixText}
-                        </span>
-                      )}
-                      <h3 className="text-3xl md:text-4xl font-bold text-black">
-                        {card.title}
-                      </h3>
-                    </div>
-                    <p className="text-base md:text-lg text-black/80 leading-relaxed">
-                      {card.description}
-                    </p>
-                    {card.subButtonLabel && (
-                      <div className="pt-2">
-                        <Link
-                          href={card.href}
-                          aria-label={card.ariaLabel}
-                          className={`group inline-flex items-center justify-center gap-2 px-6 py-3 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer ${
-                            isProjectsPageLink
-                              ? 'bg-green-600 hover:bg-green-600'
-                              : 'bg-blue-500 hover:bg-blue-600'
-                          }`}
-                        >
-                          {isProjectsPageLink && (
-                            <svg
-                              className="w-5 h-5 transition-transform group-hover:scale-110"
-                              fill="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path d="M8 5v14l11-7z" />
-                            </svg>
-                          )}
-                          <span>{card.subButtonLabel}</span>
-                        </Link>
-                      </div>
-                    )}
-                  </div>
-                </div>
-                <HomeShowcaseCards cards={showcaseCards} />
-                <div className="mt-4 flex justify-center">
-                  <Link
-                    href={card.href}
-                    aria-label={card.ariaLabel}
-                    className={`inline-flex items-center gap-1.5 text-base font-semibold underline underline-offset-2 transition-colors ${
-                      isProjectsPageLink
-                        ? 'text-green-700 hover:text-green-800'
-                        : 'text-blue-600 hover:text-blue-700'
-                    }`}
-                  >
-                    <span>{card.viewAllLabel}</span>
-                    <svg
-                      className="h-4 w-4 shrink-0 translate-y-px"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                      viewBox="0 0 24 24"
-                      aria-hidden
+                  <div className="mx-auto w-full max-w-[1280px] px-4 py-8 md:py-10 lg:py-12">
+                    <div
+                      className={`flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-8 md:gap-12`}
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                      />
-                    </svg>
-                  </Link>
-                </div>
+                      <div className="relative aspect-[4/3] w-full md:aspect-[3/2] md:w-1/2">
+                        <Image
+                          src={card.imageSrc}
+                          alt={card.imageAlt}
+                          fill
+                          className="object-cover rounded-lg"
+                        />
+                      </div>
+                      <div className="w-full space-y-4 md:w-1/2">
+                        <div className="space-y-1">
+                          {card.prefixText && (
+                            <span className="block text-base font-medium text-black/70 md:text-lg">
+                              {card.prefixText}
+                            </span>
+                          )}
+                          <h3
+                            id={`${id}-heading`}
+                            className="text-3xl font-bold text-black md:text-4xl"
+                          >
+                            {card.title}
+                          </h3>
+                        </div>
+                        <p className="text-base leading-relaxed text-black/80 md:text-lg">
+                          {card.description}
+                        </p>
+                        {card.subButtonLabel && (
+                          <div className="pt-2">
+                            <Link
+                              href={card.href}
+                              aria-label={card.ariaLabel}
+                              className={`group inline-flex cursor-pointer items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl ${
+                                isProjectsPageLink
+                                  ? "bg-green-600 hover:bg-green-600"
+                                  : "bg-blue-500 hover:bg-blue-600"
+                              }`}
+                            >
+                              {isProjectsPageLink && (
+                                <svg
+                                  className="h-5 w-5 transition-transform group-hover:scale-110"
+                                  fill="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path d="M8 5v14l11-7z" />
+                                </svg>
+                              )}
+                              <span>{card.subButtonLabel}</span>
+                            </Link>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    <HomeShowcaseCards cards={showcaseCards} />
+                    <div className="mt-4 flex justify-center">
+                      <Link
+                        href={card.href}
+                        aria-label={card.ariaLabel}
+                        className={`inline-flex items-center gap-1.5 text-base font-semibold underline underline-offset-2 transition-colors ${
+                          isProjectsPageLink
+                            ? "text-green-700 hover:text-green-800"
+                            : "text-blue-600 hover:text-blue-700"
+                        }`}
+                      >
+                        <span>{card.viewAllLabel}</span>
+                        <svg
+                          className="h-4 w-4 shrink-0 translate-y-px"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                          viewBox="0 0 24 24"
+                          aria-hidden
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                          />
+                        </svg>
+                      </Link>
+                    </div>
+                  </div>
+                </section>
+                {index < experienceHighlights.length - 1 && (
+                  <ExperienceWaveDivider />
+                )}
               </div>
             );
           })}
         </div>
-        </Section>
       </div>
 
       {/* Footer - Higher z-index to appear above content */}
