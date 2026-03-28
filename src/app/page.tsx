@@ -216,7 +216,7 @@ export default function Home() {
         href: "/projects#games",
         viewAllLabel: "View All Games",
         ariaLabel: "Explore my experience with games",
-        imageSrc: "/images/svgdmeeting.png",
+        imageSrc: "/images/cs42si_fa2025.png",
         imageAlt: "stanford game development club meeting",
         badgeLabel: "Game Development",
         badgeClassName: "bg-yellow-400",
@@ -238,7 +238,7 @@ export default function Home() {
           status: "ongoing",
           pills: getListingPillsForProject("cs42si"),
           href: "/projects/cs42si",
-          imageSrc: "/images/cs42si_fa2025.png",
+          imageSrc: "/images/cs42siwebsite.png",
           imageAlt: "CS42SI From Player to Maker course materials",
         },
         {

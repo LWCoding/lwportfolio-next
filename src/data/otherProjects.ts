@@ -71,7 +71,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     tags: ['Website', 'Teaching'],
     href: 'https://web.stanford.edu/class/cs42si/',
     type: 'Website',
-    coverImage: '/images/cs42si_fa2025.png',
+    coverImage: '/images/cs42siwebsite.png',
     createdAt: '2025-09-03',
     tools: ['html', 'react'],
     displayType: 'monitor',
