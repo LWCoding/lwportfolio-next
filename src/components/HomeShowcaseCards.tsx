@@ -12,6 +12,8 @@ export type HomeShowcaseCardItem = {
   href: string;
   imageSrc: string;
   imageAlt: string;
+  /** Shown beside title: "Ongoing" if still active, else the year (e.g. shipped or jam year). */
+  status: "ongoing" | number;
 };
 
 function PillBadge({ pill, onDark }: { pill: ShowcasePill; onDark?: boolean }) {
@@ -35,14 +37,16 @@ function ShowcaseCard({
   href,
   imageSrc,
   imageAlt,
+  status,
 }: HomeShowcaseCardItem) {
+  const statusLabel = status === "ongoing" ? "Ongoing" : String(status);
   return (
     <Link
       href={href}
       target="_blank"
       rel="noopener noreferrer"
       className="group relative block h-full min-h-0 w-full min-w-0 overflow-hidden rounded-xl shadow-sm ring-1 ring-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30 focus-visible:ring-offset-2"
-      aria-label={`Open project: ${title} (opens in new tab)`}
+      aria-label={`Open project: ${title}, ${statusLabel} (opens in new tab)`}
     >
       <div className="flex aspect-[4/3] w-full min-h-[120px] flex-col overflow-hidden sm:min-h-[128px]">
         {/* Image area: flex-1 height = full card minus bottom panel; hover label centers here */}
@@ -86,9 +90,14 @@ function ShowcaseCard({
 
         <div className="relative z-10 shrink-0 rounded-b-xl bg-gray-900/90 px-3 py-3 sm:px-4 sm:py-3.5">
           <div className="flex flex-wrap items-start justify-between gap-x-3 gap-y-2">
-            <h4 className="min-w-0 flex-1 text-left text-base font-bold leading-snug text-white sm:text-lg md:text-xl">
-              {title}
-            </h4>
+            <div className="flex min-w-0 flex-1 flex-wrap items-baseline gap-x-2 gap-y-0.5 text-left">
+              <h4 className="text-base font-bold leading-snug text-white sm:text-lg md:text-xl">
+                {title}
+              </h4>
+              <span className="text-[0.7rem] font-medium tabular-nums text-white/65 sm:text-xs md:text-sm">
+                {statusLabel}
+              </span>
+            </div>
             <div className="flex shrink-0 flex-wrap items-center justify-end gap-1.5 sm:gap-2">
               {pills.map((pill, index) => (
                 <PillBadge key={`${pill}-${index}`} pill={pill} onDark />

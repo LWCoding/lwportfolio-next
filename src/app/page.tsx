@@ -136,6 +136,7 @@ export default function Home() {
         {
           title: "Always Be Closing",
           description: "Be a salesperson and close simulated deals.",
+          status: "ongoing",
           pills: ["For Work"],
           href: "/projects/always-be-closing",
           imageSrc: "/images/alwaysbeclosing.png",
@@ -144,6 +145,7 @@ export default function Home() {
         {
           title: "ImmersifyVR",
           description: "VR fitness built for older adults.",
+          status: "ongoing",
           pills: ["For Work"],
           href: "/projects/immersifyvr",
           imageSrc: "/images/immersifyvr.png",
@@ -152,6 +154,7 @@ export default function Home() {
         {
           title: "Planet",
           description: "Strengthen connections with your friends.",
+          status: 2024,
           pills: ["For Work"],
           href: "/projects/planet",
           imageSrc: "/images/planet.png",
@@ -181,6 +184,7 @@ export default function Home() {
         {
           title: "Aw, Rats",
           description: "GMTK 2025: Loop rats, protect the cheese.",
+          status: 2025,
           pills: ["For Fun"],
           href: "/projects/3766251",
           imageSrc:
@@ -190,6 +194,7 @@ export default function Home() {
         {
           title: "Kitchen Nightmares",
           description: "GMTK 2024: Manage a kitchen that keeps growing.",
+          status: 2024,
           pills: ["For Fun"],
           href: "/projects/2904867",
           imageSrc:
@@ -199,6 +204,7 @@ export default function Home() {
         {
           title: "Attack on Atliz",
           description: "Wonderjam 4: Every kill buys your next power spike.",
+          status: 2024,
           pills: ["For Fun"],
           href: "/projects/1940212",
           imageSrc:
@@ -229,6 +235,7 @@ export default function Home() {
         {
           title: "CS42SI Course",
           description: "Teaching 2D Unity at Stanford. I founded the course!",
+          status: "ongoing",
           pills: getListingPillsForProject("cs42si"),
           href: "/projects/cs42si",
           imageSrc: "/images/cs42si_fa2025.png",
@@ -237,14 +244,16 @@ export default function Home() {
         {
           title: "CS11SI Course",
           description: "Teaching XR with 3D Unity at Stanford.",
+          status: "ongoing",
           pills: getListingPillsForProject("cs11si"),
           href: "/projects/cs11si",
           imageSrc: "/images/cs11si.png",
           imageAlt: "CS11SI Unity XR course website",
         },
         {
-          title: "CS247G Course (SL)",
-          description: "Teaching graduate-level game design at Stanford.",
+          title: "CS247G Course",
+          description: "Teaching graduate-level game design at Stanford (SL).",
+          status: "ongoing",
           pills: getListingPillsForProject("cs247g-course-sl"),
           href: "/projects/cs247g-course-sl",
           imageSrc: "/images/cs247g-syllabus.png",
