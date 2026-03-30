@@ -17,7 +17,7 @@ import { useRouter } from "next/navigation";
  */
 function ExperienceWaveDivider() {
   return (
-    <div className="-my-1 bg-white md:-my-1.5" aria-hidden>
+    <div className="bg-white py-6 md:py-8" aria-hidden>
       <div className="mx-auto w-full max-w-[1280px] px-4">
         <svg
           viewBox="0 0 1200 34"
