@@ -81,7 +81,6 @@ export default function Projects() {
 
       <VideoBanner
         title="Projects"
-        subtitle="Work, games, and teaching—in three sections below."
         height="33vh"
         minHeight="200px"
       />
@@ -90,7 +89,7 @@ export default function Projects() {
       <div id="projects">
         <Section separator={false} container={true} padding={true} className="pt-8 md:pt-12 pb-4 md:pb-6">
           <h2 className="mb-6 text-3xl font-bold text-black md:mb-8 md:text-4xl">
-            Projects
+            Work / Academic
           </h2>
           <div className="space-y-8 md:space-y-6">
             {productProjects.slice(0, 3).map((project, index) => (
