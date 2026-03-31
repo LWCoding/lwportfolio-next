@@ -162,7 +162,7 @@ export default function Home() {
         },
       ],
       card: {
-        href: "/projects#for-work",
+        href: "/projects#projects",
         viewAllLabel: "View All Projects",
         ariaLabel: "Explore projects from my product design and research work",
         imageSrc: "/images/alwaysbeclosing.png",
@@ -213,7 +213,7 @@ export default function Home() {
         },
       ],
       card: {
-        href: "/projects#for-fun",
+        href: "/projects#games",
         viewAllLabel: "View All Games",
         ariaLabel: "Explore my experience with games",
         imageSrc: "/images/svgdmeeting.png",
@@ -261,7 +261,7 @@ export default function Home() {
         },
       ],
       card: {
-        href: "/about",
+        href: "/projects#teaching",
         viewAllLabel: "View All Teaching",
         ariaLabel: "Learn more about my teaching at Stanford",
         imageSrc: "/images/meteaching.jpg",
@@ -274,7 +274,7 @@ export default function Home() {
         description:
           "Outside of lecturing for CS11SI, CS42SI, CS106A/B, and CS247G as an *undergraduate* at Stanford, I've taught game design internationally in South Korea. I love using interactive narratives to make programming intuitive, joyful, and collaborative.",
         ringColorClassName: "focus:ring-blue-500",
-        subButtonLabel: "View About Me",
+        subButtonLabel: "View Teaching",
       },
     },
   ];
@@ -355,7 +355,7 @@ export default function Home() {
               {/* CTA Buttons */}
               <div className="flex flex-wrap gap-3">
                 <Link 
-                  href="/projects"
+                  href="/projects#projects"
                   className="group flex items-center justify-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
                   aria-label="View work"
                 >

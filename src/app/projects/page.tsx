@@ -9,7 +9,7 @@ import WorkItemCard from "@/components/WorkItemCard";
 import GalleryCard from "@/components/GalleryCard";
 import { useGames, FEATURED_GAMES_CONFIG } from "@/hooks/useFeaturedGames";
 import { OTHER_PROJECTS_CONFIG } from "@/data/otherProjects";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * Thin gray wave between project page sections (matches homepage experience blocks).
@@ -48,6 +48,32 @@ export default function Projects() {
   const [showMoreProjects, setShowMoreProjects] = useState(false);
   const [showOtherGames, setShowOtherGames] = useState(false);
   const [showMoreTeaching, setShowMoreTeaching] = useState(false);
+
+  // If the user lands directly via /projects#teaching, the browser hash scroll can
+  // happen before dynamic content (games) finishes loading, leaving the anchor
+  // too high. Re-scroll once loading settles.
+  const didAutoScrollRef = useRef(false);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (didAutoScrollRef.current) return;
+    if (loading) return;
+
+    const hash = window.location.hash;
+    if (!hash) return;
+
+    const targetId = hash.startsWith("#") ? hash.slice(1) : hash;
+    if (targetId !== "teaching") return;
+
+    const targetEl = document.getElementById(targetId);
+    if (!targetEl) return;
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        targetEl.scrollIntoView({ behavior: "auto", block: "start" });
+        didAutoScrollRef.current = true;
+      });
+    });
+  }, [loading]);
 
   return (
     <div className="min-h-screen flex flex-col bg-white pt-[56px]">
@@ -268,7 +294,7 @@ export default function Projects() {
       <ProjectsWaveDivider />
 
       {/* Teaching */}
-      <div id="teaching">
+      <div id="teaching" className="scroll-mt-[96px] md:scroll-mt-[120px]">
         <Section separator={false} container={true} padding={true} className="pt-4 md:pt-6 pb-8">
           <h2 className="mb-6 text-3xl font-bold text-black md:mb-8 md:text-4xl">
             Teaching
