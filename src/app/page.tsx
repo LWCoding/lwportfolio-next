@@ -17,7 +17,7 @@ import { useRouter } from "next/navigation";
  */
 function ExperienceWaveDivider() {
   return (
-    <div className="bg-white py-6" aria-hidden>
+    <div className="bg-white py-6 md:py-8" aria-hidden>
       <div className="mx-auto w-full max-w-[1280px] px-4">
         <svg
           viewBox="0 0 1200 34"
@@ -355,7 +355,7 @@ export default function Home() {
               {/* CTA Buttons */}
               <div className="flex flex-wrap gap-3">
                 <Link 
-                  href="/projects"
+                  href="/projects#projects"
                   className="group flex items-center justify-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
                   aria-label="View work"
                 >
