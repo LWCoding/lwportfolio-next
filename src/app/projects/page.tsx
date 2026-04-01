@@ -9,7 +9,7 @@ import WorkItemCard from "@/components/WorkItemCard";
 import GalleryCard from "@/components/GalleryCard";
 import { useGames, FEATURED_GAMES_CONFIG } from "@/hooks/useFeaturedGames";
 import { OTHER_PROJECTS_CONFIG } from "@/data/otherProjects";
-import { useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 
 /**
  * Thin gray wave between project page sections (matches homepage experience blocks).
@@ -31,6 +31,16 @@ function ProjectsWaveDivider() {
         </svg>
       </div>
     </div>
+  );
+}
+
+function ProjectsSectionHeader({ children }: { children: ReactNode }) {
+  return (
+    <h2 className="mb-6 flex justify-center md:mb-8">
+      <span className="inline-block min-w-[240px] px-14 py-2 text-center text-3xl font-bold text-black md:min-w-[360px] md:px-16 md:text-4xl [clip-path:polygon(0_50%,6%_0,94%_0,100%_50%,94%_100%,6%_100%)] bg-yellow-400 shadow-[0_3px_0_rgba(0,0,0,0.25)]">
+        {children}
+      </span>
+    </h2>
   );
 }
 
@@ -88,9 +98,7 @@ export default function Projects() {
       {/* Projects (non-teaching work) */}
       <div id="projects">
         <Section separator={false} container={true} padding={true} className="pt-8 md:pt-12 pb-4 md:pb-6">
-          <h2 className="mb-6 text-3xl font-bold text-black md:mb-8 md:text-4xl">
-            Work / Academic
-          </h2>
+          <ProjectsSectionHeader>Work / Academic</ProjectsSectionHeader>
           <div className="space-y-8 md:space-y-6">
             {productProjects.slice(0, 3).map((project, index) => (
               <WorkItemCard
@@ -175,9 +183,7 @@ export default function Projects() {
       {/* Games */}
       <div id="games">
         <Section separator={false} container={true} padding={true} className="pt-4 md:pt-6">
-          <h2 className="mb-6 text-3xl font-bold text-black md:mb-8 md:text-4xl">
-            Games
-          </h2>
+          <ProjectsSectionHeader>Games</ProjectsSectionHeader>
           {!loading && !error && featuredGames.length > 0 && (
             <div className="space-y-8 md:space-y-6">
               {featuredGames.slice(0, 3).map((game, index) => {
@@ -295,9 +301,7 @@ export default function Projects() {
       {/* Teaching */}
       <div id="teaching" className="scroll-mt-[96px] md:scroll-mt-[120px]">
         <Section separator={false} container={true} padding={true} className="pt-4 md:pt-6 pb-8">
-          <h2 className="mb-6 text-3xl font-bold text-black md:mb-8 md:text-4xl">
-            Teaching
-          </h2>
+          <ProjectsSectionHeader>Teaching</ProjectsSectionHeader>
           <div className="space-y-8 md:space-y-6">
             {teachingProjects.slice(0, 3).map((project, index) => (
               <WorkItemCard
