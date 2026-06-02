@@ -36,10 +36,13 @@ function ProjectsWaveDivider() {
 
 function ProjectsSectionHeader({ children }: { children: ReactNode }) {
   return (
-    <h2 className="mb-6 flex justify-center md:mb-8">
-      <span className="inline-block min-w-[240px] px-14 py-2 text-center text-3xl font-bold text-black md:min-w-[360px] md:px-16 md:text-4xl [clip-path:polygon(0_50%,6%_0,94%_0,100%_50%,94%_100%,6%_100%)] bg-yellow-400 shadow-[0_3px_0_rgba(0,0,0,0.25)]">
-        {children}
-      </span>
+    <h2 className="mb-6 md:mb-8 flex justify-center">
+      <div className="inline-flex flex-col">
+        <span className="text-3xl font-bold text-gray-900 md:text-4xl">
+          {children}
+        </span>
+        <div className="mt-3 h-1 rounded-full bg-blue-500" />
+      </div>
     </h2>
   );
 }
@@ -183,7 +186,7 @@ export default function Projects() {
       {/* Games */}
       <div id="games">
         <Section separator={false} container={true} padding={true} className="pt-4 md:pt-6">
-          <ProjectsSectionHeader>Games</ProjectsSectionHeader>
+          <ProjectsSectionHeader>My Games</ProjectsSectionHeader>
           {!loading && !error && featuredGames.length > 0 && (
             <div className="space-y-8 md:space-y-6">
               {featuredGames.slice(0, 3).map((game, index) => {
@@ -301,7 +304,7 @@ export default function Projects() {
       {/* Teaching */}
       <div id="teaching" className="scroll-mt-[96px] md:scroll-mt-[120px]">
         <Section separator={false} container={true} padding={true} className="pt-4 md:pt-6 pb-8">
-          <ProjectsSectionHeader>Teaching</ProjectsSectionHeader>
+          <ProjectsSectionHeader>My Teaching Experience</ProjectsSectionHeader>
           <div className="space-y-8 md:space-y-6">
             {teachingProjects.slice(0, 3).map((project, index) => (
               <WorkItemCard

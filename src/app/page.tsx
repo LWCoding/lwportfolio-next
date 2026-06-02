@@ -319,13 +319,16 @@ export default function Home() {
 
               {/* Descriptive Text */}
               <p className="text-base md:text-lg text-white lg:text-black font-medium">
-                a designer with a background in computer science designing systems thinking about human-computer interaction and AI. I've deployed projects played by 900K+ people under the alias "LWCoding"!
+                a full-stack game designer invested in human-computer interaction and AI. I've deployed projects played by 900K+ people under the alias "LWCoding"!
               </p>
 
               {/* Basic demographics / education */}
               <div className="w-full -mt-2 mb-8">
                 <p className="text-sm md:text-base text-white lg:text-black font-medium">
-                  B.S. Design • 4.015 GPA • Stanford ’27
+                M.S. Computer Science (4.0 GPA) • Stanford '28
+                </p>
+                <p className="text-sm md:text-base text-white lg:text-black font-medium">
+                 B.S. Design (4.0 GPA) • Stanford '27
                 </p>
               </div>
 
