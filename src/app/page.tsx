@@ -305,14 +305,14 @@ export default function Home() {
         {/* Hero: full-viewport split — gray to the left edge, image to the right edge; text aligns with Section inner column */}
         <div className="relative z-10 flex h-full w-full flex-col overflow-hidden lg:flex-row">
           {/* Left Side - Text Content (pulls toward the split on wide viewports) */}
-          <div className="relative z-30 flex w-full flex-1 flex-col items-center justify-center bg-transparent p-8 md:p-12 lg:w-2/5 lg:flex-none lg:items-end lg:justify-center lg:bg-gray-200 lg:py-12 lg:pl-[calc(1rem+((100vw-2rem)-min(1280px,100vw-2rem))/2)] lg:pr-6 xl:pr-8">
-            <div className="flex w-full max-w-lg flex-col items-start space-y-6 text-left">
+          <div className="relative z-30 flex w-full flex-1 flex-col items-center justify-center bg-transparent p-8 md:p-12 lg:w-2/5 lg:flex-none lg:items-end lg:justify-center lg:bg-gray-200 lg:py-12 [@media(max-height:700px)]:py-4 lg:pl-[calc(1rem+((100vw-2rem)-min(1280px,100vw-2rem))/2)] lg:pr-6 xl:pr-8">
+            <div className="flex w-full max-w-lg flex-col items-start space-y-6 [@media(max-height:700px)]:space-y-2 text-left">
               {/* Main Heading */}
               <h1 className="text-6xl font-bold text-white lg:text-black leading-tight space-y-1">
                 <span className="block text-base md:text-lg font-medium text-white lg:text-black">
                   Hey there! I&apos;m
                 </span>
-                <span className="block text-5xl xl:text-6xl font-bold">
+                <span className="block text-5xl xl:text-6xl [@media(max-height:700px)]:text-4xl font-bold">
                   lucas wang,
                 </span>
               </h1>
@@ -323,21 +323,21 @@ export default function Home() {
               </p>
 
               {/* Basic demographics / education */}
-              <div className="w-full -mt-2 mb-8">
-                <p className="text-sm md:text-base text-white lg:text-black font-medium">
+              <div className="w-full -mt-2 mb-4 [@media(max-height:700px)]:mb-0 [@media(max-height:700px)]:-mt-1">
+                <p className="text-sm md:text-base [@media(max-height:700px)]:text-xs text-white lg:text-black font-medium">
                 M.S. Computer Science (4.0 GPA) • Stanford '28
                 </p>
-                <p className="text-sm md:text-base text-white lg:text-black font-medium">
+                <p className="text-sm md:text-base [@media(max-height:700px)]:text-xs text-white lg:text-black font-medium">
                  B.S. Design (4.0 GPA) • Stanford '27
                 </p>
               </div>
 
               {/* Tools Row */}
-              <div className="grid grid-cols-4 gap-3 md:gap-4 items-center justify-items-center tools-row-wrap -mt-3">
+              <div className="grid grid-cols-4 [@media(max-height:700px)]:grid-cols-8 gap-3 md:gap-4 [@media(max-height:700px)]:gap-2 items-center justify-items-center tools-row-wrap [@media(max-height:700px)]:mt-4">
                 {tools.map((tool, index) => (
                   <div
                     key={index}
-                     className="group relative w-12 h-12 md:w-14 md:h-14 rounded-full bg-white flex items-center justify-center shadow-md hover:scale-110 transition-transform duration-300 p-2"
+                     className="group relative w-12 h-12 md:w-14 md:h-14 [@media(max-height:700px)]:w-10 [@media(max-height:700px)]:h-10 rounded-full bg-white flex items-center justify-center shadow-md hover:scale-110 transition-transform duration-300 p-2"
                   >
                     <Image
                       src={tool.image}
@@ -356,10 +356,10 @@ export default function Home() {
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-3 [@media(max-height:700px)]:mt-4">
                 <Link 
                   href="/projects#projects"
-                  className="group flex items-center justify-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+                  className="group flex items-center justify-center gap-2 px-6 py-3 [@media(max-height:700px)]:py-2 bg-green-600 hover:bg-green-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
                   aria-label="View work"
                 >
                   <svg 
@@ -373,7 +373,7 @@ export default function Home() {
                 </Link>
                 <Link 
                   href="/about"
-                  className="group flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+                  className="group flex items-center justify-center gap-2 px-6 py-3 [@media(max-height:700px)]:py-2 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
                   aria-label="About me"
                 >
                   <span>About Me</span>
