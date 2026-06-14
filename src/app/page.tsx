@@ -170,7 +170,7 @@ export default function Home() {
         badgeLabel: "Product & Research",
         badgeClassName: "bg-green-600",
         badgeTextClassName: "text-white",
-        prefixText: "My work is mission-first and user-centered. I'm",
+        prefixText: "My work is user-centered. I'm",
         title: "Designing Interactive Systems",
         description:
           "If you're going to make a game, why not make it solve a problem, too? At work and through independent research, I design user-centered experiences like virtual reality products for the elderly and multiplayer games to bring people together. ",
@@ -221,7 +221,7 @@ export default function Home() {
         badgeLabel: "Game Development",
         badgeClassName: "bg-yellow-400",
         badgeTextClassName: "text-black",
-        prefixText: "I also find strong community important. I'm",
+        prefixText: "I find strong community important. I'm",
         title: "Promoting Game Design at Stanford",
         description:
           "Stanford students don't play enough games, let alone make them. As the founder of our game development club, I've hosted tens of events with hundreds of participants, including jams, socials, and playtests that help game designers find community. I also make lots of games!",
@@ -269,7 +269,7 @@ export default function Home() {
         badgeLabel: "Teaching",
         badgeClassName: "bg-blue-500",
         badgeTextClassName: "text-white",
-        prefixText: "Did I mention, I also love teaching? I'm also",
+        prefixText: "I love teaching! I'm also",
         title: "Teaching Playful CS Courses",
         description:
           "Outside of lecturing for CS11SI, CS42SI, CS106A/B, and CS247G as an *undergraduate* at Stanford, I've taught game design internationally in South Korea. I love using interactive narratives to make programming intuitive, joyful, and collaborative.",
@@ -444,11 +444,11 @@ export default function Home() {
                   aria-labelledby={`${id}-heading`}
                   className="bg-white"
                 >
-                  <div className="mx-auto w-full max-w-[1280px] px-4 py-8 md:py-10 lg:py-12">
+                  <div className="mx-auto w-full max-w-[1280px] px-4 py-8 md:py-10 lg:py-12 [@media(max-height:700px)]:py-5">
                     <div
                       className={`flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-8 md:gap-12`}
                     >
-                      <div className="relative aspect-[4/3] w-full md:aspect-[3/2] md:w-1/2">
+                      <div className="relative aspect-[2/1] w-4/5 mx-auto md:aspect-[3/2] md:w-1/2 [@media(max-height:700px)]:aspect-[16/7]">
                         <Image
                           src={card.imageSrc}
                           alt={card.imageAlt}
@@ -456,7 +456,7 @@ export default function Home() {
                           className="object-cover rounded-lg"
                         />
                       </div>
-                      <div className="w-full space-y-4 md:w-1/2">
+                      <div className="w-4/5 mx-auto space-y-4 md:w-1/2 md:mx-0">
                         <div className="space-y-1">
                           {card.prefixText && (
                             <span className="block text-base font-medium text-black/70 md:text-lg">
