@@ -325,14 +325,14 @@ export default function Home() {
                 <span className="block text-base md:text-lg font-medium text-white lg:text-black">
                   Hey there! I&apos;m
                 </span>
-                <span className="block text-5xl xl:text-6xl [@media(max-height:700px)]:text-4xl font-bold">
+                <span className="block text-5xl xl:text-6xl [@media(max-height:700px)]:text-4xl font-black">
                   lucas wang,
                 </span>
               </h1>
 
               {/* Descriptive Text */}
               <p className="text-base md:text-lg text-white lg:text-black font-medium">
-                a full-stack game designer invested in human-computer interaction and AI. I've deployed projects played by 900K+ people under the alias "LWCoding"!
+                a full-stack game designer invested in human-computer interaction and AI. I've deployed projects played by 1M+ people as LWCoding!
               </p>
 
               {/* Basic demographics / education */}

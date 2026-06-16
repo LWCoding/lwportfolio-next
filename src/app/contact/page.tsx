@@ -14,7 +14,7 @@ export default function ContactPage() {
         {/* left side - contact info */}
         <section className="w-full md:w-1/2 flex items-center justify-center bg-gray-200 px-6 md:px-12 py-10">
           <div className="max-w-md w-full space-y-6">
-            <h1 className="text-3xl md:text-4xl font-bold text-black">
+            <h1 className="text-3xl md:text-4xl font-black text-black">
               Let&apos;s Deliberate!
             </h1>
             <p className="text-base md:text-lg text-black/80">
