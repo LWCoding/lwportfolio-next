@@ -518,12 +518,12 @@ export default function Home() {
         {/* Headshot + quote — aligned with page content column (same as Section) */}
         <div className="pointer-events-none absolute bottom-4 left-0 right-0 z-20 hidden px-4 md:bottom-6 lg:block">
           <div className="mx-auto flex w-full max-w-[1280px] items-center justify-end gap-3 md:gap-4 pointer-events-auto">
-            <div className="relative mr-2 bg-white/95 px-3 py-2 shadow-lg md:mr-3 md:px-4 md:py-2.5 rounded-lg">
+            <div className="relative mr-2 bg-white px-3 py-2 shadow-md md:mr-3 md:px-4 md:py-2.5 rounded-lg">
               <div
-                className="absolute right-0 top-1/2 h-0 w-0 translate-x-full -translate-y-1/2 border-y-[8px] border-l-[10px] border-y-transparent border-l-[rgba(255,255,255,0.95)]"
+                className="absolute right-0 top-1/2 w-3 h-3 bg-white rotate-45 translate-x-1/2 -translate-y-1/2 shadow-[1px_-1px_3px_rgba(0,0,0,0.08)]"
                 aria-hidden
               />
-              <p className="text-sm font-medium whitespace-nowrap text-black md:text-base">
+              <p className="relative text-sm font-medium whitespace-nowrap text-black md:text-base">
                 Welcome! Most of my work is digital and playable here!
               </p>
             </div>
