@@ -451,11 +451,11 @@ export default function Home() {
 
             {/* Nex Inc. */}
             <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16 mb-14 md:mb-20">
-              <div className="relative w-full md:w-1/2 aspect-[16/10] rounded-2xl overflow-hidden bg-gray-100 shadow-md flex items-center justify-center">
-                <span className="text-gray-400 text-sm font-medium">[ Add Nex Playground image ]</span>
+              <div className="relative w-full md:w-1/2 aspect-[16/10] rounded-2xl overflow-hidden shadow-md">
+                <Image src="/images/nex-img.webp" alt="Lucas holding Nex Playground box" fill className="object-cover object-top" />
               </div>
               <div className="w-full md:w-1/2 space-y-2">
-                <p className="text-xs font-black tracking-[0.2em] text-yellow-500 uppercase">Summer 2026</p>
+                <p className="text-xs font-black tracking-[0.2em] text-yellow-500 uppercase">Jun 2026 - Present</p>
                 <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-black leading-none tracking-tight">
                   Nex Inc.
                 </h2>
@@ -463,8 +463,13 @@ export default function Home() {
                   Software Engineering Intern
                 </p>
                 <p className="text-base md:text-lg text-gray-700 leading-relaxed pt-3">
-                  Developing games designed to get families moving together through the Nex Playground platform. Working at the intersection of game design and health tech to create interactive experiences that make exercise genuinely fun for all ages.
+                  Working in the Party Cell to develop games to get families moving together through the Nex Playground platform. Working at the intersection of game design and health tech to create interactive experiences that make exercise fun for all ages.
                 </p>
+                <div className="pt-4">
+                  <Link href="/projects/nex-playground" className="inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white font-bold text-sm rounded-full hover:bg-gray-800 transition-colors shadow-md">
+                    View Project →
+                  </Link>
+                </div>
               </div>
             </div>
 
@@ -486,11 +491,16 @@ export default function Home() {
                   Always Be Closing
                 </h2>
                 <p className="text-xl md:text-2xl font-semibold text-gray-500 pt-1">
-                  Game Programmer
+                  Solo Game Programmer
                 </p>
                 <p className="text-base md:text-lg text-gray-700 leading-relaxed pt-3">
-                  Building a game that simulates sales deal negotiations, helping players practice persuasion and closing techniques in a high-stakes, fast-paced environment.
+                  Building a game that AI-simulates sales deal negotiations, helping players practice persuasion and closing techniques in a high-stakes, fast-paced environment.
                 </p>
+                <div className="pt-4">
+                  <Link href="/projects/always-be-closing" className="inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white font-bold text-sm rounded-full hover:bg-gray-800 transition-colors shadow-md">
+                    View Project →
+                  </Link>
+                </div>
               </div>
             </div>
 
@@ -500,7 +510,7 @@ export default function Home() {
             <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
               <div className="relative w-full md:w-1/2 aspect-[16/10] rounded-2xl overflow-hidden shadow-md">
                 <Image
-                  src="/images/immersifyvr.png"
+                  src="/images/immersifyvr-bob.png"
                   alt="ImmersifyVR virtual reality exercise"
                   fill
                   className="object-cover"
@@ -517,6 +527,11 @@ export default function Home() {
                 <p className="text-base md:text-lg text-gray-700 leading-relaxed pt-3">
                   A grant-funded virtual reality exercise application designed to motivate older adults to exercise. Deployed and tested in several retirement homes across California.
                 </p>
+                <div className="pt-4">
+                  <Link href="/projects/immersifyvr" className="inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white font-bold text-sm rounded-full hover:bg-gray-800 transition-colors shadow-md">
+                    View Project →
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
