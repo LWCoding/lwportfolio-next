@@ -466,8 +466,8 @@ export default function Home() {
                   Working in the Party Cell to develop games to get families moving together through the Nex Playground platform. Working at the intersection of game design and health tech to create interactive experiences that make exercise fun for all ages.
                 </p>
                 <div className="pt-4">
-                  <Link href="/projects/nex-playground" className="inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white font-bold text-sm rounded-full hover:bg-gray-800 transition-colors shadow-md">
-                    View Project →
+                  <Link href="/projects/nex-playground" className="inline-flex items-center justify-center gap-2 px-3 py-3 md:px-4 md:py-2 lg:px-6 lg:py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-sm md:text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer">
+                    <span>View Project</span>
                   </Link>
                 </div>
               </div>
@@ -497,8 +497,8 @@ export default function Home() {
                   Building a game that AI-simulates sales deal negotiations, helping players practice persuasion and closing techniques in a high-stakes, fast-paced environment.
                 </p>
                 <div className="pt-4">
-                  <Link href="/projects/always-be-closing" className="inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white font-bold text-sm rounded-full hover:bg-gray-800 transition-colors shadow-md">
-                    View Project →
+                  <Link href="/projects/always-be-closing" className="inline-flex items-center justify-center gap-2 px-3 py-3 md:px-4 md:py-2 lg:px-6 lg:py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-sm md:text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer">
+                    <span>View Project</span>
                   </Link>
                 </div>
               </div>
@@ -528,8 +528,8 @@ export default function Home() {
                   A grant-funded virtual reality exercise application designed to motivate older adults to exercise. Deployed and tested in several retirement homes across California.
                 </p>
                 <div className="pt-4">
-                  <Link href="/projects/immersifyvr" className="inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white font-bold text-sm rounded-full hover:bg-gray-800 transition-colors shadow-md">
-                    View Project →
+                  <Link href="/projects/immersifyvr" className="inline-flex items-center justify-center gap-2 px-3 py-3 md:px-4 md:py-2 lg:px-6 lg:py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-sm md:text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer">
+                    <span>View Project</span>
                   </Link>
                 </div>
               </div>
