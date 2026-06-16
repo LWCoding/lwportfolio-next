@@ -40,7 +40,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     id: 'nex-playground',
     title: 'Nex Playground',
     description: 'Developing games for the Nex Playground platform to get families moving together, at the intersection of game design and health tech.',
-    tags: ['Game Dev', 'Health Tech'],
+    tags: ['Computer Vision'],
     type: 'Project',
     coverImage: '/images/nex-img.webp',
     createdAt: '2026-06-01',

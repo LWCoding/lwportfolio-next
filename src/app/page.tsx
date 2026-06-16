@@ -2,9 +2,8 @@
 
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import HomeShowcaseCards, {
-  type HomeShowcaseCardItem,
-} from "@/components/HomeShowcaseCards";
+import ResumeButton from "@/components/ResumeButton";
+import { type HomeShowcaseCardItem } from "@/components/HomeShowcaseCards";
 import { getListingPillsForProject } from "@/data/projectListingPills";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,6 +14,113 @@ import { useRouter } from "next/navigation";
  * Thin gray wave between experience blocks (same cubic rhythm: 200→600→1000).
  * Stronger vertical swings than before while keeping a slim ribbon (parallel edges).
  */
+function CarouselImage({ cards }: { cards: HomeShowcaseCardItem[] }) {
+  const n = cards.length;
+  const items = [cards[n - 1], ...cards, cards[0]];
+  const total = items.length;
+
+  const [vIdx, setVIdx] = useState(1);
+  const [animated, setAnimated] = useState(true);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isVisibleRef = useRef(false);
+  const vIdxRef = useRef(1);
+  const lockRef = useRef(false);
+
+  vIdxRef.current = vIdx;
+
+  const moveTo = (newVIdx: number) => {
+    if (lockRef.current) return;
+    lockRef.current = true;
+    setAnimated(true);
+    setVIdx(newVIdx);
+    setTimeout(() => {
+      if (newVIdx === 0) {
+        setAnimated(false); setVIdx(n); vIdxRef.current = n;
+      } else if (newVIdx === total - 1) {
+        setAnimated(false); setVIdx(1); vIdxRef.current = 1;
+      }
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        setAnimated(true);
+        lockRef.current = false;
+      }));
+    }, 510);
+  };
+  const moveToRef = useRef(moveTo);
+  moveToRef.current = moveTo;
+
+  // Recursive schedule: advances after `delay` ms then resets to 4 s
+  const scheduleRef = useRef<(delay?: number) => void>(() => {});
+  scheduleRef.current = (delay = 4000) => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => {
+      if (isVisibleRef.current && !lockRef.current) moveToRef.current(vIdxRef.current + 1);
+      scheduleRef.current(4000);
+    }, delay);
+  };
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const wasVisible = isVisibleRef.current;
+        isVisibleRef.current = entry.isIntersecting;
+        if (entry.isIntersecting && !wasVisible) {
+          // Scrolled into center — hold current slide 4× longer before first advance
+          scheduleRef.current(16000);
+        } else if (!entry.isIntersecting) {
+          if (timerRef.current) clearTimeout(timerRef.current);
+        }
+      },
+      { rootMargin: '-30% 0px -30% 0px', threshold: 0 }
+    );
+    observer.observe(el);
+    scheduleRef.current(4000);
+    return () => { observer.disconnect(); if (timerRef.current) clearTimeout(timerRef.current); };
+  }, []);
+
+  const go = (dir: 1 | -1) => { moveToRef.current(vIdxRef.current + dir); scheduleRef.current(4000); };
+
+  const realIdx = Math.min(Math.max(vIdx - 1, 0), n - 1);
+  const currentCard = cards[realIdx];
+
+  return (
+    <div ref={containerRef} className="relative aspect-[2/1] w-4/5 mx-auto md:aspect-[3/2] md:w-1/2 [@media(max-height:700px)]:aspect-[16/7] rounded-lg overflow-hidden">
+      <div
+        className={animated ? 'transition-transform duration-500 ease-in-out' : ''}
+        style={{ display: 'flex', height: '100%', width: `${total * 100}%`, transform: `translateX(${-vIdx * 100 / total}%)` }}
+      >
+        {items.map((card, i) => (
+          <div key={i} className="relative flex-shrink-0" style={{ width: `${100 / total}%`, height: '100%' }}>
+            <Image src={card.imageSrc} alt={card.imageAlt} fill className="object-cover" />
+          </div>
+        ))}
+      </div>
+      <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/80 via-black/50 to-transparent pt-28 pb-4 px-5 text-center">
+        {currentCard.href ? (
+          <Link href={currentCard.href} className="block text-white font-bold text-xl md:text-2xl leading-tight hover:underline underline-offset-2">
+            {currentCard.title}{typeof currentCard.status === 'number' ? ` (${currentCard.status})` : currentCard.status === 'ongoing' ? ' (Ongoing)' : ''}
+          </Link>
+        ) : (
+          <p className="text-white font-bold text-xl md:text-2xl leading-tight">{currentCard.title}{typeof currentCard.status === 'number' ? ` (${currentCard.status})` : currentCard.status === 'ongoing' ? ' (Ongoing)' : ''}</p>
+        )}
+        <p className="text-white/80 text-sm md:text-base mt-1 leading-snug">{currentCard.description}</p>
+      </div>
+      <button onClick={() => go(-1)} className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 bg-black/40 hover:bg-black/60 rounded-full flex items-center justify-center text-white transition-colors cursor-pointer" aria-label="Previous project">
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
+      </button>
+      <button onClick={() => go(1)} className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 bg-black/40 hover:bg-black/60 rounded-full flex items-center justify-center text-white transition-colors cursor-pointer" aria-label="Next project">
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+      </button>
+    </div>
+  );
+}
+
 function ExperienceWaveDivider() {
   return (
     <div className="bg-gray-50 py-6 md:py-8" aria-hidden>
@@ -188,7 +294,7 @@ export default function Home() {
         description:
           "If you're going to make a game, why not make it solve a problem, too? At work and through independent research, I design user-centered experiences like virtual reality products for the elderly and multiplayer games to bring people together. ",
         ringColorClassName: "focus:ring-green-500",
-        subButtonLabel: "View Projects",
+        subButtonLabel: "View All Projects",
       },
     },
     {
@@ -239,7 +345,7 @@ export default function Home() {
         description:
           "Stanford students don't play enough games, let alone make them. As the founder of our game development club, I've hosted tens of events with hundreds of participants, including jams, socials, and playtests that help game designers find community. I also make lots of games!",
         ringColorClassName: "focus:ring-yellow-400",
-        subButtonLabel: "View Games",
+        subButtonLabel: "View All Games",
       },
     },
     {
@@ -287,7 +393,7 @@ export default function Home() {
         description:
           "Outside of lecturing for CS11SI, CS42SI, CS106A/B, and CS247G as an *undergraduate* at Stanford, I've taught game design internationally in South Korea. I love using interactive narratives to make programming intuitive, joyful, and collaborative.",
         ringColorClassName: "focus:ring-blue-500",
-        subButtonLabel: "View Teaching",
+        subButtonLabel: "View All Teaching",
       },
     },
   ];
@@ -418,7 +524,7 @@ export default function Home() {
                 aria-hidden
               />
               <p className="text-sm font-medium whitespace-nowrap text-black md:text-base">
-                <i>Welcome! Most of my work is digital and playable here!</i>
+                Welcome! Most of my work is digital and playable here!
               </p>
             </div>
             <div className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-full shadow-lg md:h-20 md:w-20">
@@ -455,7 +561,7 @@ export default function Home() {
                 <Image src="/images/nex-img.webp" alt="Lucas holding Nex Playground box" fill className="object-cover object-top" />
               </div>
               <div className="w-full md:w-1/2 space-y-2">
-                <p className="text-xs font-black tracking-[0.2em] text-yellow-500 uppercase">Jun 2026 - Present</p>
+                <p className="text-sm font-black tracking-[0.2em] text-yellow-500 uppercase">Jun 2026 - Present</p>
                 <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-black leading-none tracking-tight">
                   Nex Inc.
                 </h2>
@@ -486,7 +592,7 @@ export default function Home() {
                 />
               </div>
               <div className="w-full md:w-1/2 space-y-2">
-                <p className="text-xs font-black tracking-[0.2em] text-yellow-500 uppercase">Jun 2025 – Present</p>
+                <p className="text-sm font-black tracking-[0.2em] text-yellow-500 uppercase">Jun 2025 – Present</p>
                 <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-black leading-none tracking-tight">
                   Always Be Closing
                 </h2>
@@ -517,7 +623,7 @@ export default function Home() {
                 />
               </div>
               <div className="w-full md:w-1/2 space-y-2">
-                <p className="text-xs font-black tracking-[0.2em] text-yellow-500 uppercase">Oct 2024 – Present</p>
+                <p className="text-sm font-black tracking-[0.2em] text-yellow-500 uppercase">Oct 2024 – Present</p>
                 <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-black leading-none tracking-tight">
                   ImmersifyVR
                 </h2>
@@ -540,7 +646,7 @@ export default function Home() {
         {/* Yellow closing bar — end of elevated panel */}
         <div className="w-full bg-yellow-400 py-4">
           <div className="text-center text-black font-semibold">
-            ▼ Summary of My Projects ▼
+            ▼ Summary of My Interests ▼
           </div>
         </div>
 
@@ -560,29 +666,22 @@ export default function Home() {
                     <div
                       className={`flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-8 md:gap-12`}
                     >
-                      <div className="relative aspect-[2/1] w-4/5 mx-auto md:aspect-[3/2] md:w-1/2 [@media(max-height:700px)]:aspect-[16/7]">
-                        <Image
-                          src={card.imageSrc}
-                          alt={card.imageAlt}
-                          fill
-                          className="object-cover rounded-lg"
-                        />
-                      </div>
+                      <CarouselImage cards={showcaseCards} />
                       <div className="w-4/5 mx-auto space-y-4 md:w-1/2 md:mx-0">
                         <div className="space-y-1">
                           {card.prefixText && (
-                            <span className="block text-base font-medium text-black/70 md:text-lg">
+                            <span className="block text-base font-medium text-black/75 md:text-lg">
                               {card.prefixText}
                             </span>
                           )}
                           <h3
                             id={`${id}-heading`}
-                            className="text-3xl font-bold text-black md:text-4xl"
+                            className="text-2xl font-black text-black md:text-3xl"
                           >
                             {card.title}
                           </h3>
                         </div>
-                        <p className="text-base leading-relaxed text-black/80 md:text-lg">
+                        <p className="text-base leading-relaxed text-gray-700 md:text-lg">
                           {card.description}
                         </p>
                         {card.subButtonLabel && (
@@ -611,36 +710,6 @@ export default function Home() {
                         )}
                       </div>
                     </div>
-                    <div className="mx-auto mt-10 w-full max-w-6xl md:mt-6">
-                      <HomeShowcaseCards cards={showcaseCards} />
-                    </div>
-                    <div className="mt-4 flex justify-center">
-                      <Link
-                        href={card.href}
-                        aria-label={card.ariaLabel}
-                        className={`inline-flex items-center gap-1.5 text-base font-semibold underline underline-offset-2 transition-colors ${
-                          isProjectsPageLink
-                            ? "text-green-700 hover:text-green-800"
-                            : "text-blue-600 hover:text-blue-700"
-                        }`}
-                      >
-                        <span>{card.viewAllLabel}</span>
-                        <svg
-                          className="h-4 w-4 shrink-0 translate-y-px"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={2}
-                          viewBox="0 0 24 24"
-                          aria-hidden
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                          />
-                        </svg>
-                      </Link>
-                    </div>
                   </div>
                 </section>
                 {index < experienceHighlights.length - 1 && (
@@ -661,7 +730,7 @@ export default function Home() {
       {/* Contact background — fixed z-[5], above hero (z-0), below white panel (z-20).
           Invisible until the white panel scrolls fully off the top, then snaps in. */}
       <div className={`fixed top-[56px] left-0 right-0 bottom-0 z-[5] overflow-hidden ${showContact ? '' : 'hidden'}`}>
-        <Image src="/images/meinkorea.jpg" alt="Lucas Wang" fill className="object-cover object-top" />
+        <Image src="/images/meinkorea.jpg" alt="Lucas Wang" fill className="object-cover object-center" />
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center text-white pb-16">
           <p className="text-xs font-black tracking-[0.25em] text-yellow-400 uppercase mb-4">Get in Touch</p>
@@ -685,9 +754,7 @@ export default function Home() {
               <Image src="/images/itchio.png" alt="itch.io" width={28} height={28} className="w-7 h-7 object-contain" />
             </a>
           </div>
-          <a href="https://drive.google.com/file/d/1pbLIV1_BPFf6qr7njVC90oN3VfHQzTEB/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-bold text-base rounded-full hover:bg-yellow-400 transition-colors shadow-lg">
-            View my Resume
-          </a>
+          <ResumeButton />
         </div>
         <div className="absolute bottom-0 left-0 right-0">
           <Footer />
