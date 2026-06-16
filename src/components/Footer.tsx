@@ -7,10 +7,7 @@ export default function Footer() {
       className="py-4 px-4 border-t border-black/20 bg-yellow-400 mt-auto scroll-mt-[64px]"
     >
       <div className="container mx-auto max-w-[1024px] text-center">
-        <p className="text-black font-bold">
-          lucas wang © {new Date().getFullYear()}
-        </p>
-        <p className="text-sm text-black font-bold mt-1">
+        <p className="text-sm text-black font-bold">
           <a
             href="mailto:lswang05@stanford.edu"
             className="underline hover:text-gray-800 hover:no-underline transition-colors cursor-pointer"
