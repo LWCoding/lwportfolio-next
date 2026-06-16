@@ -86,7 +86,7 @@ function CarouselImage({ cards }: { cards: HomeShowcaseCardItem[] }) {
   const currentCard = cards[realIdx];
 
   return (
-    <div ref={containerRef} className="relative aspect-[2/1] w-4/5 mx-auto md:aspect-[3/2] md:w-1/2 [@media(max-height:700px)]:aspect-[16/7] rounded-lg overflow-hidden">
+    <div ref={containerRef} className="relative aspect-[2/1] w-full md:aspect-[3/2] md:w-1/2 [@media(max-height:700px)]:aspect-[16/7] rounded-lg overflow-hidden">
       <div
         className={animated ? 'transition-transform duration-500 ease-in-out' : ''}
         style={{ display: 'flex', height: '100%', width: `${total * 100}%`, transform: `translateX(${-vIdx * 100 / total}%)` }}
@@ -97,7 +97,7 @@ function CarouselImage({ cards }: { cards: HomeShowcaseCardItem[] }) {
           </div>
         ))}
       </div>
-      <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/80 via-black/50 to-transparent pt-28 pb-4 px-5 text-center">
+      <div className="hidden md:block absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/80 via-black/50 to-transparent pt-28 pb-4 px-5 text-center">
         {currentCard.href ? (
           <Link href={currentCard.href} className="block text-white font-bold text-xl md:text-2xl leading-tight hover:underline underline-offset-2">
             {currentCard.title}{typeof currentCard.status === 'number' ? ` (${currentCard.status})` : currentCard.status === 'ongoing' ? ' (Ongoing)' : ''}
@@ -571,8 +571,8 @@ export default function Home() {
                 <p className="text-base md:text-lg text-gray-700 leading-relaxed pt-3">
                   Working in the Party Cell to develop games to get families moving together through the Nex Playground platform. Working at the intersection of game design and health tech to create interactive experiences that make exercise fun for all ages.
                 </p>
-                <div className="pt-4">
-                  <Link href="/projects/nex-playground" className="inline-flex items-center justify-center gap-2 px-3 py-3 md:px-4 md:py-2 lg:px-6 lg:py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-sm md:text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer">
+                <div className="pt-4 flex justify-center md:justify-start">
+                  <Link href="/projects/nex-playground" className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer">
                     <span>View Project</span>
                   </Link>
                 </div>
@@ -602,8 +602,8 @@ export default function Home() {
                 <p className="text-base md:text-lg text-gray-700 leading-relaxed pt-3">
                   Building a game that AI-simulates sales deal negotiations, helping players practice persuasion and closing techniques in a high-stakes, fast-paced environment.
                 </p>
-                <div className="pt-4">
-                  <Link href="/projects/always-be-closing" className="inline-flex items-center justify-center gap-2 px-3 py-3 md:px-4 md:py-2 lg:px-6 lg:py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-sm md:text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer">
+                <div className="pt-4 flex justify-center md:justify-start">
+                  <Link href="/projects/always-be-closing" className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer">
                     <span>View Project</span>
                   </Link>
                 </div>
@@ -633,8 +633,8 @@ export default function Home() {
                 <p className="text-base md:text-lg text-gray-700 leading-relaxed pt-3">
                   A grant-funded virtual reality exercise application designed to motivate older adults to exercise. Deployed and tested in several retirement homes across California.
                 </p>
-                <div className="pt-4">
-                  <Link href="/projects/immersifyvr" className="inline-flex items-center justify-center gap-2 px-3 py-3 md:px-4 md:py-2 lg:px-6 lg:py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-sm md:text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer">
+                <div className="pt-4 flex justify-center md:justify-start">
+                  <Link href="/projects/immersifyvr" className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer">
                     <span>View Project</span>
                   </Link>
                 </div>
@@ -667,7 +667,7 @@ export default function Home() {
                       className={`flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-8 md:gap-12`}
                     >
                       <CarouselImage cards={showcaseCards} />
-                      <div className="w-4/5 mx-auto space-y-4 md:w-1/2 md:mx-0">
+                      <div className="w-full space-y-4 md:w-1/2 md:mx-0">
                         <div className="space-y-1">
                           {card.prefixText && (
                             <span className="block text-base font-medium text-black/75 md:text-lg">
