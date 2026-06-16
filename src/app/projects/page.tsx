@@ -62,9 +62,9 @@ export default function Projects() {
   const [showOtherGames, setShowOtherGames] = useState(false);
   const [showMoreTeaching, setShowMoreTeaching] = useState(false);
 
-  // If the user lands directly via /projects#teaching, the browser hash scroll can
-  // happen before dynamic content (games) finishes loading, leaving the anchor
-  // too high. Re-scroll once loading settles.
+  // If the user lands via /projects#<section> (especially #teaching which loads async),
+  // re-scroll once content settles. When coming from a homepage smooth-nav button,
+  // use smooth behavior; otherwise instant.
   const didAutoScrollRef = useRef(false);
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -72,17 +72,20 @@ export default function Projects() {
     if (loading) return;
 
     const hash = window.location.hash;
-    if (!hash) return;
+    const smoothTarget = sessionStorage.getItem('smoothScrollTarget');
 
-    const targetId = hash.startsWith("#") ? hash.slice(1) : hash;
-    if (targetId !== "teaching") return;
+    const targetId = hash ? hash.slice(1) : (smoothTarget ?? '');
+    if (!targetId) return;
 
     const targetEl = document.getElementById(targetId);
     if (!targetEl) return;
 
+    const useSmooth = smoothTarget === targetId;
+    if (useSmooth) sessionStorage.removeItem('smoothScrollTarget');
+
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        targetEl.scrollIntoView({ behavior: "auto", block: "start" });
+        targetEl.scrollIntoView({ behavior: useSmooth ? "smooth" : "auto", block: "start" });
         didAutoScrollRef.current = true;
       });
     });

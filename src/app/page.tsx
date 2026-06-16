@@ -157,6 +157,13 @@ export default function Home() {
     return () => window.removeEventListener('scroll', check);
   }, []);
 
+  const handleSmoothNav = (href: string) => {
+    const sectionId = href.split('#')[1];
+    if (typeof window !== 'undefined' && sectionId) {
+      sessionStorage.setItem('smoothScrollTarget', sectionId);
+    }
+  };
+
   // Pre-fetch games data to warm up the cache for faster load on /projects page
   useEffect(() => {
     // Prefetch the /projects route for faster navigation
@@ -476,8 +483,10 @@ export default function Home() {
 
               {/* CTA Buttons */}
               <div className="flex flex-wrap gap-3 [@media(max-height:700px)]:mt-4">
-                <Link 
+                <Link
                   href="/projects#projects"
+                  scroll={false}
+                  onClick={() => handleSmoothNav('/projects#projects')}
                   className="group flex items-center justify-center gap-2 px-6 py-3 [@media(max-height:700px)]:py-2 bg-green-600 hover:bg-green-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
                   aria-label="View work"
                 >
@@ -688,6 +697,8 @@ export default function Home() {
                           <div className="flex justify-center pt-2 md:justify-start">
                             <Link
                               href={card.href}
+                              scroll={isProjectsPageLink ? false : undefined}
+                              onClick={isProjectsPageLink ? () => handleSmoothNav(card.href) : undefined}
                               aria-label={card.ariaLabel}
                               className={`group inline-flex cursor-pointer items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl ${
                                 isProjectsPageLink
