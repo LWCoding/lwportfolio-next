@@ -4,13 +4,10 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="py-4 px-4 border-t border-black/20 bg-yellow-400 mt-auto scroll-mt-[64px]"
+      className="py-2 px-4 border-t border-black/20 bg-yellow-400 mt-auto scroll-mt-[64px]"
     >
       <div className="container mx-auto max-w-[1024px] text-center">
-        <p className="text-black font-bold">
-          lucas wang © {new Date().getFullYear()}
-        </p>
-        <p className="text-sm text-black font-bold mt-1">
+        <p className="text-sm text-black font-bold">
           <a
             href="mailto:lswang05@stanford.edu"
             className="underline hover:text-gray-800 hover:no-underline transition-colors cursor-pointer"
@@ -21,7 +18,7 @@ export default function Footer() {
         </p>
 
         {/* Social Icons */}
-        <div className="flex items-center justify-center gap-3 mt-3">
+        <div className="flex items-center justify-center gap-3 mt-2">
           <a
             href="https://www.linkedin.com/in/lucas-wang-3160b720a/"
             target="_blank"

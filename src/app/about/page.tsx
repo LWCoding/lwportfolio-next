@@ -31,7 +31,7 @@ export default function About() {
             <div className="flex flex-col md:flex-row items-stretch gap-8 md:gap-10">
               {/* story text */}
               <div className="w-full md:w-[55%] space-y-4">
-                <h1 className="text-3xl md:text-4xl font-bold text-black">
+                <h1 className="text-3xl md:text-4xl font-black text-black">
                   Where I&apos;m Coming From
                 </h1>
                 <p className="text-base md:text-lg text-black/80">

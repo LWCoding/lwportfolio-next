@@ -38,7 +38,7 @@ function ProjectsSectionHeader({ children }: { children: ReactNode }) {
   return (
     <h2 className="mb-6 md:mb-8 flex justify-center">
       <div className="inline-flex flex-col">
-        <span className="text-3xl font-bold text-gray-900 md:text-4xl">
+        <span className="text-3xl font-black text-gray-900 md:text-4xl">
           {children}
         </span>
         <div className="mt-3 h-1 rounded-full bg-blue-500" />
@@ -101,7 +101,7 @@ export default function Projects() {
       {/* Projects (non-teaching work) */}
       <div id="projects">
         <Section separator={false} container={true} padding={true} className="pt-8 md:pt-12 pb-4 md:pb-6">
-          <ProjectsSectionHeader>Work / Academic</ProjectsSectionHeader>
+          <ProjectsSectionHeader>Professional</ProjectsSectionHeader>
           <div className="space-y-8 md:space-y-6">
             {productProjects.slice(0, 3).map((project, index) => (
               <WorkItemCard
@@ -186,7 +186,7 @@ export default function Projects() {
       {/* Games */}
       <div id="games">
         <Section separator={false} container={true} padding={true} className="pt-4 md:pt-6">
-          <ProjectsSectionHeader>My Games</ProjectsSectionHeader>
+          <ProjectsSectionHeader>Games</ProjectsSectionHeader>
           {!loading && !error && featuredGames.length > 0 && (
             <div className="space-y-8 md:space-y-6">
               {featuredGames.slice(0, 3).map((game, index) => {
@@ -304,7 +304,7 @@ export default function Projects() {
       {/* Teaching */}
       <div id="teaching" className="scroll-mt-[96px] md:scroll-mt-[120px]">
         <Section separator={false} container={true} padding={true} className="pt-4 md:pt-6 pb-8">
-          <ProjectsSectionHeader>My Teaching Experience</ProjectsSectionHeader>
+          <ProjectsSectionHeader>Teaching</ProjectsSectionHeader>
           <div className="space-y-8 md:space-y-6">
             {teachingProjects.slice(0, 3).map((project, index) => (
               <WorkItemCard

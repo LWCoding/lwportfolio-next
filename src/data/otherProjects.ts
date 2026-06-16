@@ -37,6 +37,17 @@ export interface OtherProject {
 // Configure your other projects here
 export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   {
+    id: 'nex-playground',
+    title: 'Nex Playground',
+    description: 'Developing games for the Nex Playground platform to get families moving together, at the intersection of game design and health tech.',
+    tags: ['Computer Vision'],
+    type: 'Project',
+    coverImage: '/images/nex-img.webp',
+    createdAt: '2026-06-01',
+    tools: ['unity', 'csharp'],
+    displayType: 'plain',
+  },
+  {
     id: 'always-be-closing',
     title: 'Always Be Closing',
     description: 'A software simulation designed for Stanford University to train salespeople to be more effective in sales calls. Used to teach STRAMGT351, a sales management course.',
@@ -56,7 +67,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     tags: ['Virtual Reality'],
     href: 'https://www.immersifyvr.org/',
     type: 'Website',
-    coverImage: '/images/immersifyvr.png',
+    coverImage: '/images/immersifyvr-bob.png',
     createdAt: '2024-10-24',
     tools: ['figma', 'unity', 'csharp'],
     detailComponent: React.createElement(ImmersifyVRDocumentation),
@@ -102,18 +113,6 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     createdAt: '2025-09-05',
     tools: ['html', 'react'],
     displayType: 'monitor'
-  },
-  {
-    id: 'timesync',
-    title: 'Timesync',
-    description: 'A schedule-syncing app designed to help people easily coordinate their schedules with friends.',
-    tags: ['App', 'Figma'],
-    type: 'Figma',
-    href: 'https://www.figma.com/design/Ng5ndVHBaIS4g86iEHsXzR/TimeSync-App?node-id=42-2988&t=WRYz7MBidzvsda76-1',
-    coverImage: '/images/timesync.png',
-    createdAt: '2025-04-10',
-    tools: ['figma'],
-    displayType: 'mobile'
   },
   {
     id: 'planet',
