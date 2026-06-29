@@ -767,7 +767,7 @@ export default function Home() {
           </div>
           <ResumeButton />
         </div>
-        <div className="absolute bottom-0 left-0 right-0">
+        <div className="absolute bottom-0 left-0 right-0 z-20">
           <Footer />
         </div>
       </div>
