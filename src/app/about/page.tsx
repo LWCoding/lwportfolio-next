@@ -5,6 +5,7 @@ import Section from "@/components/Section";
 import VideoBanner from "@/components/VideoBanner";
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import SectionDoodles from "@/components/SectionDoodles";
 
 export default function About() {
   return (
@@ -26,8 +27,9 @@ export default function About() {
         padding={false}
         className="px-0 scroll-mt-[64px]"
       >
-        <div className="w-full bg-white py-8 md:py-12">
-          <div className="container mx-auto max-w-[1024px] px-4 md:px-6">
+        <div className="relative w-full bg-white py-8 md:py-12">
+          <SectionDoodles theme="mixed" count={8} seed={71} />
+          <div className="relative container mx-auto max-w-[1024px] px-4 md:px-6">
             <div className="flex flex-col md:flex-row items-stretch gap-8 md:gap-10">
               {/* story text */}
               <div className="w-full md:w-[55%] space-y-4">

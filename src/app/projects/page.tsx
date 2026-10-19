@@ -7,6 +7,7 @@ import VideoBanner from "@/components/VideoBanner";
 import Footer from "@/components/Footer";
 import WorkItemCard from "@/components/WorkItemCard";
 import GalleryCard from "@/components/GalleryCard";
+import SectionDoodles, { SECTION_COLORS } from "@/components/SectionDoodles";
 import { useGames, FEATURED_GAMES_CONFIG } from "@/hooks/useFeaturedGames";
 import { OTHER_PROJECTS_CONFIG } from "@/data/otherProjects";
 import { ReactNode, useEffect, useRef, useState } from "react";
@@ -34,14 +35,14 @@ function ProjectsWaveDivider() {
   );
 }
 
-function ProjectsSectionHeader({ children }: { children: ReactNode }) {
+function ProjectsSectionHeader({ children, color }: { children: ReactNode; color: string }) {
   return (
     <h2 className="mb-6 md:mb-8 flex justify-center">
       <div className="inline-flex flex-col">
         <span className="text-3xl font-black text-gray-900 md:text-4xl">
           {children}
         </span>
-        <div className="mt-3 h-1 rounded-full bg-blue-500" />
+        <div className="mt-3 h-1 rounded-full" style={{ backgroundColor: color }} />
       </div>
     </h2>
   );
@@ -102,9 +103,10 @@ export default function Projects() {
       />
 
       {/* Projects (non-teaching work) */}
-      <div id="projects">
-        <Section separator={false} container={true} padding={true} className="pt-8 md:pt-12 pb-4 md:pb-6">
-          <ProjectsSectionHeader>Professional</ProjectsSectionHeader>
+      <div id="projects" className="relative">
+        <SectionDoodles theme="professional" />
+        <Section separator={false} container={true} padding={true} className="relative pt-8 md:pt-12 pb-4 md:pb-6">
+          <ProjectsSectionHeader color={SECTION_COLORS.professional}>Professional</ProjectsSectionHeader>
           <div className="space-y-8 md:space-y-6">
             {productProjects.slice(0, 3).map((project, index) => (
               <WorkItemCard
@@ -187,9 +189,10 @@ export default function Projects() {
       <ProjectsWaveDivider />
 
       {/* Games */}
-      <div id="games">
-        <Section separator={false} container={true} padding={true} className="pt-4 md:pt-6">
-          <ProjectsSectionHeader>Games</ProjectsSectionHeader>
+      <div id="games" className="relative">
+        <SectionDoodles theme="games" />
+        <Section separator={false} container={true} padding={true} className="relative pt-4 md:pt-6">
+          <ProjectsSectionHeader color={SECTION_COLORS.games}>Games</ProjectsSectionHeader>
           {!loading && !error && featuredGames.length > 0 && (
             <div className="space-y-8 md:space-y-6">
               {featuredGames.slice(0, 3).map((game, index) => {
@@ -305,9 +308,10 @@ export default function Projects() {
       <ProjectsWaveDivider />
 
       {/* Teaching */}
-      <div id="teaching" className="scroll-mt-[96px] md:scroll-mt-[120px]">
-        <Section separator={false} container={true} padding={true} className="pt-4 md:pt-6 pb-8">
-          <ProjectsSectionHeader>Teaching</ProjectsSectionHeader>
+      <div id="teaching" className="relative scroll-mt-[96px] md:scroll-mt-[120px]">
+        <SectionDoodles theme="teaching" />
+        <Section separator={false} container={true} padding={true} className="relative pt-4 md:pt-6 pb-8">
+          <ProjectsSectionHeader color={SECTION_COLORS.teaching}>Teaching</ProjectsSectionHeader>
           <div className="space-y-8 md:space-y-6">
             {teachingProjects.slice(0, 3).map((project, index) => (
               <WorkItemCard

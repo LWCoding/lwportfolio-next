@@ -4,6 +4,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ResumeButton from "@/components/ResumeButton";
 import WorkExperienceCircles from "@/components/WorkExperienceCircles";
+import SectionDoodles, { type DoodleTheme } from "@/components/SectionDoodles";
 import { type HomeShowcaseCardItem } from "@/components/HomeShowcaseCards";
 import { getListingPillsForProject } from "@/data/projectListingPills";
 import Image from "next/image";
@@ -135,6 +136,9 @@ function CarouselImage({ cards }: { cards: HomeShowcaseCardItem[] }) {
     </div>
   );
 }
+
+/** Background doodle theme for each "Summary of My Interests" row, in order. */
+const HIGHLIGHT_DOODLE_THEMES: DoodleTheme[] = ["professional", "games", "teaching"];
 
 function ExperienceWaveDivider() {
   return (
@@ -576,8 +580,9 @@ export default function Home() {
           </div>
         </div>
         {/* Work Experience Section */}
-        <div className="bg-white py-14 md:py-20 lg:py-24">
-          <div className="mx-auto w-full max-w-[1280px] px-4">
+        <div className="relative bg-white py-14 md:py-20 lg:py-24">
+          <SectionDoodles theme="mixed" count={4} contentWidth={1248} />
+          <div className="relative mx-auto w-full max-w-[1280px] px-4">
             <WorkExperienceCircles />
           </div>
         </div>
@@ -599,9 +604,10 @@ export default function Home() {
               <div key={id} className="w-full">
                 <section
                   aria-labelledby={`${id}-heading`}
-                  className="bg-gray-50"
+                  className="relative bg-gray-50"
                 >
-                  <div className={`mx-auto w-full max-w-[1280px] px-4 [@media(max-height:700px)]:py-5 ${index === 0 ? "pt-14 pb-8 md:pt-20 md:pb-10 lg:pt-24 lg:pb-12" : "py-8 md:py-10 lg:py-12"}`}>
+                  <SectionDoodles theme={HIGHLIGHT_DOODLE_THEMES[index]} count={6} />
+                  <div className={`relative mx-auto w-full max-w-[1280px] px-4 [@media(max-height:700px)]:py-5 ${index === 0 ? "pt-14 pb-8 md:pt-20 md:pb-10 lg:pt-24 lg:pb-12" : "py-8 md:py-10 lg:py-12"}`}>
                     <div
                       className={`flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-8 md:gap-12`}
                     >
