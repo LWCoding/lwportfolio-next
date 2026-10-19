@@ -3,6 +3,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ResumeButton from "@/components/ResumeButton";
+import WorkExperienceCircles from "@/components/WorkExperienceCircles";
 import { type HomeShowcaseCardItem } from "@/components/HomeShowcaseCards";
 import { getListingPillsForProject } from "@/data/projectListingPills";
 import Image from "next/image";
@@ -97,9 +98,33 @@ function CarouselImage({ cards }: { cards: HomeShowcaseCardItem[] }) {
           </div>
         ))}
       </div>
-      <div className="hidden md:block absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/80 via-black/50 to-transparent pt-28 pb-4 px-5 text-center">
+      {/* Click the left/right half of the image to navigate; hovered edge darkens and shows an arrow */}
+      {([-1, 1] as const).map((dir) => (
+        <button
+          key={dir}
+          onClick={() => go(dir)}
+          className={`group/nav absolute inset-y-0 ${dir === -1 ? 'left-0' : 'right-0'} z-[5] w-1/2 cursor-pointer`}
+          aria-label={dir === -1 ? 'Previous project' : 'Next project'}
+        >
+          <span
+            className={`absolute inset-y-0 ${dir === -1 ? 'left-0 bg-gradient-to-r' : 'right-0 bg-gradient-to-l'} w-2/5 from-black/55 to-transparent opacity-0 group-hover/nav:opacity-100 transition-opacity duration-300`}
+            aria-hidden
+          />
+          <svg
+            className={`absolute top-1/2 -translate-y-1/2 ${dir === -1 ? 'left-3' : 'right-3'} w-8 h-8 text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)] opacity-0 group-hover/nav:opacity-100 [@media(hover:none)]:opacity-80 transition-[opacity,translate] duration-300 ${dir === -1 ? 'group-hover/nav:-translate-x-0.5' : 'group-hover/nav:translate-x-0.5'}`}
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2.5}
+            viewBox="0 0 24 24"
+            aria-hidden
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d={dir === -1 ? 'M15.75 19.5L8.25 12l7.5-7.5' : 'M8.25 4.5l7.5 7.5-7.5 7.5'} />
+          </svg>
+        </button>
+      ))}
+      <div className="hidden md:block absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/80 via-black/50 to-transparent pt-28 pb-4 px-5 text-center pointer-events-none">
         {currentCard.href ? (
-          <Link href={currentCard.href} className="block text-white font-bold text-xl md:text-2xl leading-tight hover:underline underline-offset-2">
+          <Link href={currentCard.href} className="pointer-events-auto block text-white font-bold text-xl md:text-2xl leading-tight hover:underline underline-offset-2">
             {currentCard.title}{typeof currentCard.status === 'number' ? ` (${currentCard.status})` : currentCard.status === 'ongoing' ? ' (Ongoing)' : ''}
           </Link>
         ) : (
@@ -107,16 +132,6 @@ function CarouselImage({ cards }: { cards: HomeShowcaseCardItem[] }) {
         )}
         <p className="text-white/80 text-sm md:text-base mt-1 leading-snug">{currentCard.description}</p>
       </div>
-      <button onClick={() => go(-1)} className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 bg-black/40 hover:bg-black/60 rounded-full flex items-center justify-center text-white transition-colors cursor-pointer" aria-label="Previous project">
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-        </svg>
-      </button>
-      <button onClick={() => go(1)} className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 bg-black/40 hover:bg-black/60 rounded-full flex items-center justify-center text-white transition-colors cursor-pointer" aria-label="Next project">
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-        </svg>
-      </button>
     </div>
   );
 }
@@ -271,7 +286,7 @@ export default function Home() {
         {
           title: "ImmersifyVR",
           description: "VR fitness built for older adults.",
-          status: "ongoing",
+          status: 2026,
           pills: ["For Work"],
           href: "/projects/immersifyvr",
           imageSrc: "/images/immersifyvr.png",
@@ -563,92 +578,7 @@ export default function Home() {
         {/* Work Experience Section */}
         <div className="bg-white py-14 md:py-20 lg:py-24">
           <div className="mx-auto w-full max-w-[1280px] px-4">
-
-            {/* Nex Inc. */}
-            <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16 mb-14 md:mb-20">
-              <div className="relative w-full md:w-1/2 aspect-[16/10] rounded-2xl overflow-hidden shadow-md">
-                <Image src="/images/nex-img.webp" alt="Lucas holding Nex Playground box" fill className="object-cover object-top" />
-              </div>
-              <div className="w-full md:w-1/2 space-y-2">
-                <p className="text-sm font-black tracking-[0.2em] text-yellow-500 uppercase">Jun 2026 - Present</p>
-                <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-black leading-none tracking-tight">
-                  Nex Inc.
-                </h2>
-                <p className="text-xl md:text-2xl font-semibold text-gray-500 pt-1">
-                  Software Engineering Intern
-                </p>
-                <p className="text-base md:text-lg text-gray-700 leading-relaxed pt-3">
-                  Working in the Party Cell to develop games to get families moving together through the Nex Playground platform. Working at the intersection of game design and health tech to create interactive experiences that make exercise fun for all ages.
-                </p>
-                <div className="pt-4 flex justify-center md:justify-start">
-                  <Link href="/projects/nex-playground" className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer">
-                    <span>View Project</span>
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            <div className="border-t border-gray-200 mb-14 md:mb-20" />
-
-            {/* Always Be Closing */}
-            <div className="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-16">
-              <div className="relative w-full md:w-1/2 aspect-[16/10] rounded-2xl overflow-hidden shadow-md">
-                <Image
-                  src="/images/alwaysbeclosing.png"
-                  alt="Always Be Closing game"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="w-full md:w-1/2 space-y-2">
-                <p className="text-sm font-black tracking-[0.2em] text-yellow-500 uppercase">Jun 2025 – Present</p>
-                <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-black leading-none tracking-tight">
-                  Always Be Closing
-                </h2>
-                <p className="text-xl md:text-2xl font-semibold text-gray-500 pt-1">
-                  Solo Game Programmer
-                </p>
-                <p className="text-base md:text-lg text-gray-700 leading-relaxed pt-3">
-                  Building a game that AI-simulates sales deal negotiations, helping players practice persuasion and closing techniques in a high-stakes, fast-paced environment.
-                </p>
-                <div className="pt-4 flex justify-center md:justify-start">
-                  <Link href="/projects/always-be-closing" className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer">
-                    <span>View Project</span>
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            <div className="border-t border-gray-200 mb-14 md:mb-20 mt-14 md:mt-20" />
-
-            {/* ImmersifyVR */}
-            <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
-              <div className="relative w-full md:w-1/2 aspect-[16/10] rounded-2xl overflow-hidden shadow-md">
-                <Image
-                  src="/images/immersifyvr-bob.png"
-                  alt="ImmersifyVR virtual reality exercise"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="w-full md:w-1/2 space-y-2">
-                <p className="text-sm font-black tracking-[0.2em] text-yellow-500 uppercase">Oct 2024 – Present</p>
-                <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-black leading-none tracking-tight">
-                  ImmersifyVR
-                </h2>
-                <p className="text-xl md:text-2xl font-semibold text-gray-500 pt-1">
-                  Project Manager
-                </p>
-                <p className="text-base md:text-lg text-gray-700 leading-relaxed pt-3">
-                  A grant-funded virtual reality exercise application designed to motivate older adults to exercise. Deployed and tested in several retirement homes across California.
-                </p>
-                <div className="pt-4 flex justify-center md:justify-start">
-                  <Link href="/projects/immersifyvr" className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer">
-                    <span>View Project</span>
-                  </Link>
-                </div>
-              </div>
-            </div>
+            <WorkExperienceCircles />
           </div>
         </div>
 
