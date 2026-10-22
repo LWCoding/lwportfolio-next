@@ -15,7 +15,16 @@ const STORAGE_KEY = "axis-quiver-v1";
 const SIZE_KEY = "axis-quiver-size";
 /** Bounds (px) for the matrix size control. */
 const PLOT_SIZE = { min: 260, max: 760, default: 560 };
-const OBJECT_COLORS = ["#15803d", "#a16207", "#1d4ed8", "#b91c1c", "#7c3aed", "#0e7490", "#c2410c", "#be185d"];
+const OBJECT_COLORS = [
+  "#15803d",
+  "#a16207",
+  "#1d4ed8",
+  "#b91c1c",
+  "#7c3aed",
+  "#0e7490",
+  "#c2410c",
+  "#be185d",
+];
 
 interface QuiverState {
   axes: Axis[];
@@ -34,13 +43,20 @@ const BLANK_STATE: QuiverState = { axes: [], objects: [], xId: "", yId: "" };
 const FILE_TAG = "axis-quiver";
 
 const isString = (v: unknown): v is string => typeof v === "string";
-const isRecord = (v: unknown): v is Record<string, unknown> => typeof v === "object" && v !== null;
+const isRecord = (v: unknown): v is Record<string, unknown> =>
+  typeof v === "object" && v !== null;
 
 /** Validates saved or imported data; returns null if it isn't a usable quiver. */
 function parseQuiver(raw: unknown): QuiverState | null {
-  if (!isRecord(raw) || !Array.isArray(raw.axes) || !Array.isArray(raw.objects)) return null;
+  if (!isRecord(raw) || !Array.isArray(raw.axes) || !Array.isArray(raw.objects))
+    return null;
   const axes = raw.axes.filter(
-    (a): a is Axis => isRecord(a) && isString(a.id) && isString(a.name) && isString(a.low) && isString(a.high),
+    (a): a is Axis =>
+      isRecord(a) &&
+      isString(a.id) &&
+      isString(a.name) &&
+      isString(a.low) &&
+      isString(a.high),
   );
   const axisIds = new Set(axes.map((a) => a.id));
   const objects: QuiverObject[] = raw.objects.flatMap((o, i) => {
@@ -53,7 +69,9 @@ function parseQuiver(raw: unknown): QuiverState | null {
         }
       }
     }
-    const color = isString(o.color) ? o.color : OBJECT_COLORS[i % OBJECT_COLORS.length];
+    const color = isString(o.color)
+      ? o.color
+      : OBJECT_COLORS[i % OBJECT_COLORS.length];
     return [{ id: o.id, name: o.name, color, values }];
   });
   // Fall back to the first two axes if the saved pair is missing
@@ -65,9 +83,19 @@ function parseQuiver(raw: unknown): QuiverState | null {
   return { axes, objects, xId, yId };
 }
 
-function Card({ title, children, className = "" }: { title?: string; children: React.ReactNode; className?: string }) {
+function Card({
+  title,
+  children,
+  className = "",
+}: {
+  title?: string;
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <section className={`rounded-2xl border-2 border-black bg-white p-4 shadow-[4px_4px_0_0_#000] md:p-5 ${className}`}>
+    <section
+      className={`rounded-2xl border-2 border-black bg-white p-4 shadow-[4px_4px_0_0_#000] md:p-5 ${className}`}
+    >
       {title && <h2 className="mb-3 text-lg font-black text-black">{title}</h2>}
       {children}
     </section>
@@ -94,7 +122,11 @@ export default function AxisQuiver() {
   const plotRef = useRef<HTMLDivElement>(null);
   const importRef = useRef<HTMLInputElement>(null);
   // Where the current drag began, so a plain click on a selected object can deselect it
-  const dragStart = useRef<{ x: number; y: number; wasSelected: boolean } | null>(null);
+  const dragStart = useRef<{
+    x: number;
+    y: number;
+    wasSelected: boolean;
+  } | null>(null);
 
   const { axes, objects, xId, yId } = state;
   const xAxis = axes.find((a) => a.id === xId);
@@ -136,26 +168,42 @@ export default function AxisQuiver() {
       const rect = plotRef.current?.getBoundingClientRect();
       if (!rect) return;
       const inside =
-        e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
+        e.clientX >= rect.left &&
+        e.clientX <= rect.right &&
+        e.clientY >= rect.top &&
+        e.clientY <= rect.bottom;
       setState((s) => {
         const obj = s.objects.find((o) => o.id === dragId);
         if (!obj) return s;
-        const alreadyPlaced = obj.values[xAxis.id] !== undefined && obj.values[yAxis.id] !== undefined;
+        const alreadyPlaced =
+          obj.values[xAxis.id] !== undefined &&
+          obj.values[yAxis.id] !== undefined;
         if (!inside && !alreadyPlaced) return s;
-        const clamp = (v: number) => Math.round(Math.max(-AXIS_MAX, Math.min(AXIS_MAX, v)) * 2) / 2;
-        const x = clamp(((e.clientX - rect.left) / rect.width) * AXIS_MAX * 2 - AXIS_MAX);
-        const y = clamp(AXIS_MAX - ((e.clientY - rect.top) / rect.height) * AXIS_MAX * 2);
+        const clamp = (v: number) =>
+          Math.round(Math.max(-AXIS_MAX, Math.min(AXIS_MAX, v)) * 2) / 2;
+        const x = clamp(
+          ((e.clientX - rect.left) / rect.width) * AXIS_MAX * 2 - AXIS_MAX,
+        );
+        const y = clamp(
+          AXIS_MAX - ((e.clientY - rect.top) / rect.height) * AXIS_MAX * 2,
+        );
         return {
           ...s,
           objects: s.objects.map((o) =>
-            o.id === dragId ? { ...o, values: { ...o.values, [xAxis.id]: x, [yAxis.id]: y } } : o,
+            o.id === dragId
+              ? { ...o, values: { ...o.values, [xAxis.id]: x, [yAxis.id]: y } }
+              : o,
           ),
         };
       });
     };
     const onUp = (e: PointerEvent) => {
       const start = dragStart.current;
-      if (start?.wasSelected && Math.hypot(e.clientX - start.x, e.clientY - start.y) < 4) setSelectedId(null);
+      if (
+        start?.wasSelected &&
+        Math.hypot(e.clientX - start.x, e.clientY - start.y) < 4
+      )
+        setSelectedId(null);
       dragStart.current = null;
       setDragId(null);
     };
@@ -171,14 +219,24 @@ export default function AxisQuiver() {
 
   const startDrag = (id: string) => (e: React.PointerEvent) => {
     e.preventDefault();
-    dragStart.current = { x: e.clientX, y: e.clientY, wasSelected: id === selectedId };
+    dragStart.current = {
+      x: e.clientX,
+      y: e.clientY,
+      wasSelected: id === selectedId,
+    };
     setSelectedId(id);
     setDragId(id);
   };
 
   const exportQuiver = () => {
-    const file = JSON.stringify({ app: FILE_TAG, version: 1, ...state }, null, 2);
-    const url = URL.createObjectURL(new Blob([file], { type: "application/json" }));
+    const file = JSON.stringify(
+      { app: FILE_TAG, version: 1, ...state },
+      null,
+      2,
+    );
+    const url = URL.createObjectURL(
+      new Blob([file], { type: "application/json" }),
+    );
     const link = document.createElement("a");
     link.href = url;
     link.download = "axis-quiver.json";
@@ -192,7 +250,8 @@ export default function AxisQuiver() {
     if (!file) return;
     try {
       const raw: unknown = JSON.parse(await file.text());
-      const next = isRecord(raw) && raw.app === FILE_TAG ? parseQuiver(raw) : null;
+      const next =
+        isRecord(raw) && raw.app === FILE_TAG ? parseQuiver(raw) : null;
       if (!next) throw new Error();
       setState(next);
       setSelectedId(null);
@@ -202,7 +261,8 @@ export default function AxisQuiver() {
     }
   };
 
-  const setAxes = (xNext: string, yNext: string) => setState((s) => ({ ...s, xId: xNext, yId: yNext }));
+  const setAxes = (xNext: string, yNext: string) =>
+    setState((s) => ({ ...s, xId: xNext, yId: yNext }));
 
   const pickAxis = (which: "x" | "y", id: string) => {
     // Picking the other axis's current value swaps them rather than showing a diagonal
@@ -223,12 +283,16 @@ export default function AxisQuiver() {
   };
 
   const updateAxis = (id: string, patch: Partial<Axis>) =>
-    setState((s) => ({ ...s, axes: s.axes.map((a) => (a.id === id ? { ...a, ...patch } : a)) }));
+    setState((s) => ({
+      ...s,
+      axes: s.axes.map((a) => (a.id === id ? { ...a, ...patch } : a)),
+    }));
 
   const removeAxis = (id: string) =>
     setState((s) => {
       const rest = s.axes.filter((a) => a.id !== id);
-      const fallback = (keep: string) => rest.find((a) => a.id !== keep)?.id ?? "";
+      const fallback = (keep: string) =>
+        rest.find((a) => a.id !== keep)?.id ?? "";
       const nextX = s.xId === id ? fallback(s.yId) : s.xId;
       const nextY = s.yId === id ? fallback(nextX) : s.yId;
       return {
@@ -247,11 +311,19 @@ export default function AxisQuiver() {
     e.preventDefault();
     const low = newAxis.low.trim() || "Low";
     const high = newAxis.high.trim() || "High";
-    const axis: Axis = { id: makeId(), name: newAxis.name.trim() || `${low} vs ${high}`, low, high };
+    const axis: Axis = {
+      id: makeId(),
+      name: newAxis.name.trim() || `${low} vs ${high}`,
+      low,
+      high,
+    };
     setState((s) => ({
       ...s,
       axes: [...s.axes, axis],
-      objects: s.objects.map((o) => ({ ...o, values: { ...o.values, [axis.id]: 0 } })),
+      objects: s.objects.map((o) => ({
+        ...o,
+        values: { ...o.values, [axis.id]: 0 },
+      })),
       xId: s.xId || axis.id,
       yId: s.yId || (s.xId ? axis.id : ""),
     }));
@@ -275,7 +347,10 @@ export default function AxisQuiver() {
   };
 
   const updateObject = (id: string, patch: Partial<QuiverObject>) =>
-    setState((s) => ({ ...s, objects: s.objects.map((o) => (o.id === id ? { ...o, ...patch } : o)) }));
+    setState((s) => ({
+      ...s,
+      objects: s.objects.map((o) => (o.id === id ? { ...o, ...patch } : o)),
+    }));
 
   const setValue = (obj: QuiverObject, axisId: string, value: number) =>
     updateObject(obj.id, { values: { ...obj.values, [axisId]: value } });
@@ -287,14 +362,23 @@ export default function AxisQuiver() {
 
   const selected = objects.find((o) => o.id === selectedId) ?? null;
   const unplaced =
-    xAxis && yAxis ? objects.filter((o) => o.values[xAxis.id] === undefined || o.values[yAxis.id] === undefined) : [];
+    xAxis && yAxis
+      ? objects.filter(
+          (o) =>
+            o.values[xAxis.id] === undefined ||
+            o.values[yAxis.id] === undefined,
+        )
+      : [];
 
   return (
     <div className="mx-auto w-full max-w-[1280px] px-4 pb-16 pt-8 md:pt-10">
       {/* Header */}
       <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div>
-          <Link href="/playground" className="block w-fit text-sm font-bold text-blue-600 underline hover:text-blue-700">
+          <Link
+            href="/playground"
+            className="block w-fit text-sm font-bold text-blue-600 underline hover:text-blue-700"
+          >
             ← Playground
           </Link>
           <h1 className="mt-2 inline-flex flex-col text-4xl font-black text-gray-900 md:text-5xl">
@@ -304,7 +388,11 @@ export default function AxisQuiver() {
         </div>
         <div className="flex flex-col items-start gap-1 md:items-end">
           <div className="flex flex-wrap gap-2">
-            <button type="button" className={smallButton} onClick={() => importRef.current?.click()}>
+            <button
+              type="button"
+              className={smallButton}
+              onClick={() => importRef.current?.click()}
+            >
               Import
             </button>
             <button
@@ -333,7 +421,9 @@ export default function AxisQuiver() {
             className="hidden"
             onChange={importQuiver}
           />
-          {importError && <p className="text-xs font-semibold text-red-700">{importError}</p>}
+          {importError && (
+            <p className="text-xs font-semibold text-red-700">{importError}</p>
+          )}
         </div>
       </div>
 
@@ -343,46 +433,51 @@ export default function AxisQuiver() {
           <div className="mb-4 flex flex-wrap items-center gap-2">
             {axes.length >= 2 && (
               <>
-            <label className="flex items-center gap-2 text-sm font-semibold text-black/70">
-              X
-              <select
-                value={xId}
-                onChange={(e) => pickAxis("x", e.target.value)}
-                className={`${inputClass} w-auto cursor-pointer`}
-              >
-                {axes.map((a) => (
-                  <option key={a.id} value={a.id}>
-                    {a.name}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <button
-              type="button"
-              className={smallButton}
-              onClick={() => setAxes(yId, xId)}
-              disabled={!xAxis || !yAxis}
-              aria-label="Swap axes"
-            >
-              ⇄
-            </button>
-            <label className="flex items-center gap-2 text-sm font-semibold text-black/70">
-              Y
-              <select
-                value={yId}
-                onChange={(e) => pickAxis("y", e.target.value)}
-                className={`${inputClass} w-auto cursor-pointer`}
-              >
-                {axes.map((a) => (
-                  <option key={a.id} value={a.id}>
-                    {a.name}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <button type="button" className={smallButton} onClick={shuffleAxes} disabled={axes.length < 3}>
-              Random pair
-            </button>
+                <label className="flex items-center gap-2 text-sm font-semibold text-black/70">
+                  X
+                  <select
+                    value={xId}
+                    onChange={(e) => pickAxis("x", e.target.value)}
+                    className={`${inputClass} w-auto cursor-pointer`}
+                  >
+                    {axes.map((a) => (
+                      <option key={a.id} value={a.id}>
+                        {a.name}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <button
+                  type="button"
+                  className={smallButton}
+                  onClick={() => setAxes(yId, xId)}
+                  disabled={!xAxis || !yAxis}
+                  aria-label="Swap axes"
+                >
+                  ⇄
+                </button>
+                <label className="flex items-center gap-2 text-sm font-semibold text-black/70">
+                  Y
+                  <select
+                    value={yId}
+                    onChange={(e) => pickAxis("y", e.target.value)}
+                    className={`${inputClass} w-auto cursor-pointer`}
+                  >
+                    {axes.map((a) => (
+                      <option key={a.id} value={a.id}>
+                        {a.name}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <button
+                  type="button"
+                  className={smallButton}
+                  onClick={shuffleAxes}
+                  disabled={axes.length < 3}
+                >
+                  Random pair
+                </button>
               </>
             )}
             <label className="flex items-center gap-2 text-sm font-semibold text-black/70 sm:ml-auto">
@@ -403,8 +498,13 @@ export default function AxisQuiver() {
           {xAxis && yAxis && analysis ? (
             <>
               {/* Size covers the plot plus the side labels (2 × w-32 + gaps) */}
-              <div className="mx-auto w-full" style={{ maxWidth: plotSize + 272 }}>
-                <p className="mb-1 text-center text-sm font-bold text-black">↑ {yAxis.high}</p>
+              <div
+                className="mx-auto w-full"
+                style={{ maxWidth: plotSize + 272 }}
+              >
+                <p className="mb-1 text-center text-sm font-bold text-black">
+                  ↑ {yAxis.high}
+                </p>
                 <div className="flex items-center gap-2">
                   <p className="hidden w-32 shrink-0 text-right text-sm font-bold text-black sm:block">
                     {xAxis.low} ←
@@ -417,7 +517,10 @@ export default function AxisQuiver() {
                       <QuadrantCell
                         key={q}
                         quadrant={q}
-                        highlightEmpty={analysis.placed.length >= 3 && analysis.counts[q] === 0}
+                        highlightEmpty={
+                          analysis.placed.length >= 3 &&
+                          analysis.counts[q] === 0
+                        }
                       />
                     ))}
                     <div className="pointer-events-none absolute inset-y-0 left-1/2 w-0.5 -translate-x-1/2 bg-black" />
@@ -432,8 +535,18 @@ export default function AxisQuiver() {
                         <line
                           x1={-AXIS_MAX}
                           x2={AXIS_MAX}
-                          y1={-(analysis.trend.intercept + analysis.trend.slope * -AXIS_MAX)}
-                          y2={-(analysis.trend.intercept + analysis.trend.slope * AXIS_MAX)}
+                          y1={
+                            -(
+                              analysis.trend.intercept +
+                              analysis.trend.slope * -AXIS_MAX
+                            )
+                          }
+                          y2={
+                            -(
+                              analysis.trend.intercept +
+                              analysis.trend.slope * AXIS_MAX
+                            )
+                          }
                           stroke="#15803d"
                           strokeWidth={0.15}
                           strokeDasharray="0.6 0.4"
@@ -465,7 +578,9 @@ export default function AxisQuiver() {
                           />
                           <span
                             className={`pointer-events-none absolute whitespace-nowrap rounded px-1 text-xs font-bold ${
-                              isSelected ? "bg-black text-white" : "bg-white/85 text-black"
+                              isSelected
+                                ? "bg-black text-white"
+                                : "bg-white/85 text-black"
                             } ${left > 75 ? "right-5" : "left-5"}`}
                           >
                             {o.name}
@@ -474,9 +589,13 @@ export default function AxisQuiver() {
                       );
                     })}
                   </div>
-                  <p className="hidden w-32 shrink-0 text-sm font-bold text-black sm:block">→ {xAxis.high}</p>
+                  <p className="hidden w-32 shrink-0 text-sm font-bold text-black sm:block">
+                    → {xAxis.high}
+                  </p>
                 </div>
-                <p className="mt-1 text-center text-sm font-bold text-black">↓ {yAxis.low}</p>
+                <p className="mt-1 text-center text-sm font-bold text-black">
+                  ↓ {yAxis.low}
+                </p>
                 <p className="mt-1 flex justify-between text-xs font-bold text-black/60 sm:hidden">
                   <span>← {xAxis.low}</span>
                   <span>{xAxis.high} →</span>
@@ -496,14 +615,16 @@ export default function AxisQuiver() {
                         onPointerDown={startDrag(o.id)}
                         className="flex cursor-grab touch-none items-center gap-1.5 rounded-full bg-white px-3 py-1 text-sm font-semibold text-black shadow-sm"
                       >
-                        <span className="h-3 w-3 rounded-full" style={{ backgroundColor: o.color }} />
+                        <span
+                          className="h-3 w-3 rounded-full"
+                          style={{ backgroundColor: o.color }}
+                        />
                         {o.name}
                       </button>
                     ))}
                   </div>
                 </div>
               )}
-
             </>
           ) : (
             <EmptyHint>Add at least two axes to form a matrix.</EmptyHint>
@@ -526,7 +647,10 @@ export default function AxisQuiver() {
                   />
                   <AxisBadge active={a.id === xId} label="X" />
                   <AxisBadge active={a.id === yId} label="Y" />
-                  <RemoveButton onClick={() => removeAxis(a.id)} label={`Remove axis ${a.name}`} />
+                  <RemoveButton
+                    onClick={() => removeAxis(a.id)}
+                    label={`Remove axis ${a.name}`}
+                  />
                 </div>
                 <div className="flex items-center gap-2">
                   <input
@@ -535,7 +659,9 @@ export default function AxisQuiver() {
                     className={inputClass}
                     aria-label="Low end label"
                   />
-                  <span className="shrink-0 text-sm font-bold text-black/50">↔</span>
+                  <span className="shrink-0 text-sm font-bold text-black/50">
+                    ↔
+                  </span>
                   <input
                     value={a.high}
                     onChange={(e) => updateAxis(a.id, { high: e.target.value })}
@@ -546,7 +672,10 @@ export default function AxisQuiver() {
               </li>
             ))}
           </ul>
-          <form onSubmit={addAxis} className="space-y-2 rounded-xl border-2 border-dashed border-black/20 p-2.5">
+          <form
+            onSubmit={addAxis}
+            className="space-y-2 rounded-xl border-2 border-dashed border-black/20 p-2.5"
+          >
             <input
               value={newAxis.name}
               onChange={(e) => setNewAxis({ ...newAxis, name: e.target.value })}
@@ -556,14 +685,20 @@ export default function AxisQuiver() {
             <div className="flex items-center gap-2">
               <input
                 value={newAxis.low}
-                onChange={(e) => setNewAxis({ ...newAxis, low: e.target.value })}
+                onChange={(e) =>
+                  setNewAxis({ ...newAxis, low: e.target.value })
+                }
                 placeholder="Low end"
                 className={inputClass}
               />
-              <span className="shrink-0 text-sm font-bold text-black/50">↔</span>
+              <span className="shrink-0 text-sm font-bold text-black/50">
+                ↔
+              </span>
               <input
                 value={newAxis.high}
-                onChange={(e) => setNewAxis({ ...newAxis, high: e.target.value })}
+                onChange={(e) =>
+                  setNewAxis({ ...newAxis, high: e.target.value })
+                }
                 placeholder="High end"
                 className={inputClass}
               />
@@ -583,10 +718,15 @@ export default function AxisQuiver() {
                 type="button"
                 onClick={() => setSelectedId(o.id === selectedId ? null : o.id)}
                 className={`flex cursor-pointer items-center gap-1.5 rounded-full px-3 py-1 text-sm font-semibold transition-colors ${
-                  o.id === selectedId ? "bg-black text-white" : "bg-gray-200 text-black hover:bg-yellow-400"
+                  o.id === selectedId
+                    ? "bg-black text-white"
+                    : "bg-gray-200 text-black hover:bg-yellow-400"
                 }`}
               >
-                <span className="h-3 w-3 rounded-full" style={{ backgroundColor: o.color }} />
+                <span
+                  className="h-3 w-3 rounded-full"
+                  style={{ backgroundColor: o.color }}
+                />
                 {o.name}
               </button>
             ))}
@@ -598,7 +738,11 @@ export default function AxisQuiver() {
               placeholder="New object"
               className={inputClass}
             />
-            <button type="submit" className={`${smallButton} shrink-0`} disabled={!newObjectName.trim()}>
+            <button
+              type="submit"
+              className={`${smallButton} shrink-0`}
+              disabled={!newObjectName.trim()}
+            >
               + Add
             </button>
           </form>
@@ -609,19 +753,30 @@ export default function AxisQuiver() {
                 <input
                   type="color"
                   value={selected.color}
-                  onChange={(e) => updateObject(selected.id, { color: e.target.value })}
+                  onChange={(e) =>
+                    updateObject(selected.id, { color: e.target.value })
+                  }
                   className="h-8 w-8 shrink-0 cursor-pointer rounded border-0 bg-transparent p-0"
                   aria-label="Object color"
                 />
                 <input
                   value={selected.name}
-                  onChange={(e) => updateObject(selected.id, { name: e.target.value })}
+                  onChange={(e) =>
+                    updateObject(selected.id, { name: e.target.value })
+                  }
                   className={`${inputClass} font-bold`}
                   aria-label="Object name"
                 />
-                <RemoveButton onClick={() => removeObject(selected.id)} label={`Remove ${selected.name}`} />
+                <RemoveButton
+                  onClick={() => removeObject(selected.id)}
+                  label={`Remove ${selected.name}`}
+                />
               </div>
-              {axes.length === 0 && <p className="text-sm text-black/60">Add axes to place this object.</p>}
+              {axes.length === 0 && (
+                <p className="text-sm text-black/60">
+                  Add axes to place this object.
+                </p>
+              )}
               <ul className="space-y-3">
                 {axes.map((a) => {
                   const v = selected.values[a.id];
@@ -638,7 +793,9 @@ export default function AxisQuiver() {
                         max={AXIS_MAX}
                         step={0.5}
                         value={v ?? 0}
-                        onChange={(e) => setValue(selected, a.id, Number(e.target.value))}
+                        onChange={(e) =>
+                          setValue(selected, a.id, Number(e.target.value))
+                        }
                         className="w-full cursor-pointer accent-black"
                       />
                     </li>
@@ -647,7 +804,9 @@ export default function AxisQuiver() {
               </ul>
             </div>
           ) : (
-            <EmptyHint>Select an object to fine-tune where it sits on every axis.</EmptyHint>
+            <EmptyHint>
+              Select an object to fine-tune where it sits on every axis.
+            </EmptyHint>
           )}
         </Card>
       </div>
@@ -662,7 +821,13 @@ const QUADRANT_POSITION: Record<Quadrant, string> = {
   br: "right-0 bottom-0",
 };
 
-function QuadrantCell({ quadrant, highlightEmpty }: { quadrant: Quadrant; highlightEmpty: boolean }) {
+function QuadrantCell({
+  quadrant,
+  highlightEmpty,
+}: {
+  quadrant: Quadrant;
+  highlightEmpty: boolean;
+}) {
   return (
     <div
       className={`pointer-events-none absolute h-1/2 w-1/2 ${QUADRANT_POSITION[quadrant]}`}
@@ -690,7 +855,13 @@ function AxisBadge({ active, label }: { active: boolean; label: string }) {
   );
 }
 
-function RemoveButton({ onClick, label }: { onClick: () => void; label: string }) {
+function RemoveButton({
+  onClick,
+  label,
+}: {
+  onClick: () => void;
+  label: string;
+}) {
   return (
     <button
       type="button"
