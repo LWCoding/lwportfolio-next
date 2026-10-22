@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import AxisQuiver from "@/components/playground/AxisQuiver";
 
 export const metadata: Metadata = {
@@ -14,7 +13,6 @@ export default function AxisQuiverPage() {
       <main className="flex-1">
         <AxisQuiver />
       </main>
-      <Footer />
     </div>
   );
 }

@@ -38,14 +38,16 @@ export default function PlaygroundIndex() {
                   />
                 </div>
                 <span className="text-xs font-semibold text-black/50">{project.createdAt}</span>
-                <h2 className="inline-flex flex-col self-start text-2xl font-bold text-black">
-                  {project.title}
-                  <span
-                    className="mt-1 h-1 w-full rounded-full"
-                    style={{ backgroundColor: project.color }}
-                  />
-                </h2>
-                <p className="text-sm text-black/70 md:text-base">{project.description}</p>
+                <div className="flex flex-col gap-1.5">
+                  <h2 className="inline-flex flex-col self-start text-2xl font-bold leading-tight text-black">
+                    {project.title}
+                    <span
+                      className="mt-1 h-1 w-full rounded-full"
+                      style={{ backgroundColor: project.color }}
+                    />
+                  </h2>
+                  <p className="text-sm text-black/70 md:text-base">{project.description}</p>
+                </div>
               </Link>
             ))}
           </div>

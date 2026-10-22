@@ -341,13 +341,14 @@ export default function AxisQuiver() {
         {/* Matrix */}
         <Card>
           <div className="mb-4 flex flex-wrap items-center gap-2">
+            {axes.length >= 2 && (
+              <>
             <label className="flex items-center gap-2 text-sm font-semibold text-black/70">
               X
               <select
                 value={xId}
                 onChange={(e) => pickAxis("x", e.target.value)}
                 className={`${inputClass} w-auto cursor-pointer`}
-                disabled={axes.length < 2}
               >
                 {axes.map((a) => (
                   <option key={a.id} value={a.id}>
@@ -371,7 +372,6 @@ export default function AxisQuiver() {
                 value={yId}
                 onChange={(e) => pickAxis("y", e.target.value)}
                 className={`${inputClass} w-auto cursor-pointer`}
-                disabled={axes.length < 2}
               >
                 {axes.map((a) => (
                   <option key={a.id} value={a.id}>
@@ -383,6 +383,8 @@ export default function AxisQuiver() {
             <button type="button" className={smallButton} onClick={shuffleAxes} disabled={axes.length < 3}>
               Random pair
             </button>
+              </>
+            )}
             <label className="flex items-center gap-2 text-sm font-semibold text-black/70 sm:ml-auto">
               Size
               <input
@@ -504,14 +506,14 @@ export default function AxisQuiver() {
 
             </>
           ) : (
-            <EmptyHint>Add at least two axes to your quiver to form a matrix.</EmptyHint>
+            <EmptyHint>Add at least two axes to form a matrix.</EmptyHint>
           )}
         </Card>
       </div>
 
       <div className="mt-6 grid gap-6 md:grid-cols-2">
         {/* Axes */}
-        <Card title={`Quiver · ${axes.length} ax${axes.length === 1 ? "is" : "es"}`}>
+        <Card title={`Axes · ${axes.length}`}>
           <ul className="mb-4 space-y-2">
             {axes.map((a) => (
               <li key={a.id} className="rounded-xl bg-gray-200 p-2.5">
