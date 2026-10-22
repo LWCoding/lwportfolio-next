@@ -5,7 +5,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import {
   AXIS_MAX,
   Axis,
-  InsightTone,
   QUADRANTS,
   Quadrant,
   QuiverObject,
@@ -17,13 +16,6 @@ const SIZE_KEY = "axis-quiver-size";
 /** Bounds (px) for the matrix size control. */
 const PLOT_SIZE = { min: 260, max: 760, default: 560 };
 const OBJECT_COLORS = ["#15803d", "#a16207", "#1d4ed8", "#b91c1c", "#7c3aed", "#0e7490", "#c2410c", "#be185d"];
-
-const TONE_STYLES: Record<InsightTone, { label: string; className: string }> = {
-  gap: { label: "Gap", className: "bg-yellow-400 text-black" },
-  pattern: { label: "Pattern", className: "bg-green-700 text-white" },
-  warning: { label: "Heads up", className: "bg-red-700 text-white" },
-  info: { label: "Note", className: "bg-gray-200 text-black/70" },
-};
 
 interface QuiverState {
   axes: Axis[];
@@ -73,10 +65,10 @@ function parseQuiver(raw: unknown): QuiverState | null {
   return { axes, objects, xId, yId };
 }
 
-function Card({ title, children, className = "" }: { title: string; children: React.ReactNode; className?: string }) {
+function Card({ title, children, className = "" }: { title?: string; children: React.ReactNode; className?: string }) {
   return (
     <section className={`rounded-2xl border-2 border-black bg-white p-4 shadow-[4px_4px_0_0_#000] md:p-5 ${className}`}>
-      <h2 className="mb-3 text-lg font-black text-black">{title}</h2>
+      {title && <h2 className="mb-3 text-lg font-black text-black">{title}</h2>}
       {children}
     </section>
   );
@@ -136,8 +128,6 @@ export default function AxisQuiver() {
     () => (xAxis && yAxis ? analyzeMatrix(objects, xAxis, yAxis) : null),
     [objects, xAxis, yAxis],
   );
-  // Zero-weight notes (e.g. "need more objects") aren't worth surfacing
-  const notable = analysis?.insights.filter((i) => i.weight > 0) ?? [];
 
   // Dragging works for dots already on the plot and chips pulled from the tray
   useEffect(() => {
@@ -349,7 +339,7 @@ export default function AxisQuiver() {
 
       <div className="grid gap-6">
         {/* Matrix */}
-        <Card title="Matrix">
+        <Card>
           <div className="mb-4 flex flex-wrap items-center gap-2">
             <label className="flex items-center gap-2 text-sm font-semibold text-black/70">
               X
@@ -512,30 +502,6 @@ export default function AxisQuiver() {
                 </div>
               )}
 
-              {notable.length > 0 && (
-                <details open className="group mx-auto mt-6 w-full max-w-[720px]">
-                  <summary className="mb-2 flex w-fit cursor-pointer list-none items-center gap-1.5 text-sm font-black uppercase tracking-wide text-black/60 hover:text-black [&::-webkit-details-marker]:hidden">
-                    <span className="inline-block transition-transform group-open:rotate-90">▸</span>
-                    What stands out ({notable.length})
-                  </summary>
-                  <ul className="space-y-3">
-                    {notable.map((insight, i) => (
-                      <li key={i}>
-                        <div className="flex items-start gap-2">
-                          <span
-                            className={`mt-0.5 shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${TONE_STYLES[insight.tone].className}`}
-                          >
-                            {TONE_STYLES[insight.tone].label}
-                          </span>
-                          <p className="text-sm leading-snug text-black/70">
-                            <span className="font-bold text-black">{insight.title}.</span> {insight.detail}
-                          </p>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </details>
-              )}
             </>
           ) : (
             <EmptyHint>Add at least two axes to your quiver to form a matrix.</EmptyHint>
