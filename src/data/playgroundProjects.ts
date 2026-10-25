@@ -22,4 +22,13 @@ export const PLAYGROUND_PROJECTS: PlaygroundProject[] = [
     previewImage: "/images/playground/axis-quiver.png",
     createdAt: "Oct 2026",
   },
+  {
+    slug: "a-journey-through-rhythm",
+    title: "A Journey Through Rhythm",
+    description:
+      "An interactive museum of Japanese rhythm-game controllers, from pop'n music to maimai. Press, step, drum, scratch, and spin each one to see how its inputs come alive on screen.",
+    color: "#db2777",
+    previewImage: "/images/playground/a-journey-through-rhythm.png",
+    createdAt: "Oct 2026",
+  },
 ];
