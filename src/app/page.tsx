@@ -565,6 +565,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+
       </div>
 
       {/* Spacer to push content - positioned so yellow bar appears at bottom of viewport */}
@@ -679,7 +680,6 @@ export default function Home() {
         <Image src="/images/meinkorea.jpg" alt="Lucas Wang" fill className="object-cover object-center" />
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center text-white pb-16">
-          <p className="text-xs font-black tracking-[0.25em] text-yellow-400 uppercase mb-4">Get in Touch</p>
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-black leading-none tracking-tight mb-3">
             Let&apos;s Deliberate!
           </h2>

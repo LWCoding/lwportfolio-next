@@ -1,5 +1,7 @@
 "use client";
 
+import type { ReactNode } from "react";
+
 interface VideoBannerProps {
   videoSrc?: string;
   className?: string;
@@ -8,6 +10,8 @@ interface VideoBannerProps {
   maxHeight?: string;
   title?: string;
   subtitle?: string;
+  /** Extra content (e.g. controls) shown under the title inside the header box. */
+  children?: ReactNode;
 }
 
 export default function VideoBanner({ 
@@ -18,7 +22,8 @@ export default function VideoBanner({
    // Cap banner height so it doesn't overwhelm standard desktop views
   maxHeight = "400px",
   title,
-  subtitle
+  subtitle,
+  children,
 }: VideoBannerProps) {
   return (
     <div 
@@ -42,7 +47,7 @@ export default function VideoBanner({
       <div className="absolute inset-0 bg-black/50 z-10"></div>
       
       {/* Text header with darker background */}
-      {(title || subtitle) && (
+      {(title || subtitle || children) && (
         <div className="absolute inset-0 flex items-center justify-center z-20">
           <div className="bg-black/70 px-8 py-6 rounded-lg backdrop-blur-sm">
             {title && (
@@ -55,6 +60,7 @@ export default function VideoBanner({
                 {subtitle}
               </p>
             )}
+            {children}
           </div>
         </div>
       )}

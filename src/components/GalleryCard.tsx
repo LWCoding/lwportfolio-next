@@ -205,7 +205,10 @@ export default function GalleryCard({
                 {tags.map((tag, index) => {
                   const isForWork = tag === "For Work";
                   const isForFun = tag === "For Fun";
-                  const tagClassName = (isForWork || isForFun)
+                  const isTeaching = tag === "Teaching";
+                  const tagClassName = isTeaching
+                    ? "bg-blue-500 text-white px-2 py-1 rounded-full text-[0.65rem] md:text-[0.65rem] lg:text-xs font-medium"
+                    : (isForWork || isForFun)
                     ? isForFun
                       ? "bg-yellow-400 text-black px-2 py-1 rounded-full text-[0.65rem] md:text-[0.65rem] lg:text-xs font-medium"
                       : "bg-gray-700 text-white px-2 py-1 rounded-full text-[0.65rem] md:text-[0.65rem] lg:text-xs font-medium"

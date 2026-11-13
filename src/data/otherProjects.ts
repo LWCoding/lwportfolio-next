@@ -185,4 +185,41 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     createdAt: '2025-01-15',
     tools: ['unity'],
   },
+  {
+    id: 'cs377g-course-ta',
+    title: 'CS377G Course',
+    description:
+      'Teaching assistant for a graduate-level game design course at Stanford, supporting students through playtests, grading, and curriculum help.',
+    listingPills: getListingPillsForProject('cs377g-course-ta'),
+    tags: ['Teaching'],
+    type: 'Course',
+    coverImage: '/images/meteachingcs377g.jpg',
+    createdAt: '2026-09-22',
+  },
+  {
+    id: 'code-in-place',
+    title: 'Code in Place',
+    description:
+      "Section leader for Stanford's free, global intro-to-Python course based on CS106A, leading a weekly online section of learners from around the world.",
+    listingPills: getListingPillsForProject('code-in-place'),
+    tags: ['Teaching'],
+    href: 'https://codeinplace.stanford.edu/',
+    type: 'Website',
+    coverImage: '/images/codeinplace.png',
+    createdAt: '2025-04-21',
+    tools: ['python'],
+  },
+  {
+    id: 'stanford-splash',
+    title: 'Stanford Splash',
+    description:
+      'Taught "From Player to Maker," a game design and development class at Stanford Splash, a program opening Stanford classes to middle and high school students, including those from underserved communities.',
+    listingPills: getListingPillsForProject('stanford-splash'),
+    tags: ['Teaching'],
+    href: 'https://www.stanfordesp.org/',
+    type: 'Website',
+    coverImage: '/images/meteaching2.jpg',
+    createdAt: '2023-11-11',
+    tools: ['unity'],
+  },
 ];
