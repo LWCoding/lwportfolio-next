@@ -122,7 +122,7 @@ export default function Projects() {
                 secondaryCtaLabel={project.type ? `View ${project.type}` : "View Project"}
                 githubUrl={project.githubUrl}
                 processUrl={
-                  project.detailComponent || project.displayType
+                  project.detailComponent
                     ? `/projects/${project.id}`
                     : undefined
                 }
@@ -173,7 +173,7 @@ export default function Projects() {
                       }
                       githubUrl={project.githubUrl}
                       processUrl={
-                        project.detailComponent || project.displayType
+                        project.detailComponent
                           ? `/projects/${project.id}`
                           : undefined
                       }
@@ -327,7 +327,7 @@ export default function Projects() {
                 secondaryCtaLabel={project.type ? `View ${project.type}` : "View Project"}
                 githubUrl={project.githubUrl}
                 processUrl={
-                  project.detailComponent || project.displayType
+                  project.detailComponent
                     ? `/projects/${project.id}`
                     : undefined
                 }
@@ -377,7 +377,7 @@ export default function Projects() {
                       }
                       githubUrl={project.githubUrl}
                       processUrl={
-                        project.detailComponent || project.displayType
+                        project.detailComponent
                           ? `/projects/${project.id}`
                           : undefined
                       }

@@ -6,6 +6,7 @@ import VideoBanner from "@/components/VideoBanner";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import SectionDoodles from "@/components/SectionDoodles";
+import { RESUME_URL } from "@/components/ResumeButton";
 
 export default function About() {
   return (
@@ -28,7 +29,7 @@ export default function About() {
         className="px-0 scroll-mt-[64px]"
       >
         <div className="relative w-full bg-white py-8 md:py-12">
-          <SectionDoodles theme="mixed" count={8} seed={71} />
+          <SectionDoodles theme="mixed" count={8} seed={71} contentWidth={1024} />
           <div className="relative container mx-auto max-w-[1024px] px-4 md:px-6">
             <div className="flex flex-col md:flex-row items-stretch gap-8 md:gap-10">
               {/* story text */}
@@ -51,7 +52,7 @@ export default function About() {
                 </p>
                 <div className="pt-2">
                   <a
-                    href="https://drive.google.com/file/d/1NANxq3FZLXqeincVP2yzFV_KZy0qNp3Q/view?usp=sharing"
+                    href={RESUME_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"

@@ -34,8 +34,8 @@ export const SECTION_COLORS = { professional: GREEN, games: YELLOW, teaching: BL
 
 /** `colors` cycles per doodle, so a theme with several colors alternates them. */
 const THEMES: Record<DoodleTheme, { colors: string[]; icons: (keyof typeof DOODLE_ICONS)[]; seed: number }> = {
-  professional: { colors: [GREEN], icons: ["lightbulb", "chart", "gear", "briefcase", "spiral", "squiggle"], seed: 11 },
-  games: { colors: [YELLOW], icons: ["controller", "die", "heart", "coin", "star", "spiral", "squiggle"], seed: 23 },
+  professional: { colors: [GREEN], icons: ["lightbulb", "chart", "gear", "briefcase", "squiggle"], seed: 11 },
+  games: { colors: [YELLOW], icons: ["controller", "die", "heart", "coin", "star"], seed: 23 },
   teaching: { colors: [BLUE], icons: ["pencil", "book", "gradcap", "ruler", "aplusb", "pi", "spiral"], seed: 37 },
   mixed: {
     colors: [GREEN, YELLOW, BLUE],
@@ -57,62 +57,85 @@ function mulberry32(seed: number) {
   };
 }
 
+/** Content column width (px) used when a section doesn't specify one. */
+const DEFAULT_CONTENT_WIDTH = 1280;
+/** Minimum gap (px) kept between a doodle and the content column / section edge. */
+const GAP = 12;
+
 /**
- * Themed hand-drawn doodles scattered down the side margins of a section.
- * Place inside a `relative` parent; content above needs `relative`.
+ * Themed hand-drawn doodles scattered down the empty gutters beside a centered content
+ * column. Each doodle only renders when its gutter is wide enough to hold it, so doodles
+ * never overlap text or images. Place inside a `relative` parent; content above needs
+ * `relative`.
  */
 export default function SectionDoodles({
   theme,
   count = DEFAULT_COUNT,
   seed: seedOverride,
-  contentWidth,
+  contentWidth = DEFAULT_CONTENT_WIDTH,
 }: {
   theme: DoodleTheme;
   count?: number;
   /** Vary the layout when the same theme appears more than once on the site. */
   seed?: number;
-  /**
-   * Width (px) of the centered content column. When set, doodles hug just outside
-   * it instead of spreading across the outer edges of wide screens.
-   */
+  /** Max width (px) of the section's centered content column; doodles stay outside it. */
   contentWidth?: number;
 }) {
-  const filterId = `doodle-rough-${useId().replace(/[^a-zA-Z0-9_-]/g, "")}`;
+  const uid = useId().replace(/[^a-zA-Z0-9_-]/g, "");
+  const filterId = `doodle-rough-${uid}`;
+  const containerName = `doodles-${uid}`;
   const { colors, icons } = THEMES[theme];
   const seed = seedOverride ?? THEMES[theme].seed;
 
   // Seeded so the layout is identical on server and client
   const doodles = useMemo(() => {
     const rand = mulberry32(seed);
+    // Doodles alternate sides, so the last few picks are the visual neighbors on both
+    // edges; skip any icon among them so the same icon never clusters
+    const avoid = Math.min(5, icons.length - 1);
+    const recent: (keyof typeof DOODLE_ICONS)[] = [];
+    const pickIcon = () => {
+      const pool = icons.filter((icon) => !recent.includes(icon));
+      const icon = pool[Math.floor(rand() * pool.length)];
+      recent.push(icon);
+      if (recent.length > avoid) recent.shift();
+      return icon;
+    };
     return Array.from({ length: count }, (_, i) => {
       const right = i % 2 === 1;
-      const size = 44 + rand() * 30;
-      // Positions are fractions of the space left after an edge margin, so no doodle
-      // (even rotated, with its wobble filter) can poke past the section and get clipped
-      const margin = Math.round(size * 0.75);
-      const x = right ? 0.88 + rand() * 0.12 : rand() * 0.12;
+      const size = Math.round(44 + rand() * 30);
+      // Half-extent of the doodle's footprint once rotated and roughened
+      const r = Math.ceil(size * 0.75);
+      const x = rand();
       const y = Math.min(Math.max((i + 0.5) / count + (rand() - 0.5) * 0.06, 0), 1);
-      let left = `calc(${margin}px + (100% - ${margin * 2}px) * ${x.toFixed(4)})`;
-      if (contentWidth) {
-        // Center sits 20–100px outside the content edge, still clamped inside the section
-        const offset = Math.round(contentWidth / 2 + 20 + rand() * 80 + size / 2);
-        left = right
-          ? `min(calc(100% - ${margin}px), calc(50% + ${offset}px))`
-          : `max(${margin}px, calc(50% - ${offset}px))`;
-      }
+      // Center anywhere in the gutter that keeps the whole footprint GAP px clear of both
+      // the section edge and the content column
+      const gutter = `((100% - ${contentWidth}px) / 2)`;
+      const fromEdge = `calc(${r + GAP}px + (${gutter} - ${2 * (r + GAP)}px) * ${x.toFixed(4)})`;
       return {
-        icon: icons[Math.floor(rand() * icons.length)],
+        icon: pickIcon(),
         color: colors[i % colors.length],
-        left,
-        top: `calc(${margin}px + (100% - ${margin * 2}px) * ${y.toFixed(4)})`,
-        size: Math.round(size),
+        left: right ? `calc(100% - ${fromEdge.slice(4)})` : fromEdge,
+        top: `calc(${r}px + (100% - ${r * 2}px) * ${y.toFixed(4)})`,
+        size,
         rotate: Math.round((rand() - 0.5) * 50),
+        // Section width below which this doodle's gutter can't hold it
+        minWidth: contentWidth + 4 * (r + GAP),
       };
     });
   }, [icons, seed, colors, count, contentWidth]);
 
+  const visibility = doodles
+    .map((d, i) => `@container ${containerName} (width < ${d.minWidth}px){.${containerName}-${i}{display:none}}`)
+    .join("");
+
   return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 hidden md:block overflow-hidden">
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-0 hidden md:block overflow-hidden"
+      style={{ containerType: "inline-size", containerName }}
+    >
+      <style>{visibility}</style>
       <svg width="0" height="0" className="absolute">
         <filter id={filterId} x="-25%" y="-25%" width="150%" height="150%">
           <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="2" seed="3" result="noise" />
@@ -125,7 +148,7 @@ export default function SectionDoodles({
           viewBox="0 0 48 48"
           width={d.size}
           height={d.size}
-          className="absolute -translate-x-1/2 -translate-y-1/2 overflow-visible opacity-55"
+          className={`${containerName}-${i} absolute -translate-x-1/2 -translate-y-1/2 overflow-visible opacity-55`}
           style={{ left: d.left, top: d.top, rotate: `${d.rotate}deg` }}
         >
           <path

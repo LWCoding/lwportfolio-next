@@ -1,5 +1,5 @@
-const RESUME_URL =
-  "https://drive.google.com/file/d/1pbLIV1_BPFf6qr7njVC90oN3VfHQzTEB/view?usp=sharing";
+export const RESUME_URL =
+  "https://drive.google.com/file/d/117CRwbRL5kwvnpMkS5DMX-YeCaD1AaYn/view?usp=sharing";
 
 export default function ResumeButton({ className }: { className?: string }) {
   return (

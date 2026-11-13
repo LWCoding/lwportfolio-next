@@ -1,7 +1,6 @@
 "use client";
 
 import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import ResumeButton from "@/components/ResumeButton";
 import WorkExperienceCircles from "@/components/WorkExperienceCircles";
 import SectionDoodles, { type DoodleTheme } from "@/components/SectionDoodles";
@@ -606,7 +605,7 @@ export default function Home() {
                   aria-labelledby={`${id}-heading`}
                   className="relative bg-gray-50"
                 >
-                  <SectionDoodles theme={HIGHLIGHT_DOODLE_THEMES[index]} count={6} />
+                  <SectionDoodles theme={HIGHLIGHT_DOODLE_THEMES[index]} count={6} contentWidth={1248} />
                   <div className={`relative mx-auto w-full max-w-[1280px] px-4 [@media(max-height:700px)]:py-5 ${index === 0 ? "pt-14 pb-8 md:pt-20 md:pb-10 lg:pt-24 lg:pb-12" : "py-8 md:py-10 lg:py-12"}`}>
                     <div
                       className={`flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-8 md:gap-12`}
@@ -702,9 +701,6 @@ export default function Home() {
             </a>
           </div>
           <ResumeButton />
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 z-20">
-          <Footer />
         </div>
       </div>
 
