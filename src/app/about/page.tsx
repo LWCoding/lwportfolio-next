@@ -7,6 +7,33 @@ import Footer from "@/components/Footer";
 import Image from "next/image";
 import SectionDoodles from "@/components/SectionDoodles";
 import { RESUME_URL } from "@/components/ResumeButton";
+import type { ReactNode } from "react";
+
+/** A chapter of the story, headed Past / Present / Future. */
+function StoryPart({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    <section>
+      <h2 className="mb-5 inline-flex flex-col">
+        <span className="text-2xl font-black text-black md:text-3xl">{label}</span>
+        <span aria-hidden className="mt-2 h-1 rounded-full bg-yellow-400" />
+      </h2>
+      <div className="space-y-4">{children}</div>
+    </section>
+  );
+}
+
+function ResumeLink() {
+  return (
+    <a
+      href={RESUME_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+    >
+      View my Resume
+    </a>
+  );
+}
 
 export default function About() {
   return (
@@ -14,13 +41,8 @@ export default function About() {
       <Navigation />
 
       {/* hero video banner */}
-      <VideoBanner
-        title="About"
-        height="33vh"
-        minHeight="200px"
-      />
+      <VideoBanner title="About" height="33vh" minHeight="200px" />
 
-      {/* about story section */}
       <Section
         id="journey"
         separator={false}
@@ -28,50 +50,48 @@ export default function About() {
         padding={false}
         className="px-0 scroll-mt-[64px]"
       >
-        <div className="relative w-full bg-white py-8 md:py-12">
-          <SectionDoodles theme="mixed" count={8} seed={71} contentWidth={1024} />
-          <div className="relative container mx-auto max-w-[1024px] px-4 md:px-6">
-            <div className="flex flex-col md:flex-row items-stretch gap-8 md:gap-10">
-              {/* story text */}
-              <div className="w-full md:w-[55%] space-y-4">
-                <h1 className="text-3xl md:text-4xl font-black text-black">
-                  Where I&apos;m Coming From
-                </h1>
-                <p className="text-base md:text-lg text-black/80">
-                  I was born in Chicago to immigrant parents from Malaysia. Since I was young, I&apos;ve been drawn to creativity, having drawn over 200 pages of hand-drawn comics in elementary school alone.</p>
-                <p className="text-base md:text-lg text-black/80">
-                 I went to high school during the COVID-19 pandemic, and, suddenly having an abundance of free time, fell in love with programming as a creative outlet. At a young age, I created a viral Scratch game that achieved over 1 million views, motivating me to continue designing games under the alias &quot;LWCoding&quot;. I&apos;ve made 30+ games with many different people since then.
+        <div className="relative w-full bg-white py-10 md:py-14">
+          <SectionDoodles theme="mixed" count={8} seed={71} contentWidth={1180} />
+          <div className="relative container mx-auto max-w-[1000px] px-4 md:px-6">
+            <div className="space-y-12 text-base text-black/80 md:text-lg">
+              <div className="text-center">
+                <ResumeLink />
+              </div>
+              <StoryPart label="Past">
+                <p>
+                  I was born in Chicago to immigrant parents from Malaysia. Since I was young, I&apos;ve been drawn to creativity, having drawn over 200 pages of hand-drawn comics in elementary school alone.
                 </p>
-                <p className="text-base md:text-lg text-black/80">
+                <p>
+                  I went to high school during the COVID-19 pandemic, and, suddenly having an abundance of free time, fell in love with programming as a creative outlet. At a young age, I created a viral Scratch game that achieved over 1 million views, motivating me to continue designing games under the alias &quot;LWCoding&quot;. I&apos;ve made 30+ games with many different people since then.
+                </p>
+              </StoryPart>
+              <StoryPart label="Present">
+                <p>
                   That path eventually led me to Stanford, where I now lead the game development club and spend most of my time bettering the world through play. Officially, I&apos;m a product designer who loves talking with people, building things collaboratively, and shipping good user experiences.
                 </p>
-                <p className="text-base md:text-lg text-black/80">
+                <p>
                   Along the way, I&apos;ve discovered how much I enjoy teaching. I started off making silly, satire Python
                   tutorials, before eventually finding myself teaching for organizations like the Applied Computing Foundation and Stanford Splash. I now
                   teach official courses at Stanford like CS11SI and CS42SI, as well as assist with other intro and graduate-level game design courses like CS106A/B and CS247G!
                 </p>
-                <div className="pt-2">
-                  <a
-                    href={RESUME_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
-                    aria-label="View my Resume"
-                  >
-                    View my Resume
-                  </a>
-                </div>
-              </div>
-
-              {/* main image */}
-              <div className="w-full md:w-[45%] relative mt-4 md:mt-0 overflow-hidden rounded-xl shadow-md min-h-[220px] md:min-h-0">
+              </StoryPart>
+              <StoryPart label="Future">
+                <p>
+                  Next, I&apos;m finishing my B.S. in Design and M.S. in Computer Science at Stanford, and I plan to keep designing games and teaching along the way.
+                </p>
+              </StoryPart>
+              {/* Five photos of me spliced into vertical strips: many hats */}
+              <div className="relative aspect-[127/75] w-full overflow-hidden rounded-xl shadow-md">
                 <Image
-                  src="/images/meinchicago.jpg"
-                  alt="Lucas in Chicago"
+                  src="/images/manyhats.jpg"
+                  alt="Five photos of Lucas spliced side by side: in Chicago, teaching, leading a club, traveling, and volunteering"
                   fill
+                  sizes="(min-width: 1000px) 1000px, 100vw"
                   className="object-cover"
-                  priority
                 />
+              </div>
+              <div className="pt-4 text-center">
+                <ResumeLink />
               </div>
             </div>
           </div>
@@ -82,4 +102,3 @@ export default function About() {
     </div>
   );
 }
-

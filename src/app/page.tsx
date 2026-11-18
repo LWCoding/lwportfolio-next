@@ -3,6 +3,7 @@
 import Navigation from "@/components/Navigation";
 import ResumeButton from "@/components/ResumeButton";
 import WorkExperienceCircles from "@/components/WorkExperienceCircles";
+import LearningTimeline from "@/components/LearningTimeline";
 import SectionDoodles, { type DoodleTheme } from "@/components/SectionDoodles";
 import { type HomeShowcaseCardItem } from "@/components/HomeShowcaseCards";
 import { getListingPillsForProject } from "@/data/projectListingPills";
@@ -584,6 +585,20 @@ export default function Home() {
           <SectionDoodles theme="mixed" count={4} contentWidth={1248} />
           <div className="relative mx-auto w-full max-w-[1280px] px-4">
             <WorkExperienceCircles />
+          </div>
+        </div>
+
+        {/* Yellow divider into the projects timeline */}
+        <div className="w-full bg-yellow-400 py-4">
+          <div className="text-center text-black font-semibold">
+            ▼ Summary of My Projects ▼
+          </div>
+        </div>
+
+        {/* Projects timeline */}
+        <div className="relative bg-white pt-10 pb-14 md:pt-12 md:pb-16">
+          <div className="relative mx-auto w-full max-w-[1280px] px-4">
+            <LearningTimeline />
           </div>
         </div>
 
