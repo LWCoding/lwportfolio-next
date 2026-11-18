@@ -1,4 +1,8 @@
 import type { ReactNode } from 'react';
+import React from 'react';
+import AwRatsDocumentation from '@/components/documentation/AwRatsDocumentation';
+import KitchenNightmareDocumentation from '@/components/documentation/KitchenNightmareDocumentation';
+import AttackOnAtlizDocumentation from '@/components/documentation/AttackOnAtlizDocumentation';
 
 export type DisplayType = 'monitor' | 'plain' | 'mobile' | 'none';
 
@@ -25,7 +29,8 @@ export const FEATURED_GAMES_CONFIG: FeaturedGameConfig[] = [
     description: "An arcade game. Use new stylus technology to loop rats before they eat all of your cheese.",
     tools: ['unity', 'csharp'],
     githubUrl: 'https://github.com/LWCoding/aw-rats',
-    displayType: 'monitor'
+    displayType: 'monitor',
+    detailComponent: React.createElement(AwRatsDocumentation),
   },
   { 
     id: 2904867, 
@@ -33,7 +38,8 @@ export const FEATURED_GAMES_CONFIG: FeaturedGameConfig[] = [
     description: "An arcade game. Cook food, serve customers, and manage a kitchen that gets larger every night.",
     tools: ['unity', 'csharp'],
     githubUrl: 'https://github.com/LWCoding/kitchen-nightmare',
-    displayType: 'monitor'
+    displayType: 'monitor',
+    detailComponent: React.createElement(KitchenNightmareDocumentation),
   },
   { 
     id: 1940212, 
@@ -41,7 +47,8 @@ export const FEATURED_GAMES_CONFIG: FeaturedGameConfig[] = [
     description: "A top-down shooter game. Destroy enemy ships, get XP, and unlock upgrades.",
     tools: ['unity', 'csharp'],
     githubUrl: 'https://github.com/LWCoding/attack-on-atliz',
-    displayType: 'monitor'
+    displayType: 'monitor',
+    detailComponent: React.createElement(AttackOnAtlizDocumentation),
   },
   {
     id: 4028688,
