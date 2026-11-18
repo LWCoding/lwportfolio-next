@@ -5,7 +5,6 @@ import Section from "@/components/Section";
 import Button from "@/components/Button";
 import VideoBanner from "@/components/VideoBanner";
 import Footer from "@/components/Footer";
-import WorkItemCard from "@/components/WorkItemCard";
 import GalleryCard from "@/components/GalleryCard";
 import CompactProjectRow from "@/components/CompactProjectRow";
 import SectionDoodles, { SECTION_COLORS } from "@/components/SectionDoodles";
@@ -211,81 +210,41 @@ export default function Projects() {
             />
           ) : (
           <>
-          <div className="space-y-8 md:space-y-6">
-            {productProjects.slice(0, 3).map((project, index) => (
-              <WorkItemCard
+          {/* One grid for all professional projects; on mobile, only the first three show until expanded */}
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-x-6 md:gap-y-10 lg:grid-cols-3 lg:gap-x-6 lg:gap-y-12">
+            {productProjects.map((project, index) => (
+              <div
                 key={project.id}
-                title={project.title}
-                description={project.description}
-                imageSrc={project.coverImage || "/images/scratchproject.png"}
-                imageAlt={`${project.title} cover image`}
-                tags={[...(project.listingPills ?? ["For Work"]), ...(project.tags || [])]}
-                tools={project.tools}
-                date={project.createdAt}
-                href={project.href}
-                secondaryCtaLabel={project.type ? `View ${project.type}` : "View Project"}
-                githubUrl={project.githubUrl}
-                processUrl={
-                  project.detailComponent
-                    ? `/projects/${project.id}`
-                    : undefined
-                }
-                priority={index === 0}
-                showExternalCta={false}
-              />
+                id={index === 3 ? "other-projects" : undefined}
+                className={index >= 3 && !showMoreProjects ? "hidden md:block" : undefined}
+              >
+                <GalleryCard
+                  title={project.title}
+                  description={project.description}
+                  imageSrc={project.coverImage || "/images/scratchproject.png"}
+                  imageAlt={`${project.title} cover image`}
+                  tags={[...(project.listingPills ?? ["For Work"]), ...(project.tags || [])]}
+                  tools={project.tools}
+                  date={project.createdAt}
+                  href={project.href}
+                  secondaryCtaLabel={project.type ? `View ${project.type}` : "View Project"}
+                  githubUrl={project.githubUrl}
+                  processUrl={project.detailComponent ? `/projects/${project.id}` : undefined}
+                  showExternalCta={index >= 3}
+                />
+              </div>
             ))}
           </div>
           {productProjects.length > 3 && (
-            <>
-              <div className="mt-4 flex justify-center md:hidden">
-                <button
-                  type="button"
-                  onClick={() => setShowMoreProjects((v) => !v)}
-                  className="cursor-pointer px-4 py-2 text-base font-bold text-blue-600 underline transition-colors duration-200 hover:text-blue-700 md:text-lg"
-                >
-                  {showMoreProjects ? "Show Less Projects" : "Show More Projects"}
-                </button>
-              </div>
-
-              <div
-                id="other-projects"
-                className={`mt-8 overflow-hidden transition-all duration-500 ease-in-out pointer-events-none md:pointer-events-auto md:mt-12 ${
-                  showMoreProjects
-                    ? "max-h-[5000px] opacity-100 pointer-events-auto"
-                    : "max-h-0 opacity-0"
-                } md:max-h-[5000px] md:opacity-100`}
+            <div className="mt-4 flex justify-center md:hidden">
+              <button
+                type="button"
+                onClick={() => setShowMoreProjects((v) => !v)}
+                className="cursor-pointer px-4 py-2 text-base font-bold text-blue-600 underline transition-colors duration-200 hover:text-blue-700 md:text-lg"
               >
-                <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-x-6 md:gap-y-10 lg:grid-cols-3 lg:gap-x-6 lg:gap-y-12">
-                  {productProjects.slice(3).map((project) => (
-                    <GalleryCard
-                      key={project.id}
-                      title={project.title}
-                      description={project.description}
-                      imageSrc={
-                        project.coverImage || "/images/scratchproject.png"
-                      }
-                      imageAlt={`${project.title} cover image`}
-                      tags={[
-                        ...(project.listingPills ?? ["For Work"]),
-                        ...(project.tags || []),
-                      ]}
-                      tools={project.tools}
-                      date={project.createdAt}
-                      href={project.href}
-                      secondaryCtaLabel={
-                        project.type ? `View ${project.type}` : "View Project"
-                      }
-                      githubUrl={project.githubUrl}
-                      processUrl={
-                        project.detailComponent
-                          ? `/projects/${project.id}`
-                          : undefined
-                      }
-                    />
-                  ))}
-                </div>
-              </div>
-            </>
+                {showMoreProjects ? "Show Less Projects" : "Show More Projects"}
+              </button>
+            </div>
           )}
           </>
           )}
