@@ -7,7 +7,7 @@ export default function ImmersifyVRDocumentation() {
         {/* Lead */}
         <div className="prose prose-lg max-w-none">
           <p className="text-base md:text-lg text-black leading-relaxed">
-            <b>ImmersifyVR</b> is a virtual reality startup designing a product that motivates exercise in older adults. So far, we've built three in-game experiences and ran in-person playtests with 30+ older adults across three retirement homes in California.
+            <b>ImmersifyVR</b>{' '}is a virtual reality startup designing a product that motivates exercise in older adults. So far, we've built three in-game experiences and ran in-person playtests with 30+ older adults across three retirement homes in California.
           </p>
           <p className="text-base md:text-lg text-black leading-relaxed mt-4">
             ImmersifyVR initially started as a project that I managed for <a href="https://www.lettuce.build/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline font-medium">LettuceBuild</a> (a coaching program for younger students to develop entrepreneurial and technical skills). After going through the needfinding, prototyping, and iteration process, it became clear that there was a market for what we were developing, transforming into a fully-fledged startup managed by a team of four student developers.
@@ -37,7 +37,7 @@ export default function ImmersifyVRDocumentation() {
           Product and mission
         </h2>
         <p className="text-base md:text-lg text-black/90 leading-relaxed">
-          The game is built in Unity (C#) to create an immersive environment that makes daily exercise appealing and achievable for older adults. <b>Spatial audio, visual feedback, and gamification</b> turn working out into an engaging activity, with real-time guidance that adapts to the user&apos;s level. Exercises in the application are designed to be accessible to older adults with limited mobility.
+          The game is built in Unity (C#) to create an immersive environment that makes daily exercise appealing and achievable for older adults. <b>Spatial audio, visual feedback, and gamification</b>{' '}turn working out into an engaging activity, with real-time guidance that adapts to the user&apos;s level. Exercises in the application are designed to be accessible to older adults with limited mobility.
         </p>
         <div className="max-w-2xl mx-auto mt-6">
           <div className="relative w-full rounded-xl overflow-hidden border border-slate-200/80">

@@ -25,7 +25,7 @@ export default function AwRatsDocumentation() {
       {/* Lead */}
       <div className="prose prose-lg max-w-none">
         <p className="text-base md:text-lg text-black leading-relaxed">
-          <b>Aw, Rats!</b> is an arcade game made in five days for the{' '}
+          <b>Aw, Rats!</b>{' '}is an arcade game made in five days for the{' '}
           <a
             href="https://itch.io/jam/gmtk-2025"
             target="_blank"
@@ -40,7 +40,7 @@ export default function AwRatsDocumentation() {
         </p>
         <p className="text-base md:text-lg text-black leading-relaxed mt-4">
           It was built in Unity and C# by a team of three. Out of more than 9,500 entries, it placed{' '}
-          <b>#205 in Audio</b> and <b>#364 in Enjoyment</b>.
+          <b>#205 in Audio</b>{' '}and <b>#364 in Enjoyment</b>.
         </p>
       </div>
 
@@ -89,19 +89,19 @@ export default function AwRatsDocumentation() {
         </p>
         <ul className="list-disc pl-6 mt-3 space-y-2 text-base md:text-lg text-black/90 leading-relaxed">
           <li>
-            <b>Is the shape closed?</b> The loop counts as soon as your cursor comes back near <i>any</i> earlier
+            <b>Is the shape closed?</b>{' '}The loop counts as soon as your cursor comes back near <i>any</i>{' '}earlier
             point on the line, not just where you started. This makes figure-eights and lopsided loops work.
           </li>
           <li>
-            <b>Who is inside?</b> The points become a polygon, and a point-in-polygon test finds every rat inside
+            <b>Who is inside?</b>{' '}The points become a polygon, and a point-in-polygon test finds every rat inside
             it. Each one takes damage.
           </li>
           <li>
-            <b>Did the line hit a rat?</b> Each segment of the line is checked against every rat. If any segment
+            <b>Did the line hit a rat?</b>{' '}Each segment of the line is checked against every rat. If any segment
             touches one, the line animates as it breaks apart.
           </li>
           <li>
-            <b>Is the line too long?</b> The oldest points are trimmed off, so you can&apos;t trap the whole
+            <b>Is the line too long?</b>{' '}The oldest points are trimmed off, so you can&apos;t trap the whole
             screen in one giant loop.
           </li>
         </ul>

@@ -24,7 +24,7 @@ export default function KitchenNightmareDocumentation() {
       {/* Lead */}
       <div className="prose prose-lg max-w-none">
         <p className="text-base md:text-lg text-black leading-relaxed">
-          <b>Kitchen Nightmare</b> is a restaurant management game made in four days for the{' '}
+          <b>Kitchen Nightmare</b>{' '}is a restaurant management game made in four days for the{' '}
           <a
             href="https://itch.io/jam/gmtk-2024"
             target="_blank"
@@ -108,7 +108,7 @@ export default function KitchenNightmareDocumentation() {
         </h2>
         <p className="text-base md:text-lg text-black/90 leading-relaxed">
           Every omelet you serve is worth $8. Stoves ($80) let you cook more at once, and tables ($40) let you seat
-          more people. Decorations are the long-term investment: each one adds a bonus to <i>every</i> omelet you
+          more people. Decorations are the long-term investment: each one adds a bonus to <i>every</i>{' '}omelet you
           sell, as long as it stays in your restaurant.
         </p>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
@@ -137,15 +137,15 @@ export default function KitchenNightmareDocumentation() {
         </p>
         <ul className="list-disc pl-6 mt-3 space-y-2 text-base md:text-lg text-black/90 leading-relaxed">
           <li>
-            <b>You could block the front door.</b> Putting furniture in front of the entrance meant no customer
+            <b>You could block the front door.</b>{' '}Putting furniture in front of the entrance meant no customer
             could ever reach a table, which soft-locked the run.
           </li>
           <li>
-            <b>Everyone picked the same table.</b> Customers took the first table with a free seat, so one table
+            <b>Everyone picked the same table.</b>{' '}Customers took the first table with a free seat, so one table
             filled up while the others sat empty. Picking a random open table would spread them out.
           </li>
           <li>
-            <b>The Ready button was hard to find</b> in some builds, and the audio needed a better mix.
+            <b>The Ready button was hard to find</b>{' '}in some builds, and the audio needed a better mix.
           </li>
         </ul>
         <p className="text-base md:text-lg text-black/90 leading-relaxed mt-3">

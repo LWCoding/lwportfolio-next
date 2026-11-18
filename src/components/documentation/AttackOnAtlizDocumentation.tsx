@@ -24,7 +24,7 @@ export default function AttackOnAtlizDocumentation() {
       {/* Lead */}
       <div className="prose prose-lg max-w-none">
         <p className="text-base md:text-lg text-black leading-relaxed">
-          <b>Attack on Atliz</b> is a top-down space shooter made in ten days for{' '}
+          <b>Attack on Atliz</b>{' '}is a top-down space shooter made in ten days for{' '}
           <a
             href="https://itch.io/jam/wonderjam-4"
             target="_blank"
@@ -38,7 +38,7 @@ export default function AttackOnAtlizDocumentation() {
         </p>
         <p className="text-base md:text-lg text-black leading-relaxed mt-4">
           This was my <b>first-ever game jam</b>. Silver and I made all of the art, code, and music as a team of
-          two, and it placed <b>2nd overall</b> out of 25 entries and <b>#1 in Gameplay</b>.
+          two, and it placed <b>2nd overall</b>{' '}out of 25 entries and <b>#1 in Gameplay</b>.
         </p>
       </div>
 
@@ -57,7 +57,7 @@ export default function AttackOnAtlizDocumentation() {
         </h2>
         <p className="text-base md:text-lg text-black/90 leading-relaxed">
           You never pick up a new gun. Instead, every enemy you destroy drops XP orbs, and each time you level up,
-          you choose <b>one of three random upgrade cards</b> for your turret. There are six upgrades in total:
+          you choose <b>one of three random upgrade cards</b>{' '}for your turret. There are six upgrades in total:
           faster shooting, farther firing, auto aim, a faster-swiveling barrel, heavier bullets, and explosive
           pellets that deal area damage.
         </p>
@@ -113,7 +113,7 @@ export default function AttackOnAtlizDocumentation() {
         </h2>
         <p className="text-base md:text-lg text-black/90 leading-relaxed">
           With bullets, debris, and explosions everywhere, I didn&apos;t want the game to slow down in the
-          browser. Enemies and explosion effects are <b>pooled</b> and reused instead of being created and
+          browser. Enemies and explosion effects are <b>pooled</b>{' '}and reused instead of being created and
           destroyed over and over. Enemies that lose track of you for eight seconds quietly despawn back into the
           pool. Parts of the station are also destructible, so stray shots chip away at the walls around you.
         </p>

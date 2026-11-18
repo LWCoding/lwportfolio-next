@@ -7,7 +7,7 @@ export default function AlwaysBeClosingDocumentation() {
         {/* Lead */}
         <div className="prose prose-lg max-w-none">
         <p className="text-base md:text-lg text-black leading-relaxed">
-          <b>Always Be Closing</b> is a customer management software simulation that supplements STRAMGT351, a sales course at Stanford. The application gives hundreds of students a simulated environment to practice sales calls and close deals before they step into the real world.
+          <b>Always Be Closing</b>{' '}is a customer management software simulation that supplements STRAMGT351, a sales course at Stanford. The application gives hundreds of students a simulated environment to practice sales calls and close deals before they step into the real world.
         </p>
         </div>
       </div>

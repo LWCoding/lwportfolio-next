@@ -3,6 +3,8 @@ import React from 'react';
 import ImmersifyVRDocumentation from '@/components/documentation/ImmersifyVRDocumentation';
 import AlwaysBeClosingDocumentation from '@/components/documentation/AlwaysBeClosingDocumentation';
 import CS42SIDocumentation from '@/components/documentation/CS42SIDocumentation';
+import PlanetDocumentation from '@/components/documentation/PlanetDocumentation';
+import SerendipiTeaDocumentation from '@/components/documentation/SerendipiTeaDocumentation';
 import type { ListingPill } from './projectListingPills';
 import { getListingPillsForProject } from './projectListingPills';
 
@@ -99,7 +101,8 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     createdAt: '2025-04-10',
     tools: ['figma'],
     fadeOpacity: 0.7,
-    displayType: 'plain'
+    displayType: 'plain',
+    detailComponent: React.createElement(SerendipiTeaDocumentation),
   },
   {
     id: 'cs11si',
@@ -124,7 +127,8 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     coverImage: '/images/planet.png',
     createdAt: '2024-12-09',
     tools: ['html', 'react', 'figma'],
-    displayType: 'mobile'
+    displayType: 'mobile',
+    detailComponent: React.createElement(PlanetDocumentation),
   },
   {
     id: 'cs144-mini-internet',

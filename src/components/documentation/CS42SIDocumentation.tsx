@@ -7,7 +7,7 @@ export default function CS42SIDocumentation() {
         {/* Lead */}
         <div className="prose prose-lg max-w-none">
           <p className="text-base md:text-lg text-black leading-relaxed">
-            <b>CS42SI: From Player to Maker</b> is an original course I teach at Stanford University.
+            <b>CS42SI: From Player to Maker</b>{' '}is an original course I teach at Stanford University.
             The class gives students a structured way to design and build games that teach something meaningful,
             combining game design theory, rapid prototyping, and feedback from real players.
           </p>
@@ -39,7 +39,7 @@ export default function CS42SIDocumentation() {
           Course structure and learning goals
         </h2>
         <p className="text-base md:text-lg text-black/90 leading-relaxed">
-          In the course, students learn <b>concepts in game design</b> like MDA Analysis, ludonarrative design, game feel, and more. They also learn how to <b>code in C# in the Unity engine</b> to build games, and how to use <b>Git version control</b> to manage shared codebases.
+          In the course, students learn <b>concepts in game design</b>{' '}like MDA Analysis, ludonarrative design, game feel, and more. They also learn how to <b>code in C# in the Unity engine</b>{' '}to build games, and how to use <b>Git version control</b>{' '}to manage shared codebases.
         </p>
         <p className="text-base md:text-lg text-black/90 leading-relaxed mt-2">
           The first half of the course is structured around lectures and rapid implementation assignments, while the second half is project work and playtesting.
