@@ -77,7 +77,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   {
     id: 'cs42si',
     title: 'CS42SI Course',
-    description: 'Original curriculum for CS42SI, a game design course I teach at Stanford University. Came out of my passion to create more game development opportunities at Stanford.',
+    description: 'Original curriculum for CS42SI, a game design course I created to grow game dev opportunities at Stanford.',
     listingPills: getListingPillsForProject('cs42si'),
     tags: ['Website', 'Teaching'],
     href: 'https://web.stanford.edu/class/cs42si/',
@@ -189,7 +189,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     id: 'cs377g-course-ta',
     title: 'CS377G Course',
     description:
-      'Teaching assistant for a graduate-level game design course at Stanford, supporting students through playtests, grading, and curriculum help.',
+      'TA for a graduate-level game design course at Stanford, supporting students through playtests and grading.',
     listingPills: getListingPillsForProject('cs377g-course-ta'),
     tags: ['Teaching'],
     type: 'Course',
@@ -200,7 +200,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     id: 'code-in-place',
     title: 'Code in Place',
     description:
-      "Section leader for Stanford's free, global intro-to-Python course based on CS106A, leading a weekly online section of learners from around the world.",
+      "Section leader for Stanford's free, global intro-to-Python course, teaching a weekly online section of learners.",
     listingPills: getListingPillsForProject('code-in-place'),
     tags: ['Teaching'],
     href: 'https://codeinplace.stanford.edu/',
@@ -213,7 +213,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     id: 'stanford-splash',
     title: 'Stanford Splash',
     description:
-      'Taught "From Player to Maker," a game design and development class at Stanford Splash, a program opening Stanford classes to middle and high school students, including those from underserved communities.',
+      'Taught "From Player to Maker," a game design class for middle and high school students at Stanford Splash.',
     listingPills: getListingPillsForProject('stanford-splash'),
     tags: ['Teaching'],
     href: 'https://www.stanfordesp.org/',

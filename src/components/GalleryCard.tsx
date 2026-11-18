@@ -42,7 +42,7 @@ export default function GalleryCard({
   const hasExternalHref = Boolean(href?.trim());
 
   return (
-    <div>
+    <div className="flex h-full flex-col">
       {/* Image Section - Top */}
       <div className="relative w-full aspect-[5/2] lg:aspect-[4/3] bg-gray-200 rounded overflow-hidden">
         <Image
@@ -54,7 +54,7 @@ export default function GalleryCard({
       </div>
 
       {/* Content Section - Bottom */}
-      <div className="flex flex-col gap-2 pt-4 md:pt-4 lg:pt-5 items-center text-center">
+      <div className="flex flex-1 flex-col gap-2 pt-4 md:pt-4 lg:pt-5 items-center text-center">
         {/* Title with Tool Logos */}
         <div className="flex items-center justify-center gap-2 flex-wrap">
           <h3 className="text-xl md:text-lg lg:text-2xl font-bold text-black">
