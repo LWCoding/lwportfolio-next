@@ -84,6 +84,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     return date.toLocaleDateString('en-US', {
       month: 'short',
       year: 'numeric',
+      timeZone: 'UTC',
     });
   };
 

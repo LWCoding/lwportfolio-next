@@ -300,7 +300,7 @@ export default function Home() {
           title: "Planet",
           description: "Strengthen connections with your friends.",
           status: 2024,
-          pills: ["For Work"],
+          pills: getListingPillsForProject("planet"),
           href: "/projects/planet",
           imageSrc: "/images/planet.png",
           imageAlt: "Planet mental health app project",
@@ -417,7 +417,7 @@ export default function Home() {
         prefixText: "I love teaching! I'm also",
         title: "Teaching Playful CS Courses",
         description:
-          "Outside of lecturing for CS11SI, CS42SI, CS106A/B, and CS247G as an *undergraduate* at Stanford, I've taught game design internationally in South Korea. I love using interactive narratives to make programming intuitive, joyful, and collaborative.",
+          "As an undergraduate at Stanford, I founded and lecture CS11SI and CS42SI, section-led CS247G and Code in Place, and taught game design internationally in South Korea. I love using interactive narratives to make programming intuitive, joyful, and collaborative.",
         ringColorClassName: "focus:ring-blue-500",
         subButtonLabel: "View All Teaching",
       },

@@ -45,7 +45,7 @@ export default function CompactProjectRow({
 }: CompactProjectRowProps) {
   const formattedDate =
     date && !Number.isNaN(new Date(date).getTime())
-      ? new Date(date).toLocaleDateString("en-US", { month: "short", year: "numeric" })
+      ? new Date(date).toLocaleDateString("en-US", { month: "short", year: "numeric", timeZone: "UTC" })
       : undefined;
   const hasExternalHref = Boolean(href?.trim());
 

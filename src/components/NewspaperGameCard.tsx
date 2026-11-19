@@ -107,7 +107,7 @@ export default function NewspaperGameCard({
 
   const getYear = (dateString: string) => {
     const date = new Date(dateString);
-    return date.getFullYear().toString();
+    return date.getUTCFullYear().toString();
   };
 
   // No border color mapping needed; borders removed in favor of margins

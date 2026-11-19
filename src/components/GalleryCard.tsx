@@ -36,7 +36,7 @@ export default function GalleryCard({
   const formattedDate =
     date && !Number.isNaN(new Date(date).getTime())
       ? new Date(date)
-          .toLocaleDateString("en-US", { month: "short", year: "numeric" })
+          .toLocaleDateString("en-US", { month: "short", year: "numeric", timeZone: "UTC" })
       : undefined;
 
   const hasExternalHref = Boolean(href?.trim());

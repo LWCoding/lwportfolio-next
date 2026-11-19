@@ -61,10 +61,10 @@ export default function AlwaysBeClosingDocumentation() {
       {/* Section: Scale and infrastructure */}
       <section>
         <h2 className="text-xl md:text-2xl font-bold text-black mb-4 border-b border-slate-200 pb-2">
-          Built for scale: Firebase, AWS, Airtable, and Claude
+          Built for reliability: Firebase, AWS, Airtable, and Claude
         </h2>
         <p className="text-base md:text-lg text-black/90 leading-relaxed mb-4">
-          With 20,000+ monthly requests, reliability and performance were important. I designed and optimized the backend around <b>Firebase for real-time and auth, AWS for hosting and assets, and Airtable as a database and interface for the professor to use to create and assign sessions</b>. The application also contains a virtual boss who answers questions about the player's sales pipeline; the Claude API allows the simulation to respond intelligently to student choices for more guided learning opportunities.
+          Hundreds of students depend on the simulation during assigned course sessions (20,000+ requests per month), so the priority was reliability: no lost progress and no downtime in the middle of a session. I designed and optimized the backend around <b>Firebase for real-time and auth, AWS for hosting and assets, and Airtable as a database and interface for the professor to use to create and assign sessions</b>. The application also contains a virtual boss who answers questions about the player's sales pipeline; the Claude API allows the simulation to respond intelligently to student choices for more guided learning opportunities.
         </p>
         <div className="max-w-3xl mx-auto mt-6">
           <div className="relative w-full rounded-xl overflow-hidden border border-slate-200/80">

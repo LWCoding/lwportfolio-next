@@ -119,6 +119,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   },
   {
     id: 'planet',
+    listingPills: getListingPillsForProject('planet'),
     title: 'Planet',
     description: 'A mental health mobile application designed to help people easily connect with pre-existing friends.',
     tags: ['App', 'React Native'],
@@ -132,6 +133,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   },
   {
     id: 'cs144-mini-internet',
+    listingPills: getListingPillsForProject('cs144-mini-internet'),
     title: 'CS144 Mini-Internet',
     description:
       'Designed and implemented a mini-Internet in C++, using IP, UDP, and TCP on a class-wide simulated subnet.',
@@ -143,6 +145,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   },
   {
     id: 'cs148-graphics-engine',
+    listingPills: getListingPillsForProject('cs148-graphics-engine'),
     title: 'CS148 Graphics Engine',
     description:
       'Designed a custom ray tracer, handling diffuse/specular BRDFs, reflections, Fresnel, and transmission.',
@@ -154,6 +157,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   },
   {
     id: 'obscure-courses',
+    listingPills: getListingPillsForProject('obscure-courses'),
     title: 'Obscure Courses',
     description: 'A gamified website that allows users to guess the names of obscure courses at Stanford.',
     tags: ['Website', 'Svelte'],
@@ -166,6 +170,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
   },
   {
     id: 'malaysian-club-chicago',
+    listingPills: getListingPillsForProject('malaysian-club-chicago'),
     title: 'Malaysian Club Website',
     description: 'A website for the Malaysian Club of Chicago, a club that promotes Malaysian culture and heritage.',
     tags: ['Website', 'HTML/CSS/JS'],

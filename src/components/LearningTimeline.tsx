@@ -25,7 +25,7 @@ const MILESTONES: Milestone[] = [
   { at: 2024.47, date: "Jun 2024", label: "Wrote a ray tracer", note: "In C++ for CS148.", kind: "project", href: "/projects/cs148-graphics-engine" },
   { at: 2024.6, date: "Aug 2024", label: "Entered a 7,500-game jam", note: "Made Kitchen Nightmare for GMTK 2024.", kind: "project", href: "/projects/2904867" },
   { at: 2024.78, date: "Oct 2024", label: "Led a VR app for seniors", note: "ImmersifyVR, tested in retirement homes.", kind: "project", href: "/projects/immersifyvr" },
-  { at: 2024.9, date: "Nov 2024", label: "Wrote my own Internet", note: "IP, UDP, and TCP in C++ for CS144.", kind: "project", href: "/projects/cs144-mini-internet" },
+  { at: 2024.9, date: "Nov 2024", label: "Built a TCP/IP stack", note: "IP, UDP, and TCP from scratch in C++ for CS144.", kind: "project", href: "/projects/cs144-mini-internet" },
   { at: 2025.05, date: "Jan 2025", label: "Became a section leader", note: "For CS247G game design.", kind: "teaching", href: "/projects/cs247g-course-sl" },
   { at: 2025.33, date: "Apr 2025", label: "Taught Python worldwide", note: "Section leader for Code in Place.", kind: "teaching", href: "/projects/code-in-place" },
   { at: 2025.45, date: "Jun 2025", label: "Published a Stanford sales game", note: "Always Be Closing, used to teach STRAMGT351.", kind: "project", href: "/projects/always-be-closing" },

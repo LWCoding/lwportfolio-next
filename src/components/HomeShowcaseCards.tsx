@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export type ShowcasePill = "For Work" | "For Fun" | "Teaching";
+export type ShowcasePill = "For Work" | "For Fun" | "Teaching" | "Coursework" | "Side Project";
 
 export type HomeShowcaseCardItem = {
   title: string;

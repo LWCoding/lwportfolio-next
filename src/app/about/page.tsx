@@ -72,7 +72,7 @@ export default function About() {
                 <p>
                   Along the way, I&apos;ve discovered how much I enjoy teaching. I started off making silly, satire Python
                   tutorials, before eventually finding myself teaching for organizations like the Applied Computing Foundation and Stanford Splash. I now
-                  teach official courses at Stanford like CS11SI and CS42SI, as well as assist with other intro and graduate-level game design courses like CS106A/B and CS247G!
+                  teach official courses at Stanford like CS11SI and CS42SI, as well as support intro programming through Code in Place and graduate-level game design courses like CS247G and CS377G!
                 </p>
               </StoryPart>
               <StoryPart label="Future">
