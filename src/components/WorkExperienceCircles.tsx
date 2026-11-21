@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
 
 type WorkExperience = {
   id: string;
@@ -54,49 +53,19 @@ const EXPERIENCES: WorkExperience[] = [
   },
 ];
 
-/** Delay between each card rising in (ms). Nex (first) is featured and drawn larger. */
-const STAGGER_MS = 150;
-
 export default function WorkExperienceCircles() {
-  const rootRef = useRef<HTMLUListElement>(null);
-  const [revealed, setRevealed] = useState(false);
-
-  // Rise the cards in once, the first time the row scrolls into view
-  useEffect(() => {
-    const el = rootRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        setRevealed(true);
-        observer.disconnect();
-      },
-      { threshold: 0.25 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <div className="relative">
-      {/* Timeline line through the circle centers (desktop); drawn left → right on reveal */}
+      {/* Timeline line through the circle centers (desktop) */}
       <span
         aria-hidden
-        className={`hidden md:block absolute left-[16.667%] right-[16.667%] md:top-28 lg:top-36 h-[3px] -translate-y-1/2 rounded-full bg-gray-300 origin-left transition-transform duration-1000 ease-out motion-reduce:transition-none ${
-          revealed ? "scale-x-100" : "scale-x-0"
-        }`}
+        className="hidden md:block absolute left-[16.667%] right-[16.667%] md:top-28 lg:top-36 h-[3px] -translate-y-1/2 rounded-full bg-gray-300"
       />
-      <ul ref={rootRef} className="relative grid grid-cols-1 md:grid-cols-3 gap-y-8 md:gap-0" aria-label="Work experience">
+      <ul className="relative grid grid-cols-1 md:grid-cols-3 gap-y-8 md:gap-0" aria-label="Work experience">
         {EXPERIENCES.map((xp, i) => {
           const featured = i === 0;
           return (
-            <li
-              key={xp.id}
-              className={`flex flex-col px-4 transition-[opacity,translate] duration-700 ease-out motion-reduce:transition-none ${
-                revealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: revealed ? `${i * STAGGER_MS}ms` : "0ms" }}
-            >
+            <li key={xp.id} className="flex flex-col px-4">
               {/* Timeline segment between stacked cards (mobile) */}
               {i > 0 && <span aria-hidden className="md:hidden block mx-auto mb-8 w-[3px] h-12 rounded-full bg-gray-300" />}
               <Link href={xp.href} className="group flex flex-1 flex-col items-center text-center outline-none">
