@@ -191,7 +191,7 @@ export const OTHER_PROJECTS_CONFIG: OtherProject[] = [
     tags: ['Teaching'],
     type: 'Course',
     coverImage: '/images/cs247g-syllabus.png',
-    createdAt: '2025-01-15',
+    createdAt: '2026-01-15',
     tools: ['unity'],
   },
   {
